@@ -63,3 +63,25 @@ outputs:
     comment: Web page to navigate the outputs
     type: navigate_results
     dir: Browse
+
+  - name: diff_sch
+    comment: Schematic diff vs previous tag
+    type: diff
+    dir: Diff
+    options:
+      old: KIBOT_TAG_DIFF
+      old_type: git
+      cache_dir: /tmp/cache
+      add_link_id: true
+      pcb: false
+
+  - name: diff_pcb
+    comment: PCB diff vs previous tag
+    type: diff
+    dir: Diff
+    options:
+      old: KIBOT_TAG_DIFF
+      old_type: git
+      cache_dir: /tmp/cache
+      add_link_id: true
+      only_pcb: true
