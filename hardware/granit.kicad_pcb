@@ -30576,6 +30576,17 @@
 			)
 		)
 	)
+	(gr_text "CENTER ⊖"
+		(at 104 107 90)
+		(layer "F.SilkS" knockout)
+		(uuid "156b1b69-7775-4de6-bb75-7d1dfad09a6a")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "12V"
 		(at 95.75 94.7 0)
 		(layer "F.SilkS" knockout)
