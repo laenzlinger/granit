@@ -31027,8 +31027,19 @@
 			)
 		)
 	)
+	(gr_text "CENTER ⊖"
+		(at 97.4 102.5 90)
+		(layer "F.SilkS" knockout)
+		(uuid "c86f6090-f29d-443b-8419-858eb06dcdd8")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "GND"
-		(at 109 88.8 0)
+		(at 111.3 88.35 90)
 		(layer "F.SilkS" knockout)
 		(uuid "784e82c6-05e8-49fe-b2dd-5d9c06d68d07")
 		(effects
@@ -31039,34 +31050,12 @@
 		)
 	)
 	(gr_text "12V"
-		(at 109 93.8 0)
+		(at 111.4 93.75 90)
 		(layer "F.SilkS" knockout)
 		(uuid "0d19e3b8-eb73-47e4-a87c-f0a8bc02331e")
 		(effects
 			(font
 				(size 0.8 0.8)
-				(thickness 0.15)
-			)
-		)
-	)
-	(gr_text "CENTER ⊖"
-		(at 104 107 90)
-		(layer "F.SilkS" knockout)
-		(uuid "156b1b69-7775-4de6-bb75-7d1dfad09a6a")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
-			)
-		)
-	)
-	(gr_text "12V"
-		(at 95.75 94.7 0)
-		(layer "F.SilkS" knockout)
-		(uuid "f301fde1-00cc-4d80-b23a-2e34cc047161")
-		(effects
-			(font
-				(size 1 1)
 				(thickness 0.15)
 			)
 		)
