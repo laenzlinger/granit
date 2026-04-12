@@ -19,7 +19,6 @@
 - [x] SATA: add 100nF AC coupling caps (0805) in series on SATA TX pair (STXP_A, STXN_A), placed near ASM1061 — required by SATA spec (ASM1061 datasheet CTX = 75–200nF)
 - [x] SATA: add 100nF AC coupling caps (0805) in series on SATA RX pair (SRXP_A, SRXN_A), placed near ASM1061 — defensive, external interface can't guarantee drive-side caps
 - [x] PCIe: add 100nF AC coupling caps (0805) in series on PCIe RX pair (PCIE_RX_P, PCIE_RX_N), placed near ASM1061 TX output — CM4 datasheet: "external AC coupling capacitor required"
-- [ ] PCIe: tie PCIe_CLK_nREQ (CM4 pin 102) to GND — CRITICAL, CM4 won't output PCIe clock without this
 - [x] SATA: 7-pin data connector + 4-pin power connector
 - [x] SATA: power switching (FDS4435BZ on 5V/12V, GPIO5 controlled, solder jumper bypass)
 - [x] Wake: hardware power-off wake (2N7002 + 74AHCT1G32 OR gate, DNP for v1)
