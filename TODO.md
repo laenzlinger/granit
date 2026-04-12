@@ -21,7 +21,7 @@
 - [x] PCIe: add 100nF AC coupling caps (0805) in series on PCIe RX pair (PCIE_RX_P, PCIE_RX_N), placed near ASM1061 TX output — CM4 datasheet: "external AC coupling capacitor required"
 - [x] SATA: 7-pin data connector + 4-pin power connector
 - [x] SATA: power switching (FDS4435BZ on 5V/12V, GPIO5 controlled, solder jumper bypass)
-- [ ] SATA: add 100K pull-down on N-FET gate (Net-(Q5-G) to GND) — ensures SATA power OFF during boot before GPIO5 is configured
+- [x] SATA: add 100K pull-down on N-FET gate (Net-(Q5-G) to GND) — ensures SATA power OFF during boot before GPIO5 is configured
 - [x] Wake: hardware power-off wake (2N7002 + 74AHCT1G32 OR gate, DNP for v1)
 - [x] All footprints assigned
 - [x] All component descriptions filled
