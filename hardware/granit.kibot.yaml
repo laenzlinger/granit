@@ -30,6 +30,14 @@ outputs:
     dir: BoM
     options:
       format: HTML
+      columns:
+        - Row
+        - References
+        - Value
+        - Footprint
+        - Quantity Per PCB
+        - field: IPN
+          name: InvenTree IPN
 
   - name: basic_ibom
     comment: Interactive Bill of Materials
