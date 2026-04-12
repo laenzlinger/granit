@@ -5441,30 +5441,6 @@
 		)
 		(uuid "fb84c61a-0c8c-4f12-a803-16c89cb60997")
 	)
-	(global_label "UART_TX"
-		(shape bidirectional)
-		(at 143.51 170.18 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "08a5def0-f6e1-4749-81d2-d50494ff2344")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.6121 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "SCL1"
 		(shape bidirectional)
 		(at 33.02 100.33 180)
@@ -5633,7 +5609,7 @@
 			)
 		)
 	)
-	(global_label "UART_RX"
+	(global_label "UART_TX"
 		(shape bidirectional)
 		(at 143.51 172.72 180)
 		(fields_autoplaced yes)
@@ -5643,9 +5619,9 @@
 			)
 			(justify right)
 		)
-		(uuid "521cee37-0a43-49f3-bc31-c7cab9aa16d5")
+		(uuid "4699bcc6-2b6f-4cd7-9268-41b95dd0353d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.3097 172.72 0)
+			(at 131.6121 172.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5750,6 +5726,30 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+	)
+	(global_label "UART_RX"
+		(shape bidirectional)
+		(at 143.51 170.18 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c20886b2-7988-453c-be62-020349828fbe")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 131.3097 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 	)
@@ -9070,6 +9070,7 @@
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
 		(at 148.59 172.72 0)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9079,7 +9080,7 @@
 		(dnp no)
 		(uuid "93edea57-08cb-464e-a476-d82faa4a0734")
 		(property "Reference" "J8"
-			(at 151.13 171.4499 0)
+			(at 151.13 173.9901 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9090,7 +9091,7 @@
 			)
 		)
 		(property "Value" "BM03B-SRSS-TB"
-			(at 146.812 178.308 0)
+			(at 146.812 167.132 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
