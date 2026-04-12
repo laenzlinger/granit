@@ -68,6 +68,7 @@ outputs:
     comment: Schematic diff vs previous tag
     type: diff
     dir: Diff
+    run_by_default: false
     options:
       old: KIBOT_TAG-1
       old_type: git
@@ -79,6 +80,7 @@ outputs:
     comment: PCB diff vs previous tag
     type: diff
     dir: Diff
+    run_by_default: false
     options:
       old: KIBOT_TAG-1
       old_type: git
