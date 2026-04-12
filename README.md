@@ -55,7 +55,7 @@ This PCB is designed with [KiCad 10](https://www.kicad.org/blog/2026/03/Version-
   gadget mode (initial backup seeding over USB). USB 2.0 device mode only, with USBLC6-2SC6
   ESD protection.
 - **SATA power control**: 12V and 5V to the SATA connector are software-controlled via
-  GPIO17. HDD is off by default at boot — powered on explicitly by software. Solder jumpers
+  GPIO5. HDD is off by default at boot — powered on explicitly by software. Solder jumpers
   (JP5, JP6) allow changing the default to power-on at boot without a PCB respin.
 - **Power budget**: 12V @ 2A (3.5" HDD spin-up) + 5V @ 2.3A peak (CM4 + electronics) — use a 12V/3A+ PSU.
 - **Boot and storage strategy**: Full OS on CM4 eMMC (no SD card slot), SATA HDD dedicated
