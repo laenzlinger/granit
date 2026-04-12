@@ -97,3 +97,13 @@ Track widths are sized per IPC-2221 for outer-layer traces with 20°C temperatur
 
 Realistic steady state: ~1.5A (CM4) + 0.5A (HDD) = 2.0A on 5V rail.
 HDD spin-up and CM4 peak don't occur simultaneously — SATA power is software-controlled.
+
+### 5V Rail Voltage (5.16V)
+
+The feedback divider (R2=12K, R4=2.2K) sets the buck converter output to 5.16V, intentionally above 5.0V:
+
+- **SATA power FET drop**: FDS4435BZ Rds(on) ~9mΩ → ~18mV loss at 2A
+- **Trace/connector resistance**: additional ~30–50mV drop to CM4 pins
+- **CM4 undervoltage threshold**: the CM4 triggers low-voltage warnings below ~4.9V
+
+Running at 5.16V ensures the CM4 sees >5.0V after all drops, avoiding undervoltage throttling.
