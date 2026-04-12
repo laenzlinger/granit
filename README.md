@@ -83,14 +83,14 @@ The device runs Raspberry Pi OS Lite (headless).
 
 ### HDD Power Control
 
-GPIO17 (`SATA_PWR_EN`) controls the P-FET power switches for the SATA 12V and 5V rails.
+GPIO5 (`SATA_PWR_EN`) controls the P-FET power switches for the SATA 12V and 5V rails.
 The boot default is selected by solder jumpers JP5 and JP6 (see Design Considerations above).
 
 **Connect sequence** (power on → detect → mount):
 ```bash
 #!/bin/bash
 # Power on SATA rails (GPIO high → N-FET on → P-FET gate low → P-FET on)
-gpioset gpiochip0 17=1
+gpioset gpiochip0 5=1
 sleep 2
 
 # Rescan AHCI bus (ASM1061 hot-plug)
@@ -117,7 +117,7 @@ sleep 1
 echo 1 > /sys/block/sda/device/delete
 
 # Power off SATA rails (GPIO low → N-FET off → pull-up → P-FET off)
-gpioset gpiochip0 17=0
+gpioset gpiochip0 5=0
 ```
 
 ### Deployment

@@ -180,7 +180,7 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 - [ ] DS3231 RTC driver + alarm configuration
 - [ ] DS3231 OSF flag check on boot (warn if battery failed, report via healthcheck)
 - [ ] GPIO_HOLD (GPIO6) assertion on boot
-- [ ] SATA_PWR_EN (GPIO17) control
+- [ ] SATA_PWR_EN (GPIO5) control
 - [ ] NeoPixel status daemon
 - [ ] Button handler (shutdown/backup/maintenance)
 - [ ] WireGuard VPN configuration
