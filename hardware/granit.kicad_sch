@@ -645,6 +645,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 104.14 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "164f2a8e-a4b1-4441-83df-553072586d87")
 		)
@@ -801,6 +812,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 124.46 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "05f0e7fc-3f78-4714-bbf8-63239b01a5f4")
 		)
@@ -870,6 +892,17 @@
 			)
 		)
 		(property "Description" "Fiducial Marker"
+			(at 50.8 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "fiducial"
 			(at 50.8 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -956,6 +989,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "fiducial"
+			(at 66.04 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a"
@@ -1022,6 +1066,17 @@
 			)
 		)
 		(property "Description" "Fiducial Marker"
+			(at 50.8 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "fiducial"
 			(at 50.8 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -1262,6 +1317,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
+			(at 124.46 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "adce7095-738b-44d0-aaf8-16288cf95b0f")
 		)
@@ -1331,6 +1397,17 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 104.14 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
 			(at 104.14 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -1486,6 +1563,17 @@
 			)
 		)
 		(property "Description" "Fiducial Marker"
+			(at 66.04 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "fiducial"
 			(at 66.04 154.94 0)
 			(hide yes)
 			(show_name no)

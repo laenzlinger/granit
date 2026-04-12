@@ -4572,7 +4572,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0a8c52c2-0d09-43c2-9000-fdb5d0e2dbd1")
-		(property "Reference" "C4"
+		(property "Reference" "C46"
 			(at 87.63 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4649,6 +4649,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 86.36 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "bc9b4b60-57fe-49be-8c20-d81e100bf74e")
 		)
@@ -4658,7 +4669,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C4")
+					(reference "C46")
 					(unit 1)
 				)
 			)
@@ -4753,7 +4764,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1e23a9bc-8eda-4ee6-a3e8-99608b7f94a6")
-		(property "Reference" "C10"
+		(property "Reference" "C38"
 			(at 254.4572 116.967 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4830,6 +4841,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 251.46 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "24ae8dba-1393-4c5a-84c9-48d2678fec30")
 		)
@@ -4839,7 +4861,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C10")
+					(reference "C38")
 					(unit 1)
 				)
 			)
@@ -4856,7 +4878,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1ee5231a-62c4-4fed-bc82-fd563902d495")
-		(property "Reference" "C11"
+		(property "Reference" "C45"
 			(at 119.38 117.475 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4944,6 +4966,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 128.27 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a968471d-7056-47ed-b0b7-c975a1a7cd34")
 		)
@@ -4953,7 +4986,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C11")
+					(reference "C45")
 					(unit 1)
 				)
 			)
@@ -5126,7 +5159,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2d45bf34-865b-4406-9359-ba44fddac9bc")
-		(property "Reference" "C7"
+		(property "Reference" "C35"
 			(at 221.361 115.6716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5203,6 +5236,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 218.44 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "dfec8297-d77c-46bb-ad39-6a23112be02c")
 		)
@@ -5212,7 +5256,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C7")
+					(reference "C35")
 					(unit 1)
 				)
 			)
@@ -5229,7 +5273,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "34339892-11be-4fdd-83fe-966781e8992f")
-		(property "Reference" "C19"
+		(property "Reference" "C28"
 			(at 134.62 138.43 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5317,6 +5361,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 132.08 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "abbc03cc-507c-473c-ac0a-2ef6e8cd0117")
 		)
@@ -5326,7 +5381,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C19")
+					(reference "C28")
 					(unit 1)
 				)
 			)
@@ -5421,7 +5476,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3bee2fbe-be2b-4a21-9040-b59fd2f97d52")
-		(property "Reference" "U2"
+		(property "Reference" "U7"
 			(at 142.875 117.7544 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5515,7 +5570,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "U2")
+					(reference "U7")
 					(unit 1)
 				)
 			)
@@ -5532,7 +5587,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "41da4630-be1a-47b4-a19c-e04006a1fbbb")
-		(property "Reference" "C16"
+		(property "Reference" "C42"
 			(at 99.441 129.6416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5609,6 +5664,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 96.52 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ca3afade-9b0c-405e-a776-84ec2d763f69")
 		)
@@ -5618,7 +5684,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C16")
+					(reference "C42")
 					(unit 1)
 				)
 			)
@@ -5635,7 +5701,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "48d87eae-5df6-409e-8586-021f121f4d64")
-		(property "Reference" "C9"
+		(property "Reference" "C39"
 			(at 240.411 115.6716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5712,6 +5778,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 237.49 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "862dbaa0-f982-4201-8fd8-5a1e1840f360")
 		)
@@ -5721,7 +5798,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C9")
+					(reference "C39")
 					(unit 1)
 				)
 			)
@@ -5738,7 +5815,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "51b13502-54c3-4abe-b521-151662dce018")
-		(property "Reference" "TP1"
+		(property "Reference" "TP3"
 			(at 189.865 107.823 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5799,7 +5876,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "TP1")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -5816,7 +5893,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "5ec9d700-8ad9-48c6-a06c-eb8d604d9ce9")
-		(property "Reference" "TP2"
+		(property "Reference" "TP1"
 			(at 73.8632 120.1928 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5877,7 +5954,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "TP2")
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -5971,7 +6048,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "66996a34-7fef-498a-a6d7-34939c59e90e")
-		(property "Reference" "C6"
+		(property "Reference" "C36"
 			(at 211.201 115.6716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6048,6 +6125,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 208.28 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "871088af-1a80-4d30-9622-05127651c46f")
 		)
@@ -6057,7 +6145,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C6")
+					(reference "C36")
 					(unit 1)
 				)
 			)
@@ -6074,7 +6162,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6a55a486-e5ee-459e-a193-dd37d76cdc85")
-		(property "Reference" "R4"
+		(property "Reference" "R24"
 			(at 180.848 142.3416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6151,6 +6239,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 179.07 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4daaefde-f4d9-4b0b-a171-2406e2c6d718")
 		)
@@ -6160,7 +6259,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "R4")
+					(reference "R24")
 					(unit 1)
 				)
 			)
@@ -6255,7 +6354,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "73c39315-445b-49e1-97dc-44a8db615c73")
-		(property "Reference" "C18"
+		(property "Reference" "C33"
 			(at 122.301 129.6416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6332,6 +6431,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 119.38 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "af705807-02fc-496d-a29d-7d23c11af434")
 		)
@@ -6341,7 +6451,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C18")
+					(reference "C33")
 					(unit 1)
 				)
 			)
@@ -6358,7 +6468,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "75a10f91-c80a-44cd-9426-1bb201bd1346")
-		(property "Reference" "C2"
+		(property "Reference" "C25"
 			(at 250.571 52.1716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6435,6 +6545,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 247.65 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e1662355-2eea-48f4-af7c-6b458cfeba67")
 		)
@@ -6444,7 +6565,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C2")
+					(reference "C25")
 					(unit 1)
 				)
 			)
@@ -6615,7 +6736,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "811433f0-2b03-4e0c-82b0-70e7f546cae8")
-		(property "Reference" "C1"
+		(property "Reference" "C29"
 			(at 215.011 52.1716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6692,6 +6813,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 212.09 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4168b20b-ecc4-4ac9-992b-7fe1c7e5f24f")
 		)
@@ -6701,7 +6833,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C1")
+					(reference "C29")
 					(unit 1)
 				)
 			)
@@ -6718,7 +6850,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "841a9ec6-4e5d-4767-9118-388c5f33367c")
-		(property "Reference" "C5"
+		(property "Reference" "C41"
 			(at 105.791 58.5216 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6795,6 +6927,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 102.87 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "58776981-345a-4dcf-a614-5119ff8b389c")
 		)
@@ -6804,7 +6947,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C5")
+					(reference "C41")
 					(unit 1)
 				)
 			)
@@ -6977,7 +7120,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9253c2d7-12cf-4b93-93b3-f01efb49551e")
-		(property "Reference" "C40"
+		(property "Reference" "C26"
 			(at 121.92 58.8009 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7032,6 +7175,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "capacitor/SMD/elec_round_polarized"
+			(at 118.11 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "956b6c72-a917-4476-aa81-d06d73769726")
 		)
@@ -7041,7 +7195,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C40")
+					(reference "C26")
 					(unit 1)
 				)
 			)
@@ -7058,7 +7212,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "9356b06e-4db8-4098-87de-4a48b13e2a68")
-		(property "Reference" "C17"
+		(property "Reference" "C34"
 			(at 110.871 129.6416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7135,6 +7289,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 107.95 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "572f75fe-5673-4f05-8957-00e97d0875f6")
 		)
@@ -7144,7 +7309,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C17")
+					(reference "C34")
 					(unit 1)
 				)
 			)
@@ -7215,6 +7380,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 72.39 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "97f73a00-4449-444b-9a15-c25b33caba76")
 		)
@@ -7241,7 +7417,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "96faba6a-4b57-4634-a6d1-19bb193aa1cd")
-		(property "Reference" "R3"
+		(property "Reference" "R25"
 			(at 170.688 135.9916 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7318,6 +7494,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 168.91 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "43509b3c-7de9-4997-9f32-bc4cbd36931f")
 		)
@@ -7327,7 +7514,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "R3")
+					(reference "R25")
 					(unit 1)
 				)
 			)
@@ -7344,7 +7531,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "977e600e-26d1-46cc-9862-2b2e71cb57c5")
-		(property "Reference" "C15"
+		(property "Reference" "C43"
 			(at 89.281 129.6416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7421,6 +7608,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 86.36 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3b899a5d-d0ba-451d-8963-0ad9be81c92e")
 		)
@@ -7430,7 +7628,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C15")
+					(reference "C43")
 					(unit 1)
 				)
 			)
@@ -7447,7 +7645,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "97e25539-ba8c-4a19-9db8-e1921e32ed85")
-		(property "Reference" "R1"
+		(property "Reference" "R27"
 			(at 134.62 109.855 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7524,6 +7722,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 135.89 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "64775ff3-a196-4662-9065-88927de523a3")
 		)
@@ -7533,7 +7742,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "R1")
+					(reference "R27")
 					(unit 1)
 				)
 			)
@@ -7550,7 +7759,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a004013d-3ecb-4b16-9308-cf63f45a6764")
-		(property "Reference" "C21"
+		(property "Reference" "C27"
 			(at 171.45 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7627,6 +7836,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 168.91 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "63e6d4a5-e2c8-4a6f-80c6-fe50ee594b93")
 		)
@@ -7636,7 +7856,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C21")
+					(reference "C27")
 					(unit 1)
 				)
 			)
@@ -7731,7 +7951,7 @@
 		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "ae92f83e-113d-474d-89d4-3aaaec7da85f")
-		(property "Reference" "J2"
+		(property "Reference" "J6"
 			(at 36.83 63.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7795,6 +8015,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "terminal_block/Phoenix"
+			(at 36.83 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ec335a3-6687-4e61-8aa9-41988808caa5")
 		)
@@ -7804,7 +8035,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "J2")
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -7898,7 +8129,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bbe0115a-008f-4ae0-a7d8-a206777b36fe")
-		(property "Reference" "TP3"
+		(property "Reference" "TP2"
 			(at 221.1832 132.8928 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7959,7 +8190,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "TP3")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -7977,7 +8208,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c40f4694-ea90-4978-b482-36d2afcca00d")
-		(property "Reference" "Q1"
+		(property "Reference" "Q6"
 			(at 93.8747 38.1 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8054,7 +8285,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "Q1")
+					(reference "Q6")
 					(unit 1)
 				)
 			)
@@ -8071,7 +8302,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cc0fc0dd-be99-4481-b33f-e75afb53a97b")
-		(property "Reference" "C13"
+		(property "Reference" "C32"
 			(at 67.691 129.6416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8148,6 +8379,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 64.77 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8ac0f980-451e-4a57-b538-17d1ab2fdb61")
 		)
@@ -8157,7 +8399,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C13")
+					(reference "C32")
 					(unit 1)
 				)
 			)
@@ -8251,7 +8493,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cf4048fd-77c6-4d30-9b25-418a6fa17adb")
-		(property "Reference" "C12"
+		(property "Reference" "C37"
 			(at 191.77 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8328,6 +8570,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 189.23 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c3137753-cddd-490f-9c06-0c0be1b991c1")
 		)
@@ -8337,7 +8590,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C12")
+					(reference "C37")
 					(unit 1)
 				)
 			)
@@ -8431,7 +8684,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d66a8e1a-38fa-49e3-9b33-ce1ad288f3ad")
-		(property "Reference" "R2"
+		(property "Reference" "R26"
 			(at 173.99 123.063 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8508,6 +8761,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 179.07 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4de32d45-79a0-4f12-8f87-0183ef9fa4ae")
 		)
@@ -8517,7 +8781,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "R2")
+					(reference "R26")
 					(unit 1)
 				)
 			)
@@ -8534,7 +8798,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d7ad26d3-da1c-4010-a645-12265144d7b5")
-		(property "Reference" "C14"
+		(property "Reference" "C44"
 			(at 79.121 129.6416 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8611,6 +8875,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 76.2 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8f994918-ed97-4285-9171-dc17e04a1a6d")
 		)
@@ -8620,7 +8895,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C14")
+					(reference "C44")
 					(unit 1)
 				)
 			)
@@ -8637,7 +8912,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d9694e53-9e94-420c-b780-63712bc3bc51")
-		(property "Reference" "U1"
+		(property "Reference" "U6"
 			(at 229.87 42.1132 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8713,7 +8988,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "U1")
+					(reference "U6")
 					(unit 1)
 				)
 			)
@@ -8730,7 +9005,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "da32e6ee-1467-4882-8b31-0098253c7ae0")
-		(property "Reference" "C3"
+		(property "Reference" "C30"
 			(at 76.2 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8807,6 +9082,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 80.01 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6cc903f7-78df-4a23-aacd-2d4839ef1c5c")
 		)
@@ -8816,7 +9102,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C3")
+					(reference "C30")
 					(unit 1)
 				)
 			)
@@ -8833,7 +9119,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e5545c17-baf8-4ad9-bdc6-3bd8f178ebc6")
-		(property "Reference" "C20"
+		(property "Reference" "C31"
 			(at 162.56 138.43 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8910,6 +9196,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 160.02 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8fc82927-529f-4bf1-b550-7f0fca99cb07")
 		)
@@ -8919,7 +9216,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C20")
+					(reference "C31")
 					(unit 1)
 				)
 			)
@@ -9115,7 +9412,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "eb40ffa5-388c-46d7-9a21-ec7d41b43a79")
-		(property "Reference" "J1"
+		(property "Reference" "J7"
 			(at 48.26 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9191,7 +9488,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "J1")
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -9208,7 +9505,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f4513802-28b5-48f1-8681-6274de6f2067")
-		(property "Reference" "C8"
+		(property "Reference" "C40"
 			(at 231.521 115.6716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9285,6 +9582,17 @@
 				)
 			)
 		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 228.6 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "506f4aca-bfba-4d43-ab54-8c5cb2b03dea")
 		)
@@ -9294,7 +9602,7 @@
 		(instances
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/5c34f141-50d5-4609-a101-f9d94643eff8"
-					(reference "C8")
+					(reference "C40")
 					(unit 1)
 				)
 			)
