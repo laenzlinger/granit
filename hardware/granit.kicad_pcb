@@ -207,50 +207,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "19d0d00a-6ff8-4b22-b8e1-a117e27d2e74")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "366cc744-261e-48ef-87d9-4acc2c60bd67")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6fb58b2f-6a22-4211-a93c-6b7b2dcda7fc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1913e340-467b-4bdc-b2f0-e911c6ef6c61")
+			(uuid "dbf258ad-e2fb-4d20-a78b-2d877a2799c5")
 			(effects
 				(font
 					(size 1 1)
@@ -404,11 +366,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-002"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "0ab4da03-03f9-45bc-b935-0a9655b838d5")
+			(uuid "d21e4e98-c73e-4889-8b15-ab582f5659c6")
 			(effects
 				(font
 					(size 1 1)
@@ -566,12 +529,12 @@
 				)
 			)
 		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/diodes-incorporated/AZ1117IH-3-3TRG1/5699672"
+		(property "IPN" "U-002"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "006696e6-5399-48c0-bfad-2f60a3379034")
+			(uuid "6f47de30-184e-4f4a-b440-0faa2ad92d4d")
 			(effects
 				(font
 					(size 1 1)
@@ -848,18 +811,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "e45722b2-ca64-400c-a322-cd32de96a9e2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/d20fb5c1-99ec-4a59-b0e5-2ee2e212a923")
 		(sheetname "/")
@@ -1065,37 +1016,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "895edca9-b370-4eda-bcee-e8fdd5cc3270")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "823be97d-1b68-4318-92b8-274dd3b923e8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "50b92e63-66b6-4f8b-aefd-740400128c0c")
+			(uuid "b2824835-8b9e-4441-824b-4dd6980069ba")
 			(effects
 				(font
 					(size 1 1)
@@ -1249,37 +1175,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "7017f063-72fc-418a-b96d-b5a5a6ba446b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "55a512bb-b048-4083-95fc-64c42e2ca1fb")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "25d6d666-a2cc-433a-acc5-f2849daf1b52")
+			(uuid "0ad9b37e-0fae-4fed-b6a4-2d79c785cd51")
 			(effects
 				(font
 					(size 1 1)
@@ -1433,50 +1334,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "a0e55282-3cc1-44d1-86d8-d41dccd254f4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2c589a39-7ecd-48eb-ba21-39ef83d599ec")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "30aa75d5-364e-449d-88b6-da8830239b99")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4ec3978d-1ba6-4fef-9208-972fd3b726fb")
+			(uuid "07cae59d-43eb-4641-b6aa-bd26e570151d")
 			(effects
 				(font
 					(size 1 1)
@@ -1632,11 +1495,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
+		(property "IPN" "R-018"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "718d3a51-2b4d-4b06-99d4-84738fc55215")
+			(uuid "e0db5a3e-776f-452b-9e81-d53c69cd199d")
 			(effects
 				(font
 					(size 1 1)
@@ -1790,11 +1654,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "package/gullwing"
+		(property "IPN" "U-010"
 			(at 0 0 90)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "7a69c096-cac4-4232-aa82-698004ebca02")
+			(uuid "3c555501-2ab8-4c86-b6a4-7ca41aa2fe96")
 			(effects
 				(font
 					(size 1 1)
@@ -2172,50 +2037,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "ef6c1754-474a-4650-8eff-cfb1f759fd23")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "70cd2bb4-4155-4d51-bcf8-6586f0aa5fb2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6958e078-18e4-4373-9d46-eec767e7de15")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2380d168-ea81-4143-b623-c1fc1010f33d")
+			(uuid "1c053cdc-c78c-431a-8db9-f4029c405e0b")
 			(effects
 				(font
 					(size 1 1)
@@ -2369,37 +2196,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "070819b7-d8e6-4200-aace-be367f59001e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3f71d858-46cb-4957-8b7e-18fc2703985e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d6de6d53-ad70-464a-b92e-83839c3cd129")
+			(uuid "f497a327-b4ff-456c-bf28-191246eae2e9")
 			(effects
 				(font
 					(size 1 1)
@@ -2553,50 +2355,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "d1ea2cb7-fed7-414e-b4fa-bfc893989cd4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "915ea75a-ce62-4ad4-a31d-e1288fd96877")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4113f840-685c-4b05-87c4-8d20c950a2f0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "58173b09-d029-4161-84f4-9cb364f7574f")
+			(uuid "68604823-8dec-42b0-b5e2-52890517fd83")
 			(effects
 				(font
 					(size 1 1)
@@ -2752,37 +2516,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "315bb9b1-9b8b-4be0-96e0-6e5d2a5b28a9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/murata-electronics/GRM2165C2A122JA01D/2544699"
+		(property "IPN" "C-005"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3ed55612-e0b9-4750-908f-03b979f77e99")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 10V Ceramic Capacitor X5R"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "72106a4a-66b2-4779-9888-63e63b93ca67")
+			(uuid "91e1e089-997a-43c2-ad7e-6349fbd2f6a5")
 			(effects
 				(font
 					(size 1 1)
@@ -2936,37 +2675,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "60de970a-e112-4426-be88-1699012487d7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d2472523-df7d-4edf-ba26-efb338a216e1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5f140be4-3b52-45ef-9504-d60e293c51ff")
+			(uuid "534f4138-9949-4f6e-9fc9-dbd6c73cd698")
 			(effects
 				(font
 					(size 1 1)
@@ -3120,11 +2834,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-002"
 			(at 0 0 90)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "1cb6651b-671d-4fdc-b82e-5dc336a4e6ae")
+			(uuid "12f75007-942f-4a36-8a47-9e3dadc7e82b")
 			(effects
 				(font
 					(size 1 1)
@@ -3278,37 +2993,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "c1ed7f58-6980-439e-894a-4ef5b539e492")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2905fe32-c263-4c9e-a52e-d211df5e9b97")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a9b13cf4-e6d0-4bc7-b592-b123b7f87193")
+			(uuid "c6b438dd-d95a-4872-881f-8c22d6713bac")
 			(effects
 				(font
 					(size 1 1)
@@ -3462,11 +3152,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-001"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "241ed755-3e59-4e90-8dfb-00750636ed93")
+			(uuid "6e19a3c6-7c94-4d38-b8ea-9186cfe6df24")
 			(effects
 				(font
 					(size 1 1)
@@ -3620,50 +3311,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 45)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "832615ad-d2cf-455c-b801-e22a93842aed")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 45)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ef03769f-4482-41b7-90b5-6da03f14ae74")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5c5bf3f5-62fb-4a98-9f47-fec5980090df")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3ca231b4-9010-4918-86fe-4ab45797f314")
+			(uuid "508f3434-6c4f-4020-a2cd-affbfa93cb78")
 			(effects
 				(font
 					(size 1 1)
@@ -3819,6 +3472,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "J-007"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19c5dd8a-b2f1-4a26-9423-b5a3744f88d7")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -4879,37 +4545,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "44309cb0-601b-439d-8ee9-881287c6be46")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "Resistor 10R 1% 63mW"
+		(property "IPN" "R-001"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8973b1a5-c685-4965-aac6-077d1e6393c1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/stackpole-electronics-inc/RNCP0805FTD10R0/2240197"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6bc34651-9c45-40d9-bac4-028c80786b80")
+			(uuid "16a0a5bc-c34e-445d-b9db-b33b9bd4f983")
 			(effects
 				(font
 					(size 1 1)
@@ -5063,11 +4704,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-002"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "a2d969bd-4372-44d4-8f85-fa366d6668ed")
+			(uuid "17c2e64f-8a9c-4cb1-84cc-51a59589bd0a")
 			(effects
 				(font
 					(size 1 1)
@@ -5210,7 +4852,7 @@
 				)
 			)
 		)
-		(property "Description" "3.5A DC-DC buck converter, 5V output"
+		(property "Description" ""
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -5218,19 +4860,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/diodes-incorporated/AP64501SP-13/10419715"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1a9288d1-7829-437d-80f9-a3f525e6a096")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
 				)
 			)
 		)
@@ -6120,18 +5749,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "package/gullwing"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "f61f740b-f129-40cc-970e-a1674e93d6c1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "SOT?23*")
 		(path "/d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f80/51be11b4-5b5c-4863-85e3-43b29e354d33")
 		(sheetname "/Peripherals/")
@@ -6502,50 +6119,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 45)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "f03f9e55-c39d-4e1b-8a70-c3c5d1ae04c0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 225)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3a6b3a4f-96bb-44a8-9032-c4237678f250")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 225)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "df7c8286-f17e-4c84-870c-8384b6788ae3")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 225)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "54332a98-3bd3-4c9c-8c57-7a1f70a17b2c")
+			(uuid "f1b5c233-c20c-49aa-a8a5-931c1f8fab3f")
 			(effects
 				(font
 					(size 1 1)
@@ -6701,37 +6280,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "87b00dac-acc8-4dc7-a57c-000729b589d1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8243d238-00b0-424a-93eb-3e6f1ed2368d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "afea100f-ccdb-45c0-bfa8-c638f9c31873")
+			(uuid "7057cd37-8ba3-4ff9-a484-7dd2635d2d06")
 			(effects
 				(font
 					(size 1 1)
@@ -6885,37 +6439,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "b97001ff-22b0-4b94-8841-2d03eb2b7fcd")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "Resistor 20K 1% 63mW"
+		(property "IPN" "R-006"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4c347718-e413-4a5d-89b9-d465e7f24338")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/stackpole-electronics-inc/RMCF0805FT20K0/1760314"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "94d45929-3414-469e-bb19-648c5b22b74f")
+			(uuid "25dc99e9-62b8-473b-a305-c04a5cdf0049")
 			(effects
 				(font
 					(size 1 1)
@@ -7069,11 +6598,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "capacitor/SMD/elec_round_polarized"
+		(property "IPN" "C-020"
 			(at 0 0 90)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "a05179c9-907e-41ff-8396-4456044eec6d")
+			(uuid "c91e27c3-aa3b-47d8-aa57-c0cf78f24814")
 			(effects
 				(font
 					(size 1 1)
@@ -7516,50 +7046,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "08e148bf-7538-4006-99bf-19d4f9fa57e1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6ad544e7-df03-4490-b701-aea0268945aa")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8f0a33e1-3fe2-48f3-9782-58d3b7068a02")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "493e11a0-d1b7-49f5-a3b6-ada0819b2893")
+			(uuid "9ee7ebf0-55d0-4335-ae7a-f4b14b627d1c")
 			(effects
 				(font
 					(size 1 1)
@@ -7713,11 +7205,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
+		(property "IPN" "R-002"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "7810e047-2c19-4ab3-b4d1-edb190bac9e1")
+			(uuid "e4eeb033-9b46-42c8-ba09-6326b3bdff8f")
 			(effects
 				(font
 					(size 1 1)
@@ -7871,50 +7364,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "c22b3b91-3786-4ba5-ad3f-9852b7e7253e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cd7edc98-09cc-4884-8fd5-03c6d395df97")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b4274665-8b1c-4eec-85f5-3a9d3d782010")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6d4b0371-58a9-46a2-93be-95981ef801e6")
+			(uuid "7f253a88-62cc-4321-a405-0a4ba88bd7ed")
 			(effects
 				(font
 					(size 1 1)
@@ -8070,37 +7525,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "5fd169f1-1941-4c61-b6cc-3a6e4d3f4244")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "11c06acf-d5ee-4e47-86e4-e4794385663b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "18efce72-0f31-45cd-81dd-ff1dda887f9a")
+			(uuid "78c916c9-00b4-4340-bc16-058a046a4a5e")
 			(effects
 				(font
 					(size 1 1)
@@ -8254,50 +7684,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "67659a86-cf7e-4c34-972d-0d54057a1676")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3260ada1-6363-4071-b19d-e06d49bad457")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ec37f10d-ce8e-452b-b5e5-c35154c3060d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0b6dd047-110b-4b85-8df1-283dd804035a")
+			(uuid "604c230d-9260-4b7b-946f-41aa3d263591")
 			(effects
 				(font
 					(size 1 1)
@@ -8631,11 +8023,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
+		(property "IPN" "R-007"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "50eeebec-faa5-4c54-b908-41719f8c2694")
+			(uuid "5064bba3-cb6c-441b-81df-2913e7c73f66")
 			(effects
 				(font
 					(size 1 1)
@@ -8791,50 +8184,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "189b8109-33b0-4ff7-bd10-e90df843624c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-002"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "68e1e24c-9c16-4825-be57-4cdc7ea401c7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "328e8686-7d39-4a60-b467-d9523ed9a94b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2255d489-46a7-4ab3-9508-d79ddab2a9dd")
+			(uuid "40f6b723-6588-4651-91a8-adf7a90cca66")
 			(effects
 				(font
 					(size 1 1)
@@ -8994,25 +8349,12 @@
 				)
 			)
 		)
-		(property "Notes" "3.3µH Semi-Shielded Wirewound Inductor 7.8A 21mOhm Nonstandard"
+		(property "IPN" "L-001"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "080e3689-adb5-4eba-87d3-08473605fe5d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/bourns-inc/SRN6045TA-3R3Y/6155103"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8e465f83-43d2-40e3-9a51-0970a8166d8f")
+			(uuid "0e9c8f4f-7ea9-4539-9ee6-78a50b08d6c5")
 			(effects
 				(font
 					(size 1 1)
@@ -9264,6 +8606,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "D-008"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3db5fa3c-d6a0-4377-994a-e7154530bf25")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -9577,11 +8932,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-018"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "d6fd4e86-1a53-44ca-ac61-39e968bbbda4")
+			(uuid "f4722931-23f6-4098-a6a2-ea8618c10cc1")
 			(effects
 				(font
 					(size 1 1)
@@ -9735,50 +9091,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "73a5fc27-c5b8-471e-8bd5-b2c5c424128b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fd8d7bfb-7e55-4251-b4f8-af5432798390")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "cbaa4496-9154-4c54-9266-5c87a35b102c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "fd0327ff-dd4f-43aa-b509-0b97b028aace")
+			(uuid "79eddf74-2312-4491-ad3f-8b3b74a2aa37")
 			(effects
 				(font
 					(size 1 1)
@@ -9932,50 +9250,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 45)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "b2dba74d-fb1c-49bb-90f0-2ae43246c97b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 225)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a79581d5-6f6a-4b3b-8957-2ae76c089111")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 225)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "26ebbd00-aae7-4402-baa9-a6d00b7bae41")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 225)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "89a5eb6c-c9e1-4560-aab9-318e1dc176f3")
+			(uuid "f445c4a4-6714-4e29-a457-4dd9cd3ff192")
 			(effects
 				(font
 					(size 1 1)
@@ -10130,6 +9410,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "J-005"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "61a0b704-4445-4695-a6bd-ba95d66e891c")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -10564,50 +9857,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "aad02965-14e3-4a3d-bd7d-4c2e6de385ac")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "1a9333eb-7c52-43ac-a83a-bc42957a0f92")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3abece09-54d3-4454-895e-b8a4445c0391")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7592e910-05d5-4350-aa2a-1984d66ebca4")
+			(uuid "eefbc841-8a5c-4493-8b9e-6d3fd1e1a641")
 			(effects
 				(font
 					(size 1 1)
@@ -10797,6 +10052,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c9b4c14d-0c78-4041-89a0-461d575d2906")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "BT-001"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "58dd02b2-4d8e-4223-9a9a-8b7a0bb123bf")
 			(effects
 				(font
 					(size 1 1)
@@ -11460,18 +10728,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "package/gullwing"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "be7d0fb7-0e0f-49f5-b875-3a8077540080")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "SOT?23*")
 		(path "/b486f39b-2401-4245-9dd6-e411236f99dc/3f20ec05-9891-41a1-8c55-bba3bb09a8b3")
 		(sheetname "/SATA Bridge/")
@@ -11842,11 +11098,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
+		(property "IPN" "R-003"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "b852a0b4-1ded-4cd6-a723-95dff524c8fa")
+			(uuid "d809b069-f915-40fe-9e5e-2d4e5f70eefb")
 			(effects
 				(font
 					(size 1 1)
@@ -12000,6 +11257,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "SW-003"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d30352fe-abcf-4fc8-8083-8e09f5c46762")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -12387,11 +11657,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-020"
 			(at 0 0 45)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "1d677929-7d40-466f-8afa-d06a93dc5a4d")
+			(uuid "f767615e-71eb-4e43-9401-b442d4ecefd9")
 			(effects
 				(font
 					(size 1 1)
@@ -12547,50 +11818,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "48e49779-3f50-4dfc-b479-db52fffc27a6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e6f454b2-b7b6-49e4-aff8-1924c0f40a79")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ee1c6e3b-a536-471a-88c5-b2ecb38b8fe1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "856c1a74-2f92-4e5a-99cd-9ef1e38eeb8f")
+			(uuid "556d9e25-d03d-40bd-9710-cb6c8b82a84e")
 			(effects
 				(font
 					(size 1 1)
@@ -12744,11 +11977,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
+		(property "IPN" "R-020"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "60770857-8e8f-4388-b0eb-641933d0e13c")
+			(uuid "cb2b7c14-e6bb-45d3-bf71-d1f98d09dadb")
 			(effects
 				(font
 					(size 1 1)
@@ -12904,11 +12138,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-004"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "9d87beb0-e963-4830-b6c5-cfe0b1f671ae")
+			(uuid "d5064311-393b-4d85-bdda-b3660a8541af")
 			(effects
 				(font
 					(size 1 1)
@@ -13062,37 +12297,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "913c91be-11cf-4e72-8265-b18b50c30196")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4b205657-260e-4d51-aeb6-2bede5db3250")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ebdc69cc-2259-4fc8-b826-d93292394f81")
+			(uuid "6ea08236-5875-4096-a5d2-65a07ca3808f")
 			(effects
 				(font
 					(size 1 1)
@@ -13246,18 +12456,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "fiducial"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "ec25484a-2d76-46da-a9aa-cd251f66b314")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "Fiducial*")
 		(path "/6d57c69b-cb35-49cb-87ee-ab2d226014ce")
 		(sheetname "/")
@@ -13363,11 +12561,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
+		(property "IPN" "F-002"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "4bb9d1a0-fed1-4c23-8d94-b6cc65aba5c0")
+			(uuid "b8867048-d333-4a1b-a760-2e7ffa69db8e")
 			(effects
 				(font
 					(size 1 1)
@@ -13521,11 +12720,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-002"
 			(at 0 0 90)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "e146a46c-f4cd-4786-8920-0c114d29a052")
+			(uuid "7d0952f5-61ab-4821-88d5-f0317bfe3bf6")
 			(effects
 				(font
 					(size 1 1)
@@ -13679,50 +12879,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "7a720e56-7397-4d25-826a-f4042cca73d0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-002"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "eb56c14e-7017-43d4-9322-e5efceb43e54")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c1a944be-8c4e-40e7-b1d1-fc59357b0100")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "75ecdde2-21e6-4a4a-a825-a3092c4b8281")
+			(uuid "bc567d23-92ce-4123-a319-65500fca66cd")
 			(effects
 				(font
 					(size 1 1)
@@ -13878,6 +13040,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "J-008"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3c2260e4-814e-4a6f-94fb-b5d60e060351")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -14886,11 +14061,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
+		(property "IPN" "R-003"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "30b1af72-dec5-48fd-8a2b-19dbc9547179")
+			(uuid "eedc4dc5-e412-4cce-9fc3-01f756416694")
 			(effects
 				(font
 					(size 1 1)
@@ -15044,18 +14220,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "fiducial"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "af5a918d-c328-49c4-af6c-e525c89dc9f6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "Fiducial*")
 		(path "/ec685965-b38c-4f8d-ba20-9ea6f6a3597c")
 		(sheetname "/")
@@ -15158,19 +14322,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/onsemi/FDS4435BZ/1305763"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "954c6639-c2bf-41ec-be88-f54c38bd917a")
-			(effects
-				(font
-					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -15556,50 +14707,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "7564beb2-950e-4cc3-901d-319441543ed9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "02b90822-75e6-47dd-b819-346bbd3a20c5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c4167614-d6b1-4e00-9942-03e9739d2945")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c1e731df-f6b2-48f5-b670-ad0d75238240")
+			(uuid "4a95df49-db78-4e8a-b080-341311c4c7e8")
 			(effects
 				(font
 					(size 1 1)
@@ -15752,18 +14865,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "package/gullwing"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "cab8969e-c011-4c95-a860-18a860be4941")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
 				)
 			)
 		)
@@ -16137,11 +15238,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "connector/SMD_single_row_plus_mounting_pad"
+		(property "IPN" "J-006"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "32cd6a83-07ad-4b11-b51a-617b4b5a73a8")
+			(uuid "ae511cd0-5c3f-45a8-8e2a-b255d07a11b4")
 			(effects
 				(font
 					(size 1 1)
@@ -16592,11 +15694,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "Sim.Pins" "1=K 2=A"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "ad5f0ee2-ad1f-44fc-a8b7-56cc764e518c")
+			(uuid "eacfe9f3-a36f-4e8d-aedf-29dc2bbfda44")
 			(effects
 				(font
 					(size 1 1)
@@ -16604,12 +15707,12 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "IPN" "D-002"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "eacfe9f3-a36f-4e8d-aedf-29dc2bbfda44")
+			(uuid "19d28767-ff11-4d0d-b697-a13e13b82bb6")
 			(effects
 				(font
 					(size 1 1)
@@ -16814,50 +15917,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "21ef68fa-cf97-4dfd-bb86-d08f74e0dcb7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "dda02344-c95a-4408-96d9-6d297408dedd")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1103d587-5a5b-4784-8ceb-82c33e07fe64")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7ef148f2-dfa6-4ac2-830d-166b09852039")
+			(uuid "6df16e13-38c9-4c53-8044-3969203179e0")
 			(effects
 				(font
 					(size 1 1)
@@ -17013,50 +16078,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "5d7e2b53-ef69-4e72-a955-9d1c6b208529")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3e19115e-76da-42d4-b0d7-209565d463d6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7202d4be-e085-429e-a064-1049bf9f02ab")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "be5ebfc0-235f-4749-8b8f-e041dec58802")
+			(uuid "1fa15051-e681-45d4-b237-0f65d2846df0")
 			(effects
 				(font
 					(size 1 1)
@@ -17212,6 +16239,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "Y-003"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "85bdb827-0db8-4105-9001-9515a60f27ff")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -17420,37 +16460,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "59a8e7b2-bbf5-4c0d-889d-209f9f3ff51e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "39358c5a-a36d-432d-8823-46793e182c76")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f4031fe9-6d81-4ba5-ad71-fadc1a7dcb21")
+			(uuid "e7cd03a6-23fa-403b-96e1-d18c3bc5e86f")
 			(effects
 				(font
 					(size 1 1)
@@ -17601,19 +16616,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/onsemi/FDS4435BZ/1305763"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b060e7bf-eb90-41a2-9584-4bffccab5c66")
-			(effects
-				(font
-					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -17999,37 +17001,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "a96f61dd-42c9-4ab0-8765-727875b1850a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0495ee94-41b5-4d2a-a021-994dad46711b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5cfd264e-c653-4774-a0f7-2eba63b7e291")
+			(uuid "a127790a-a390-4bfb-9b35-f61fece9c201")
 			(effects
 				(font
 					(size 1 1)
@@ -18374,11 +17351,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "package/gullwing"
+		(property "IPN" "U-008"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "e86bc6b9-2345-4402-937c-b82ae31e8bb6")
+			(uuid "a7e6650e-7823-477e-985b-2165e248b3c0")
 			(effects
 				(font
 					(size 1 1)
@@ -18946,6 +17924,19 @@
 				)
 			)
 		)
+		(property "IPN" "J-004"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "16ad8230-0e40-496a-927a-21f623a52874")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "USB*C*Receptacle*")
 		(path "/d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f80/d6758909-51e9-40bc-a34a-b59bba72eba7")
 		(sheetname "/Peripherals/")
@@ -19315,18 +18306,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "fiducial"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "ecb42c59-d276-437e-8ac7-252e27dd9972")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "Fiducial*")
 		(path "/7ff40d73-d426-474c-be0f-f8ff29196cd0")
 		(sheetname "/")
@@ -19432,50 +18411,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 45)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "35a8dd4a-415c-4599-85a2-dac85daf7e11")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 45)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a7aefc33-e357-48df-937a-10d0a67c46c8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "73417d66-e854-4782-9dcb-89407df6b939")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "05c5b34d-0cf7-41d8-abc5-2da522df33bb")
+			(uuid "47a93553-0d8a-4e47-9c8e-0b739029002a")
 			(effects
 				(font
 					(size 1 1)
@@ -19632,12 +18573,12 @@
 				)
 			)
 		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/w%C3%BCrth-elektronik/694106301002/5047522"
+		(property "IPN" "J-001"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f21863f0-ea84-4491-b1fd-a0a4cd9dd4ae")
+			(uuid "feba382e-2d75-4d81-b350-8155beeaff1a")
 			(effects
 				(font
 					(size 1 1)
@@ -19971,50 +18912,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "2ee031ef-d3e4-44e5-84d7-f88f227210a4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9f1962ae-08cc-4ba6-8b8f-08c865a6bb5a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "361823d9-96da-4315-b32d-48c514227a28")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "44a228c5-5e0f-482a-8333-6e9fde77a91f")
+			(uuid "c1c2d1c1-247d-4463-9953-0a22294022da")
 			(effects
 				(font
 					(size 1 1)
@@ -20168,11 +19071,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-004"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "6071b79c-a646-4fbe-840b-4347f23ea3b4")
+			(uuid "ee1caf52-750a-4e12-a71e-aead1e487ae9")
 			(effects
 				(font
 					(size 1 1)
@@ -20326,37 +19230,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "c43cffdf-5cd0-4746-bf0b-8d20c8af4c0c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9aaf08e0-039b-4765-96de-2e4294a0f617")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e6c71e2b-c59e-4d69-a75e-9542eac0f4c8")
+			(uuid "ee454063-4011-4a2a-985a-84814d44b50e")
 			(effects
 				(font
 					(size 1 1)
@@ -20510,18 +19389,6 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "fiducial"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "fee1c92e-6e3d-4d66-b008-629ed6d77e3c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "Fiducial*")
 		(path "/916a4611-eff2-4c63-978f-49b9d05d843a")
 		(sheetname "/")
@@ -20627,37 +19494,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "f8b76f27-b8c1-434a-b24a-3a182214e337")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "Capacitor, SP-Cap, 100u, 6.3V, 15mR ESR"
+		(property "IPN" "C-006"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f9f2bf38-58d6-453d-85f1-f4a8e0633581")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/panasonic-electronic-components/EEF-CX0J101R/816418"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b7765ce3-9884-4171-ae2e-62870472fcb1")
+			(uuid "046bcfac-54f3-4cbf-ab3f-e94cf49b1372")
 			(effects
 				(font
 					(size 1 1)
@@ -20860,11 +19702,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
+		(property "IPN" "R-019"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "7f11d250-c01f-46f1-86ae-604e09918fcb")
+			(uuid "9cc0c26c-3d7b-405b-b577-e52f64bea8b0")
 			(effects
 				(font
 					(size 1 1)
@@ -21185,37 +20028,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "00b871ce-a67b-43fc-a95f-3d1ce7929fee")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "Resistor 2.2K 1% 63mW"
+		(property "IPN" "R-005"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8ca4bdf0-c3c6-401b-8a1e-df3ae0bf1598")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/stackpole-electronics-inc/RMCF0805FT2K20/1760345"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7eb5fb6a-56bd-438b-a755-044b75c9ad4b")
+			(uuid "18cca3c4-efe6-4467-8b18-064cd9b4cf8b")
 			(effects
 				(font
 					(size 1 1)
@@ -21369,11 +20187,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "package/gullwing"
+		(property "IPN" "U-011"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "e1b9bb0a-c886-4f7f-ad82-f4b31fe800b5")
+			(uuid "15c398ab-1a92-49ab-a6de-c094f16d4e54")
 			(effects
 				(font
 					(size 1 1)
@@ -21731,11 +20550,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-019"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "9a049156-3b8a-4643-a62f-9c5fbdf07530")
+			(uuid "2ca4fe7c-3d83-4783-b7e6-4b07837e968d")
 			(effects
 				(font
 					(size 1 1)
@@ -21889,11 +20709,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "Sim.Pins" "1=K 2=A"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "e782cee9-04db-4347-a9bf-9f933cc9970f")
+			(uuid "58725fb7-39ad-4afb-94c9-4982daf8126b")
 			(effects
 				(font
 					(size 1 1)
@@ -21901,12 +20722,12 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "IPN" "D-001"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "58725fb7-39ad-4afb-94c9-4982daf8126b")
+			(uuid "96d6e898-7cba-4414-ba65-237ab2eb3f1c")
 			(effects
 				(font
 					(size 1 1)
@@ -22111,37 +20932,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "9de738fe-e616-4b35-b74c-1a3249c8a21e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0557199c-4aed-4d49-a34b-cebb290d1c9d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9ae840b4-76c3-48f9-af25-343a84f7b22e")
+			(uuid "2d58b6c5-1670-4aee-8fae-fe54a602e4ba")
 			(effects
 				(font
 					(size 1 1)
@@ -22329,58 +21125,6 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b49ebfc5-388b-4324-bc67-717e6aa378fe")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Part Number" ""
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b59b057f-3699-4d59-9ae1-40a518f1a51b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Price/Stock" ""
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2c5bd071-ac7a-4731-b56a-03cae0d5e7c6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d74ac811-cf7e-41e7-b0cd-2f4040074fd0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 0 0 315)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ae71931d-4fbe-459e-adcc-91e1e9b240e8")
 			(effects
 				(font
 					(size 1 1)
@@ -23020,25 +21764,12 @@
 				)
 			)
 		)
-		(property "Notes" "DF40C-100DS-0.4V(51)"
+		(property "IPN" "J-002"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ed597761-e10a-444e-85ad-3266d8ee6eb6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/hirose-electric-co-ltd/DF40C-100DS-0-4V-51/1969476"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6922f78f-211c-4efc-81b6-a5616a6fc87c")
+			(uuid "045fa4bf-9dd0-40e7-8baf-6a398d233b1b")
 			(effects
 				(font
 					(size 1 1)
@@ -25297,11 +24028,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-002"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "59df5bd0-aa07-44a1-8cca-b74f11d9b4b7")
+			(uuid "584cc909-ae52-4483-b557-7a81b72c11b7")
 			(effects
 				(font
 					(size 1 1)
@@ -25455,11 +24187,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-002"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "06250ae6-0bd8-4ad1-927e-3c879d100f13")
+			(uuid "a8c953f5-dad0-4947-8ad2-43e687a7555c")
 			(effects
 				(font
 					(size 1 1)
@@ -25613,50 +24346,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 45)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "690cf707-c1c8-4734-9415-bcb78f0aeabc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 45)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e0041787-e748-49fe-b1d9-60f697faedab")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ec17616c-7d26-40a7-b987-c4074c0b6e31")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9b409fac-c3a6-4331-bca0-28056c03aca6")
+			(uuid "26e699b5-732e-4a2d-b8cb-0fb790088860")
 			(effects
 				(font
 					(size 1 1)
@@ -25812,50 +24507,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "18a62be8-29dc-4f7a-a316-49df8a54d7e4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "62fd9185-eec6-4d01-9539-5d63f1601bc8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "384ea38d-adf8-46c7-84a9-9e44f763989e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2f12338c-91c4-4e04-92c9-e48889de4c91")
+			(uuid "fbb85214-8b87-43fd-ba1f-ea25adfd9857")
 			(effects
 				(font
 					(size 1 1)
@@ -26011,50 +24668,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 135)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "7c8c3c9d-326e-40f8-bd34-719da057b1fd")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3db5fb5b-d424-41f2-abf9-11ab8074b866")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f211c20e-fa99-41b3-b1e6-85d85b64a5cc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 135)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2ca454ef-89f0-4f2a-bc4c-3a24b682eeb6")
+			(uuid "7e524017-b4b0-458b-a5ab-6b3b77d8e2ff")
 			(effects
 				(font
 					(size 1 1)
@@ -26210,37 +24829,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "5281577f-a959-4ee6-9353-b7046dfd8766")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "Resistor 12K 1% 63mW"
+		(property "IPN" "R-007"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a9025276-8b9e-4eec-b6ea-19b6e2deded9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/stackpole-electronics-inc/RNCP0805FTD1K00/2240229"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d7aace83-2069-4e7a-9a7b-387ad3ad2580")
+			(uuid "4a583b8c-116c-43ae-aec5-e15b7b69bfa8")
 			(effects
 				(font
 					(size 1 1)
@@ -26751,50 +25345,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 45)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "04d9416b-508a-4b4f-b11a-2a07821ae51b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 45)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0010be0e-e90d-43a5-bb90-8f327dca03bc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c1403676-0531-4258-a96f-bcd1199b68ce")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "145f192c-3b3c-4d14-9088-ec341c6d2a47")
+			(uuid "75739bb0-7f42-4a30-8770-b98ba62b8e7d")
 			(effects
 				(font
 					(size 1 1)
@@ -26950,11 +25506,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-018"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "db02888c-7920-410c-af05-02b0e87a520f")
+			(uuid "db6927b4-8f3f-4d6a-9628-ca1726cf8fe3")
 			(effects
 				(font
 					(size 1 1)
@@ -27108,37 +25665,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "3052d06c-8831-44c1-9d8a-3a7206a4619a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4c3e8990-5aa9-4dd8-8e00-ec45e2de11b6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d7de6d43-d559-4b8c-865d-f8e4d6bf124e")
+			(uuid "3923f1e3-bb14-4376-8537-55e6365ac9a3")
 			(effects
 				(font
 					(size 1 1)
@@ -27290,18 +25822,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "5f77193d-c5ad-4e34-8b16-8d8d79fadae9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
 				)
 			)
 		)
@@ -27510,11 +26030,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "package/gullwing"
-			(at 0 0 0)
-			(layer "F.SilkS")
+		(property "IPN" "U-003"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "c7492354-50ff-4a48-a494-25e1d2801535")
+			(uuid "d0622ab5-fead-4400-882e-812ccf862faf")
 			(effects
 				(font
 					(size 1 1)
@@ -27909,37 +26430,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "7c3f3976-a318-4c68-bdeb-7797a952dc0b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "1000 pF, 50 V"
+		(property "IPN" "C-004"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "aef5a033-7cc7-47a4-8633-4061f621b0cc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "988ada5b-03ad-4c98-84af-a4f65d8afe61")
+			(uuid "1a13514f-d75e-466d-b8e8-5f342a4b2b59")
 			(effects
 				(font
 					(size 1 1)
@@ -28090,19 +26586,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/onsemi/FDS4435BZ/1305763"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ae82f1aa-40a6-48b8-9e0e-ffe833140941")
-			(effects
-				(font
-					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -28488,11 +26971,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-018"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "65ddc941-0f9e-4d57-8a55-e1e8d313ba9a")
+			(uuid "032795d8-b21c-466c-8175-5c294b442231")
 			(effects
 				(font
 					(size 1 1)
@@ -28646,11 +27130,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-018"
 			(at 0 0 0)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "8ac288ed-b5e3-4c2d-94ee-db96a40f99f7")
+			(uuid "9ab7ceee-c2d5-42ac-8e3f-d22830a63338")
 			(effects
 				(font
 					(size 1 1)
@@ -28804,11 +27289,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+		(property "IPN" "R-004"
 			(at 0 0 90)
-			(layer "F.SilkS")
+			(unlocked yes)
+			(layer "F.Fab")
 			(hide yes)
-			(uuid "094f2b8b-39ae-4ee0-86b2-4bd469cda34b")
+			(uuid "40ac5cc0-7276-42f1-8f6e-d78a8dd0c279")
 			(effects
 				(font
 					(size 1 1)
@@ -28962,18 +27448,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "de047514-081e-423a-8959-f4f245d81bf7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
 				)
 			)
 		)
@@ -29182,37 +27656,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "70c99b84-eb31-4fce-90ed-c06b69118e89")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6966d052-62d7-47a4-a50b-57ff287624c0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d9f786f3-3f70-439b-ac3e-e70920d9315e")
+			(uuid "51943ed3-eaf0-4dc5-88d5-2ea243bcbf16")
 			(effects
 				(font
 					(size 1 1)
@@ -29366,50 +27815,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "402b107a-eba4-4b9c-ab77-ab2a33336fa4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "457e5c9a-a2c1-459a-b7a2-681fca6d13ab")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ebc5a595-3789-463a-bad4-154c5d24209f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ed110dd5-e646-4494-b0c5-caca118e1b7e")
+			(uuid "face3d78-2912-4a06-9981-90c9edb44761")
 			(effects
 				(font
 					(size 1 1)
@@ -29563,37 +27974,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "3ad9e2b4-d6cc-4fb1-831a-beb0f59587f8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "1000 pF, 50 V"
+		(property "IPN" "C-004"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e9629bcb-44ad-4b8f-afab-6d2d59ead8c7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B102KBANNNC/3886678"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e8410c6b-d18f-48c5-91bf-3971c8ba424e")
+			(uuid "708c32b5-385a-4ff9-bac3-8f9232390c03")
 			(effects
 				(font
 					(size 1 1)
@@ -29745,18 +28131,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "mounting_hardware/mounting_hole"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "f0aa149b-85bd-44ac-b8cc-0c95ac8f5e41")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
 				)
 			)
 		)
@@ -29965,50 +28339,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "ffc72b51-e19f-4494-bdd4-871dbb45215a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661"
+		(property "IPN" "C-001"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "27110a3a-4ad1-4ba1-96b7-1689aff45230")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% 16V Ceramic Capacitor X7R"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f62fce22-dc3a-44a0-959c-e41c6940dc4a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Digikey" "1276-1180-1-ND"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "50a40b38-e24e-4fec-b694-2f1b76bc5a4e")
+			(uuid "48fc9aa8-1f4e-4092-9873-74e048d5e8e9")
 			(effects
 				(font
 					(size 1 1)
@@ -30159,31 +28495,6 @@
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "terminal_block/Phoenix"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "7a2468d3-cc48-4973-968d-1d73b7641745")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/phoenix-contact/1715022/260626"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "158871fe-4f36-4796-8a4c-4242568837eb")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
 				)
 			)
 		)
@@ -30541,37 +28852,12 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "c0e938c0-7ca0-4c83-89b4-22cae7d93665")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Supplier" "https://www.digikey.ch/de/products/detail/samsung-electro-mechanics/CL21X106KAYNNNE/5961182"
+		(property "IPN" "C-003"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "05d17262-6712-4561-8ce3-a04c94ec7e0b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "10% or 20% 35V Ceramic Capacitor X6S 0805 (2012 Metric)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b218b46b-5730-4985-96d8-cc92d43d21bb")
+			(uuid "7919e231-663b-4b78-97ae-d62d34f2a94f")
 			(effects
 				(font
 					(size 1 1)
