@@ -12,7 +12,7 @@ preflight:
   erc:
     enabled: true
   drc:
-    enabled: false
+    enabled: true
   check_zone_fills: false
   set_text_variables:
     name: GIT_HASH
