@@ -31027,6 +31027,28 @@
 			)
 		)
 	)
+	(gr_text "GND"
+		(at 109 88.8 0)
+		(layer "F.SilkS" knockout)
+		(uuid "784e82c6-05e8-49fe-b2dd-5d9c06d68d07")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "12V"
+		(at 109 93.8 0)
+		(layer "F.SilkS" knockout)
+		(uuid "0d19e3b8-eb73-47e4-a87c-f0a8bc02331e")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "CENTER ⊖"
 		(at 104 107 90)
 		(layer "F.SilkS" knockout)
