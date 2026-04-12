@@ -1000,7 +1000,7 @@
           "group_by": false,
           "label": "IPN",
           "name": "IPN",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -1045,7 +1045,7 @@
           "show": false
         }
       ],
-      "filter_string": "",
+      "filter_string": "Q",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",

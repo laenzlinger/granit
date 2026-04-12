@@ -1342,6 +1342,17 @@
 					(justify left top)
 				)
 			)
+			(property "IPN" "U-009"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
 			(symbol "ASM1061_1_1"
 				(rectangle
 					(start 5.08 15.24)
@@ -2295,6 +2306,17 @@
 				)
 			)
 			(property "Description" "P-Channel MOSFET"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "IPN" "Q-001"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6840,6 +6862,17 @@
 				)
 			)
 		)
+		(property "IPN" "Q-003"
+			(at 88.9 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "e9dd74db-0fff-4d2f-81c9-9e94c77e9efc")
 		)
@@ -7166,6 +7199,17 @@
 			)
 		)
 		(property "Description" "P-Channel MOSFET"
+			(at 76.2 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "Q-001"
 			(at 76.2 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -8935,6 +8979,17 @@
 				(justify left top)
 			)
 		)
+		(property "IPN" "U-009"
+			(at 160.02 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "26"
 			(uuid "0363a0dd-3f1d-4efd-84b5-a1627442b97e")
 		)
@@ -9148,6 +9203,17 @@
 			)
 		)
 		(property "Description" "P-Channel MOSFET"
+			(at 30.48 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "Q-001"
 			(at 30.48 128.27 0)
 			(hide yes)
 			(show_name no)
@@ -10079,6 +10145,17 @@
 			)
 		)
 		(property "Description" "0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"
+			(at 41.91 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "Q-003"
 			(at 41.91 133.35 0)
 			(hide yes)
 			(show_name no)

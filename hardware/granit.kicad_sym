@@ -61,6 +61,17 @@
 				)
 			)
 		)
+		(property "IPN" "U-001"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(symbol "AP64351_0_1"
 			(rectangle
 				(start -5.08 5.08)
@@ -337,6 +348,17 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(property "IPN" "U-009"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(symbol "ASM1061_1_1"
@@ -5029,6 +5051,17 @@
 			)
 		)
 		(property "Description" "P-Channel MOSFET"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "Q-001"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

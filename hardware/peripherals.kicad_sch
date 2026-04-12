@@ -7851,6 +7851,17 @@
 				)
 			)
 		)
+		(property "IPN" "Q-003"
+			(at 53.34 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "fcba8deb-aaa0-468f-9826-8146e71ce1bb")
 		)

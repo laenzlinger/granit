@@ -4863,6 +4863,19 @@
 				)
 			)
 		)
+		(property "IPN" "U-001"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "207c84f3-8338-4130-b6cb-c395bd9cfd0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/5c34f141-50d5-4609-a101-f9d94643eff8/3bee2fbe-be2b-4a21-9040-b59fd2f97d52")
 		(sheetname "/Power Supply/")
 		(sheetfile "psu.kicad_sch")
@@ -5746,6 +5759,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "Q-003"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "91bcf6ac-88c3-4d55-9e13-489f342a5a69")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -10728,6 +10754,19 @@
 				)
 			)
 		)
+		(property "IPN" "Q-003"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1801a9be-7e8c-488d-a7d5-f7a5a79fe4ab")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "SOT?23*")
 		(path "/b486f39b-2401-4245-9dd6-e411236f99dc/3f20ec05-9891-41a1-8c55-bba3bb09a8b3")
 		(sheetname "/SATA Bridge/")
@@ -14326,6 +14365,19 @@
 				)
 			)
 		)
+		(property "IPN" "Q-001"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6cf5790d-40fd-43fb-87f4-3f549924debd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/b486f39b-2401-4245-9dd6-e411236f99dc/9ba49c42-d859-4f2e-a45e-90a44f41a45a")
 		(sheetname "/SATA Bridge/")
 		(sheetfile "sata.kicad_sch")
@@ -14865,6 +14917,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "Q-003"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ed8b33b-0539-4275-b564-372284e43380")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -16616,6 +16681,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "Q-001"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "84be8ea8-61cd-4806-bbf3-be53f7660a38")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -21125,6 +21203,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b49ebfc5-388b-4324-bc67-717e6aa378fe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "U-009"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a93675c-6964-41b4-acd6-084e66140f85")
 			(effects
 				(font
 					(size 1 1)
@@ -26586,6 +26677,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "IPN" "Q-001"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "26e53a79-81e7-4a51-b119-76115981c233")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
