@@ -69,7 +69,7 @@ outputs:
     type: diff
     dir: Diff
     options:
-      old: KIBOT_TAG_DIFF
+      old: KIBOT_TAG-1
       old_type: git
       cache_dir: /tmp/cache
       add_link_id: true
@@ -80,7 +80,7 @@ outputs:
     type: diff
     dir: Diff
     options:
-      old: KIBOT_TAG_DIFF
+      old: KIBOT_TAG-1
       old_type: git
       cache_dir: /tmp/cache
       add_link_id: true
