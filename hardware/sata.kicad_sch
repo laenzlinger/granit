@@ -3850,6 +3850,12 @@
 		(uuid "bbf8b5a8-8204-4482-8beb-df11f85b0531")
 	)
 	(junction
+		(at 57.15 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be5d79b6-95d1-460e-a36d-2cec93a1891c")
+	)
+	(junction
 		(at 133.35 85.09)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4211,6 +4217,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 77.47) (xy 46.99 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ea0d896-9626-4d0b-b257-37aa747f28d8")
+	)
+	(wire
+		(pts
 			(xy 39.37 102.87) (xy 39.37 118.11)
 		)
 		(stroke
@@ -4241,7 +4257,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 77.47) (xy 46.99 77.47)
+			(xy 93.98 77.47) (xy 57.15 77.47)
 		)
 		(stroke
 			(width 0)
@@ -4378,6 +4394,16 @@
 			(type default)
 		)
 		(uuid "5b15c79d-90ad-434f-ab38-4c9e1749a7f9")
+	)
+	(wire
+		(pts
+			(xy 57.15 77.47) (xy 57.15 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b315177-75d9-45b5-bcc1-2b2aa7be54ef")
 	)
 	(wire
 		(pts
@@ -5408,6 +5434,16 @@
 			(type default)
 		)
 		(uuid "fc964094-0875-4782-94e9-0cd795a2b906")
+	)
+	(wire
+		(pts
+			(xy 57.15 88.9) (xy 57.15 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "feba8b07-26d4-4015-92d5-5dc02ff31f44")
 	)
 	(label "+12V_S"
 		(at 41.91 172.72 0)
@@ -11522,6 +11558,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 57.15 92.71 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f1e80e8b-bb2c-41a7-b6f8-55bb28f64bab")
+		(property "Reference" "#PWR092"
+			(at 57.15 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 57.15 97.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 57.15 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "29ab1afa-3a6c-4278-9086-1e116f1763f5")
+		)
+		(instances
+			(project "granit"
+				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/b486f39b-2401-4245-9dd6-e411236f99dc"
+					(reference "#PWR092")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 177.8 133.35 0)
 		(unit 1)
@@ -12056,6 +12170,87 @@
 			(project "granit"
 				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/b486f39b-2401-4245-9dd6-e411236f99dc"
 					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 57.15 86.36 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fd4054c8-d194-46ae-a0c5-5dfac9815ced")
+		(property "Reference" "R15"
+			(at 55.118 84.836 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100K"
+			(at 59.436 84.074 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 57.15 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 57.15 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1e536c5a-9980-4fa2-8da8-28da33f71323")
+		)
+		(pin "2"
+			(uuid "14e6c0e4-d66c-4b69-ab6e-dee598849121")
+		)
+		(instances
+			(project "granit"
+				(path "/d2c135e3-a983-4cd4-8cff-b50ca3c7671a/b486f39b-2401-4245-9dd6-e411236f99dc"
+					(reference "R15")
 					(unit 1)
 				)
 			)
