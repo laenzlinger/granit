@@ -5622,14 +5622,14 @@
 	(footprint "Symbol:OSHW-Logo2_7.3x6mm_SilkScreen"
 		(layer "F.Cu")
 		(uuid "38f80e55-dceb-415b-8db4-b288c39e083c")
-		(at 91.070714 27.162714)
+		(at 55.65 24.75)
 		(descr "Open Source Hardware Symbol")
 		(tags "Logo Symbol OSHW")
 		(property "Reference" "SYM1"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "4825f4fa-bfd3-4b7f-a564-09e24c5806d9")
+			(uuid "7a64404b-78e3-4c47-8cac-e82fc48470ed")
 			(effects
 				(font
 					(size 1 1)
@@ -5641,7 +5641,7 @@
 			(at 0.75 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2d95a6f9-ad43-4413-8e45-75f55288d09c")
+			(uuid "b6dde8f2-c4b9-4e33-a9af-cef9fec39784")
 			(effects
 				(font
 					(size 1 1)
@@ -5654,7 +5654,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "19f3f066-7c91-455c-9050-476259846137")
+			(uuid "4b802b71-ab74-4e98-963f-ffb11d8bb6d9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5667,7 +5667,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "bc224361-a5e3-4833-8a31-df21ad0a13d9")
+			(uuid "e23985e3-04de-4983-8ad3-31479096c5d2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30917,7 +30917,7 @@
 		(uuid "bb2ac6ed-d893-49fd-9c91-d27ec86db95b")
 	)
 	(gr_text "${TITLE}\n${COMPANY}\nv${REVISION} (${GIT_HASH})"
-		(at 69.85 28.4 0)
+		(at 71.8 25.85 0)
 		(layer "F.SilkS")
 		(uuid "a1b2c3d4-0001-4000-8000-000000000001")
 		(effects
@@ -31070,6 +31070,18 @@
 				(thickness 0.15)
 			)
 		)
+	)
+	(barcode
+		(at 90.75 26.3 0)
+		(layer "F.SilkS")
+		(size 10 10)
+		(text " https://github.com/laenzlinger/granit")
+		(text_height 1)
+		(type qr)
+		(ecc_level M)
+		(hide yes)
+		(knockout no)
+		(uuid "aa70a480-1430-4eb3-9655-4453a3c04759")
 	)
 	(segment
 		(start 103.814 84.786)
