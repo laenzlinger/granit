@@ -151,6 +151,7 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 - [ ] RJ45: swap RB1-125B8G1A → HR911105A (Hanrun) — widely available, KiCad symbol+footprint in standard library
 - [ ] Crystal Y1: swap 3215 2-pin → 2016 4-pin footprint — easier to source, smaller
 - [ ] Cap C26: swap CP_Elec_6.3x5.8 → CP_Elec_6.3x7.7 — common size on LCSC
+- [ ] Board width: shrink Y axis from 100mm to 99mm — must fit Hammond 1455 card guides (99.5mm slot)
 
 ## Enclosure
 
