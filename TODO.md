@@ -140,9 +140,9 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 - [x] GND: solid plane on L2, stitching vias throughout
 - [x] GND stitching: increase via density to 3–5/cm² (currently 1.2/cm²). 3mm grid near high-speed (PCIe/SATA/ETH), 5mm elsewhere. Use Place → Add Board Stitching Vias.
 - [x] DRC clean (0 violations, 46 justified exclusions)
-- [ ] Silkscreen: add labels for switch positions (RUN/BOOT), jumper functions (JP1–JP6), connector pinouts (J8 UART), polarity markings, and board name/revision
+- [x] Silkscreen: add labels for switch positions (RUN/BOOT), jumper functions (JP1–JP6), connector pinouts (J8 UART), polarity markings, and board name/revision
 - [ ] Silkscreen front: add QR code or barcode linking to project URL (https://github.com/laenzlinger/granit)
-- [ ] Silkscreen back: add stackup info (layer order, impedance targets, fab spec JLC04161H-7628)
+- [x] Silkscreen back: add stackup info (layer order, impedance targets, fab spec JLC04161H-7628)
 
 ## Enclosure
 
