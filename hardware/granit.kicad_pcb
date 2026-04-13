@@ -3478,6 +3478,19 @@
 				)
 			)
 		)
+		(property "IPN" "J-007"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3115af0-e90b-4239-b0c9-3217e51d2408")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/b486f39b-2401-4245-9dd6-e411236f99dc/2160c653-9b44-4cea-a408-3549d06ca88e")
 		(sheetname "/SATA Bridge/")
 		(sheetfile "sata.kicad_sch")
@@ -23827,6 +23840,19 @@
 				)
 			)
 		)
+		(property "IPN" "Y-003"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0e2370fe-83a7-4cf6-8a17-2817d67eddfb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Crystal*")
 		(path "/b486f39b-2401-4245-9dd6-e411236f99dc/bda70f2f-cfba-45b2-bc36-85dddf1a822a")
 		(sheetname "/SATA Bridge/")
@@ -24511,6 +24537,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IPN" "J-008"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f5045b1f-9f63-40c0-a4e6-84bf3c9cf595")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)

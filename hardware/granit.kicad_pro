@@ -1035,9 +1035,21 @@
           "label": "#",
           "name": "${ITEM_NUMBER}",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "KLC_S3.3",
+          "name": "KLC_S3.3",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "KLC_S4.1",
+          "name": "KLC_S4.1",
+          "show": false
         }
       ],
-      "filter_string": "Q",
+      "filter_string": "Y1",
       "group_symbols": true,
       "include_excluded_from_bom": true,
       "name": "",
