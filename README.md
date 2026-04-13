@@ -19,7 +19,7 @@ This PCB is designed with [KiCad 10](https://www.kicad.org/blog/2026/03/Version-
 | ASM1061 | PCIe Gen 2 x1 to 2-port SATA III controller (no firmware blob required) |
 | 2.5" or 3.5" SATA HDD/SSD | Backup storage |
 | Amphenol 10029364-001LF | 22-pin SATA connector (data 7-pin + power 15-pin), right-angle |
-| RJ45 + Ethernet magnetics | Gigabit Ethernet |
+| RJ45 + Ethernet magnetics | Gigabit Ethernet (Hanrun HR911130A GbE MagJack) |
 | DS3231 RTC | Battery-backed real-time clock with alarm wake (I2C) |
 | CR2032 coin cell | RTC backup battery |
 | RGB LED | Status indicator (idle/backup/error/maintenance) |
@@ -144,7 +144,7 @@ by a non-technical person: plug in Ethernet, plug in power, done.
 
 ### Hammond 1455 Series
 
-Same PCB (92 × 100mm) fits both cases, held by a 3D printed internal frame.
+Same PCB (92 × 99.5mm) fits both cases, held by a 3D printed internal frame.
 PCB and HDD sit side-by-side along the enclosure length, SATA connector direct-mates between them.
 
 | | 1455L2201 (Slim) | 1455T2601 (Wide) |

@@ -38,7 +38,7 @@ Side-by-side layout inside Hammond 1455L2201 (220mm length):
 - SATA connector on PCB edge mates directly with HDD
 - External connectors (RJ45, USB-C, barrel jack, button) on opposite end panel
 
-Max PCB size: **71 × 99mm** (fits 1455L card guides at 99.5mm — compatible with both cases)
+Max PCB size: **92 × 99.5mm** (fits Hammond 1455 card guides at 100.00 ±0.51mm)
 
 Both PCB and HDD mount independently to the belly plate (slide-out for servicing).
 
@@ -112,7 +112,7 @@ min 0.09mm trace/space, 0.2mm drill, 0.13mm annular ring.
 
 PCB standoff height must match HDD SATA connector vertical position (~3.5mm above belly plate).
 
-- [x] Board outline: 92 × 100mm (fits 1455L slim and 1455T2601 wide cases)
+- [x] Board outline: 92 × 99.5mm (fits Hammond 1455 card guides at 100.00 ±0.51mm)
 - [x] Verify PCB standoff height aligns SATA connector with HDD receptacle
 - [x] 4-layer stackup (signal/GND/power/signal)
 - [x] SATA connector: replaced J4+J5 with single 22-pin Amphenol 10029364-001LF (horizontal/right-angle)
@@ -149,9 +149,9 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 ## PCB Respin (v0.3.0)
 
 - [x] RJ45: swapped to HR911130A (Hanrun GbE) — widely available, future-proof
-- [ ] Crystal Y1: swap 3215 2-pin → 2016 4-pin footprint — easier to source, smaller
-- [ ] Cap C26: swap CP_Elec_6.3x5.8 → CP_Elec_6.3x7.7 — common size on LCSC
-- [ ] Board width: shrink Y axis from 100mm to 99.5mm — Hammond 1455 card guide slot is 100.00 ±0.51mm
+- [x] Crystal Y1: swap 3215 2-pin → 2016 4-pin footprint — easier to source, smaller
+- [x] Cap C26: swap CP_Elec_6.3x5.8 → CP_Elec_6.3x7.7 — common size on LCSC
+- [x] Board width: shrink Y axis from 100mm to 99.5mm — Hammond 1455 card guide slot is 100.00 ±0.51mm
 
 ## Enclosure
 
