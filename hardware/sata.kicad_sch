@@ -6313,17 +6313,6 @@
 				)
 			)
 		)
-		(property "IPN" "J-007"
-			(at 0 0 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(pin "P12"
 			(uuid "329547b7-2cb1-4410-b6ee-cf1189c2a60d")
 		)
@@ -6333,7 +6322,7 @@
 		(pin "P4"
 			(uuid "395572ca-e772-4463-8043-6dc423c463ca")
 		)
-		(pin "S2"
+		(pin "S1"
 			(uuid "bee402d6-652a-4f03-bcc3-a46d3b460c63")
 		)
 		(pin "S3"
@@ -6366,7 +6355,7 @@
 		(pin "P15"
 			(uuid "1b9a5c8c-b693-4605-b266-faf4ede55fcd")
 		)
-		(pin "S1"
+		(pin "S2"
 			(uuid "2d388a65-ff0d-4acf-bf2b-8171eb17df13")
 		)
 		(pin "P3"
