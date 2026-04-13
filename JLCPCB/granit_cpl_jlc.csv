@@ -51,7 +51,7 @@ Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
 "D3","LED G","LED_0805_2012Metric",98.2000,-58.4000,0.0000,top
 "F1","3A","Fuse_2512_6332Metric",99.2000,-111.8500,270.0000,top
 "FID1","Fiducial","Fiducial_1mm_Mask2mm",29.0000,-22.0000,0.0000,top
-"FID2","Fiducial","Fiducial_1mm_Mask2mm",101.0000,-22.0000,0.0000,top
+"FID2","Fiducial","Fiducial_1mm_Mask2mm",101.0000,-22.5000,0.0000,top
 "FID3","Fiducial","Fiducial_1mm_Mask2mm",29.3777,-117.2160,0.0000,top
 "FID4","Fiducial","Fiducial_1mm_Mask2mm",102.3183,-118.0090,0.0000,top
 "J1","USB_C_Receptacle_USB2.0_14P","USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",109.8100,-34.0000,90.0000,top
