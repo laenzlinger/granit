@@ -14,7 +14,7 @@
 - [x] Peripherals: UART debug JST-SH 3-pin (BM03B-SRSS-TB vertical), pinout: GND-TX-RX
 - [x] Peripherals: DS3231MZ RTC + CR2032 battery
 - [x] Peripherals: USB-C OTG + USBLC6-2SC6 ESD protection + solder jumper
-- [x] Ethernet: RB1-125B8G1A Gigabit MagJack + LEDs
+- [x] Ethernet: HR911130A Gigabit MagJack + LEDs
 - [x] SATA: ASM1061 PCIe-to-SATA bridge + 25MHz crystal
 - [x] SATA: add 100nF AC coupling caps (0805) in series on SATA TX pair (STXP_A, STXN_A), placed near ASM1061 — required by SATA spec (ASM1061 datasheet CTX = 75–200nF)
 - [x] SATA: add 100nF AC coupling caps (0805) in series on SATA RX pair (SRXP_A, SRXN_A), placed near ASM1061 — defensive, external interface can't guarantee drive-side caps
