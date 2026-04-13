@@ -8166,7 +8166,7 @@
 				)
 			)
 		)
-		(property "Value" "15p"
+		(property "Value" "18p"
 			(at 0 1.679999 135)
 			(layer "F.Fab")
 			(uuid "7d7b4303-6227-4551-b9cb-d1742347fef2")
@@ -8199,7 +8199,7 @@
 				)
 			)
 		)
-		(property "IPN" "C-002"
+		(property "IPN" "C-015"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12876,7 +12876,7 @@
 				)
 			)
 		)
-		(property "Value" "15p"
+		(property "Value" "18p"
 			(at 0 1.679999 135)
 			(layer "F.Fab")
 			(uuid "84e4708c-e74e-487d-b93c-081ec1e76119")
@@ -12909,7 +12909,7 @@
 				)
 			)
 		)
-		(property "IPN" "C-002"
+		(property "IPN" "C-015"
 			(at 0 0 315)
 			(unlocked yes)
 			(layer "F.Fab")
