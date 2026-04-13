@@ -5767,7 +5767,7 @@
 						)
 					)
 				)
-				(number "S2"
+				(number "S1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8454,7 +8454,7 @@
 						)
 					)
 				)
-				(number "R10"
+				(number "10"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8508,7 +8508,7 @@
 						)
 					)
 				)
-				(number "L1"
+				(number "11"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8526,7 +8526,7 @@
 						)
 					)
 				)
-				(number "L2"
+				(number "12"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8544,7 +8544,7 @@
 						)
 					)
 				)
-				(number "L3"
+				(number "14"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8562,7 +8562,7 @@
 						)
 					)
 				)
-				(number "L4"
+				(number "13"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8580,7 +8580,7 @@
 						)
 					)
 				)
-				(number "R1"
+				(number "1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8598,7 +8598,7 @@
 						)
 					)
 				)
-				(number "R2"
+				(number "2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8616,7 +8616,7 @@
 						)
 					)
 				)
-				(number "R3"
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8634,7 +8634,7 @@
 						)
 					)
 				)
-				(number "R4"
+				(number "4"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8652,7 +8652,7 @@
 						)
 					)
 				)
-				(number "R5"
+				(number "7"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8670,7 +8670,7 @@
 						)
 					)
 				)
-				(number "R6"
+				(number "5"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8688,7 +8688,7 @@
 						)
 					)
 				)
-				(number "R7"
+				(number "6"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8706,7 +8706,7 @@
 						)
 					)
 				)
-				(number "R8"
+				(number "8"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -8724,7 +8724,25 @@
 						)
 					)
 				)
-				(number "R9"
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -20.32 90)
+				(length 3.81)
+				(name "SH"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "S1"
 					(effects
 						(font
 							(size 1.27 1.27)
