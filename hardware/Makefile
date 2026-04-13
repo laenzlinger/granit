@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: test step pdf render clean
+.PHONY: test step pdf render pos clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
 PROJECT_NAME = granit
@@ -58,6 +58,18 @@ render: ## Render 3D board image for README
 		--rotate -30,0,0 \
 		--background opaque \
 		$(PROJECT_NAME).kicad_pcb
+
+pos: ## Export position file for OpenPnP
+	mkdir -p out
+	kicad-cli pcb export pos \
+		--output /dev/stdout \
+		--format csv \
+		--side both \
+		--units mm \
+		--smd-only \
+		--exclude-dnp \
+		$(PROJECT_NAME).kicad_pcb \
+	| python3 ~/.openpnp2/remap-pnp.py > out/$(PROJECT_NAME).pos.csv
 
 clean:
 	rm -rf out

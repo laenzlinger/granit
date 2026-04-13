@@ -67,6 +67,16 @@ outputs:
   # FIXME: Add 3D renders (blender_export) once ghcr.io/inti-cmnb/kicad10_auto_full image is available
   # See pedalboard-hw for reference: https://github.com/pedalboard/pedalboard-hw
 
+  - name: openpnp_position
+    comment: Pick and place position file for OpenPnP
+    type: position
+    dir: Assembly
+    options:
+      format: CSV
+      separate_files_for_front_and_back: false
+      only_smd: true
+      dnf_filter: _kibom_dnf
+
   - name: basic_navigate
     comment: Web page to navigate the outputs
     type: navigate_results

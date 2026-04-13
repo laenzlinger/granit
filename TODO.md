@@ -214,25 +214,24 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 - [ ] IPN field present on all BOM components
 
 ### PCB Order (JLCPCB)
-- [ ] Upload Gerbers from tagged release
-- [ ] Select 4-layer stackup: JLC04161H-7628
-- [ ] Select impedance control (+~$10)
-- [ ] Board thickness: 1.6mm
-- [ ] Copper weight: 1oz outer, 0.5oz inner
-- [ ] Surface finish: HASL or ENIG
-- [ ] Quantity: 5
+- [x] Upload Gerbers from tagged release
+- [x] Select 4-layer stackup: JLC04161H-7628
+- [x] Select impedance control (+~$10)
+- [x] Board thickness: 1.6mm
+- [x] Copper weight: 1oz outer, 0.5oz inner
+- [x] Surface finish: HASL or ENIG
+- [x] Quantity: 5
 
 ### Component Order (LCSC)
-- [ ] All LCSC part numbers verified against footprints
-- [ ] Quantities sufficient for planned build count + spares
-- [ ] Ship with JLCPCB order (combined shipping)
+- [x] All LCSC part numbers verified against footprints
+- [x] Quantities sufficient for planned build count + spares
 
 ### Separate Sourcing
-- [ ] ASM1061 QFN-48 (AliExpress)
+- [x] ASM1061 QFN-48 (AliExpress)
 - [ ] Hammond 1455 enclosure (Mouser)
-- [ ] CM4 module
+- [x] CM4 module
 - [ ] 2.5" or 3.5" SATA HDD
-- [ ] 12V DC power supply (3A+)
+- [x] 12V DC power supply (3A+)
 - [ ] CR2032 coin cell battery
 
 ### Post-Arrival
@@ -241,3 +240,21 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 - [ ] Assemble one board
 - [ ] Run hardware-test.sh
 - [ ] Tag release with test results
+
+### OpenPnP Setup
+- [ ] Create missing OpenPnP packages (pad geometry + nozzle tips):
+  - [ ] QFN50P700X700X90-49N-D (ASM1061 — 0.5mm pitch QFN-48)
+  - [ ] Crystal_SMD_2016-4Pin_2.0x1.6mm (25MHz crystal)
+  - [ ] USB_C_Receptacle_GCT_USB4105 (USB-C connector)
+  - [ ] CP_Elec_6.3x7.7 (100µF/25V electrolytic)
+  - [ ] Fuse_2512_6332Metric (3A fuse)
+  - [ ] LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm (NeoPixel)
+  - [ ] JST_SH_BM03B-SRSS-TB (UART connector)
+  - [ ] SW_Push_1P1T-MP_NO (tactile button)
+  - [ ] SW_SPDT_PCM12 (slide switch)
+  - [ ] SOT-23 (3-pin, for 2N7002)
+- [ ] Create missing OpenPnP parts (set heights for each package+value combo)
+- [ ] Test PnP placement of QFN-48 and USB-C (hardest parts)
+- [ ] Set up feeders for all Granit components
+- [ ] Import `out/granit.pos.csv`, set board origin and fiducials
+- [ ] Trial run on bare PCB
