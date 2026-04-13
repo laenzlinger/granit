@@ -107,3 +107,54 @@ The feedback divider (R2=12K, R4=2.2K) sets the buck converter output to 5.16V, 
 - **CM4 undervoltage threshold**: the CM4 triggers low-voltage warnings below ~4.9V
 
 Running at 5.16V ensures the CM4 sees >5.0V after all drops, avoiding undervoltage throttling.
+
+## Ethernet MagJack Pin Mapping
+
+The HR911130A (Hanrun) GbE MagJack follows the standard TIA-568B MDI (Medium Dependent
+Interface) pinout. The RJ45 jack pins 1–8 map to Ethernet pairs through internal isolation
+transformers, with the transformer outputs on PCB-side pins P1–P10.
+
+### TIA-568B MDI Pair Assignment
+
+In Gigabit Ethernet (1000BASE-T), all 4 pairs are bidirectional. The pair numbering follows
+TIA-568B:
+
+| RJ45 Jack Pins | MDI Pair | Function (legacy 10/100) |
+|---|---|---|
+| 1, 2 | Pair 0 | TX |
+| 3, 6 | Pair 1 | RX |
+| 4, 5 | Pair 2 | BI (GbE only) |
+| 7, 8 | Pair 3 | BI (GbE only) |
+
+Note: Pair 1 (pins 3 and 6) is intentionally split across pins 4 and 5 on the RJ45 jack.
+This is a TIA-568 design choice for backwards compatibility with 2-pair telephone wiring.
+
+### HR911130A PCB-Side Pin Mapping
+
+| PCB Pin | Signal | CM4 Net | Notes |
+|---|---|---|---|
+| P1 | Center tap (primary) | +3.3V via bias resistor | Transformer center tap bias |
+| P2 | MDI Pair 0+ | ETH_P0_P | |
+| P3 | MDI Pair 0− | ETH_P0_N | |
+| P4 | MDI Pair 1+ | ETH_P1_P | Physically far from P7 — normal per TIA-568 |
+| P5 | MDI Pair 2+ | ETH_P2_P | |
+| P6 | MDI Pair 2− | ETH_P2_N | |
+| P7 | MDI Pair 1− | ETH_P1_N | Physically far from P4 — normal per TIA-568 |
+| P8 | MDI Pair 3+ | ETH_P3_P | |
+| P9 | MDI Pair 3− | ETH_P3_N | |
+| P10 | Center tap (secondary) | GND via RC network | Bob Smith termination |
+| 11 | LED Green anode | +3.3V via resistor | Link/Activity |
+| 12 | LED Green cathode | nLED1 | |
+| 13 | LED Yellow cathode | nLED2 | |
+| 14 | LED Yellow anode | +3.3V via resistor | Speed |
+| S1, S2 | Shield | GND | Chassis ground |
+
+### Routing Notes
+
+- P4 and P7 (Pair 1) are physically separated on the PCB pads because the MagJack's
+  internal transformers mirror the RJ45 jack pin arrangement where pins 3 and 6 are split.
+  Route them as a matched-length differential pair despite the physical separation at the
+  MagJack end.
+- All 4 Ethernet pairs require 100Ω differential impedance and length matching.
+- The MagJack provides galvanic isolation (2kV) — no external AC coupling or ESD protection
+  needed on the Ethernet lines.
