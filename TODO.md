@@ -201,3 +201,43 @@ PCB standoff height must match HDD SATA connector vertical position (~3.5mm abov
 - [ ] Healthcheck dead man's switch
 - [ ] SMART disk monitoring
 - [ ] rtcwake integration for scheduled power-off/wake
+
+## Pre-Order Checklist
+
+### Design Verification
+- [ ] ERC: 0 errors, 0 warnings
+- [ ] DRC: 0 violations, 0 unconnected, 0 parity issues
+- [ ] All diff pairs at correct width (PCIe/SATA/ETH: 0.2205mm, USB: 0.286mm)
+- [ ] Board dimensions: 92 × 99.5mm (fits Hammond 1455 card guides)
+- [ ] All footprints match ordered parts (check LCSC cart vs schematic)
+- [ ] No DNP parts accidentally included in BOM
+- [ ] IPN field present on all BOM components
+
+### PCB Order (JLCPCB)
+- [ ] Upload Gerbers from tagged release
+- [ ] Select 4-layer stackup: JLC04161H-7628
+- [ ] Select impedance control (+~$10)
+- [ ] Board thickness: 1.6mm
+- [ ] Copper weight: 1oz outer, 0.5oz inner
+- [ ] Surface finish: HASL or ENIG
+- [ ] Quantity: 5
+
+### Component Order (LCSC)
+- [ ] All LCSC part numbers verified against footprints
+- [ ] Quantities sufficient for planned build count + spares
+- [ ] Ship with JLCPCB order (combined shipping)
+
+### Separate Sourcing
+- [ ] ASM1061 QFN-48 (AliExpress)
+- [ ] Hammond 1455 enclosure (Mouser)
+- [ ] CM4 module
+- [ ] 2.5" or 3.5" SATA HDD
+- [ ] 12V DC power supply (3A+)
+- [ ] CR2032 coin cell battery
+
+### Post-Arrival
+- [ ] Visual inspection of PCB
+- [ ] Check impedance control marking on PCB edge
+- [ ] Assemble one board
+- [ ] Run hardware-test.sh
+- [ ] Tag release with test results
