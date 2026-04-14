@@ -168,6 +168,8 @@ PCB and HDD sit side-by-side along the enclosure length, SATA connector direct-m
 
 ## Generated Hardware Documentation
 
+Interactive [KiCanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Flaenzlinger%2Fgranit%2Ftree%2Fmain%2Fhardware) viewer.
+
 Browse the latest generated outputs at **[laenzlinger.github.io/granit](https://laenzlinger.github.io/granit/)**.
 
 Includes schematic PDF, interactive BOM, HTML BOM, and PCB prints — auto-generated on every push with [KiBot](https://github.com/INTI-CMNB/KiBot) (dev branch) running inside the official [kicad/kicad:10.0](https://hub.docker.com/r/kicad/kicad) container.
