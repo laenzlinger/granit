@@ -42,11 +42,10 @@ jobs:
       - name: Determine version
         id: ver
         run: |
-          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
-            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
-          else
-            echo "tag=latest" >> "$GITHUB_OUTPUT"
-          fi
+          case "$GITHUB_REF" in
+            refs/tags/*) echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT" ;;
+            *) echo "tag=latest" >> "$GITHUB_OUTPUT" ;;
+          esac
 
       - name: Discover assets
         id: assets
