@@ -18,7 +18,5 @@ kibot: ## Run KiBot and copy outputs into static
 	cd ../hardware && kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated
 	rsync -a ../hardware/generated/ static/
 
-render: ## Render 3D image and copy to site
+render: ## Render 3D image
 	$(MAKE) -C ../hardware render
-	mkdir -p static/images
-	cp ../hardware/out/granit-3d.png static/images/
