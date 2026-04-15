@@ -42,3 +42,6 @@ menu:
     - name: Design Notes
       url: /design-notes/
       weight: 50
+    - name: Software
+      url: /software/
+      weight: 55
