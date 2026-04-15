@@ -87,7 +87,11 @@ jobs:
           cp hardware/*.kicad_sch hardware/*.kicad_pcb site/static/kicad/
           KICAD_FILES=$(cd site/static/kicad && ls *.kicad_sch *.kicad_pcb 2>/dev/null | jq -R . | jq -s -c .)
           RENDERS='${{ steps.assets.outputs.renders }}'
-          DOWNLOADS='${{ steps.assets.outputs.downloads }}'
+          if [ "$TAG" = "latest" ]; then
+            DOWNLOADS='[]'
+          else
+            DOWNLOADS='${{ steps.assets.outputs.downloads }}'
+          fi
           printf 'baseURL: https://laenzlinger.github.io/granit/%s/\nparams:\n  version: "%s"\n  kicadFiles: %s\n  renders: %s\n  downloads: %s\n' \
             "$TAG" "$VERSION" "$KICAD_FILES" "$RENDERS" "$DOWNLOADS" > site/config_override.yaml
           cd site
