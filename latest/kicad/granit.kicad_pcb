@@ -24933,13 +24933,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/Library.pretty/HR911130A.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -2 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 180)
 			)
 		)
 	)
