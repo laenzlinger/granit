@@ -2,20 +2,23 @@ name: "Hardware CI"
 
 on:
   push:
+    branches: [main]
+    tags: ["v*"]
     paths:
       - "hardware/**"
+      - "site/**"
       - ".github/workflows/ci.yml"
   pull_request:
     paths:
       - "hardware/**"
-      - ".github/workflows/ci.yml"
+      - "site/**"
 
 permissions:
   contents: write
 
 jobs:
   generate:
-    name: Generate Outputs
+    name: Generate & Deploy
     runs-on: ubuntu-latest
     container:
       image: kicad/kicad:10.0
@@ -25,32 +28,92 @@ jobs:
         with:
           fetch-depth: "0"
 
-      - name: Install KiBot dev
+      - name: Install dependencies
         run: |
           apt-get update -qq
-          apt-get install -y -qq python3-pip python3-lxml git rsync > /dev/null 2>&1
+          apt-get install -y -qq python3-pip python3-lxml git rsync wget jq > /dev/null 2>&1
           pip install --break-system-packages --no-compile git+https://github.com/INTI-CMNB/KiBot.git@dev
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: KiBot
         working-directory: hardware
-        run: |
-          kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated
+        run: kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated
 
-      - name: Add index redirect
-        working-directory: hardware/generated
+      - name: Determine version
+        id: ver
         run: |
-          echo '<meta http-equiv="refresh" content="0;url=Browse/granit-navigate.html">' > index.html
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Discover assets
+        id: assets
+        run: |
+          GEN=hardware/generated
+          RENDERS="[]"
+          [ -d "$GEN/3D" ] && RENDERS=$(find "$GEN/3D" -name '*.png' -printf '%f\n' | sort | jq -R . | jq -s .)
+          echo "renders=$(echo $RENDERS | jq -c .)" >> "$GITHUB_OUTPUT"
+
+          DL="[]"
+          add() {
+            local m=$(find "$GEN" -path "$GEN/$2" -type f 2>/dev/null | head -1)
+            [ -n "$m" ] && DL=$(echo "$DL" | jq --arg n "$1" --arg p "${m#$GEN/}" '. + [{"name":$n,"path":$p}]')
+          }
+          add "Schematic (PDF)" "Schematic/*.pdf"
+          add "BOM (HTML)" "BoM/*.html"
+          add "Interactive BOM" "Assembly/*ibom*.html"
+          add "JLCPCB" "JLCPCB/*.zip"
+          add "PCBWay" "PCBWay/*.zip"
+          echo "downloads=$(echo $DL | jq -c .)" >> "$GITHUB_OUTPUT"
+
+      - name: Install Hugo
+        run: |
+          wget -q "https://github.com/gohugoio/hugo/releases/download/v0.147.0/hugo_extended_0.147.0_linux-amd64.tar.gz" -O /tmp/hugo.tar.gz
+          tar -xzf /tmp/hugo.tar.gz -C /usr/local/bin hugo
+
+      - name: Build Hugo site
+        run: |
+          TAG="${{ steps.ver.outputs.tag }}"
+          rsync -a hardware/generated/ site/static/
+          hugo --source site --minify \
+            --baseURL "https://laenzlinger.github.io/granit/${TAG}/"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v5
         with:
-          name: generated_outputs
-          path: hardware/generated
+          name: site-${{ steps.ver.outputs.tag }}
+          path: site/public
 
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      - name: Update versions.json
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+        run: |
+          TAG="${{ steps.ver.outputs.tag }}"
+          git fetch origin gh-pages:gh-pages 2>/dev/null || true
+          EXISTING="[]"
+          git show gh-pages:versions.json > /tmp/old.json 2>/dev/null && \
+            EXISTING=$(jq 'map(select(.tag != "'"$TAG"'"))' /tmp/old.json)
+          NEW=$(jq -n --arg tag "$TAG" '{tag:$tag}')
+          echo "$EXISTING" | jq --argjson new "$NEW" \
+            '[$new] + [.[] | del(.latest)] | .[0].latest = true' > /tmp/versions.json
+          mkdir -p deploy-root
+          cp /tmp/versions.json deploy-root/versions.json
+          echo '<meta http-equiv="refresh" content="0;url=latest/">' > deploy-root/index.html
+          touch deploy-root/.nojekyll
+
+      - name: Deploy root files
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: hardware/generated
+          folder: deploy-root
+          clean: false
+
+      - name: Deploy versioned site
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: site/public
+          target-folder: ${{ steps.ver.outputs.tag }}

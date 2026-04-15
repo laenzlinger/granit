@@ -1,0 +1,17 @@
+baseURL: https://laenzlinger.github.io/granit/latest/
+languageCode: en-us
+title: Granit
+
+module:
+  imports:
+    - path: github.com/laenzlinger/hugo-kicad-site
+
+params:
+  projectName: "Granit"
+  description: "Custom CM4 carrier board — minimal offsite backup appliance"
+  repoURL: "https://github.com/laenzlinger/granit"
+  schematicFile: "granit.kicad_sch"
+  pcbFile: "granit.kicad_pcb"
+  version: "main"
+  renders: []
+  downloads: []
