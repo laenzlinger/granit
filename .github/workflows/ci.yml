@@ -80,10 +80,17 @@ jobs:
           PATH: "/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
         run: |
           TAG="${{ steps.ver.outputs.tag }}"
+          VERSION="$TAG"
+          [ "$TAG" = "latest" ] && VERSION="main"
           rsync -a hardware/generated/ site/static/
+          cat > site/config_override.yaml <<EOF
+          baseURL: https://laenzlinger.github.io/granit/${TAG}/
+          params:
+            version: "${VERSION}"
+          EOF
           cd site
           hugo mod get
-          hugo --minify --baseURL "https://laenzlinger.github.io/granit/${TAG}/"
+          hugo --minify --config hugo.yaml,config_override.yaml
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v5

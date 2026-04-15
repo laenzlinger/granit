@@ -24,4 +24,3 @@ offsite location and managed remotely.
 ## Architecture
 
 ![Architecture Diagram](https://raw.githubusercontent.com/laenzlinger/granit/main/images/architecture.drawio.svg)
-Wed Apr 15 09:49:46 PM CEST 2026

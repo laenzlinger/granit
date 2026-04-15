@@ -5,3 +5,4 @@ mechanical/assembly.step
 mechanical/assembly.FCStd
 mechanical/granit-pcb.step
 .mise.local.toml
+site/config_override.yaml
