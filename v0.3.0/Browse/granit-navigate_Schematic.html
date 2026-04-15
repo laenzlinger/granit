@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>/Schematic</title>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="styles.css">
+ <link rel="icon" href="favicon.ico">
+ <script src="markdown-it.min.js"></script>
+</head>
+<body>
+<div id="theSideNav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ <ul>
+  <li><a href="granit-navigate_Schematic.html">Schematic</a></li>
+  <ul>
+   <li><a href="granit-navigate_Schematic_docs.html">docs</a></li>
+   <ul>
+    <li><a href="granit-navigate_Schematic_docs.html#erc">erc</a></li>
+    <li><a href="granit-navigate_Schematic_docs.html#basic_pdf_sch">basic_pdf_sch</a></li>
+    <li><a href="granit-navigate_Schematic_docs.html#diff_sch">diff_sch</a></li>
+   </ul>
+   <li><a href="granit-navigate_Schematic_BoM.html">BoM</a></li>
+   <ul>
+    <li><a href="granit-navigate_Schematic_BoM.html#_JLCPCB_bom">_JLCPCB_bom</a></li>
+    <li><a href="granit-navigate_Schematic_BoM.html#generic_bom_html">generic_bom_html</a></li>
+    <li><a href="granit-navigate_Schematic_BoM.html#basic_ibom">basic_ibom</a></li>
+   </ul>
+  </ul>
+  <li><a href="granit-navigate_PCB.html">PCB</a></li>
+  <ul>
+   <li><a href="granit-navigate_PCB_docs.html">docs</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_docs.html#drc">drc</a></li>
+    <li><a href="granit-navigate_PCB_docs.html#basic_pcb_print">basic_pcb_print</a></li>
+    <li><a href="granit-navigate_PCB_docs.html#diff_pcb">diff_pcb</a></li>
+   </ul>
+   <li><a href="granit-navigate_PCB_fabrication.html">fabrication</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_fabrication_gerber.html">gerber</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_JLCPCB_gerbers">_JLCPCB_gerbers</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_JLCPCB_compress">_JLCPCB_compress</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_PCBWay_gerbers">_PCBWay_gerbers</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_PCBWay_compress">_PCBWay_compress</a></li>
+    </ul>
+    <li><a href="granit-navigate_PCB_fabrication_drill.html">drill</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_JLCPCB_drill">_JLCPCB_drill</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_JLCPCB_compress">_JLCPCB_compress</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_PCBWay_drill">_PCBWay_drill</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_PCBWay_compress">_PCBWay_compress</a></li>
+    </ul>
+    <li><a href="granit-navigate_PCB_fabrication_assembly.html">assembly</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#_JLCPCB_position">_JLCPCB_position</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#basic_boardview">basic_boardview</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#basic_ibom">basic_ibom</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#openpnp_position">openpnp_position</a></li>
+    </ul>
+   </ul>
+   <li><a href="granit-navigate_PCB_repair.html">repair</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_repair.html#basic_boardview">basic_boardview</a></li>
+   </ul>
+  </ul>
+ </ul>
+</div>
+<div id="theTopMenu" class="topmenu">
+ <table style="width:100%">
+  <tr>
+   <td valign="top" align="left">
+    <span id="bmenu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+   </td>
+   <td>
+     <a href="https://github.com/INTI-CMNB/KiBot/">
+     <img src="images/logo.png" alt="Logo" width="370" height="200">
+     </a>
+   </td>
+   <td>
+     <a href="https://github.com/laenzlinger/granit">
+     <span style="font-size:30px;">Granit — Offsite Backup Device</span>
+     </a>
+   </td>
+  </tr>
+ </table>
+</div>
+<div id="main">
+<table class="cat-table">
+<tr>
+ <td><a href="granit-navigate_Schematic_docs.html"><table class="cat-img"><tr><td><img src="images/project_256.png" alt="docs" width="256" height="256"><br>docs</td></tr></table></a></td>
+ <td><a href="granit-navigate_Schematic_BoM.html"><table class="cat-img"><tr><td><img src="images/bom_256.png" alt="BoM" width="256" height="256"><br>BoM</td></tr></table></a></td>
+</tr>
+</table>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const md = window.markdownit({
+        html: true,
+        linkify: true,
+        typographer: true
+    });
+
+    // Find all markdown containers and render them
+    document.querySelectorAll('.markdown-content').forEach(container => {
+        const rawMarkdown = container.innerHTML;
+        container.style.display = 'block';
+        container.innerHTML = md.render(rawMarkdown);
+    });
+});
+</script>
+<table class="nav-table"> <tr>  <td><a href="granit-navigate.html"><img src="images/back_64.png" width="64" height="64" alt="go back"></a></td>  <td><a href="granit-navigate.html"><img src="images/home_64.png" width="64" height="64" alt="go home"></a></td> </tr></table><p class="generator">Generated by <a href="https://github.com/INTI-CMNB/KiBot/">KiBot</a> v1.8.6</p>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("theSideNav").style.width = "360px";
+  document.getElementById("main").style.marginLeft = "360px";
+  document.getElementById("theTopMenu").style.marginLeft = "360px";
+  document.getElementById("bmenu").style.display = "none";
+}
+
+function closeNav() {
+  document.getElementById("theSideNav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("theTopMenu").style.marginLeft = "0";
+  document.getElementById("bmenu").style.display = "block";
+}
+
+function ScrollUp() {
+  /* When we come here from the navbar we must scroll to avoid the top menu */
+  var p = document.getElementById("main");
+  var style = p.currentStyle || window.getComputedStyle(p);
+  var m_top = parseInt(style.marginTop)
+
+  window.scrollBy(0, -(m_top + 5));
+}
+
+window.onload = ScrollUp;
+</script>
+</body>
+</html>

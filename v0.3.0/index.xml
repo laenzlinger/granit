@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Overview on Granit</title><link>https://laenzlinger.github.io/granit/v0.3.0/</link><description>Recent content in Overview on Granit</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://laenzlinger.github.io/granit/v0.3.0/index.xml" rel="self" type="application/rss+xml"/><item><title>Changes</title><link>https://laenzlinger.github.io/granit/v0.3.0/changes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/changes/</guid><description/></item><item><title>Schematic &amp; PCB</title><link>https://laenzlinger.github.io/granit/v0.3.0/schematic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/schematic/</guid><description/></item><item><title>Gallery</title><link>https://laenzlinger.github.io/granit/v0.3.0/gallery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/gallery/</guid><description/></item><item><title>Downloads</title><link>https://laenzlinger.github.io/granit/v0.3.0/downloads/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/downloads/</guid><description/></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/v0.3.0/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/assembly/</guid><description>&lt;h2 id="enclosure-options">Enclosure Options&lt;/h2>
+&lt;p>The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants, held by a
+3D-printed internal frame. PCB and HDD sit side-by-side, SATA connector
+direct-mates between them.&lt;/p>
+&lt;h3 id="slim--hammond-1455l2201">Slim — Hammond 1455L2201&lt;/h3>
+&lt;p>220 × 103 × 30.5 mm, 2.5&amp;quot; HDD only.&lt;/p>
+&lt;p>&lt;img alt="Slim assembly" loading="lazy" src="https://laenzlinger.github.io/granit/v0.3.0/assembly/assembly-slim.png">&lt;/p>
+&lt;h3 id="wide--hammond-1455t2601">Wide — Hammond 1455T2601&lt;/h3>
+&lt;p>260 × 160 × 51.5 mm, 2.5&amp;quot; or 3.5&amp;quot; HDD.&lt;/p>
+&lt;p>&lt;img alt="Wide assembly" loading="lazy" src="https://laenzlinger.github.io/granit/v0.3.0/assembly/assembly-wide.png">&lt;/p>
+&lt;h2 id="cutouts-required">Cutouts Required&lt;/h2>
+&lt;ul>
+&lt;li>Barrel jack or screw terminal (12V DC input)&lt;/li>
+&lt;li>RJ45 (Ethernet)&lt;/li>
+&lt;li>USB-C&lt;/li>
+&lt;li>Tactile button (recessed)&lt;/li>
+&lt;li>RGB LED (light pipe or translucent window)&lt;/li>
+&lt;/ul></description></item><item><title>Design Notes</title><link>https://laenzlinger.github.io/granit/v0.3.0/design-notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/design-notes/</guid><description>&lt;p>See &lt;a href="https://github.com/laenzlinger/granit/blob/main/hardware/DESIGN.md">hardware/DESIGN.md&lt;/a>
+for detailed circuit design notes, PCB routing guidelines, and netclass definitions.&lt;/p>
+&lt;h2 id="key-design-decisions">Key Design Decisions&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>ASM1061 over USB-to-SATA bridges&lt;/strong>: Native PCIe SATA controller using the
+standard Linux &lt;code>ahci&lt;/code> driver. No proprietary firmware blob required.&lt;/li>
+&lt;li>&lt;strong>12V DC input&lt;/strong>: Required for 3.5&amp;quot; HDD support. AP64501SP-13 accepts 3.8–28V.&lt;/li>
+&lt;li>&lt;strong>SATA power control&lt;/strong>: 12V and 5V to SATA connector are software-controlled
+via GPIO5. HDD is off by default at boot.&lt;/li>
+&lt;li>&lt;strong>USB-C OTG&lt;/strong>: For eMMC flashing (&lt;code>rpiboot&lt;/code>) and USB mass storage gadget mode.&lt;/li>
+&lt;li>&lt;strong>Boot strategy&lt;/strong>: Full OS on CM4 eMMC, SATA HDD dedicated to LUKS-encrypted
+backup storage only.&lt;/li>
+&lt;/ul></description></item></channel></rss>
