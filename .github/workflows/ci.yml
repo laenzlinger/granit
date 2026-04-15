@@ -68,17 +68,23 @@ jobs:
           add "PCBWay" "PCBWay/*.zip"
           echo "downloads=$(echo $DL | jq -c .)" >> "$GITHUB_OUTPUT"
 
-      - name: Install Hugo
+      - name: Install Hugo and Go
         run: |
+          wget -q "https://go.dev/dl/go1.23.8.linux-amd64.tar.gz" -O /tmp/go.tar.gz
+          tar -xzf /tmp/go.tar.gz -C /usr/local
+          export PATH="/usr/local/go/bin:$PATH"
           wget -q "https://github.com/gohugoio/hugo/releases/download/v0.147.0/hugo_extended_0.147.0_linux-amd64.tar.gz" -O /tmp/hugo.tar.gz
           tar -xzf /tmp/hugo.tar.gz -C /usr/local/bin hugo
 
       - name: Build Hugo site
+        env:
+          PATH: "/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
         run: |
           TAG="${{ steps.ver.outputs.tag }}"
           rsync -a hardware/generated/ site/static/
-          hugo --source site --minify \
-            --baseURL "https://laenzlinger.github.io/granit/${TAG}/"
+          cd site
+          hugo mod get
+          hugo --minify --baseURL "https://laenzlinger.github.io/granit/${TAG}/"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v5
