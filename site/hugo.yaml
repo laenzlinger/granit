@@ -12,6 +12,7 @@ params:
   repoURL: "https://github.com/laenzlinger/granit"
   schematicFile: "granit.kicad_sch"
   pcbFile: "granit.kicad_pcb"
+  kicadDir: "hardware"
   version: "main"
   renders: []
   downloads: []
