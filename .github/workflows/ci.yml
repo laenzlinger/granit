@@ -41,10 +41,9 @@ jobs:
 
       - name: KiBot diffs (tag only)
         if: startsWith(github.ref, 'refs/tags/')
+        working-directory: hardware
         continue-on-error: true
-        run: |
-          cd hardware
-          kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated -s run_erc,run_drc diff_sch diff_pcb
+        run: kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated -s run_erc,run_drc diff_sch diff_pcb
 
       - name: Determine version
         id: ver
