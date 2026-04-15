@@ -88,14 +88,8 @@ jobs:
           KICAD_FILES=$(cd site/static/kicad && ls *.kicad_sch *.kicad_pcb 2>/dev/null | jq -R . | jq -s -c .)
           RENDERS='${{ steps.assets.outputs.renders }}'
           DOWNLOADS='${{ steps.assets.outputs.downloads }}'
-          cat > site/config_override.yaml <<EOF
-          baseURL: https://laenzlinger.github.io/granit/${TAG}/
-          params:
-            version: "${VERSION}"
-            kicadFiles: ${KICAD_FILES}
-            renders: ${RENDERS}
-            downloads: ${DOWNLOADS}
-          EOF
+          printf 'baseURL: https://laenzlinger.github.io/granit/%s/\nparams:\n  version: "%s"\n  kicadFiles: %s\n  renders: %s\n  downloads: %s\n' \
+            "$TAG" "$VERSION" "$KICAD_FILES" "$RENDERS" "$DOWNLOADS" > site/config_override.yaml
           cd site
           hugo mod get
           hugo --minify --config hugo.yaml,config_override.yaml
