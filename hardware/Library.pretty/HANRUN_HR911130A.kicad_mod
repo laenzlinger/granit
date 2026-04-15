@@ -42,8 +42,8 @@
   (fp_line (start 9.2775 10.63) (end -9.2775 10.63) (layer F.CrtYd) (width 0.05))
   (fp_line (start -9.2775 10.63) (end -9.2775 -11.17) (layer F.CrtYd) (width 0.05))
   (model "${KIPRJMOD}/Library.pretty/HR911130A.step"
-    (offset (xyz 0 0 0))
+    (offset (xyz 0 -2 0))
     (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
+    (rotate (xyz -90 0 180))
   )
 )

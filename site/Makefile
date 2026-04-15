@@ -17,3 +17,5 @@ clean: ## Clean generated files
 kibot: ## Run KiBot and copy outputs into site/static
 	cd hardware && kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated
 	rsync -a hardware/generated/ site/static/
+	mkdir -p site/static/images
+	cp hardware/generated/3D/*.png site/static/images/ 2>/dev/null || true
