@@ -45,3 +45,6 @@ menu:
     - name: Software
       url: /software/
       weight: 55
+    - name: GitHub
+      url: https://github.com/laenzlinger/granit
+      weight: 100

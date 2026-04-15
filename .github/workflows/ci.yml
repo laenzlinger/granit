@@ -113,8 +113,8 @@ jobs:
           else
             GH_URL="$REPO/tree/$TAG"
           fi
-          printf 'baseURL: https://laenzlinger.github.io/granit/%s/\nparams:\n  version: "%s"\n  kicadFiles: %s\n  renders: %s\n  downloads: %s\n  diffs: %s\n  socialIcons:\n    - name: github\n      url: "%s"\nmenu:\n  main:\n    - name: GitHub\n      url: "%s"\n      weight: 100\n' \
-            "$TAG" "$VERSION" "$KICAD_FILES" "$RENDERS" "$DOWNLOADS" "$DIFFS" "$GH_URL" "$GH_URL" > site/config_override.yaml
+          printf 'baseURL: https://laenzlinger.github.io/granit/%s/\nparams:\n  version: "%s"\n  kicadFiles: %s\n  renders: %s\n  downloads: %s\n  diffs: %s\n  socialIcons:\n    - name: github\n      url: "%s"\n' \
+            "$TAG" "$VERSION" "$KICAD_FILES" "$RENDERS" "$DOWNLOADS" "$DIFFS" "$GH_URL" > site/config_override.yaml
           cd site
           hugo mod get
           hugo --minify --config hugo.yaml,config_override.yaml
