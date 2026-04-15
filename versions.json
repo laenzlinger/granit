@@ -1,6 +1,9 @@
 [
   {
-    "tag": "latest",
+    "tag": "v0.4.0",
     "latest": true
+  },
+  {
+    "tag": "latest"
   }
 ]
