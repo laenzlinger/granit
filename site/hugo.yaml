@@ -16,3 +16,23 @@ params:
   version: "main"
   renders: []
   downloads: []
+  kicadFiles: []
+  env: production
+  socialIcons:
+    - name: github
+      url: "https://github.com/laenzlinger/granit"
+
+menu:
+  main:
+    - name: Schematic
+      url: /schematic/
+      weight: 20
+    - name: Gallery
+      url: /gallery/
+      weight: 30
+    - name: Downloads
+      url: /downloads/
+      weight: 40
+    - name: Design Notes
+      url: /design-notes/
+      weight: 50
