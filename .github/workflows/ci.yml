@@ -39,6 +39,12 @@ jobs:
         working-directory: hardware
         run: kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated
 
+      - name: KiBot diffs (tag only)
+        if: startsWith(github.ref, 'refs/tags/')
+        working-directory: hardware
+        continue-on-error: true
+        run: kibot -e granit.kicad_sch -b granit.kicad_pcb -d generated -s run_erc,run_drc diff_sch diff_pcb
+
       - name: Determine version
         id: ver
         run: |
@@ -67,6 +73,13 @@ jobs:
           add "PCBWay" "PCBWay/*.zip"
           echo "downloads=$(echo $DL | jq -c .)" >> "$GITHUB_OUTPUT"
 
+          DIFFS="[]"
+          for f in $(find "$GEN/Diff" -name '*.html' -type f 2>/dev/null | sort); do
+            NAME=$(basename "$f" .html | sed 's/-/ /g; s/\b\(.\)/\u\1/g')
+            DIFFS=$(echo "$DIFFS" | jq --arg n "$NAME" --arg p "${f#$GEN/}" '. + [{"name":$n,"path":$p}]')
+          done
+          echo "diffs=$(echo $DIFFS | jq -c .)" >> "$GITHUB_OUTPUT"
+
       - name: Install Hugo and Go
         run: |
           wget -q "https://go.dev/dl/go1.23.8.linux-amd64.tar.gz" -O /tmp/go.tar.gz
@@ -89,11 +102,13 @@ jobs:
           RENDERS='${{ steps.assets.outputs.renders }}'
           if [ "$TAG" = "latest" ]; then
             DOWNLOADS='[]'
+            DIFFS='[]'
           else
             DOWNLOADS='${{ steps.assets.outputs.downloads }}'
+            DIFFS='${{ steps.assets.outputs.diffs }}'
           fi
-          printf 'baseURL: https://laenzlinger.github.io/granit/%s/\nparams:\n  version: "%s"\n  kicadFiles: %s\n  renders: %s\n  downloads: %s\n' \
-            "$TAG" "$VERSION" "$KICAD_FILES" "$RENDERS" "$DOWNLOADS" > site/config_override.yaml
+          printf 'baseURL: https://laenzlinger.github.io/granit/%s/\nparams:\n  version: "%s"\n  kicadFiles: %s\n  renders: %s\n  downloads: %s\n  diffs: %s\n' \
+            "$TAG" "$VERSION" "$KICAD_FILES" "$RENDERS" "$DOWNLOADS" "$DIFFS" > site/config_override.yaml
           cd site
           hugo mod get
           hugo --minify --config hugo.yaml,config_override.yaml

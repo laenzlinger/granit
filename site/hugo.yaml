@@ -24,6 +24,9 @@ params:
 
 menu:
   main:
+    - name: Changes
+      url: /changes/
+      weight: 15
     - name: Schematic
       url: /schematic/
       weight: 20
