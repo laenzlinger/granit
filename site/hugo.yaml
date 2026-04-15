@@ -33,6 +33,9 @@ menu:
     - name: Downloads
       url: /downloads/
       weight: 40
+    - name: Assembly
+      url: /assembly/
+      weight: 45
     - name: Design Notes
       url: /design-notes/
       weight: 50
