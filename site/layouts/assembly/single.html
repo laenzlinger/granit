@@ -10,7 +10,9 @@
     <h2>{{ .name }}</h2>
     <div class="online_3d_viewer"
          model="{{ $.Site.BaseURL }}assembly/{{ .file }}"
-         {{ with .camera }}camera="{{ . }}"{{ end }}>
+         {{ with .camera }}camera="{{ . }}"{{ end }}
+         edgesettings="on,40,40,40,1"
+         backgroundcolor="255,255,255,255">
     </div>
   </section>
   {{ end }}
