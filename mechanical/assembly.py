@@ -19,7 +19,7 @@ GAP = 2.0
 
 # Colors per object label (RGBA hex)
 COLORS = {
-    "Case": "#C8C8C8",
+    "Case": "#C8C8C880",
     "PCB":  "#1B5E20",
     "HDD":  "#505050",
 }
