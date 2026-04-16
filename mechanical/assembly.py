@@ -118,7 +118,12 @@ def build_variant(name, cfg):
     pcb_z_sata = hdd_z_sata + GAP
     pcb_z_conn = pcb_z_sata + pcb_len
 
-    place(doc, cfg["case_file"], "Case", FreeCAD.Placement())
+    # Place case without lid — skip the U-channel (largest solid) to show internals
+    case_shape = Part.read(cfg["case_file"])
+    lid_vol = max(s.Volume for s in case_shape.Solids)
+    open_solids = [s for s in case_shape.Solids if s.Volume < lid_vol]
+    case_obj = doc.addObject("Part::Feature", "Case")
+    case_obj.Shape = Part.makeCompound(open_solids)
 
     pcb_rot = rot(RZ(90), RX(-90), RY(180))
     pcb_x = 70.0
