@@ -13,8 +13,8 @@ import FreeCADGui
 import Import
 import Part
 
-assembly_file = os.environ.get("ASSEMBLY_FILE", "mechanical/assembly-wide.step")
-output_png = assembly_file.replace(".step", ".png")
+assembly_file = os.environ.get("ASSEMBLY_FILE", "mechanical/assembly-wide.3mf")
+output_png = os.path.splitext(assembly_file)[0] + ".png"
 
 doc = FreeCAD.newDocument("render")
 Import.insert(assembly_file, doc.Name)

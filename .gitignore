@@ -8,3 +8,4 @@ mechanical/granit-pcb.step
 site/config_override.yaml
 site/public/
 site/.hugo_build.lock
+site/_vendor/

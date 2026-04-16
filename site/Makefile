@@ -20,3 +20,7 @@ kibot: ## Run KiBot and copy outputs into static
 
 render: ## Render 3D image
 	$(MAKE) -C ../hardware render
+
+assembly: ## Copy assembly 3MF models into site
+	mkdir -p static/assembly
+	cp ../mechanical/assembly-slim.3mf ../mechanical/assembly-wide.3mf static/assembly/
