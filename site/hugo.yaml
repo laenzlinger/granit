@@ -14,10 +14,8 @@ params:
   assemblyModels:
     - name: "Slim (2.5\" HDD)"
       file: "assembly-slim.3mf"
-      camera: "80,180,120,0,-15,0,0,1,0"
     - name: "Wide (3.5\" HDD)"
       file: "assembly-wide.3mf"
-      camera: "100,220,150,0,-25,0,0,1,0"
   renders: []
   downloads: []
   kicadFiles: []
