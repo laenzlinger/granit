@@ -4,15 +4,21 @@
   {{ .Content }}
   {{ $models := .Site.Params.assemblyModels }}
   {{ with $models }}
-  {{ range . }}
+  <script src="https://cdn.jsdelivr.net/npm/online-3d-viewer@0.18.0/build/engine/o3dv.min.js"></script>
+  {{ range $i, $m := . }}
   <section class="assembly-model">
-    <h2>{{ .name }}</h2>
-    <iframe
-      src="https://3dviewer.net/#model={{ $.Site.BaseURL }}assembly/{{ .file }}{{ with .edgesettings }},edgesettings={{ . }}{{ end }}"
-      style="width:100%;height:500px;border:1px solid #ccc;border-radius:4px;">
-    </iframe>
+    <h2>{{ $m.name }}</h2>
+    <div id="viewer-{{ $i }}" class="online_3d_viewer"
+         model="{{ $.Site.BaseURL }}assembly/{{ $m.file }}"
+         edgesettings="on,40,40,40,1"
+         backgroundcolor="255,255,255,255"
+         style="width:100%;height:500px;">
+    </div>
   </section>
   {{ end }}
+  <script>
+    window.addEventListener('load', function () { OV.Init3DViewerElements(); });
+  </script>
   {{ else }}
   <p>No assembly models available for this version.</p>
   {{ end }}
