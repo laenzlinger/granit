@@ -143,7 +143,7 @@ def build_variant(name, cfg):
 
     # Rotate entire assembly: Y-up (FreeCAD/case) → Z-up (viewer convention)
     # so the bottom plate rests on the ground plane
-    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(-90))
+    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(90))
     for obj in doc.Objects:
         if hasattr(obj, "Placement"):
             obj.Placement = flip.multiply(obj.Placement)
