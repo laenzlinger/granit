@@ -8,6 +8,7 @@ Case coordinate system: X=width, Y=height (belly at -Y), Z=length (centered)
 
 import sys
 import FreeCAD
+import Import
 import Part
 
 STANDOFF = 5.0
@@ -19,14 +20,14 @@ VARIANTS = {
         "hdd_file": "mechanical/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
         "case_belly_y": -32.5,
-        "output": "mechanical/assembly-slim.step",
+        "output": "mechanical/assembly-slim.glb",
     },
     "wide": {
         "case_file": "hardware/3d-models/1455T2601.stp",
         "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "case_belly_y": -53.6,
-        "output": "mechanical/assembly-wide.step",
+        "output": "mechanical/assembly-wide.glb",
     },
 }
 
@@ -89,8 +90,7 @@ def build_variant(name, cfg):
           FreeCAD.Placement(FreeCAD.Vector(hdd_x, hdd_y, hdd_z), hdd_rot))
 
     doc.recompute()
-    shapes = [obj for obj in doc.Objects if hasattr(obj, "Shape") and obj.Shape.Solids]
-    Part.export(shapes, cfg["output"])
+    Import.export(doc.Objects, cfg["output"])
     sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
     sys.stdout.flush()
     FreeCAD.closeDocument(doc.Name)

@@ -27,4 +27,5 @@ jobs:
       kibot_config: "granit.kibot.yaml"
       container_image: "kicad/kicad:10.0"
       kibot_install: "pip install --break-system-packages --no-compile git+https://github.com/INTI-CMNB/KiBot.git@dev"
+      assembly_dir: "mechanical"
       site_base_url: "https://laenzlinger.github.io/granit"
