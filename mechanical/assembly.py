@@ -20,6 +20,7 @@ GAP = 2.0
 # Colors per object label
 COLORS = {
     "Case":       "#C8C8C8",
+    "Lid":        "#C8C8C8",
     "PCB_Board":  "#2E7D32",
     "PCB_ICs":    "#1A1A1A",
     "PCB_Parts":  "#3E2723",
@@ -130,8 +131,16 @@ def build_variant(name, cfg):
     case_shape = Part.read(cfg["case_file"])
     lid_vol = max(s.Volume for s in case_shape.Solids)
     open_solids = [s for s in case_shape.Solids if s.Volume < lid_vol]
+    lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
+
+    # Place lid/frame offset to the side
+    lid_obj = doc.addObject("Part::Feature", "Lid")
+    lid_obj.Shape = Part.makeCompound(lid_solids)
+    lid_bb = case_shape.BoundBox
+    lid_obj.Placement = FreeCAD.Placement(
+        FreeCAD.Vector(lid_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
 
     pcb_rot = rot(RZ(90), RX(-90), RY(180))
     pcb_x = 70.0
