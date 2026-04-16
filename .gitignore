@@ -6,3 +6,5 @@ mechanical/assembly.FCStd
 mechanical/granit-pcb.step
 .mise.local.toml
 site/config_override.yaml
+site/public/
+site/.hugo_build.lock
