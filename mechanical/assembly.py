@@ -23,7 +23,7 @@ COLORS = {
     "PCB_Board":  "#2E7D32",
     "PCB_ICs":    "#1A1A1A",
     "PCB_Parts":  "#3E2723",
-    "PCB_Conn":   "#B0B0B0",
+    "PCB_Conn":   "#787878",
     "HDD":        "#505050",
 }
 
