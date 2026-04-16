@@ -20,7 +20,7 @@ GAP = 2.0
 # Colors per object label
 COLORS = {
     "Case":       "#C8C8C8",
-    "PCB_Board":  "#1B5E20",
+    "PCB_Board":  "#2E7D32",
     "PCB_ICs":    "#1A1A1A",
     "PCB_Parts":  "#3E2723",
     "PCB_Conn":   "#B0B0B0",
@@ -80,6 +80,11 @@ def inject_colors_3mf(path, labels):
     ET.register_namespace("", ns)
     ET.register_namespace("m", mat_ns)
     root = ET.fromstring(model_xml)
+
+    # Round vertex coordinates to reduce XML size
+    for v in root.iter(f"{{{ns}}}vertex"):
+        for attr in ("x", "y", "z"):
+            v.set(attr, f"{float(v.get(attr)):.2f}")
 
     resources = root.find(f"{{{ns}}}resources")
 
