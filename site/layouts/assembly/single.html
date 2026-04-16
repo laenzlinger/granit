@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ $models := .Site.Params.assemblyModels }}
+  {{ with $models }}
+  <script src="https://cdn.jsdelivr.net/npm/online-3d-viewer@0.18.0/build/engine/o3dv.min.js"></script>
+  {{ range . }}
+  <section class="assembly-model">
+    <h2>{{ .name }}</h2>
+    <div class="online_3d_viewer"
+         model="{{ $.Site.BaseURL }}assembly/{{ .file }}"
+         {{ with .camera }}camera="{{ . }}"{{ end }}>
+    </div>
+  </section>
+  {{ end }}
+  <script>
+    window.addEventListener('load', function () { OV.Init3DViewerElements(); });
+  </script>
+  {{ else }}
+  <p>No assembly models available for this version.</p>
+  {{ end }}
+</article>
+{{ end }}
