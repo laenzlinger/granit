@@ -17,11 +17,14 @@ import Part
 STANDOFF = 5.0
 GAP = 2.0
 
-# Colors per object label (RGBA hex)
+# Colors per object label
 COLORS = {
-    "Case": "#C8C8C880",
-    "PCB":  "#1B5E20",
-    "HDD":  "#505050",
+    "Case":       "#C8C8C8",
+    "PCB_Board":  "#1B5E20",
+    "PCB_ICs":    "#1A1A1A",
+    "PCB_Parts":  "#3E2723",
+    "PCB_Conn":   "#B0B0B0",
+    "HDD":        "#505050",
 }
 
 VARIANTS = {
@@ -129,8 +132,29 @@ def build_variant(name, cfg):
     pcb_x = 70.0
     pcb_y = belly_y + STANDOFF + 3
     pcb_z = pcb_z_sata - 20
-    place(doc, PCB_FILE, "PCB",
-          FreeCAD.Placement(FreeCAD.Vector(pcb_x, pcb_y, pcb_z), pcb_rot))
+    pcb_pl = FreeCAD.Placement(FreeCAD.Vector(pcb_x, pcb_y, pcb_z), pcb_rot)
+
+    # Split PCB solids into categories by bounding box
+    pcb_shape = Part.read(PCB_FILE)
+    board, ics, parts, conns = [], [], [], []
+    for s in pcb_shape.Solids:
+        bb = s.BoundBox
+        vol = bb.XLength * bb.YLength * bb.ZLength
+        if vol > 10000:            # board substrate (largest)
+            board.append(s)
+        elif bb.ZLength > 8 or bb.XLength > 15 or bb.YLength > 15:
+            conns.append(s)       # connectors (tall or wide)
+        elif vol > 50:
+            ics.append(s)         # ICs (medium)
+        else:
+            parts.append(s)       # passives (small)
+
+    for label, solids in [("PCB_Board", board), ("PCB_ICs", ics),
+                          ("PCB_Parts", parts), ("PCB_Conn", conns)]:
+        if solids:
+            obj = doc.addObject("Part::Feature", label)
+            obj.Shape = Part.makeCompound(solids)
+            obj.Placement = pcb_pl
 
     hdd_rot = rot(RZ(90), RX(-90), RY(180))
     hdd_x = -hdd_width / 2
