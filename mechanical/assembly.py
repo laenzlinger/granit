@@ -114,11 +114,15 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
                 v1, v2 = tri.get("v1"), tri.get("v2")
                 tri.set("v1", v2)
                 tri.set("v2", v1)
-            # Assign new id
+            # Assign new id and add to build section
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
-            ep_obj.set("id", str(max_id + 1))
+            new_id = str(max_id + 1)
+            ep_obj.set("id", new_id)
             resources.append(ep_obj)
             labels.append("EndPlate")
+            build = root.find(f"{{{ns}}}build")
+            if build is not None:
+                ET.SubElement(build, f"{{{ns}}}item").set("objectid", new_id)
 
     # Add basematerials
     basemats = ET.SubElement(resources, f"{{{mat_ns}}}basematerials")
