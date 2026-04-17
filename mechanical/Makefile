@@ -14,7 +14,7 @@ assembly: pcb-step ## Build FreeCAD assemblies (slim + wide, colored 3MF)
 
 screenshot: assembly ## Render assembly screenshots
 	for f in assembly-slim.3mf assembly-wide.3mf; do \
-		f3d --output $${f%.3mf}.png --resolution 2160,2160 --background-color=1,1,1 $$f; \
+		f3d --output $${f%.3mf}.png --resolution 2160,2160 --background-color=1,1,1 -q $$f; \
 	done
 
 clean:
