@@ -109,6 +109,11 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
                 v.set("x", f"{sx + ox:.2f}")
                 v.set("y", f"{sz + oy:.2f}")   # OpenSCAD Z (thickness) → assembly Y (length)
                 v.set("z", f"{-sy + oz:.2f}")   # OpenSCAD Y (height) → assembly -Z (flipped)
+            # Axis remap includes negation → flip triangle winding to fix normals
+            for tri in ep_obj.findall(f".//{{{ns}}}triangle"):
+                v1, v2 = tri.get("v1"), tri.get("v2")
+                tri.set("v1", v2)
+                tri.set("v2", v1)
             # Assign new id
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
             ep_obj.set("id", str(max_id + 1))
