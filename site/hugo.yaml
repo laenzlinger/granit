@@ -26,8 +26,8 @@ params:
 
 menu:
   main:
-    - name: Changes
-      url: /changes/
+    - name: Release
+      url: /release/
       weight: 15
     - name: Schematic
       url: /schematic/
@@ -35,9 +35,6 @@ menu:
     - name: Gallery
       url: /gallery/
       weight: 30
-    - name: Downloads
-      url: /downloads/
-      weight: 40
     - name: Assembly
       url: /assembly/
       weight: 45
