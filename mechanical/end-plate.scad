@@ -13,9 +13,10 @@ plate_w = (variant == "slim") ? 103 : 165;
 plate_h = (variant == "slim") ? 30.5 : 51.5;
 plate_t = 1.5;
 
-screw_d = 3.2;
-screw_inset_x = 5.0;
-screw_inset_y = 5.0;
+// Screw holes (from Hammond STEP: 4mm inset from edges, M4 = Ø4.2mm)
+screw_d = 4.2;
+screw_inset_x = 4.0;
+screw_inset_y = 4.0;
 
 /* [PCB Position Inside Case] */
 board_len = 99.5;
