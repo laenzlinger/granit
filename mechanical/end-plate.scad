@@ -34,30 +34,30 @@ pcb_t = 1.6;
 // Heights are from component datasheets (above PCB surface)
 
 // Barrel Jack (J7) — KiCad Y=40.6, Wuerth 694106301002
-bj_pcb_y   = 40.6;
+bj_pcb_y   = 103;   // KiCad at=(99.9, 103)
 bj_w       = 11.0;  // cutout width
 bj_h       = 11.0;  // cutout height
 bj_center_h = 5.5;  // center height above PCB
 
 // RJ45 Ethernet (J8) — KiCad Y=50.3, HR911130A
-rj45_pcb_y   = 50.3;
+rj45_pcb_y   = 70;    // KiCad at=(102.5, 70)
 rj45_w       = 16.2;
 rj45_h       = 13.5;
 rj45_center_h = 8.0;
 
 // USB-C (J1) — KiCad Y=22.5, USB4105-GF-A
-usbc_pcb_y   = 22.5;
+usbc_pcb_y   = 34;    // KiCad at=(109.8, 34)
 usbc_w       = 9.5;
 usbc_h       = 3.5;
 usbc_center_h = 1.8;
 
 // Button (SW1) — KiCad Y=58.7, SKRTLAE010
-btn_pcb_y   = 58.7;
+btn_pcb_y   = 56;    // KiCad at=(110.5, 56)
 btn_d       = 4.0;
 btn_center_h = 2.0;
 
 // NeoPixel LED (D1) — KiCad Y=58.7, light pipe hole
-led_pcb_y   = 58.7;
+led_pcb_y   = 47;    // KiCad at=(109, 47)
 led_d       = 5.0;
 led_center_h = 2.5;
 
