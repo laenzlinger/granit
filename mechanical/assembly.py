@@ -104,12 +104,10 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             # OpenSCAD: X=width, Y=height, Z=thickness
             # Assembly: X=width, Y=length, Z=height (up)
             ox, oy, oz = ep_offset  # (plate X origin, plate Y origin, plate Z origin)
-            # Keep original vertices, use 3MF item transform for placement
-            # RX(90) rotation + translation: maps OpenSCAD XYZ to assembly
-            # Matrix: [1 0 0 tx; 0 0 -1 tz; 0 1 0 ty] (row-major, 3x4)
-            # OpenSCAD X→X, Y→-Z, Z→Y
-            ox, oy, oz = ep_offset
-            transform = f"1 0 0 0 0 -1 0 1 0 {ox} {oz} {oy}"
+            # 3MF item transform: scad_X→asm_X, scad_Y→asm_-Z, scad_Z→asm_Y
+            # Matrix (row-major): m00 m01 m02 m10 m11 m12 m20 m21 m22 tx ty tz
+            ox, oy, oz = ep_offset  # (cp.XMin, cp.ZMin, -cp.YMax)
+            transform = f"1 0 0 0 0 1 0 -1 0 {ox} {oy} {-oz}"
 
             # Assign new id and add to build section with transform
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
