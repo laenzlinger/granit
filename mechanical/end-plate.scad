@@ -10,7 +10,7 @@ variant = "slim"; // [slim, wide]
 
 /* [Plate Dimensions (from Hammond datasheet)] */
 plate_w = (variant == "slim") ? 103 : 165;
-plate_h = (variant == "slim") ? 30.5 : 51.5;
+plate_h = (variant == "slim") ? 30.5 : 53.6;
 plate_t = 1.5;
 
 // Screw holes (Hammond 1455: #4-40 UNC ≈ M3, 4mm inset from edges)
