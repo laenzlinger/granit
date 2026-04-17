@@ -104,10 +104,9 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             # OpenSCAD: X=width, Y=height, Z=thickness
             # Assembly: X=width, Y=length, Z=height (up)
             ox, oy, oz = ep_offset  # (plate X origin, plate Y origin, plate Z origin)
-            # 3MF item transform: scad_X→asm_X, scad_Y→asm_-Z, scad_Z→asm_-Y
-            # Matrix (row-major): m00 m01 m02 m10 m11 m12 m20 m21 m22 tx ty tz
+            # 3MF item transform: scad_X→asm_X, scad_Y→asm_Z, scad_Z→asm_-Y
             tx, ty, tz = ep_offset
-            transform = f"1 0 0 0 0 -1 0 -1 0 {tx} {ty} {tz}"
+            transform = f"1 0 0 0 0 1 0 -1 0 {tx} {ty} {tz}"
 
             # Assign new id and add to build section with transform
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
@@ -258,7 +257,7 @@ def build_variant(name, cfg):
     ep_offset = None
     if conn_plate and ep_3mf:
         cp_bb = conn_plate.BoundBox
-        ep_offset = (cp_bb.XMin, -cp_bb.ZMin, -cp_bb.YMin)
+        ep_offset = (cp_bb.XMin, -cp_bb.ZMin, cp_bb.YMin)
 
     inject_colors_3mf(cfg["output"], labels, ep_3mf, ep_offset)
 
