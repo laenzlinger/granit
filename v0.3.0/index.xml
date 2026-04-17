@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Overview on Granit</title><link>https://laenzlinger.github.io/granit/latest/</link><description>Recent content in Overview on Granit</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://laenzlinger.github.io/granit/latest/index.xml" rel="self" type="application/rss+xml"/><item><title>Release</title><link>https://laenzlinger.github.io/granit/latest/release/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/release/</guid><description/></item><item><title>Board</title><link>https://laenzlinger.github.io/granit/latest/board/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/board/</guid><description>&lt;p&gt;For detailed circuit design notes, PCB routing guidelines, and netclass definitions,
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Overview on Granit</title><link>https://laenzlinger.github.io/granit/v0.3.0/</link><description>Recent content in Overview on Granit</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://laenzlinger.github.io/granit/v0.3.0/index.xml" rel="self" type="application/rss+xml"/><item><title>Release</title><link>https://laenzlinger.github.io/granit/v0.3.0/release/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/release/</guid><description/></item><item><title>Board</title><link>https://laenzlinger.github.io/granit/v0.3.0/board/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/board/</guid><description>&lt;p&gt;For detailed circuit design notes, PCB routing guidelines, and netclass definitions,
 see &lt;a href="https://github.com/laenzlinger/granit/blob/main/hardware/DESIGN.md"&gt;hardware/DESIGN.md&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="key-design-decisions"&gt;Key Design Decisions&lt;/h2&gt;
 &lt;ul&gt;
@@ -11,7 +11,7 @@ translation hacks. Full SATA III throughput on both CM4 and CM5.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;12V DC input&lt;/strong&gt;: Required for 3.5&amp;quot; HDD support (spindle motor needs 12V).
 AP64501SP-13 accepts 3.8–28V. Both barrel jack and screw terminal footprints
-provided — populate one at assembly time.&lt;/p&gt;</description></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/latest/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/assembly/</guid><description>&lt;p&gt;The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants, held by a
+provided — populate one at assembly time.&lt;/p&gt;</description></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/v0.3.0/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/assembly/</guid><description>&lt;p&gt;The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants, held by a
 3D-printed internal frame. PCB and HDD sit side-by-side, SATA connector
 direct-mates between them.&lt;/p&gt;
 &lt;h2 id="cutouts-required"&gt;Cutouts Required&lt;/h2&gt;
@@ -21,7 +21,7 @@ direct-mates between them.&lt;/p&gt;
 &lt;li&gt;USB-C&lt;/li&gt;
 &lt;li&gt;Tactile button (recessed)&lt;/li&gt;
 &lt;li&gt;RGB LED (light pipe or translucent window)&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;The device runs a custom Raspberry Pi OS Lite image, built with
+&lt;/ul&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/v0.3.0/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/v0.3.0/software/</guid><description>&lt;p&gt;The device runs a custom Raspberry Pi OS Lite image, built with
 &lt;a href="https://github.com/RPi-Distro/pi-gen"&gt;pi-gen&lt;/a&gt;. Source:
 &lt;a href="https://github.com/laenzlinger/granit/tree/main/software"&gt;&lt;code&gt;software/&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="whats-included"&gt;What&amp;rsquo;s Included&lt;/h2&gt;
