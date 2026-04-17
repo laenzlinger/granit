@@ -13,11 +13,9 @@ assembly: pcb-step ## Build FreeCAD assemblies (slim + wide, colored 3MF)
 	cd .. && freecadcmd mechanical/assembly.py
 
 screenshot: assembly ## Render assembly screenshots
-	cd .. && unset WAYLAND_DISPLAY && \
-	for f in mechanical/assembly-slim.3mf mechanical/assembly-wide.3mf; do \
-		LIBGL_ALWAYS_SOFTWARE=1 ASSEMBLY_FILE=$$f \
-		xvfb-run -a -s "-screen 0 2160x2160x24" freecad mechanical/screenshot.py; \
-	done; true
+	for f in assembly-slim.3mf assembly-wide.3mf; do \
+		f3d --output $${f%.3mf}.png --resolution 2160,2160 --background-color=1,1,1 $$f; \
+	done
 
 clean:
 	rm -f granit-pcb.step assembly-slim.3mf assembly-wide.3mf assembly-slim.png assembly-wide.png
