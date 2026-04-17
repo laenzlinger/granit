@@ -71,6 +71,7 @@ outputs:
     comment: Pick and place position file for OpenPnP
     type: position
     dir: Assembly
+    run_by_default: false
     options:
       format: CSV
       separate_files_for_front_and_back: false
