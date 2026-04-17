@@ -21,6 +21,7 @@ GAP = 2.0
 COLORS = {
     "Case":       "#C8C8C8",
     "Lid":        "#C8C8C8",
+    "EndPlate":   "#C8C8C8",
     "PCB_Board":  "#2E7D32",
     "PCB_ICs":    "#1A1A1A",
     "PCB_Parts":  "#3E2723",
@@ -35,6 +36,7 @@ VARIANTS = {
         "hdd_dims": (100.2, 69.85, 9.5),
         "case_belly_y": -32.5,
         "output": "mechanical/assembly-slim.3mf",
+        "end_plate": "mechanical/end-plate-slim.stl",
     },
     "wide": {
         "case_file": "hardware/3d-models/1455T2601.stp",
@@ -42,6 +44,7 @@ VARIANTS = {
         "hdd_dims": (147.0, 101.6, 26.1),
         "case_belly_y": -53.6,
         "output": "mechanical/assembly-wide.3mf",
+        "end_plate": "mechanical/end-plate-wide.stl",
     },
 }
 
@@ -128,12 +131,38 @@ def build_variant(name, cfg):
     pcb_z_conn = pcb_z_sata + pcb_len
 
     # Place case without lid — skip the U-channel (largest solid) to show internals
+    # Also remove the connector-side flat end plate (replaced by cutout version)
     case_shape = Part.read(cfg["case_file"])
     lid_vol = max(s.Volume for s in case_shape.Solids)
-    open_solids = [s for s in case_shape.Solids if s.Volume < lid_vol]
+
+    # Find the connector-side flat end plate: thin in Z, at max Z position
+    flat_plates = [s for s in case_shape.Solids
+                   if s.Volume < lid_vol and s.BoundBox.ZLength < 5
+                   and s.BoundBox.XLength > 50 and s.BoundBox.YLength > 20]
+    conn_plate = max(flat_plates, key=lambda s: s.BoundBox.ZMax) if flat_plates else None
+    conn_plate_id = id(conn_plate) if conn_plate else None
+
+    open_solids = [s for s in case_shape.Solids
+                   if s.Volume < lid_vol and id(s) != conn_plate_id]
     lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
+
+    # Place cutout end plate (from OpenSCAD STL)
+    if conn_plate and cfg.get("end_plate"):
+        ep_mesh = Mesh.Mesh(cfg["end_plate"])
+        ep_obj = doc.addObject("Mesh::Feature", "EndPlate")
+        ep_obj.Mesh = ep_mesh
+        # Position: OpenSCAD plate origin is bottom-left corner
+        # Case plate center is at X=0, Y=belly..0, Z=max
+        cp_bb = conn_plate.BoundBox
+        ep_bb = ep_mesh.BoundBox
+        ep_obj.Placement = FreeCAD.Placement(
+            FreeCAD.Vector(
+                cp_bb.XMin - ep_bb.XMin,
+                cp_bb.YMin - ep_bb.YMin,
+                cp_bb.ZMin - ep_bb.ZMin,
+            ), FreeCAD.Rotation())
 
     # Place lid/frame offset to the side
     lid_obj = doc.addObject("Part::Feature", "Lid")
@@ -195,6 +224,9 @@ def build_variant(name, cfg):
             mesh_obj = doc.addObject("Mesh::Feature", obj.Label + "_mesh")
             mesh_obj.Mesh = Mesh.Mesh(obj.Shape.tessellate(0.5))
             mesh_objects.append(mesh_obj)
+            labels.append(obj.Label)
+        elif hasattr(obj, "Mesh") and obj.Mesh.CountFacets > 0 and "_mesh" not in obj.Label:
+            mesh_objects.append(obj)
             labels.append(obj.Label)
 
     Mesh.export(mesh_objects, cfg["output"])
