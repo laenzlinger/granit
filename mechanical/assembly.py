@@ -100,12 +100,15 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             ep_root = ET.fromstring(ep_zip.read("3D/3dmodel.model"))
         ep_obj = ep_root.find(f".//{{{ns}}}object")
         if ep_obj is not None:
-            # Offset vertices to assembly position
-            ox, oy, oz = ep_offset
+            # Remap OpenSCAD coords to assembly coords (after RX90 flip)
+            # OpenSCAD: X=width, Y=height, Z=thickness
+            # Assembly: X=width, Y=length, Z=height (up)
+            ox, oy, oz = ep_offset  # (plate X origin, plate Y origin, plate Z origin)
             for v in ep_obj.findall(f".//{{{ns}}}vertex"):
-                v.set("x", f"{float(v.get('x')) + ox:.2f}")
-                v.set("y", f"{float(v.get('y')) + oy:.2f}")
-                v.set("z", f"{float(v.get('z')) + oz:.2f}")
+                sx, sy, sz = float(v.get('x')), float(v.get('y')), float(v.get('z'))
+                v.set("x", f"{sx + ox:.2f}")
+                v.set("y", f"{sz + oy:.2f}")   # OpenSCAD Z (thickness) → assembly Y (length)
+                v.set("z", f"{-sy + oz:.2f}")   # OpenSCAD Y (height) → assembly -Z (flipped)
             # Assign new id
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
             ep_obj.set("id", str(max_id + 1))
@@ -238,14 +241,15 @@ def build_variant(name, cfg):
 
     Mesh.export(mesh_objects, cfg["output"])
 
-    # Compute end plate position (after Z-up flip: original Y→-Z, Z→Y)
+    # Compute end plate position (after Z-up flip)
+    # OpenSCAD plate: X=0..plate_w, Y=0..plate_h, Z=0..plate_t
+    # Assembly (after RX90): case X stays, original Y→-Z, original Z→Y
+    # Original plate was at: X=cp.XMin..XMax, Y=cp.YMin..YMax, Z=cp.ZMin..ZMax
+    # After flip: X=cp.XMin..XMax, Y=cp.ZMin..ZMax, Z=-cp.YMax..-cp.YMin
     ep_3mf = cfg.get("end_plate_3mf")
     ep_offset = None
     if conn_plate and ep_3mf:
         cp_bb = conn_plate.BoundBox
-        # After RX(90) flip: X stays, Y→Z, Z→-Y
-        # End plate origin (OpenSCAD) is at (0,0,0), plate bottom-left
-        # Need to place it at the original plate's min corner, transformed
         ep_offset = (cp_bb.XMin, cp_bb.ZMin, -cp_bb.YMax)
 
     inject_colors_3mf(cfg["output"], labels, ep_3mf, ep_offset)
