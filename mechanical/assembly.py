@@ -171,11 +171,13 @@ def build_variant(name, cfg):
     flat_plates = [s for s in case_shape.Solids
                    if s.Volume < lid_vol and s.BoundBox.ZLength < 5
                    and s.BoundBox.XLength > 50 and s.BoundBox.YLength > 20]
+    # Find connector-side end plate AND frame: both at max Z position
+    conn_zmax = max(s.BoundBox.ZMax for s in flat_plates) if flat_plates else None
     conn_plate = max(flat_plates, key=lambda s: s.BoundBox.ZMax) if flat_plates else None
-    conn_plate_id = id(conn_plate) if conn_plate else None
 
     open_solids = [s for s in case_shape.Solids
-                   if s.Volume < lid_vol and id(s) != conn_plate_id]
+                   if s.Volume < lid_vol
+                   and not (conn_zmax and s.BoundBox.ZMax > conn_zmax - 2)]
     lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
