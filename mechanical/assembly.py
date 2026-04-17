@@ -11,7 +11,6 @@ import xml.etree.ElementTree as ET
 import zipfile
 import io
 import FreeCAD
-import Import
 import Mesh
 import Part
 
@@ -149,64 +148,18 @@ def build_variant(name, cfg):
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
 
-    # Build cutout end plate using Part primitives (clean B-rep for STEP)
-    if conn_plate:
+    # Place cutout end plate (OpenSCAD STL — single source of truth)
+    if conn_plate and cfg.get("end_plate"):
+        ep_mesh = Mesh.Mesh(cfg["end_plate"])
+        ep_obj = doc.addObject("Mesh::Feature", "EndPlate")
+        ep_obj.Mesh = ep_mesh
         cp_bb = conn_plate.BoundBox
-        pw, ph, pt = cp_bb.XLength, cp_bb.YLength, cp_bb.ZLength
-        cr = 3.94  # corner radius from Hammond STEP
-
-        # Rounded rectangle plate
-        plate_wire = Part.Wire([
-            Part.makeLine((-pw/2+cr, -ph/2, 0), (pw/2-cr, -ph/2, 0)),
-            Part.Arc(FreeCAD.Vector(pw/2-cr,-ph/2,0), FreeCAD.Vector(pw/2,-ph/2+cr*0.293,0), FreeCAD.Vector(pw/2,-ph/2+cr,0)).toShape(),
-            Part.makeLine((pw/2, -ph/2+cr, 0), (pw/2, ph/2-cr, 0)),
-            Part.Arc(FreeCAD.Vector(pw/2,ph/2-cr,0), FreeCAD.Vector(pw/2-cr*0.293,ph/2,0), FreeCAD.Vector(pw/2-cr,ph/2,0)).toShape(),
-            Part.makeLine((pw/2-cr, ph/2, 0), (-pw/2+cr, ph/2, 0)),
-            Part.Arc(FreeCAD.Vector(-pw/2+cr,ph/2,0), FreeCAD.Vector(-pw/2,ph/2-cr*0.293,0), FreeCAD.Vector(-pw/2,ph/2-cr,0)).toShape(),
-            Part.makeLine((-pw/2, ph/2-cr, 0), (-pw/2, -ph/2+cr, 0)),
-            Part.Arc(FreeCAD.Vector(-pw/2,-ph/2+cr,0), FreeCAD.Vector(-pw/2+cr*0.293,-ph/2,0), FreeCAD.Vector(-pw/2+cr,-ph/2,0)).toShape(),
-        ])
-        plate_face = Part.Face(plate_wire)
-        plate_solid = plate_face.extrude(FreeCAD.Vector(0, 0, pt))
-
-        # PCB surface Y relative to plate center
-        board_len = 99.5
-        pcb_surface = cp_bb.YMin + 5.0 + 1.6  # belly + standoff + PCB thickness
-        clr = 0.5
-
-        def pcb_y_to_x(ky):
-            return (board_len - (ky - 20.5)) - board_len/2
-
-        # Rectangular cutouts (bottom-aligned to PCB surface)
-        for ky, w, h in [(103, 11.0, 11.0), (70, 16.2, 13.1), (34, 9.0, 3.2)]:
-            cx = pcb_y_to_x(ky)
-            box = Part.makeBox(w+clr, h+clr, pt+2,
-                FreeCAD.Vector(cx-(w+clr)/2, pcb_surface, -1))
-            plate_solid = plate_solid.cut(box)
-
-        # Round cutouts (button and LED at same height)
-        btn_led_y = pcb_surface + 1.5
-        for ky in [56, 47]:
-            cx = pcb_y_to_x(ky)
-            cyl = Part.makeCylinder((3.0+clr)/2, pt+2,
-                FreeCAD.Vector(cx, btn_led_y, -1))
-            plate_solid = plate_solid.cut(cyl)
-
-        # Screw holes with countersink (4mm inset, M3)
-        for sx in [-pw/2+4, pw/2-4]:
-            for sy in [-ph/2+4, ph/2-4]:
-                hole = Part.makeCylinder(3.5/2, pt+2, FreeCAD.Vector(sx, sy, -1))
-                cs = Part.makeCone(3.5/2, 6.5/2, (6.5-3.5)/2,
-                    FreeCAD.Vector(sx, sy, pt-(6.5-3.5)/2))
-                plate_solid = plate_solid.cut(hole).cut(cs)
-
-        ep_obj = doc.addObject("Part::Feature", "EndPlate")
-        ep_obj.Shape = plate_solid
+        ep_bb = ep_mesh.BoundBox
         ep_obj.Placement = FreeCAD.Placement(
             FreeCAD.Vector(
-                cp_bb.XMin + pw/2,
-                cp_bb.YMin + ph/2,
-                cp_bb.ZMin,
+                cp_bb.XMin - ep_bb.XMin,
+                cp_bb.YMin - ep_bb.YMin,
+                cp_bb.ZMin - ep_bb.ZMin,
             ), FreeCAD.Rotation())
 
     # Place lid/frame offset to the side
@@ -276,11 +229,6 @@ def build_variant(name, cfg):
 
     Mesh.export(mesh_objects, cfg["output"])
     inject_colors_3mf(cfg["output"], labels)
-
-    # Also export STEP for CAD viewers
-    step_path = cfg["output"].replace(".3mf", ".step")
-    part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
-    Import.export(part_objects, step_path)
 
     sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
     sys.stdout.flush()
