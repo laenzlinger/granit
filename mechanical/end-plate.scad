@@ -1,10 +1,9 @@
 // Granit — Hammond 1455 end plate with connector cutouts
 // Parametric: works for both slim (1455L) and wide (1455T) variants
 //
-// Coordinate system: X = plate width, Y = plate height (0 = bottom)
 // PCB connector edge is at X=112 in KiCad (right edge of board).
 // PCB Y-axis maps to end plate X-axis.
-// Connector height above PCB maps to end plate Y-axis.
+// All connector cutouts are bottom-aligned to PCB surface.
 
 /* [Case Variant] */
 variant = "slim"; // [slim, wide]
@@ -14,65 +13,56 @@ plate_w = (variant == "slim") ? 103 : 165;
 plate_h = (variant == "slim") ? 30.5 : 51.5;
 plate_t = 1.5;
 
-// Screw holes
 screw_d = 3.2;
 screw_inset_x = 5.0;
 screw_inset_y = 5.0;
 
 /* [PCB Position Inside Case] */
-// PCB Y range in KiCad: 20.5..120 (99.5mm)
-// Board sits in case card guides, centered on plate width
-board_len = 99.5;  // PCB Y dimension (maps to plate X)
-pcb_offset_x = 0;  // PCB center offset from plate center
-pcb_bottom_y = 5.0; // standoff height
+board_len = 99.5;
+pcb_offset_x = 0;
+pcb_bottom_y = 5.0;  // standoff height
 pcb_t = 1.6;
 
-/* [Connector Positions] */
-// From KiCad: connectors are near X=112 (right board edge = end plate side)
-// PCB Y coordinate maps to end plate X position
-// end_plate_x = board_len - (kicad_Y - 20.5)
-// Heights are from component datasheets (above PCB surface)
+// Y coordinate of PCB surface on the end plate
+pcb_surface_y = pcb_bottom_y + pcb_t;
 
-// Barrel Jack (J7) — KiCad Y=40.6, Wuerth 694106301002
-bj_pcb_y   = 103;   // KiCad at=(99.9, 103)
-bj_w       = 11.0;  // barrel OD  // cutout width
-bj_h       = 11.0;  // cutout height
-bj_center_h = 5.0;  // datasheet: pin center 5.0mm above PCB  // center height above PCB
+/* [Connector Cutouts] */
+// Positions: KiCad Y from PCB dimension annotations (measured from board corner)
+// Heights: from component datasheets (total body height above PCB)
 
-// RJ45 Ethernet (J8) — KiCad Y=50.3, HR911130A
-rj45_pcb_y   = 70;    // KiCad at=(102.5, 70)
-rj45_w       = 16.2; // body width
-rj45_h       = 11.7; // opening height
-rj45_center_h = 7.35; // 1.5 + 11.7/2
+// Barrel Jack (J7) — 694106301002, 17mm from connector edge
+bj_pcb_y = 103;
+bj_w     = 11.0;
+bj_h     = 11.0;  // body height above PCB
 
-// USB-C (J1) — KiCad Y=22.5, USB4105-GF-A
-usbc_pcb_y   = 34;    // KiCad at=(109.8, 34)
-usbc_w       = 9.0;  // receptacle width
-usbc_h       = 3.2;  // receptacle height
-usbc_center_h = 3.31; // datasheet
+// RJ45 Ethernet (J8) — HR911130A, 50mm from connector edge
+rj45_pcb_y = 70;
+rj45_w     = 16.2;
+rj45_h     = 13.1;  // body height above PCB
 
-// Button (SW1) — KiCad Y=58.7, SKRTLAE010
-btn_pcb_y   = 56;    // KiCad at=(110.5, 56)
-btn_d       = 3.0;  // actuator access hole
-btn_center_h = 1.5;  // datasheet: actuator center
+// USB-C (J1) — USB4105-GF-A, 86mm from connector edge
+usbc_pcb_y = 34;
+usbc_w     = 9.0;
+usbc_h     = 3.2;  // receptacle height
 
-// NeoPixel LED (D1) — KiCad Y=58.7, light pipe hole
-led_pcb_y   = 47;    // KiCad at=(109, 47)
-led_d       = 3.0;  // light pipe hole
-led_center_h = 0.7;  // LED center height
+// Button (SW1) — SKRTLAE010, 64mm from connector edge
+btn_pcb_y = 56;
+btn_d     = 3.0;
+
+// NeoPixel LED (D1) — WS2812B + light pipe, 73mm from connector edge
+led_pcb_y = 47;
+led_d     = 3.0;  // same as button for clean look
+
+// Button and LED hole center height (same for both, custom light pipe)
+btn_led_center_h = 1.5;  // above PCB surface
 
 /* [Tolerances] */
 clearance = 0.5;
 
 // ============================================================
 
-// Convert KiCad PCB Y to end plate X
 function pcb_y_to_plate_x(kicad_y) =
     (plate_w - board_len) / 2 + pcb_offset_x + (board_len - (kicad_y - 20.5));
-
-// Convert height above PCB to plate Y
-function height_to_plate_y(h) =
-    pcb_bottom_y + pcb_t + h;
 
 module plate() {
     cube([plate_w, plate_h, plate_t]);
@@ -85,26 +75,29 @@ module screw_holes() {
                 cylinder(d=screw_d, h=plate_t+2, $fn=24);
 }
 
-module rect_cutout(kicad_y, center_h, w, h) {
+// Rectangular cutout, bottom-aligned to PCB surface
+module rect_cutout(kicad_y, w, h) {
+    c = clearance;
     px = pcb_y_to_plate_x(kicad_y);
-    py = height_to_plate_y(center_h);
-    translate([px - (w+clearance)/2, py - (h+clearance)/2, -1])
-        cube([w+clearance, h+clearance, plate_t+2]);
+    translate([px - (w+c)/2, pcb_surface_y, -1])
+        cube([w+c, h+c, plate_t+2]);
 }
 
-module round_cutout(kicad_y, center_h, d) {
+// Round cutout at fixed height above PCB
+module round_cutout(kicad_y, d, center_h) {
+    c = clearance;
     px = pcb_y_to_plate_x(kicad_y);
-    py = height_to_plate_y(center_h);
+    py = pcb_surface_y + center_h;
     translate([px, py, -1])
-        cylinder(d=d+clearance, h=plate_t+2, $fn=32);
+        cylinder(d=d+c, h=plate_t+2, $fn=32);
 }
 
 difference() {
     plate();
     screw_holes();
-    rect_cutout(bj_pcb_y,   bj_center_h,   bj_w,   bj_h);
-    rect_cutout(rj45_pcb_y, rj45_center_h, rj45_w, rj45_h);
-    rect_cutout(usbc_pcb_y, usbc_center_h, usbc_w, usbc_h);
-    round_cutout(btn_pcb_y, btn_center_h,  btn_d);
-    round_cutout(led_pcb_y, led_center_h,  led_d);
+    rect_cutout(bj_pcb_y,   bj_w,   bj_h);
+    rect_cutout(rj45_pcb_y, rj45_w, rj45_h);
+    rect_cutout(usbc_pcb_y, usbc_w, usbc_h);
+    round_cutout(btn_pcb_y, btn_d, btn_led_center_h);
+    round_cutout(led_pcb_y, led_d, btn_led_center_h);
 }
