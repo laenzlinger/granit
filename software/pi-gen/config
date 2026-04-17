@@ -1,5 +1,5 @@
 IMG_NAME=granit
-RELEASE=bookworm
+RELEASE=trixie
 TARGET_HOSTNAME=granit
 KEYBOARD_KEYMAP=us
 KEYBOARD_LAYOUT="English (US)"
