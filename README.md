@@ -27,6 +27,12 @@ design notes, and downloads — is available at:
 
 **https://laenzlinger.github.io/granit/latest/**
 
+## Roadmap
+
+- **v0.3** — First production run (CM4, 4-layer PCB, JLCPCB)
+- **v1.0** — Validated design with custom OS image and documentation
+- **Future** — Investigating RISC-V SoM support for a fully blob-free variant
+
 ## License
 
 [CERN Open Hardware Licence Version 2 - Permissive](https://ohwr.org/cern_ohl_p_v2.txt)
