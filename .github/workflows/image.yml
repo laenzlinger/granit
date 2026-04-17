@@ -15,7 +15,9 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Install QEMU for ARM emulation
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq qemu-user-static
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq qemu-user-static
+          sudo ln -sf /usr/bin/qemu-arm-static /usr/bin/qemu-arm
 
       - name: Build image
         working-directory: software
