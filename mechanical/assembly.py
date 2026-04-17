@@ -104,17 +104,14 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             # OpenSCAD: X=width, Y=height, Z=thickness
             # Assembly: X=width, Y=length, Z=height (up)
             ox, oy, oz = ep_offset  # (plate X origin, plate Y origin, plate Z origin)
-            for v in ep_obj.findall(f".//{{{ns}}}vertex"):
-                sx, sy, sz = float(v.get('x')), float(v.get('y')), float(v.get('z'))
-                v.set("x", f"{sx + ox:.2f}")
-                v.set("y", f"{sz + oy:.2f}")   # OpenSCAD Z (thickness) → assembly Y (length)
-                v.set("z", f"{-sy + oz:.2f}")   # OpenSCAD Y (height) → assembly -Z (flipped)
-            # Axis remap includes negation → flip triangle winding to fix normals
-            for tri in ep_obj.findall(f".//{{{ns}}}triangle"):
-                v1, v2 = tri.get("v1"), tri.get("v2")
-                tri.set("v1", v2)
-                tri.set("v2", v1)
-            # Assign new id and add to build section
+            # Keep original vertices, use 3MF item transform for placement
+            # RX(90) rotation + translation: maps OpenSCAD XYZ to assembly
+            # Matrix: [1 0 0 tx; 0 0 -1 tz; 0 1 0 ty] (row-major, 3x4)
+            # OpenSCAD X→X, Y→-Z, Z→Y
+            ox, oy, oz = ep_offset
+            transform = f"1 0 0 0 0 -1 0 1 0 {ox} {oz} {oy}"
+
+            # Assign new id and add to build section with transform
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
             new_id = str(max_id + 1)
             ep_obj.set("id", new_id)
@@ -122,7 +119,9 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             labels.append("EndPlate")
             build = root.find(f"{{{ns}}}build")
             if build is not None:
-                ET.SubElement(build, f"{{{ns}}}item").set("objectid", new_id)
+                item = ET.SubElement(build, f"{{{ns}}}item")
+                item.set("objectid", new_id)
+                item.set("transform", transform)
 
     # Add basematerials
     basemats = ET.SubElement(resources, f"{{{mat_ns}}}basematerials")
