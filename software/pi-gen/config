@@ -1,0 +1,12 @@
+IMG_NAME=granit
+RELEASE=bookworm
+TARGET_HOSTNAME=granit
+KEYBOARD_KEYMAP=us
+KEYBOARD_LAYOUT="English (US)"
+TIMEZONE_DEFAULT=UTC
+FIRST_USER_NAME=granit
+ENABLE_SSH=1
+LOCALE_DEFAULT=en_US.UTF-8
+
+# Skip desktop stages — Lite only
+STAGE_LIST="stage0 stage1 stage2 stage-granit"
