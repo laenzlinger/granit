@@ -13,8 +13,9 @@ plate_w = (variant == "slim") ? 103 : 165;
 plate_h = (variant == "slim") ? 30.5 : 51.5;
 plate_t = 1.5;
 
-// Screw holes (from Hammond STEP: 4mm inset from edges, M4 = Ø4.2mm)
+// Screw holes (from Hammond STEP: 4mm inset from edges, M4 = Ø4.2mm, countersunk Ø7.9mm)
 screw_d = 4.2;
+screw_cs_d = 7.9;  // countersink diameter
 screw_inset_x = 4.0;
 screw_inset_y = 4.0;
 
@@ -72,8 +73,14 @@ module plate() {
 module screw_holes() {
     for (px = [screw_inset_x, plate_w - screw_inset_x])
         for (py = [screw_inset_y, plate_h - screw_inset_y])
-            translate([px, py, -1])
-                cylinder(d=screw_d, h=plate_t+2, $fn=24);
+            translate([px, py, 0]) {
+                // Through hole
+                translate([0, 0, -1])
+                    cylinder(d=screw_d, h=plate_t+2, $fn=24);
+                // 90° countersink from outside face
+                translate([0, 0, plate_t - (screw_cs_d - screw_d)/2])
+                    cylinder(d1=screw_d, d2=screw_cs_d, h=(screw_cs_d - screw_d)/2 + 0.1, $fn=32);
+            }
 }
 
 // Rectangular cutout, bottom-aligned to PCB surface
