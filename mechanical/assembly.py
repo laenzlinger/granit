@@ -171,9 +171,14 @@ def build_variant(name, cfg):
     conn_zmax = max(s.BoundBox.ZMax for s in flat_plates) if flat_plates else None
     conn_plate = max(flat_plates, key=lambda s: s.BoundBox.ZMax) if flat_plates else None
 
+    # Remove connector-side end plate + frame (replaced by OpenSCAD cutout version)
+    # Keep: belly plate, SATA-side panel, screws, lid channel
     open_solids = [s for s in case_shape.Solids
                    if s.Volume < lid_vol
-                   and not (conn_zmax and s.BoundBox.ZMin > conn_zmax - 15)]
+                   and not (conn_zmax
+                           and s.BoundBox.ZMin > conn_zmax - 15
+                           and s.BoundBox.XLength > 50
+                           and s.BoundBox.YLength > 20)]
     lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
