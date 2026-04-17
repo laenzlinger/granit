@@ -30,3 +30,5 @@ github.com/laenzlinger/hugo-kicad-site v0.0.0-20260417155657-58cc87165f40 h1:Kfm
 github.com/laenzlinger/hugo-kicad-site v0.0.0-20260417155657-58cc87165f40/go.mod h1:Iy7P39Do7OBF99H9j7Fj42VKjkkiz8avb9PDtET1o2k=
 github.com/laenzlinger/hugo-kicad-site v0.0.0-20260417172114-56b2761f082c h1:gpd/DbvQwnAWJTTHWVcpYDk0uYZrb+DGTmU5qOJKKIA=
 github.com/laenzlinger/hugo-kicad-site v0.0.0-20260417172114-56b2761f082c/go.mod h1:Iy7P39Do7OBF99H9j7Fj42VKjkkiz8avb9PDtET1o2k=
+github.com/laenzlinger/hugo-kicad-site v0.0.0-20260417172357-166e1a961d55 h1:oWTg8BMFS7Vo6CUHa1nU8qimBByO28dH6/KaflaHIAg=
+github.com/laenzlinger/hugo-kicad-site v0.0.0-20260417172357-166e1a961d55/go.mod h1:Iy7P39Do7OBF99H9j7Fj42VKjkkiz8avb9PDtET1o2k=
