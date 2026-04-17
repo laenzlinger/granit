@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+      - name: Install QEMU for ARM emulation
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq qemu-user-static
 
       - name: Build image
         working-directory: software
