@@ -19,6 +19,9 @@ screw_cs_d = 6.5;   // countersink diameter
 screw_inset_x = 4.0;
 screw_inset_y = 4.0;
 
+// Corner radius (from Hammond STEP: 3.94mm)
+corner_r = 3.94;
+
 /* [PCB Position Inside Case] */
 board_len = 99.5;
 pcb_offset_x = 0;
@@ -67,7 +70,10 @@ function pcb_y_to_plate_x(kicad_y) =
     (plate_w - board_len) / 2 + pcb_offset_x + (board_len - (kicad_y - 20.5));
 
 module plate() {
-    cube([plate_w, plate_h, plate_t]);
+    linear_extrude(plate_t)
+        offset(r=corner_r)
+            offset(delta=-corner_r)
+                square([plate_w, plate_h]);
 }
 
 module screw_holes() {
