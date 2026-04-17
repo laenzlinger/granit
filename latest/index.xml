@@ -21,17 +21,31 @@ direct-mates between them.&lt;/p&gt;
 &lt;li&gt;USB-C&lt;/li&gt;
 &lt;li&gt;Tactile button (recessed)&lt;/li&gt;
 &lt;li&gt;RGB LED (light pipe or translucent window)&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;The device runs Raspberry Pi OS Lite (headless).&lt;/p&gt;
-&lt;h2 id="planned-stack"&gt;Planned Stack&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;The device runs a custom Raspberry Pi OS Lite image, built with
+&lt;a href="https://github.com/RPi-Distro/pi-gen"&gt;pi-gen&lt;/a&gt;. Source:
+&lt;a href="https://github.com/laenzlinger/granit/tree/main/software"&gt;&lt;code&gt;software/&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="whats-included"&gt;What&amp;rsquo;s Included&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Restic backup repository (encryption built-in)&lt;/li&gt;
-&lt;li&gt;rsync to receive backups from NAS&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;smartmontools&lt;/code&gt; for disk health monitoring (&lt;code&gt;smartctl /dev/sda&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;WireGuard VPN for remote management&lt;/li&gt;
-&lt;li&gt;RTC-based scheduled wake: DS3231 alarm → GPIO4 interrupt → CM wakes from suspend → backup runs → suspend&lt;/li&gt;
-&lt;li&gt;LUKS full-disk encryption on the backup drive&lt;/li&gt;
-&lt;li&gt;Automatic drive mount and health monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware support&lt;/strong&gt;: PCIe SATA (ASM1061), DS3231 RTC, GPIO HDD power control&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup&lt;/strong&gt;: rclone-based sync with configurable remote, daily RTC wake cycle&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: SSH hardened, fail2ban, UFW firewall, automatic security updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt;: prometheus-node-exporter, smartmontools&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="hdd-power-control"&gt;HDD Power Control&lt;/h2&gt;
-&lt;p&gt;GPIO5 (&lt;code&gt;SATA_PWR_EN&lt;/code&gt;) controls the P-FET power switches for the SATA 12V and 5V rails.
-The boot default is selected by solder jumpers JP5 and JP6.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id="first-boot"&gt;First Boot&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Flash image to CM4 eMMC (via &lt;code&gt;rpiboot&lt;/code&gt; + &lt;code&gt;rpi-imager&lt;/code&gt;) or SD card&lt;/li&gt;
+&lt;li&gt;Connect Ethernet, power on&lt;/li&gt;
+&lt;li&gt;SSH in: &lt;code&gt;ssh granit@granit.local&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configure backup source: &lt;code&gt;sudo nano /etc/granit/sync.conf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Format and mount backup disk:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkfs.ext4 /dev/sda1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;UUID&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;$(&lt;/span&gt;blkid -s UUID -o value /dev/sda1&lt;span style="color:#66d9ef"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;UUID=&lt;/span&gt;$UUID&lt;span style="color:#e6db74"&gt; /mnt/backup ext4 defaults 0 2&amp;#34;&lt;/span&gt; | sudo tee -a /etc/fstab
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mount /mnt/backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Enable the backup cycle:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl enable --now granit-cycle.timer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="backup-cycle"&gt;Backup Cycle&lt;/h2&gt;
+&lt;p&gt;Once enabled, the device runs a daily cycle:&lt;/p&gt;</description></item></channel></rss>
