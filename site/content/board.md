@@ -1,6 +1,7 @@
 ---
-title: Design Notes
-weight: 50
+title: Board
+type: board
+weight: 20
 ---
 
 For detailed circuit design notes, PCB routing guidelines, and netclass definitions,

@@ -29,18 +29,12 @@ menu:
     - name: Release
       url: /release/
       weight: 15
-    - name: Schematic
-      url: /schematic/
+    - name: Board
+      url: /board/
       weight: 20
-    - name: Gallery
-      url: /gallery/
-      weight: 30
     - name: Assembly
       url: /assembly/
       weight: 45
-    - name: Design Notes
-      url: /design-notes/
-      weight: 50
     - name: Software
       url: /software/
       weight: 55
