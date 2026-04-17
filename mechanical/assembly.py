@@ -11,6 +11,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 import io
 import FreeCAD
+import Import
 import Mesh
 import Part
 
@@ -148,15 +149,16 @@ def build_variant(name, cfg):
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
 
-    # Place cutout end plate (from OpenSCAD STL)
+    # Place cutout end plate (from OpenSCAD STL, converted to Part for STEP export)
     if conn_plate and cfg.get("end_plate"):
         ep_mesh = Mesh.Mesh(cfg["end_plate"])
-        ep_obj = doc.addObject("Mesh::Feature", "EndPlate")
-        ep_obj.Mesh = ep_mesh
-        # Position: OpenSCAD plate origin is bottom-left corner
-        # Case plate center is at X=0, Y=belly..0, Z=max
+        ep_shape = Part.Shape()
+        ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.1)
+        ep_solid = Part.makeSolid(ep_shape)
+        ep_obj = doc.addObject("Part::Feature", "EndPlate")
+        ep_obj.Shape = ep_solid
         cp_bb = conn_plate.BoundBox
-        ep_bb = ep_mesh.BoundBox
+        ep_bb = ep_solid.BoundBox
         ep_obj.Placement = FreeCAD.Placement(
             FreeCAD.Vector(
                 cp_bb.XMin - ep_bb.XMin,
@@ -231,6 +233,11 @@ def build_variant(name, cfg):
 
     Mesh.export(mesh_objects, cfg["output"])
     inject_colors_3mf(cfg["output"], labels)
+
+    # Also export STEP for CAD viewers
+    step_path = cfg["output"].replace(".3mf", ".step")
+    part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
+    Import.export(part_objects, step_path)
 
     sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
     sys.stdout.flush()
