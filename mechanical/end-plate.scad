@@ -13,9 +13,9 @@ plate_w = (variant == "slim") ? 103 : 165;
 plate_h = (variant == "slim") ? 30.5 : 51.5;
 plate_t = 1.5;
 
-// Screw holes (from Hammond STEP: 4mm inset from edges, M4 = Ø4.2mm, countersunk Ø7.9mm)
-screw_d = 4.2;
-screw_cs_d = 7.9;  // countersink diameter
+// Screw holes (Hammond 1455: #4-40 UNC ≈ M3, 4mm inset from edges)
+screw_d = 3.5;      // M3 clearance hole
+screw_cs_d = 6.5;   // countersink diameter
 screw_inset_x = 4.0;
 screw_inset_y = 4.0;
 
