@@ -37,6 +37,7 @@ VARIANTS = {
         "case_belly_y": -32.5,
         "output": "mechanical/assembly-slim.3mf",
         "end_plate": "mechanical/end-plate-slim.stl",
+        "end_plate_3mf": "mechanical/end-plate-slim.3mf",
     },
     "wide": {
         "case_file": "hardware/3d-models/1455T2601.stp",
@@ -45,6 +46,7 @@ VARIANTS = {
         "case_belly_y": -53.6,
         "output": "mechanical/assembly-wide.3mf",
         "end_plate": "mechanical/end-plate-wide.stl",
+        "end_plate_3mf": "mechanical/end-plate-wide.3mf",
     },
 }
 
@@ -72,8 +74,8 @@ RY = lambda a: FreeCAD.Rotation(FreeCAD.Vector(0, 1, 0), a)
 RZ = lambda a: FreeCAD.Rotation(FreeCAD.Vector(0, 0, 1), a)
 
 
-def inject_colors_3mf(path, labels):
-    """Post-process a 3MF file to add per-object colors."""
+def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
+    """Post-process a 3MF file to add per-object colors and merge end plate."""
     ns = "http://schemas.microsoft.com/3dmanufacturing/core/2015/02"
     mat_ns = "http://schemas.microsoft.com/3dmanufacturing/material/2015/02"
 
@@ -91,6 +93,24 @@ def inject_colors_3mf(path, labels):
             v.set(attr, f"{float(v.get(attr)):.2f}")
 
     resources = root.find(f"{{{ns}}}resources")
+
+    # Merge end plate mesh from OpenSCAD 3MF (preserves hole topology)
+    if end_plate_3mf and ep_offset:
+        with zipfile.ZipFile(end_plate_3mf, "r") as ep_zip:
+            ep_root = ET.fromstring(ep_zip.read("3D/3dmodel.model"))
+        ep_obj = ep_root.find(f".//{{{ns}}}object")
+        if ep_obj is not None:
+            # Offset vertices to assembly position
+            ox, oy, oz = ep_offset
+            for v in ep_obj.findall(f".//{{{ns}}}vertex"):
+                v.set("x", f"{float(v.get('x')) + ox:.2f}")
+                v.set("y", f"{float(v.get('y')) + oy:.2f}")
+                v.set("z", f"{float(v.get('z')) + oz:.2f}")
+            # Assign new id
+            max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
+            ep_obj.set("id", str(max_id + 1))
+            resources.append(ep_obj)
+            labels.append("EndPlate")
 
     # Add basematerials
     basemats = ET.SubElement(resources, f"{{{mat_ns}}}basematerials")
@@ -148,19 +168,8 @@ def build_variant(name, cfg):
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
 
-    # Place cutout end plate (OpenSCAD STL — single source of truth)
-    if conn_plate and cfg.get("end_plate"):
-        ep_mesh = Mesh.Mesh(cfg["end_plate"])
-        ep_obj = doc.addObject("Mesh::Feature", "EndPlate")
-        ep_obj.Mesh = ep_mesh
-        cp_bb = conn_plate.BoundBox
-        ep_bb = ep_mesh.BoundBox
-        ep_obj.Placement = FreeCAD.Placement(
-            FreeCAD.Vector(
-                cp_bb.XMin - ep_bb.XMin,
-                cp_bb.YMin - ep_bb.YMin,
-                cp_bb.ZMin - ep_bb.ZMin,
-            ), FreeCAD.Rotation())
+    # End plate cutouts: merged directly from OpenSCAD 3MF in post-processing
+    # (FreeCAD's mesh pipeline loses hole topology)
 
     # Place lid/frame offset to the side
     lid_obj = doc.addObject("Part::Feature", "Lid")
@@ -228,7 +237,18 @@ def build_variant(name, cfg):
             labels.append(obj.Label)
 
     Mesh.export(mesh_objects, cfg["output"])
-    inject_colors_3mf(cfg["output"], labels)
+
+    # Compute end plate position (after Z-up flip: original Y→-Z, Z→Y)
+    ep_3mf = cfg.get("end_plate_3mf")
+    ep_offset = None
+    if conn_plate and ep_3mf:
+        cp_bb = conn_plate.BoundBox
+        # After RX(90) flip: X stays, Y→Z, Z→-Y
+        # End plate origin (OpenSCAD) is at (0,0,0), plate bottom-left
+        # Need to place it at the original plate's min corner, transformed
+        ep_offset = (cp_bb.XMin, cp_bb.ZMin, -cp_bb.YMax)
+
+    inject_colors_3mf(cfg["output"], labels, ep_3mf, ep_offset)
 
     sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
     sys.stdout.flush()
