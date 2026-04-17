@@ -177,7 +177,7 @@ def build_variant(name, cfg):
 
     open_solids = [s for s in case_shape.Solids
                    if s.Volume < lid_vol
-                   and not (conn_zmax and s.BoundBox.ZMax > conn_zmax - 2)]
+                   and not (conn_zmax and s.BoundBox.ZMin > conn_zmax - 15)]
     lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
