@@ -20,13 +20,6 @@ onto an attached hard disk. Designed to be left at a trusted offsite location an
 - USB-C OTG for eMMC flashing
 - Hammond 1455 aluminium enclosure
 
-## Documentation
-
-The full project documentation — including schematics, PCB viewer, assembly instructions,
-design notes, and downloads — is available at:
-
-**https://laenzlinger.github.io/granit/latest/**
-
 ## Roadmap
 
 - **v0.3** — First production run (CM4, 4-layer PCB, JLCPCB)
