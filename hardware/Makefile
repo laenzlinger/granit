@@ -2,7 +2,7 @@
 .PHONY: test step pdf render pos clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
-REVISION ?= dev
+REVISION ?= $(shell git describe --tags --abbrev=0 2>/dev/null || echo dev)
 PROJECT_NAME = granit
 
 test: ## Run ERC and DRC checks

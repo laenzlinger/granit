@@ -18,7 +18,7 @@ preflight:
     - name: GIT_HASH
       command: git rev-parse --short HEAD
     - name: REVISION
-      command: echo ${REVISION:-dev}
+      command: echo ${REVISION:-$(git describe --tags --abbrev=0 2>/dev/null || echo dev)}
 
 outputs:
   - name: basic_boardview
