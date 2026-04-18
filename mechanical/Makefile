@@ -13,12 +13,12 @@ assembly: pcb-step ## Build FreeCAD assemblies (slim + wide, colored 3MF)
 	cd .. && freecadcmd mechanical/assembly.py
 
 screenshot: assembly ## Render assembly screenshots
-	for f in assembly-slim.3mf assembly-wide.3mf; do \
-		f3d --output $${f%.3mf}.png --resolution 2880,1620 --background-color=1,1,1 -q --axis=false --grid=false --filename=false $$f; \
+	for f in assembly-slim.step assembly-wide.step; do \
+		f3d --output $${f%.step}.png --resolution 2880,1620 --background-color=1,1,1 -q --axis=false --grid=false --filename=false $$f; \
 	done
 
 clean:
-	rm -f granit-pcb.step assembly-slim.3mf assembly-wide.3mf assembly-slim.png assembly-wide.png
+	rm -f granit-pcb.step assembly-slim.step assembly-wide.step assembly-slim.png assembly-wide.png
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
