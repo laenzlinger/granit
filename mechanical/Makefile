@@ -12,9 +12,9 @@ pcb-step: ## Export PCB STEP from KiCad
 assembly: pcb-step ## Build FreeCAD assemblies (slim + wide, colored 3MF)
 	cd .. && freecadcmd mechanical/assembly.py
 
-screenshot: assembly ## Render assembly screenshots
+screenshot: assembly ## Render assembly screenshots (via o3dv in headless Chromium)
 	for f in assembly-slim.step assembly-wide.step; do \
-		f3d --output $${f%.step}.png --resolution 2880,1620 --background-color=1,1,1 -q --axis=false --grid=false --filename=false --edges=false --camera-azimuth-angle=-60 --camera-elevation-angle=45 $$f; \
+		node screenshot.mjs $$f $${f%.step}.png; \
 	done
 
 clean:
