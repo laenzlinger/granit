@@ -98,7 +98,7 @@ def build_variant(name, cfg):
     # PCB (split into categories for visual distinction)
     pcb_rot = rot(RZ(90), RX(-90), RY(180))
     pcb_pl = FreeCAD.Placement(
-        FreeCAD.Vector(70.0, belly_y + STANDOFF + 3, pcb_z_sata - 20), pcb_rot)
+        FreeCAD.Vector(70.3, belly_y + STANDOFF + 0.5, pcb_z_sata - 21.5), pcb_rot)
 
     pcb_shape = Part.read(PCB_FILE)
     board, ics, parts, conns = [], [], [], []
