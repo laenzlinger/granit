@@ -257,6 +257,7 @@ def build_variant(name, cfg):
         ep_obj.Placement = FreeCAD.Placement(
             FreeCAD.Vector(cp_bb.XMin - ep_bb.XMin, cp_bb.YMin - ep_bb.YMin, cp_bb.ZMin - ep_bb.ZMin),
             FreeCAD.Rotation())
+        ep_obj.Placement = flip.multiply(ep_obj.Placement)
     doc.recompute()
     part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
     Import.export(part_objects, step_path)
