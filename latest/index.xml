@@ -94,19 +94,20 @@ barrel jack (12V DC), RJ45 (Ethernet), USB-C (OTG), tactile button, and RGB LED 
 &lt;td&gt;165 × 252 × 51.5mm&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;Custom Raspberry Pi OS Lite image for the Granit offsite backup appliance,
-built with &lt;a href="https://github.com/RPi-Distro/pi-gen"&gt;pi-gen&lt;/a&gt;.
+&lt;/table&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;Custom Raspberry Pi OS Lite image with Ansible-based provisioning.
 Source: &lt;a href="https://github.com/laenzlinger/granit/tree/main/software"&gt;&lt;code&gt;software/&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pi-gen&lt;/strong&gt;: builds a minimal image (packages + boot config)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ansible&lt;/strong&gt;: configures all services, security, and monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can also skip the custom image and provision stock Raspberry Pi OS directly.&lt;/p&gt;
 &lt;h2 id="hardware-support"&gt;Hardware Support&lt;/h2&gt;
 &lt;h3 id="pcie-sata-asm1061"&gt;PCIe SATA (ASM1061)&lt;/h3&gt;
-&lt;p&gt;The ASM1061 PCIe-to-SATA bridge is enabled via device tree:&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;dtparam=pciex1
 dtparam=pciex1_gen=2
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The SATA drive appears as &lt;code&gt;/dev/sda&lt;/code&gt; once connected and powered.&lt;/p&gt;
 &lt;h3 id="ds3231-rtc"&gt;DS3231 RTC&lt;/h3&gt;
-&lt;p&gt;The DS3231 real-time clock on I2C1 keeps time across power cycles:&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;dtparam=i2c_arm=on
 dtoverlay=i2c-rtc,ds3231
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;On boot, the system clock is set from the RTC via udev rule. The RTC alarm
-is used for scheduled wake — the CM4 powers off after backup and the RTC
-alarm triggers the next boot.&lt;/p&gt;</description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;System clock is set from the RTC on boot. The RTC alarm triggers scheduled wake.&lt;/p&gt;</description></item></channel></rss>
