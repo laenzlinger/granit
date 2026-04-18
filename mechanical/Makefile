@@ -8,7 +8,7 @@ pcb-step: ## Export PCB STEP from KiCad (connectors only, no CM4)
 		--define-var GIT_HASH=$$(git rev-parse --short HEAD) \
 		--output ../mechanical/granit-pcb.step \
 		--subst-models --force \
-		--component-filter "J1,J4,J7,J8,BT1,SW1" \
+		--component-filter "J1,J2,J4,J7,J8,BT1,SW1,D1" \
 		granit.kicad_pcb
 
 end-plates: ## Generate end plate outputs (STL + DXF)
