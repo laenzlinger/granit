@@ -100,15 +100,21 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             ep_root = ET.fromstring(ep_zip.read("3D/3dmodel.model"))
         ep_obj = ep_root.find(f".//{{{ns}}}object")
         if ep_obj is not None:
-            # Remap OpenSCAD coords to assembly coords (after RX90 flip)
-            # OpenSCAD: X=width, Y=height, Z=thickness
-            # Assembly: X=width, Y=length, Z=height (up)
-            ox, oy, oz = ep_offset  # (plate X origin, plate Y origin, plate Z origin)
-            # 3MF item transform: scad_X→asm_X, scad_Y→asm_Z, scad_Z→asm_-Y
+            # Apply transform to vertices directly (o3dv ignores item transforms)
+            # Matrix: scad_X→asm_X, scad_Y→asm_Z, scad_Z→asm_-Y
             tx, ty, tz = ep_offset
-            transform = f"1 0 0 0 0 1 0 -1 0 {tx} {ty} {tz}"
+            for v in ep_obj.findall(f".//{{{ns}}}vertex"):
+                sx, sy, sz = float(v.get('x')), float(v.get('y')), float(v.get('z'))
+                v.set("x", f"{sx + tx:.2f}")
+                v.set("y", f"{-sz + ty:.2f}")
+                v.set("z", f"{sy + tz:.2f}")
+            # Negative determinant from axis swap → fix winding
+            for tri in ep_obj.findall(f".//{{{ns}}}triangle"):
+                v1, v2 = tri.get("v1"), tri.get("v2")
+                tri.set("v1", v2)
+                tri.set("v2", v1)
 
-            # Assign new id and add to build section with transform
+            # Assign new id and add to build section
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
             new_id = str(max_id + 1)
             ep_obj.set("id", new_id)
@@ -118,7 +124,6 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             if build is not None:
                 item = ET.SubElement(build, f"{{{ns}}}item")
                 item.set("objectid", new_id)
-                item.set("transform", transform)
 
     # Add basematerials
     basemats = ET.SubElement(resources, f"{{{mat_ns}}}basematerials")
