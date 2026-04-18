@@ -3,11 +3,13 @@
 
 PCB_DIR := ../hardware
 
-pcb-step: ## Export PCB STEP from KiCad
+pcb-step: ## Export PCB STEP from KiCad (connectors only, no CM4)
 	cd $(PCB_DIR) && kicad-cli pcb export step \
 		--define-var GIT_HASH=$$(git rev-parse --short HEAD) \
 		--output ../mechanical/granit-pcb.step \
-		--subst-models --force granit.kicad_pcb
+		--subst-models --force \
+		--component-filter "J1,J4,J7,J8,BT1,SW1" \
+		granit.kicad_pcb
 
 end-plates: ## Generate end plate outputs (STL + DXF)
 	for v in slim wide; do \
