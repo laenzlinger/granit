@@ -236,11 +236,6 @@ def build_variant(name, cfg):
 
     doc.recompute()
 
-    # Rotate Y-up → Z-up so case lies flat in all viewers
-    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(-90))
-    for obj in doc.Objects:
-        if hasattr(obj, "Placement"):
-            obj.Placement = flip.multiply(obj.Placement)
     doc.recompute()
 
     # Export STEP for web viewer
@@ -257,7 +252,6 @@ def build_variant(name, cfg):
         ep_obj.Placement = FreeCAD.Placement(
             FreeCAD.Vector(cp_bb.XMin - ep_bb.XMin, cp_bb.YMin - ep_bb.YMin, cp_bb.ZMin - ep_bb.ZMin),
             FreeCAD.Rotation())
-        ep_obj.Placement = flip.multiply(ep_obj.Placement)
     doc.recompute()
     part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
     Import.export(part_objects, step_path)
