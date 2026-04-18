@@ -3,20 +3,135 @@ title: Software
 weight: 55
 ---
 
-The device runs a custom Raspberry Pi OS Lite image, built with
-[pi-gen](https://github.com/RPi-Distro/pi-gen). Source:
-[`software/`](https://github.com/laenzlinger/granit/tree/main/software)
+Custom Raspberry Pi OS Lite image for the Granit offsite backup appliance,
+built with [pi-gen](https://github.com/RPi-Distro/pi-gen).
+Source: [`software/`](https://github.com/laenzlinger/granit/tree/main/software)
 
-## What's Included
+## Hardware Support
 
-- **Hardware support**: PCIe SATA (ASM1061), DS3231 RTC, GPIO HDD power control
-- **Backup**: rclone-based sync with configurable remote, daily RTC wake cycle
-- **Security**: SSH hardened, fail2ban, UFW firewall, automatic security updates
-- **Monitoring**: prometheus-node-exporter, smartmontools
+### PCIe SATA (ASM1061)
+
+The ASM1061 PCIe-to-SATA bridge is enabled via device tree:
+
+```
+dtparam=pciex1
+dtparam=pciex1_gen=2
+```
+
+The SATA drive appears as `/dev/sda` once connected and powered.
+
+### DS3231 RTC
+
+The DS3231 real-time clock on I2C1 keeps time across power cycles:
+
+```
+dtparam=i2c_arm=on
+dtoverlay=i2c-rtc,ds3231
+```
+
+On boot, the system clock is set from the RTC via udev rule. The RTC alarm
+is used for scheduled wake — the CM4 powers off after backup and the RTC
+alarm triggers the next boot.
+
+### HDD Power Control
+
+GPIO5 (`SATA_PWR_EN`) controls the P-FET power switches for the SATA 12V
+and 5V rails. The `granit-hdd-power` service manages this automatically:
+
+- **Boot**: GPIO5 high → SATA power on
+- **Shutdown**: unmount → spindown → GPIO5 low → SATA power off
+
+### Hardware Watchdog
+
+The BCM2835 hardware watchdog auto-reboots the device if the system hangs —
+critical for an unattended remote device:
+
+```
+dtparam=watchdog=on
+```
+
+systemd pings the watchdog every 15 seconds. If the system becomes
+unresponsive, the watchdog triggers a hardware reset.
+
+### UART Debug Console
+
+A serial console is available on GPIO14 (TX) / GPIO15 (RX) at 115200 baud,
+accessible via the JST-SH 3-pin header (J3). Pinout: GND, TX, RX.
+
+```
+enable_uart=1
+```
+
+## Backup Cycle
+
+Once enabled, the device runs a daily cycle:
+
+1. **Boot** — RTC alarm wakes the CM4
+2. **Wait** — 2 minutes for network to settle
+3. **Sync** — rclone pulls from configured remote to `/mnt/backup`
+4. **Schedule** — sets RTC wake alarm for next day at configured hour
+5. **Poweroff** — safe HDD shutdown, then power off
+
+The cycle is managed by `granit-cycle.timer` (triggers 2 min after boot)
+and `granit-cycle.service` (sync → alarm → poweroff).
+
+### Maintenance Mode
+
+To keep the device running (skip the poweroff cycle):
+
+```bash
+# Local: create flag file
+touch /var/lib/granit-maintenance
+
+# Remote: create .maintenance file on the NAS
+# The sync script checks for this before powering off
+```
+
+## Security
+
+- **SSH**: key-only authentication, root login disabled
+- **Firewall**: UFW, deny all incoming except SSH (port 22)
+- **fail2ban**: 5 failed attempts → 1 hour ban
+- **Automatic updates**: unattended-upgrades for security patches
+- **Kernel hardening**: sysctl settings for network stack protection
+
+## Monitoring
+
+- **prometheus-node-exporter** on port 9100 — system metrics
+- **smartmontools** — disk health (`smartctl -a /dev/sda`)
+- **RPi throttle metrics** — under-voltage detection via `vcgencmd`
+
+For remote monitoring, install a VPN:
+
+```bash
+curl -fsSL https://pkgs.netbird.io/install.sh | sudo sh
+sudo netbird up --setup-key YOUR_KEY
+```
+
+## Services
+
+| Service | Description |
+|---------|-------------|
+| `granit-hdd-power` | SATA power on/off via GPIO5 |
+| `granit-hdd-shutdown` | Safe unmount + spindown before poweroff |
+| `granit-cycle.timer` | Triggers backup cycle 2 min after boot |
+| `granit-cycle.service` | Sync → set RTC alarm → poweroff |
+
+## Configuration
+
+`/etc/granit/sync.conf`:
+
+```bash
+# rclone remote path to pull backups from
+SYNC_REMOTE=":sftp,host=100.x.x.x,user=backup,key_file=/home/granit/.ssh/id_ed25519:/backups"
+
+# Hour to wake up for daily sync (24h format)
+WAKE_HOUR=04
+```
 
 ## First Boot
 
-1. Flash image to CM4 eMMC (via `rpiboot` + `rpi-imager`) or SD card
+1. Flash image to CM4 eMMC via `rpiboot` + `rpi-imager`, or to SD card
 2. Connect Ethernet, power on
 3. SSH in: `ssh granit@granit.local`
 4. Configure backup source: `sudo nano /etc/granit/sync.conf`
@@ -32,74 +147,12 @@ The device runs a custom Raspberry Pi OS Lite image, built with
    sudo systemctl enable --now granit-cycle.timer
    ```
 
-## Backup Cycle
-
-Once enabled, the device runs a daily cycle:
-
-1. **Boot** — RTC alarm wakes the CM4
-2. **Wait** — 2 minutes for network to settle
-3. **Sync** — rclone pulls from configured remote to `/mnt/backup`
-4. **Schedule** — sets RTC wake alarm for next day
-5. **Poweroff** — safe HDD shutdown, then power off
-
-Maintenance mode: `touch /var/lib/granit-maintenance` to skip poweroff and keep the device running.
-
-## Services
-
-| Service | Description |
-|---------|-------------|
-| `granit-hdd-power` | Controls SATA power via GPIO5 (P-FET switches) |
-| `granit-hdd-shutdown` | Safe unmount + spindown before poweroff |
-| `granit-cycle.timer` | Triggers backup cycle 2 min after boot |
-| `granit-cycle.service` | Sync → set RTC alarm → poweroff |
-
-## HDD Power Control
-
-GPIO5 (`SATA_PWR_EN`) controls the P-FET power switches for the SATA 12V and 5V rails.
-The `granit-hdd-power` service enables power at boot and disables it at shutdown.
-
-For manual control:
-
-```bash
-# Power on
-echo 1 > /sys/class/gpio/gpio5/value
-
-# Power off (unmount first!)
-umount /mnt/backup
-hdparm -Y /dev/sda
-echo 0 > /sys/class/gpio/gpio5/value
-```
-
-## Configuration
-
-`/etc/granit/sync.conf`:
-
-```bash
-# rclone remote path to pull backups from
-SYNC_REMOTE=":sftp,host=100.x.x.x,user=backup,key_file=/home/granit/.ssh/id_ed25519:/backups"
-
-# Hour to wake up for daily sync (24h format)
-WAKE_HOUR=04
-```
-
-## Monitoring
-
-The device exports Prometheus metrics via `node-exporter` (port 9100).
-Disk health is monitored with `smartmontools`.
-
-For remote monitoring, install a VPN (e.g. [Netbird](https://netbird.io/)):
-
-```bash
-curl -fsSL https://pkgs.netbird.io/install.sh | sudo sh
-sudo netbird up --setup-key YOUR_KEY
-```
-
 ## Building the Image
 
 ```bash
 cd software
-make build   # clones pi-gen, builds image
+make build   # clones pi-gen, builds image via Docker
 # Output: pi-gen-upstream/deploy/granit-*.img.xz
 ```
 
-Requires Docker or a Debian/Ubuntu host with `debootstrap`.
+Requires Docker and QEMU user-static for ARM emulation on x86 hosts.
