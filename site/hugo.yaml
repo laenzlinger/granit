@@ -14,9 +14,9 @@ params:
   version: "main"
   assemblyModels:
     - name: "Slim (2.5\" HDD)"
-      file: "assembly-slim.3mf"
+      file: "assembly-slim.step"
     - name: "Wide (3.5\" HDD)"
-      file: "assembly-wide.3mf"
+      file: "assembly-wide.step"
   renders: []
   downloads: []
   kicadFiles: []

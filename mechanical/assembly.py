@@ -11,6 +11,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 import io
 import FreeCAD
+import Import
 import Mesh
 import Part
 
@@ -271,6 +272,28 @@ def build_variant(name, cfg):
         ep_offset = (cp_bb.XMin, -cp_bb.ZMin, cp_bb.YMin)
 
     inject_colors_3mf(cfg["output"], labels, ep_3mf, ep_offset)
+
+    # Export STEP (for web viewer — o3dv handles STEP holes better than 3MF)
+    step_path = cfg["output"].replace(".3mf", ".step")
+    if conn_plate and cfg.get("end_plate"):
+        ep_mesh = Mesh.Mesh(cfg["end_plate"])
+        ep_shape = Part.Shape()
+        ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
+        ep_solid = Part.makeSolid(ep_shape)
+        ep_obj = doc.addObject("Part::Feature", "EndPlate_solid")
+        ep_obj.Shape = ep_solid
+        # Place using same offset as 3MF transform
+        cp_bb = conn_plate.BoundBox
+        ep_bb = ep_solid.BoundBox
+        ep_obj.Placement = FreeCAD.Placement(
+            FreeCAD.Vector(cp_bb.XMin - ep_bb.XMin, cp_bb.YMin - ep_bb.YMin, cp_bb.ZMin - ep_bb.ZMin),
+            FreeCAD.Rotation())
+        # Apply the same Z-up flip
+        flip = FreeCAD.Placement(FreeCAD.Vector(), RX(90))
+        ep_obj.Placement = flip.multiply(ep_obj.Placement)
+    doc.recompute()
+    part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
+    Import.export(part_objects, step_path)
 
     sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
     sys.stdout.flush()
