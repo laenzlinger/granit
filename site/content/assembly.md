@@ -15,6 +15,9 @@ sit side-by-side with the SATA connector direct-mating between them. The lid
 | Slim | Hammond 1455L2201 | 2.5" | 103 × 220 × 30.5mm |
 | Wide | Hammond 1455T2601 | 3.5" | 165 × 252 × 51.5mm |
 
+![Slim assembly](/granit/latest/assembly/assembly-slim.png)
+![Wide assembly](/granit/latest/assembly/assembly-wide.png)
+
 ## End Plate
 
 The connector-side end plate has cutouts for:
