@@ -172,4 +172,10 @@ CONF
 
 systemctl enable rpi-throttle-metrics.timer
 
+# node-exporter and throttle metrics disabled by default (pull model optional)
+# Enable if you have a Prometheus scraper that can reach the device:
+#   sudo systemctl enable --now prometheus-node-exporter rpi-throttle-metrics.timer
+systemctl disable prometheus-node-exporter
+systemctl disable rpi-throttle-metrics.timer
+
 EOF
