@@ -14,7 +14,7 @@ assembly: pcb-step ## Build FreeCAD assemblies (slim + wide, colored 3MF)
 
 screenshot: assembly ## Render assembly screenshots
 	for f in assembly-slim.step assembly-wide.step; do \
-		f3d --output $${f%.step}.png --resolution 2880,1620 --background-color=1,1,1 -q --axis=false --grid=false --filename=false --edges=false --up=+Y --camera-azimuth-angle=210 --camera-elevation-angle=30 $$f; \
+		f3d --output $${f%.step}.png --resolution 2880,1620 --background-color=1,1,1 -q --axis=false --grid=false --filename=false --edges=false --up=+Y --camera-azimuth-angle=-60 --camera-elevation-angle=45 $$f; \
 	done
 
 clean:
