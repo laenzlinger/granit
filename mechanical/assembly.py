@@ -3,13 +3,11 @@
 
 Run with: freecadcmd mechanical/assembly.py
 
-Case coordinate system: X=width, Y=height (belly at -Y), Z=length (centered)
+Builds STEP assembly files for both slim and wide enclosure variants.
+End plate with connector cutouts is imported from OpenSCAD STL.
 """
 
 import sys
-import xml.etree.ElementTree as ET
-import zipfile
-import io
 import FreeCAD
 import Import
 import Mesh
@@ -17,18 +15,6 @@ import Part
 
 STANDOFF = 5.0
 GAP = 2.0
-
-# Colors per object label
-COLORS = {
-    "Case":       "#C8C8C8",
-    "Lid":        "#C8C8C8",
-    "EndPlate":   "#C8C8C8",
-    "PCB_Board":  "#2E7D32",
-    "PCB_ICs":    "#1A1A1A",
-    "PCB_Parts":  "#3E2723",
-    "PCB_Conn":   "#787878",
-    "HDD":        "#505050",
-}
 
 VARIANTS = {
     "slim": {
@@ -38,7 +24,6 @@ VARIANTS = {
         "case_belly_y": -32.5,
         "output": "mechanical/assembly-slim.step",
         "end_plate": "mechanical/end-plate-slim.stl",
-        "end_plate_3mf": "mechanical/end-plate-slim.3mf",
     },
     "wide": {
         "case_file": "hardware/3d-models/1455T2601.stp",
@@ -47,7 +32,6 @@ VARIANTS = {
         "case_belly_y": -53.6,
         "output": "mechanical/assembly-wide.step",
         "end_plate": "mechanical/end-plate-wide.stl",
-        "end_plate_3mf": "mechanical/end-plate-wide.3mf",
     },
 }
 
@@ -63,7 +47,6 @@ def place(doc, filepath, label, placement):
 
 
 def rot(*steps):
-    """Chain rotations left-to-right (first applied first)."""
     r = steps[0]
     for s in steps[1:]:
         r = s.multiply(r)
@@ -75,150 +58,61 @@ RY = lambda a: FreeCAD.Rotation(FreeCAD.Vector(0, 1, 0), a)
 RZ = lambda a: FreeCAD.Rotation(FreeCAD.Vector(0, 0, 1), a)
 
 
-def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
-    """Post-process a 3MF file to add per-object colors and merge end plate."""
-    ns = "http://schemas.microsoft.com/3dmanufacturing/core/2015/02"
-    mat_ns = "http://schemas.microsoft.com/3dmanufacturing/material/2015/02"
-
-    with zipfile.ZipFile(path, "r") as zin:
-        model_xml = zin.read("3D/3dmodel.model")
-        other_files = {n: zin.read(n) for n in zin.namelist() if n != "3D/3dmodel.model"}
-
-    ET.register_namespace("", ns)
-    ET.register_namespace("m", mat_ns)
-    root = ET.fromstring(model_xml)
-
-    # Round vertex coordinates to reduce XML size
-    for v in root.iter(f"{{{ns}}}vertex"):
-        for attr in ("x", "y", "z"):
-            v.set(attr, f"{float(v.get(attr)):.2f}")
-
-    resources = root.find(f"{{{ns}}}resources")
-
-    # Merge end plate mesh from OpenSCAD 3MF (preserves hole topology)
-    if end_plate_3mf and ep_offset:
-        with zipfile.ZipFile(end_plate_3mf, "r") as ep_zip:
-            ep_root = ET.fromstring(ep_zip.read("3D/3dmodel.model"))
-        ep_obj = ep_root.find(f".//{{{ns}}}object")
-        if ep_obj is not None:
-            # Apply transform to vertices directly (o3dv ignores item transforms)
-            # Matrix: scad_X→asm_X, scad_Y→asm_Z, scad_Z→asm_-Y
-            tx, ty, tz = ep_offset
-            for v in ep_obj.findall(f".//{{{ns}}}vertex"):
-                sx, sy, sz = float(v.get('x')), float(v.get('y')), float(v.get('z'))
-                v.set("x", f"{sx + tx:.2f}")
-                v.set("y", f"{-sz + ty:.2f}")
-                v.set("z", f"{sy + tz:.2f}")
-            # Axis swap may flip normals — test both windings
-            # for tri in ep_obj.findall(f".//{{{ns}}}triangle"):
-            #     v1, v2 = tri.get("v1"), tri.get("v2")
-            #     tri.set("v1", v2)
-            #     tri.set("v2", v1)
-
-            # Assign new id and add to build section
-            max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
-            new_id = str(max_id + 1)
-            ep_obj.set("id", new_id)
-            resources.append(ep_obj)
-            labels.append("EndPlate")
-            build = root.find(f"{{{ns}}}build")
-            if build is not None:
-                item = ET.SubElement(build, f"{{{ns}}}item")
-                item.set("objectid", new_id)
-                item.set("transform", "1 0 0 0 1 0 0 0 1 0 0 0")
-
-    # Add basematerials
-    basemats = ET.SubElement(resources, f"{{{mat_ns}}}basematerials")
-    basemats.set("id", "100")
-    for i, label in enumerate(labels):
-        color = COLORS.get(label, "#808080")
-        base = ET.SubElement(basemats, f"{{{mat_ns}}}base")
-        base.set("name", label)
-        base.set("displaycolor", color)
-
-    # Assign material to each object
-    objects = resources.findall(f"{{{ns}}}object")
-    for i, obj in enumerate(objects):
-        if i < len(labels):
-            obj.set("pid", "100")
-            obj.set("pindex", str(i))
-
-    buf = io.BytesIO()
-    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zout:
-        zout.writestr("3D/3dmodel.model", ET.tostring(root, xml_declaration=True, encoding="unicode"))
-        for name, data in other_files.items():
-            zout.writestr(name, data)
-
-    with open(path, "wb") as f:
-        f.write(buf.getvalue())
-
-
 def build_variant(name, cfg):
     doc = FreeCAD.newDocument(f"Granit_{name}")
     belly_y = cfg["case_belly_y"]
     hdd_length, hdd_width, hdd_height = cfg["hdd_dims"]
-
     pcb_len = 92.0
 
-    # Read case to get end plate position
+    # Read case and find connector-side end plate
     case_shape = Part.read(cfg["case_file"])
     lid_vol = max(s.Volume for s in case_shape.Solids)
-
     flat_plates = [s for s in case_shape.Solids
                    if s.Volume < lid_vol and s.BoundBox.ZLength < 5
                    and s.BoundBox.XLength > 50 and s.BoundBox.YLength > 20]
-    conn_zmax = max(s.BoundBox.ZMax for s in flat_plates) if flat_plates else None
     conn_plate = max(flat_plates, key=lambda s: s.BoundBox.ZMax) if flat_plates else None
+    conn_zmax = conn_plate.BoundBox.ZMax if conn_plate else 110
 
     # Align PCB connector edge to end plate inside face
-    ep_inside_z = conn_plate.BoundBox.ZMin if conn_plate else 110
-    pcb_z_conn = ep_inside_z
+    pcb_z_conn = conn_plate.BoundBox.ZMin if conn_plate else 110
     pcb_z_sata = pcb_z_conn - pcb_len
     hdd_z_sata = pcb_z_sata - GAP
     hdd_z_far = hdd_z_sata - hdd_length
 
-    # Remove connector-side end plate + frame (replaced by OpenSCAD cutout version)
-    # Keep: belly plate, SATA-side panel, screws, lid channel
+    # Case without connector-side plate+frame (replaced by cutout end plate)
     open_solids = [s for s in case_shape.Solids
                    if s.Volume < lid_vol
-                   and not (conn_zmax
-                           and s.BoundBox.ZMin > conn_zmax - 15
+                   and not (s.BoundBox.ZMin > conn_zmax - 15
                            and s.BoundBox.XLength > 50
                            and s.BoundBox.YLength > 20)]
-    lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = Part.makeCompound(open_solids)
 
-    # End plate cutouts: merged directly from OpenSCAD 3MF in post-processing
-    # (FreeCAD's mesh pipeline loses hole topology)
-
-    # Place lid/frame offset to the side
+    # Lid offset to the side
+    lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
     lid_obj = doc.addObject("Part::Feature", "Lid")
     lid_obj.Shape = Part.makeCompound(lid_solids)
-    lid_bb = case_shape.BoundBox
     lid_obj.Placement = FreeCAD.Placement(
-        FreeCAD.Vector(lid_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
+        FreeCAD.Vector(case_shape.BoundBox.XLength + 20, 0, 0), FreeCAD.Rotation())
 
+    # PCB (split into categories for visual distinction)
     pcb_rot = rot(RZ(90), RX(-90), RY(180))
-    pcb_x = 70.0
-    pcb_y = belly_y + STANDOFF + 3
-    pcb_z = pcb_z_sata - 20
-    pcb_pl = FreeCAD.Placement(FreeCAD.Vector(pcb_x, pcb_y, pcb_z), pcb_rot)
+    pcb_pl = FreeCAD.Placement(
+        FreeCAD.Vector(70.0, belly_y + STANDOFF + 3, pcb_z_sata - 20), pcb_rot)
 
-    # Split PCB solids into categories by bounding box
     pcb_shape = Part.read(PCB_FILE)
     board, ics, parts, conns = [], [], [], []
     for s in pcb_shape.Solids:
         bb = s.BoundBox
         vol = bb.XLength * bb.YLength * bb.ZLength
-        if vol > 10000:            # board substrate (largest)
+        if vol > 10000:
             board.append(s)
         elif bb.ZLength > 8 or bb.XLength > 15 or bb.YLength > 15:
-            conns.append(s)       # connectors (tall or wide)
+            conns.append(s)
         elif vol > 50:
-            ics.append(s)         # ICs (medium)
+            ics.append(s)
         else:
-            parts.append(s)       # passives (small)
+            parts.append(s)
 
     for label, solids in [("PCB_Board", board), ("PCB_ICs", ics),
                           ("PCB_Parts", parts), ("PCB_Conn", conns)]:
@@ -227,36 +121,32 @@ def build_variant(name, cfg):
             obj.Shape = Part.makeCompound(solids)
             obj.Placement = pcb_pl
 
+    # HDD
     hdd_rot = rot(RZ(90), RX(-90), RY(180))
-    hdd_x = -hdd_width / 2
-    hdd_y = belly_y + STANDOFF + 4
-    hdd_z = hdd_z_sata - hdd_length
-    place(doc, cfg["hdd_file"], "HDD",
-          FreeCAD.Placement(FreeCAD.Vector(hdd_x, hdd_y, hdd_z), hdd_rot))
+    place(doc, cfg["hdd_file"], "HDD", FreeCAD.Placement(
+        FreeCAD.Vector(-hdd_width / 2, belly_y + STANDOFF + 4, hdd_z_sata - hdd_length),
+        hdd_rot))
 
-    doc.recompute()
-
-    doc.recompute()
-
-    # Export STEP for web viewer
-    step_path = cfg["output"]
+    # End plate (from OpenSCAD STL → Part solid)
     if conn_plate and cfg.get("end_plate"):
         ep_mesh = Mesh.Mesh(cfg["end_plate"])
         ep_shape = Part.Shape()
         ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
         ep_solid = Part.makeSolid(ep_shape)
-        ep_obj = doc.addObject("Part::Feature", "EndPlate_solid")
+        ep_obj = doc.addObject("Part::Feature", "EndPlate")
         ep_obj.Shape = ep_solid
-        cp_bb = conn_plate.BoundBox
-        ep_bb = ep_solid.BoundBox
+        cp = conn_plate.BoundBox
+        ep = ep_solid.BoundBox
         ep_obj.Placement = FreeCAD.Placement(
-            FreeCAD.Vector(cp_bb.XMin - ep_bb.XMin, cp_bb.YMin - ep_bb.YMin, cp_bb.ZMin - ep_bb.ZMin),
+            FreeCAD.Vector(cp.XMin - ep.XMin, cp.YMin - ep.YMin, cp.ZMin - ep.ZMin),
             FreeCAD.Rotation())
+
     doc.recompute()
     part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
-    Import.export(part_objects, step_path)
+    Import.export(part_objects, cfg["output"])
 
-    sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
+    sys.stdout.write(f"{name}: PCB Z={pcb_z_sata:.1f}..{pcb_z_conn:.1f}, "
+                     f"HDD Z={hdd_z_far:.1f}..{hdd_z_sata:.1f}\n")
     sys.stdout.flush()
     FreeCAD.closeDocument(doc.Name)
 
