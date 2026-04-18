@@ -124,6 +124,7 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
             if build is not None:
                 item = ET.SubElement(build, f"{{{ns}}}item")
                 item.set("objectid", new_id)
+                item.set("transform", "1 0 0 0 1 0 0 0 1 0 0 0")
 
     # Add basematerials
     basemats = ET.SubElement(resources, f"{{{mat_ns}}}basematerials")
