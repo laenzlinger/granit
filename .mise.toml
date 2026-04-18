@@ -4,5 +4,5 @@ go = "1.26"
 node = "latest"
 
 [env]
-REVISION = "0.3.0"
+REVISION = "1.0.0-RC1"
 INVENTREE_URL = "https://inventory.laenzlinger.net"
