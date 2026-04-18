@@ -15,8 +15,10 @@ preflight:
     enabled: true
   check_zone_fills: false
   set_text_variables:
-    name: GIT_HASH
-    command: git rev-parse --short HEAD
+    - name: GIT_HASH
+      command: git rev-parse --short HEAD
+    - name: REVISION
+      command: echo ${REVISION:-dev}
 
 outputs:
   - name: basic_boardview

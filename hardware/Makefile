@@ -2,12 +2,14 @@
 .PHONY: test step pdf render pos clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
+REVISION ?= dev
 PROJECT_NAME = granit
 
 test: ## Run ERC and DRC checks
 	mkdir -p out
 	kicad-cli sch erc \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output out/erc.rpt \
 		--severity-warning \
 		--severity-error \
@@ -16,6 +18,7 @@ test: ## Run ERC and DRC checks
 	kicad-cli pcb drc \
 		--schematic-parity \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output out/drc.rpt \
 		--severity-error \
 		--severity-warning \
@@ -26,6 +29,7 @@ step: ## Export 3D model
 	mkdir -p out
 	kicad-cli pcb export step \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output out/$(PROJECT_NAME).step \
 		--subst-models \
 		--force \
@@ -35,16 +39,19 @@ pdf: ## Export PDF (schematic and PCB)
 	mkdir -p out
 	kicad-cli pcb export pdf \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output out/$(PROJECT_NAME)-pcb-front.pdf \
 		--layers F.Cu \
 		$(PROJECT_NAME).kicad_pcb
 	kicad-cli pcb export pdf \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output out/$(PROJECT_NAME)-pcb-back.pdf \
 		--layers B.Cu \
 		$(PROJECT_NAME).kicad_pcb
 	kicad-cli sch export pdf \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output out/$(PROJECT_NAME)-schematic.pdf \
 		$(PROJECT_NAME).kicad_sch
 
@@ -52,6 +59,7 @@ render: ## Render 3D board image for README
 	mkdir -p ../site/static/images
 	kicad-cli pcb render \
 		--define-var GIT_HASH=$(GIT_HASH) \
+		--define-var REVISION=$(REVISION) \
 		--output ../site/static/images/$(PROJECT_NAME)-3d.png \
 		--width 1600 --height 900 \
 		--side top --quality high \

@@ -7,7 +7,7 @@
 	(title_block
 		(title "Granit — cm-conn2")
 		(date "2026-04-07")
-		(rev "0.1")
+		(rev "${REVISION}")
 		(company "https://github.com/laenzlinger/granit")
 		(comment 1 "License: CERN Open Hardware Licence Version 2 - Permissive")
 		(comment 2 "Git commit hash: ${GIT_HASH}")
