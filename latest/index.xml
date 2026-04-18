@@ -11,17 +11,37 @@ translation hacks. Full SATA III throughput on both CM4 and CM5.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;12V DC input&lt;/strong&gt;: Required for 3.5&amp;quot; HDD support (spindle motor needs 12V).
 AP64501SP-13 accepts 3.8–28V. Both barrel jack and screw terminal footprints
-provided — populate one at assembly time.&lt;/p&gt;</description></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/latest/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/assembly/</guid><description>&lt;p&gt;The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants, held by a
-3D-printed internal frame. PCB and HDD sit side-by-side, SATA connector
-direct-mates between them.&lt;/p&gt;
-&lt;h2 id="cutouts-required"&gt;Cutouts Required&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Barrel jack or screw terminal (12V DC input)&lt;/li&gt;
-&lt;li&gt;RJ45 (Ethernet)&lt;/li&gt;
-&lt;li&gt;USB-C&lt;/li&gt;
-&lt;li&gt;Tactile button (recessed)&lt;/li&gt;
-&lt;li&gt;RGB LED (light pipe or translucent window)&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;The device runs a custom Raspberry Pi OS Lite image, built with
+provided — populate one at assembly time.&lt;/p&gt;</description></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/latest/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/assembly/</guid><description>&lt;p&gt;The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants. PCB and HDD
+sit side-by-side with the SATA connector direct-mating between them. The lid
+(U-channel) is shown offset to reveal the internals.&lt;/p&gt;
+&lt;h2 id="enclosure-variants"&gt;Enclosure Variants&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Variant&lt;/th&gt;
+&lt;th&gt;Case&lt;/th&gt;
+&lt;th&gt;HDD&lt;/th&gt;
+&lt;th&gt;Internal dimensions&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Slim&lt;/td&gt;
+&lt;td&gt;Hammond 1455L2201&lt;/td&gt;
+&lt;td&gt;2.5&amp;quot;&lt;/td&gt;
+&lt;td&gt;103 × 220 × 30.5mm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wide&lt;/td&gt;
+&lt;td&gt;Hammond 1455T2601&lt;/td&gt;
+&lt;td&gt;3.5&amp;quot;&lt;/td&gt;
+&lt;td&gt;165 × 252 × 51.5mm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="end-plate"&gt;End Plate&lt;/h2&gt;
+&lt;p&gt;The connector-side end plate has cutouts for:
+barrel jack (12V DC), RJ45 (Ethernet), USB-C (OTG), tactile button, and RGB LED (light pipe).&lt;/p&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;The device runs a custom Raspberry Pi OS Lite image, built with
 &lt;a href="https://github.com/RPi-Distro/pi-gen"&gt;pi-gen&lt;/a&gt;. Source:
 &lt;a href="https://github.com/laenzlinger/granit/tree/main/software"&gt;&lt;code&gt;software/&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="whats-included"&gt;What&amp;rsquo;s Included&lt;/h2&gt;
