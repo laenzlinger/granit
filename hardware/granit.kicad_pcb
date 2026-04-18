@@ -6,7 +6,7 @@
 		(thickness 1.59)
 		(legacy_teardrops no)
 	)
-	(paper "A4")
+	(paper "A5" portrait)
 	(title_block
 		(title "Granit — Offsite Backup Device")
 		(date "2026-04-07")
@@ -28916,7 +28916,7 @@
 		(pts
 			(xy 112 120) (xy 102.5 70)
 		)
-		(height 9.5)
+		(height 7)
 		(orientation 1)
 		(format
 			(prefix "")
@@ -28936,7 +28936,7 @@
 			(keep_text_aligned yes)
 		)
 		(gr_text "50"
-			(at 120.35 95 90)
+			(at 117.85 95 90)
 			(layer "Dwgs.User")
 			(uuid "35958dbb-ec58-47ba-92dc-045368550050")
 			(effects
@@ -28992,7 +28992,7 @@
 		(pts
 			(xy 112 120) (xy 112.5 34)
 		)
-		(height 21.173141)
+		(height 16)
 		(orientation 1)
 		(format
 			(prefix "")
@@ -29012,7 +29012,7 @@
 			(keep_text_aligned yes)
 		)
 		(gr_text "86"
-			(at 132.023141 77 90)
+			(at 126.85 77 90)
 			(layer "Dwgs.User")
 			(uuid "7b297aee-4ef0-4a04-921c-72402210778b")
 			(effects
@@ -29030,7 +29030,7 @@
 		(pts
 			(xy 112 120) (xy 112 47)
 		)
-		(height 17)
+		(height 13)
 		(orientation 1)
 		(format
 			(prefix "")
@@ -29050,7 +29050,7 @@
 			(keep_text_aligned yes)
 		)
 		(gr_text "73"
-			(at 127.85 83.5 90)
+			(at 123.85 83.5 90)
 			(layer "Dwgs.User")
 			(uuid "8174547f-8d6a-48cc-85b6-cb3699ffa066")
 			(effects
@@ -29068,7 +29068,7 @@
 		(pts
 			(xy 112 20.5) (xy 112 120)
 		)
-		(height 25.5)
+		(height 19.326748)
 		(orientation 1)
 		(format
 			(prefix "")
@@ -29088,7 +29088,7 @@
 			(keep_text_aligned yes)
 		)
 		(gr_text "99.5"
-			(at 136.35 70.25 90)
+			(at 130.176748 70.25 90)
 			(layer "Dwgs.User")
 			(uuid "9a7825bc-4184-42e2-adf7-4fd1ade5b56b")
 			(effects
@@ -29106,7 +29106,7 @@
 		(pts
 			(xy 112 120) (xy 111.804 56)
 		)
-		(height 13.340553)
+		(height 10)
 		(orientation 1)
 		(format
 			(prefix "")
@@ -29126,7 +29126,7 @@
 			(keep_text_aligned yes)
 		)
 		(gr_text "64"
-			(at 124.190553 88 90)
+			(at 120.85 88 90)
 			(layer "Dwgs.User")
 			(uuid "ba61bac9-38c1-4f6c-83a2-e37c148c46f9")
 			(effects
@@ -29144,7 +29144,7 @@
 		(pts
 			(xy 112 120) (xy 112 103)
 		)
-		(height 5.5)
+		(height 4)
 		(orientation 1)
 		(format
 			(prefix "")
@@ -29164,7 +29164,7 @@
 			(keep_text_aligned yes)
 		)
 		(gr_text "17"
-			(at 116.35 111.5 90)
+			(at 114.85 111.5 90)
 			(layer "Dwgs.User")
 			(uuid "c2f83f03-8c7f-4947-9a31-84a9305726de")
 			(effects
@@ -29195,14 +29195,14 @@
 		(style
 			(thickness 0.1)
 			(arrow_length 1.27)
-			(text_position_mode 0)
+			(text_position_mode 2)
 			(arrow_direction outward)
 			(extension_height 0.58642)
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
 		(gr_text "92"
-			(at 66 124.5 0)
+			(at 66.216704 123.376351 0)
 			(layer "Dwgs.User")
 			(uuid "f98c5e9e-6981-4342-b43a-3aefb507a0d4")
 			(effects
