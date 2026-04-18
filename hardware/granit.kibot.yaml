@@ -89,7 +89,7 @@ outputs:
     dir: Diff
     run_by_default: false
     options:
-      old: KIBOT_TAG-1
+      old: v0.3.0
       old_type: git
       cache_dir: /tmp/cache
       add_link_id: true
@@ -101,7 +101,7 @@ outputs:
     dir: Diff
     run_by_default: false
     options:
-      old: KIBOT_TAG-1
+      old: v0.3.0
       old_type: git
       cache_dir: /tmp/cache
       add_link_id: true
