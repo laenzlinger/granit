@@ -21,6 +21,13 @@ SYNC_REMOTE=""
 
 # Hour to wake up for daily sync (24h format)
 WAKE_HOUR=04
+
+# Prometheus remote-write URL for push metrics (optional)
+# Examples:
+#   VictoriaMetrics: "http://192.168.1.x:8428/api/v1/import/prometheus"
+#   Prometheus Pushgateway: "http://192.168.1.x:9091/metrics/job/granit"
+#
+METRICS_URL=""
 CONF
 
 # --- First-boot message ---

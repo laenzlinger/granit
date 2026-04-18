@@ -62,14 +62,29 @@ if [ -z "${SYNC_REMOTE:-}" ]; then
     exit 0
 fi
 
+SYNC_START=$(date +%s)
 rclone copy "$SYNC_REMOTE" /mnt/backup/ \
     --transfers 1 \
     --log-file "$LOG" \
     --log-level INFO \
     --stats 1m \
     --stats-one-line
+SYNC_EXIT=$?
+SYNC_DURATION=$(( $(date +%s) - SYNC_START ))
 
-echo "Sync completed at $(date)" | tee -a "$LOG"
+echo "Sync completed at $(date) (exit=$SYNC_EXIT, duration=${SYNC_DURATION}s)" | tee -a "$LOG"
+
+# Push metrics to Prometheus remote-write endpoint (if configured)
+if [ -n "${METRICS_URL:-}" ]; then
+    DISK_USED=$(df /mnt/backup --output=used | tail -1 | tr -d ' ')
+    DISK_TOTAL=$(df /mnt/backup --output=size | tail -1 | tr -d ' ')
+    curl -s --max-time 5 -d "granit_sync_duration_seconds $SYNC_DURATION
+granit_sync_success $([ $SYNC_EXIT -eq 0 ] && echo 1 || echo 0)
+granit_sync_last_timestamp $(date +%s)
+granit_disk_used_bytes $((DISK_USED * 1024))
+granit_disk_total_bytes $((DISK_TOTAL * 1024))" \
+        "$METRICS_URL" || true
+fi
 
 # Cleanup old logs
 find /var/log/granit -name "sync-*.log" -mtime +7 -delete 2>/dev/null || true
