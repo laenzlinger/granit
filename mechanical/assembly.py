@@ -237,7 +237,7 @@ def build_variant(name, cfg):
     doc.recompute()
 
     # Rotate Y-up → Z-up so case lies flat in all viewers
-    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(90))
+    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(-90))
     for obj in doc.Objects:
         if hasattr(obj, "Placement"):
             obj.Placement = flip.multiply(obj.Placement)
