@@ -39,6 +39,8 @@ sit side-by-side with the SATA connector direct-mating between them. The lid
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;&lt;img alt="Slim assembly" loading="lazy" src="https://laenzlinger.github.io/granit/latest/assembly/assembly-slim.png"&gt;
+&lt;img alt="Wide assembly" loading="lazy" src="https://laenzlinger.github.io/granit/latest/assembly/assembly-wide.png"&gt;&lt;/p&gt;
 &lt;h2 id="end-plate"&gt;End Plate&lt;/h2&gt;
 &lt;p&gt;The connector-side end plate has cutouts for:
 barrel jack (12V DC), RJ45 (Ethernet), USB-C (OTG), tactile button, and RGB LED (light pipe).&lt;/p&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;The device runs a custom Raspberry Pi OS Lite image, built with
