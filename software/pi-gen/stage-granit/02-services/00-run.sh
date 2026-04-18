@@ -108,4 +108,53 @@ systemctl enable granit-hdd-shutdown.service
 # Timer disabled by default — user enables after first-boot setup
 systemctl disable granit-cycle.timer
 
+# --- RPi undervoltage/throttle metrics (for node-exporter) ---
+mkdir -p /var/lib/node_exporter/textfile_collector
+
+cat > /usr/local/bin/rpi-throttle-metrics.sh << 'SCRIPT'
+#!/bin/bash
+hex=$(vcgencmd get_throttled | cut -d= -f2)
+val=$((hex))
+cat <<METRICS
+# HELP rpi_throttled Raspberry Pi throttle status bitfield
+# TYPE rpi_throttled gauge
+rpi_throttled ${val}
+# HELP rpi_under_voltage Under-voltage currently detected (bit 0)
+# TYPE rpi_under_voltage gauge
+rpi_under_voltage $(( (val >> 0) & 1 ))
+# HELP rpi_under_voltage_occurred Under-voltage occurred since boot (bit 16)
+# TYPE rpi_under_voltage_occurred gauge
+rpi_under_voltage_occurred $(( (val >> 16) & 1 ))
+METRICS
+SCRIPT
+chmod +x /usr/local/bin/rpi-throttle-metrics.sh
+
+cat > /etc/systemd/system/rpi-throttle-metrics.service << 'UNIT'
+[Unit]
+Description=Collect RPi throttle metrics
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/usr/local/bin/rpi-throttle-metrics.sh > /var/lib/node_exporter/textfile_collector/rpi_throttle.prom.$$ && mv /var/lib/node_exporter/textfile_collector/rpi_throttle.prom.$$ /var/lib/node_exporter/textfile_collector/rpi_throttle.prom'
+UNIT
+
+cat > /etc/systemd/system/rpi-throttle-metrics.timer << 'UNIT'
+[Unit]
+Description=Collect RPi throttle metrics every 30s
+
+[Timer]
+OnBootSec=10
+OnUnitActiveSec=30
+
+[Install]
+WantedBy=timers.target
+UNIT
+
+# Configure node-exporter textfile collector
+cat > /etc/default/prometheus-node-exporter << 'CONF'
+ARGS="--collector.textfile.directory=/var/lib/node_exporter/textfile_collector"
+CONF
+
+systemctl enable rpi-throttle-metrics.timer
+
 EOF
