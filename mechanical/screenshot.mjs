@@ -11,13 +11,17 @@ const model = resolve(process.argv[2]);
 const output = process.argv[3];
 const modelName = basename(model);
 
+const envBase = "https://cdn.jsdelivr.net/npm/online-3d-viewer@0.18.0/build/website/assets/envmaps/fishermans_bastion/";
+const envMap = ["posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"].map(f => envBase + f).join(",");
+
 const html = `<!DOCTYPE html>
 <html><head>
 <script src="https://cdn.jsdelivr.net/npm/online-3d-viewer@0.18.0/build/engine/o3dv.min.js"></script>
 <style>body{margin:0;overflow:hidden} .online_3d_viewer{width:2880px;height:1620px}</style>
 </head><body>
 <div class="online_3d_viewer" model="http://localhost:8765/${modelName}"
-     edgesettings="on,40,40,40,1" backgroundcolor="255,255,255,255"></div>
+     edgesettings="on,40,40,40,1" backgroundcolor="255,255,255,255"
+     environmentmap="${envMap}"></div>
 <script>
 window.addEventListener('load', function() {
     OV.Init3DViewerElements();
