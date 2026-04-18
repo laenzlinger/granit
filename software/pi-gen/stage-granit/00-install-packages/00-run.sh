@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# Install packages needed for Granit offsite backup appliance
+# Install packages needed for Granit appliance
 
 on_chroot << 'EOF'
 apt-get install -y --no-install-recommends \
@@ -12,5 +12,5 @@ apt-get install -y --no-install-recommends \
     ufw \
     i2c-tools \
     python3-smbus \
-    rtc-tools
+    ansible
 EOF

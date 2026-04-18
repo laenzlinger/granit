@@ -1,50 +1,69 @@
-# Granit OS Image
+# Granit OS Image & Configuration
 
-Custom Raspberry Pi OS Lite image for the Granit offsite backup appliance.
+## Architecture
 
-Built with [pi-gen](https://github.com/RPi-Distro/pi-gen) — adds a `stage-granit` on top of the standard Lite image.
+- **pi-gen**: builds a minimal Raspberry Pi OS Lite image (packages + boot config)
+- **Ansible**: configures all services, security, and monitoring
 
-## What's included
+This split means you can either:
+1. Flash the custom image and it's ready to provision
+2. Flash stock Raspberry Pi OS and run `make provision`
 
-- **Hardware support**: PCIe SATA (ASM1061), DS3231 RTC, GPIO HDD power control
-- **Backup**: rclone-based sync with configurable remote, daily RTC wake cycle
-- **Security**: SSH hardened, fail2ban, UFW firewall, automatic security updates
-- **Monitoring**: prometheus-node-exporter, smartmontools
-
-## Build
+## Quick Start
 
 ```bash
-# Requires: Docker or Debian/Ubuntu with debootstrap
+# Option A: Build custom image
 make build
+# Flash to eMMC via rpiboot + rpi-imager
+
+# Option B: Use stock Raspberry Pi OS Lite
+# Flash via rpi-imager, boot, connect Ethernet
+
+# Then provision via Ansible
+make provision
 ```
-
-Output: `pi-gen-upstream/deploy/granit-*.img.xz`
-
-## First boot
-
-1. Flash image to CM4 eMMC (via `rpiboot` + `rpi-imager`) or SD card
-2. Connect Ethernet, power on
-3. SSH in: `ssh granit@granit.local`
-4. Configure: `sudo nano /etc/granit/sync.conf`
-5. Mount backup disk and enable cycle:
-   ```bash
-   sudo mkfs.ext4 /dev/sda1
-   echo "UUID=$(blkid -s UUID -o value /dev/sda1) /mnt/backup ext4 defaults 0 2" | sudo tee -a /etc/fstab
-   sudo mount /mnt/backup
-   sudo systemctl enable --now granit-cycle.timer
-   ```
-
-## Services
-
-| Service | Description |
-|---------|-------------|
-| `granit-hdd-power` | Controls SATA power via GPIO5 |
-| `granit-hdd-shutdown` | Safe unmount + spindown before poweroff |
-| `granit-cycle.timer` | Daily backup cycle (sync → RTC wake → poweroff) |
-| `granit-sync.sh` | Backup sync script (rclone) |
 
 ## Configuration
 
-`/etc/granit/sync.conf` — set `SYNC_REMOTE` and `WAKE_HOUR`.
+After provisioning, edit `/etc/granit/sync.conf`:
 
-Maintenance mode: `touch /var/lib/granit-maintenance` to skip the poweroff cycle.
+```bash
+SYNC_REMOTE=":sftp,host=100.x.x.x,user=backup,key_file=/home/granit/.ssh/id_ed25519:/backups"
+WAKE_HOUR=04
+METRICS_URL="http://192.168.1.x:8428/api/v1/import/prometheus"
+```
+
+Then enable the backup cycle:
+
+```bash
+sudo systemctl enable --now granit-cycle.timer
+```
+
+## Ansible Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `granit_timezone` | `UTC` | System timezone |
+| `granit_wake_hour` | `04` | RTC wake hour (24h) |
+| `granit_sync_remote` | `""` | rclone remote path |
+| `granit_metrics_url` | `""` | Prometheus remote-write URL |
+
+## Structure
+
+```
+software/
+├── Makefile              # build image or provision
+├── hardware-test.sh      # hardware validation script
+├── pi-gen/               # image build (packages + boot config)
+│   ├── config
+│   └── stage-granit/
+│       ├── 00-install-packages/
+│       └── 01-config/
+└── ansible/              # device configuration
+    ├── playbook.yml
+    ├── inventory/
+    └── roles/granit/
+        ├── tasks/main.yml
+        ├── templates/
+        └── files/
+```

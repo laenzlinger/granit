@@ -1,0 +1,11 @@
+# Granit offsite backup configuration
+# Edit then enable: sudo systemctl enable --now granit-cycle.timer
+
+# rclone remote path to pull backups from
+SYNC_REMOTE="{{ granit_sync_remote | default('') }}"
+
+# Hour to wake up for daily sync (24h format)
+WAKE_HOUR={{ granit_wake_hour | default('04') }}
+
+# Prometheus remote-write URL for push metrics (optional)
+METRICS_URL="{{ granit_metrics_url | default('') }}"

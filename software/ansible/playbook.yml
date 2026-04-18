@@ -1,0 +1,13 @@
+---
+- name: Configure Granit offsite backup appliance
+  hosts: granit
+  become: true
+
+  pre_tasks:
+    - name: Update system packages
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+
+  roles:
+    - granit

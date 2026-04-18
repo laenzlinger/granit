@@ -1,0 +1,12 @@
+
+  ╔═══════════════════════════════════════════╗
+  ║         Granit Offsite Backup             ║
+  ║   https://github.com/laenzlinger/granit  ║
+  ╚═══════════════════════════════════════════╝
+
+  Setup:    sudo nano /etc/granit/sync.conf
+  Enable:   sudo systemctl enable --now granit-cycle.timer
+  Status:   systemctl status granit-cycle.timer
+  Logs:     ls /var/log/granit/
+  Manual:   sudo /usr/local/bin/granit-sync.sh
+

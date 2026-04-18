@@ -1,0 +1,44 @@
+#!/bin/bash
+set -euo pipefail
+LOG="/var/log/granit/sync-$(date +%Y%m%d-%H%M%S).log"
+mkdir -p /var/log/granit
+
+echo "Granit sync started at $(date)" | tee "$LOG"
+
+if ! mountpoint -q /mnt/backup 2>/dev/null; then
+    echo "SKIP: /mnt/backup not mounted" | tee -a "$LOG"
+    exit 0
+fi
+
+[ -f /etc/granit/sync.conf ] && source /etc/granit/sync.conf
+
+if [ -z "${SYNC_REMOTE:-}" ]; then
+    echo "SKIP: SYNC_REMOTE not configured in /etc/granit/sync.conf" | tee -a "$LOG"
+    exit 0
+fi
+
+SYNC_START=$(date +%s)
+rclone copy "$SYNC_REMOTE" /mnt/backup/ \
+    --transfers 1 \
+    --log-file "$LOG" \
+    --log-level INFO \
+    --stats 1m \
+    --stats-one-line
+SYNC_EXIT=$?
+SYNC_DURATION=$(( $(date +%s) - SYNC_START ))
+
+echo "Sync completed at $(date) (exit=$SYNC_EXIT, duration=${SYNC_DURATION}s)" | tee -a "$LOG"
+
+# Push metrics (if configured)
+if [ -n "${METRICS_URL:-}" ]; then
+    DISK_USED=$(df /mnt/backup --output=used | tail -1 | tr -d ' ')
+    DISK_TOTAL=$(df /mnt/backup --output=size | tail -1 | tr -d ' ')
+    curl -s --max-time 5 -d "granit_sync_duration_seconds $SYNC_DURATION
+granit_sync_success $([ $SYNC_EXIT -eq 0 ] && echo 1 || echo 0)
+granit_sync_last_timestamp $(date +%s)
+granit_disk_used_bytes $((DISK_USED * 1024))
+granit_disk_total_bytes $((DISK_TOTAL * 1024))" \
+        "$METRICS_URL" || true
+fi
+
+find /var/log/granit -name "sync-*.log" -mtime +7 -delete 2>/dev/null || true

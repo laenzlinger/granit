@@ -1,0 +1,287 @@
+---
+# Granit offsite backup appliance — Ansible role
+
+- name: Install packages
+  ansible.builtin.apt:
+    name:
+      - smartmontools
+      - hdparm
+      - rclone
+      - prometheus-node-exporter
+      - unattended-upgrades
+      - fail2ban
+      - ufw
+      - i2c-tools
+    state: present
+
+- name: Set hostname
+  ansible.builtin.hostname:
+    name: granit
+
+- name: Set timezone
+  community.general.timezone:
+    name: "{{ granit_timezone | default('UTC') }}"
+
+# --- HDD power control ---
+- name: Deploy HDD power service
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/granit-hdd-power.service
+    mode: '0644'
+    content: |
+      [Unit]
+      Description=Granit HDD power control (GPIO5)
+      DefaultDependencies=no
+      Before=local-fs-pre.target
+
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      ExecStart=/bin/bash -c 'echo 5 > /sys/class/gpio/export 2>/dev/null; echo out > /sys/class/gpio/gpio5/direction; echo 1 > /sys/class/gpio/gpio5/value'
+      ExecStop=/bin/bash -c 'echo 0 > /sys/class/gpio/gpio5/value'
+
+      [Install]
+      WantedBy=sysinit.target
+  notify: Reload systemd
+
+- name: Deploy HDD safe shutdown service
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/granit-hdd-shutdown.service
+    mode: '0644'
+    content: |
+      [Unit]
+      Description=Granit safe HDD shutdown
+      DefaultDependencies=no
+      Before=umount.target
+      After=granit-hdd-power.service
+
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      ExecStop=/bin/bash -c 'umount /mnt/backup 2>/dev/null; hdparm -Y /dev/sda 2>/dev/null; sleep 2; echo 0 > /sys/class/gpio/gpio5/value'
+
+      [Install]
+      WantedBy=multi-user.target
+  notify: Reload systemd
+
+- name: Create backup mount directory
+  ansible.builtin.file:
+    path: /mnt/backup
+    state: directory
+    mode: '0750'
+
+- name: Enable HDD services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+    daemon_reload: true
+  loop:
+    - granit-hdd-power.service
+    - granit-hdd-shutdown.service
+
+# --- Sync script ---
+- name: Deploy sync script
+  ansible.builtin.template:
+    src: granit-sync.sh.j2
+    dest: /usr/local/bin/granit-sync.sh
+    mode: '0755'
+
+- name: Create log directory
+  ansible.builtin.file:
+    path: /var/log/granit
+    state: directory
+    mode: '0755'
+
+# --- Backup cycle ---
+- name: Deploy backup cycle service
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/granit-cycle.service
+    mode: '0644'
+    content: |
+      [Unit]
+      Description=Granit backup cycle (sync → set wake alarm → poweroff)
+      After=network-online.target
+      Wants=network-online.target
+      ConditionPathExists=!/var/lib/granit-maintenance
+
+      [Service]
+      Type=oneshot
+      ExecStart=-/usr/local/bin/granit-sync.sh
+      ExecStart=/bin/bash -c 'WAKE_HOUR={{ granit_wake_hour | default("04") }}; echo 0 > /sys/class/rtc/rtc0/wakealarm; echo $(date -d "tomorrow ${WAKE_HOUR}:00" +%%s) > /sys/class/rtc/rtc0/wakealarm; echo "Next wake: $(date -d @$(cat /sys/class/rtc/rtc0/wakealarm))"'
+      ExecStart=/usr/sbin/poweroff
+  notify: Reload systemd
+
+- name: Deploy backup cycle timer
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/granit-cycle.timer
+    mode: '0644'
+    content: |
+      [Unit]
+      Description=Start Granit backup cycle after boot
+
+      [Timer]
+      OnBootSec=120
+
+      [Install]
+      WantedBy=timers.target
+  notify: Reload systemd
+
+# --- Config ---
+- name: Create config directory
+  ansible.builtin.file:
+    path: /etc/granit
+    state: directory
+    mode: '0755'
+
+- name: Deploy sync config
+  ansible.builtin.template:
+    src: sync.conf.j2
+    dest: /etc/granit/sync.conf
+    mode: '0644'
+    force: no  # don't overwrite existing config
+
+# --- Security ---
+- name: Disable root login
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PermitRootLogin'
+    line: 'PermitRootLogin no'
+  notify: Restart SSH
+
+- name: Configure UFW
+  community.general.ufw:
+    rule: allow
+    port: '22'
+    proto: tcp
+
+- name: Enable UFW
+  community.general.ufw:
+    state: enabled
+    policy: deny
+    direction: incoming
+
+- name: Configure fail2ban
+  ansible.builtin.copy:
+    dest: /etc/fail2ban/jail.local
+    mode: '0644'
+    content: |
+      [DEFAULT]
+      bantime = 1h
+      findtime = 10m
+      maxretry = 5
+
+      [sshd]
+      enabled = true
+  notify: Restart fail2ban
+
+- name: Enable automatic security updates
+  ansible.builtin.copy:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    mode: '0644'
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
+      APT::Periodic::AutocleanInterval "7";
+
+# --- Kernel hardening ---
+- name: Kernel hardening
+  ansible.posix.sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: yes
+  loop:
+    - { name: 'net.ipv4.ip_forward', value: '1' }
+    - { name: 'net.ipv4.conf.all.rp_filter', value: '1' }
+    - { name: 'net.ipv4.conf.all.accept_source_route', value: '0' }
+    - { name: 'net.ipv4.conf.all.send_redirects', value: '0' }
+    - { name: 'net.ipv4.icmp_echo_ignore_broadcasts', value: '1' }
+    - { name: 'net.ipv4.tcp_syncookies', value: '1' }
+
+# --- Watchdog ---
+- name: Configure hardware watchdog
+  ansible.builtin.file:
+    path: /etc/systemd/system.conf.d
+    state: directory
+    mode: '0755'
+
+- name: Set watchdog timeout
+  ansible.builtin.copy:
+    dest: /etc/systemd/system.conf.d/granit-watchdog.conf
+    mode: '0644'
+    content: |
+      [Manager]
+      RuntimeWatchdogSec=15
+      RebootWatchdogSec=10min
+  notify: Reload systemd
+
+# --- Monitoring (pull — optional, disabled by default) ---
+- name: Create textfile collector directory
+  ansible.builtin.file:
+    path: /var/lib/node_exporter/textfile_collector
+    state: directory
+    mode: '0755'
+
+- name: Deploy throttle metrics script
+  ansible.builtin.copy:
+    src: rpi-throttle-metrics.sh
+    dest: /usr/local/bin/rpi-throttle-metrics.sh
+    mode: '0755'
+
+- name: Deploy throttle metrics timer
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/rpi-throttle-metrics.timer
+    mode: '0644'
+    content: |
+      [Unit]
+      Description=Collect RPi throttle metrics every 30s
+
+      [Timer]
+      OnBootSec=10
+      OnUnitActiveSec=30
+
+      [Install]
+      WantedBy=timers.target
+  notify: Reload systemd
+
+- name: Deploy throttle metrics service
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/rpi-throttle-metrics.service
+    mode: '0644'
+    content: |
+      [Unit]
+      Description=Collect RPi throttle metrics
+
+      [Service]
+      Type=oneshot
+      ExecStart=/bin/bash -c '/usr/local/bin/rpi-throttle-metrics.sh > /var/lib/node_exporter/textfile_collector/rpi_throttle.prom.$$ && mv /var/lib/node_exporter/textfile_collector/rpi_throttle.prom.$$ /var/lib/node_exporter/textfile_collector/rpi_throttle.prom'
+  notify: Reload systemd
+
+- name: Configure node-exporter textfile collector
+  ansible.builtin.copy:
+    dest: /etc/default/prometheus-node-exporter
+    mode: '0644'
+    content: |
+      ARGS="--collector.textfile.directory=/var/lib/node_exporter/textfile_collector"
+
+# --- MOTD ---
+- name: Deploy MOTD
+  ansible.builtin.copy:
+    src: motd
+    dest: /etc/motd
+    mode: '0644'
+
+# --- Handlers ---
+handlers:
+  - name: Reload systemd
+    ansible.builtin.systemd:
+      daemon_reload: true
+
+  - name: Restart SSH
+    ansible.builtin.systemd:
+      name: ssh
+      state: restarted
+
+  - name: Restart fail2ban
+    ansible.builtin.systemd:
+      name: fail2ban
+      state: restarted
