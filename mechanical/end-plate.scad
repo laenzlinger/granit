@@ -35,8 +35,8 @@ pcb_surface_y = pcb_bottom_y + pcb_t;
 /* [Connector Cutouts — from KiCad PCB dimensions] */
 // Barrel Jack (J7) — 17mm from connector edge
 bj_pcb_y = 103;
-bj_w     = 11.0;
-bj_h     = 11.0;
+bj_w     = 9.0;  // datasheet: body width
+bj_h     = 9.0;  // datasheet: body height above PCB
 
 // RJ45 Ethernet (J8) — 50mm from connector edge
 rj45_pcb_y = 70;
