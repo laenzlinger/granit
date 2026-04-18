@@ -36,7 +36,7 @@ VARIANTS = {
         "hdd_file": "mechanical/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
         "case_belly_y": -32.5,
-        "output": "mechanical/assembly-slim.3mf",
+        "output": "mechanical/assembly-slim.step",
         "end_plate": "mechanical/end-plate-slim.stl",
         "end_plate_3mf": "mechanical/end-plate-slim.3mf",
     },
@@ -45,7 +45,7 @@ VARIANTS = {
         "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "case_belly_y": -53.6,
-        "output": "mechanical/assembly-wide.3mf",
+        "output": "mechanical/assembly-wide.step",
         "end_plate": "mechanical/end-plate-wide.stl",
         "end_plate_3mf": "mechanical/end-plate-wide.3mf",
     },
@@ -237,44 +237,11 @@ def build_variant(name, cfg):
 
     doc.recompute()
 
-    # Rotate entire assembly: Y-up (FreeCAD/case) → Z-up (viewer convention)
-    # so the bottom plate rests on the ground plane
-    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(90))
-    for obj in doc.Objects:
-        if hasattr(obj, "Placement"):
-            obj.Placement = flip.multiply(obj.Placement)
     doc.recompute()
 
-    # Tessellate and export as 3MF (supports per-object colors)
-    labels = []
-    mesh_objects = []
-    for obj in doc.Objects:
-        if hasattr(obj, "Shape") and obj.Shape.Faces:
-            mesh_obj = doc.addObject("Mesh::Feature", obj.Label + "_mesh")
-            mesh_obj.Mesh = Mesh.Mesh(obj.Shape.tessellate(0.5))
-            mesh_objects.append(mesh_obj)
-            labels.append(obj.Label)
-        elif hasattr(obj, "Mesh") and obj.Mesh.CountFacets > 0 and "_mesh" not in obj.Label:
-            mesh_objects.append(obj)
-            labels.append(obj.Label)
-
-    Mesh.export(mesh_objects, cfg["output"])
-
-    # Compute end plate position (after Z-up flip)
-    # OpenSCAD plate: X=0..plate_w, Y=0..plate_h, Z=0..plate_t
-    # Assembly (after RX90): case X stays, original Y→-Z, original Z→Y
-    # Original plate was at: X=cp.XMin..XMax, Y=cp.YMin..YMax, Z=cp.ZMin..ZMax
-    # After flip: X=cp.XMin..XMax, Y=cp.ZMin..ZMax, Z=-cp.YMax..-cp.YMin
-    ep_3mf = cfg.get("end_plate_3mf")
-    ep_offset = None
-    if conn_plate and ep_3mf:
-        cp_bb = conn_plate.BoundBox
-        ep_offset = (cp_bb.XMin, -cp_bb.ZMin, cp_bb.YMin)
-
-    inject_colors_3mf(cfg["output"], labels, ep_3mf, ep_offset)
-
-    # Export STEP (for web viewer — o3dv handles STEP holes better than 3MF)
-    step_path = cfg["output"].replace(".3mf", ".step")
+    # Tessellate for screenshots (f3d reads STL/3MF but not needed for STEP)
+    # Export STEP for web viewer (o3dv renders holes correctly)
+    step_path = cfg["output"]
     if conn_plate and cfg.get("end_plate"):
         ep_mesh = Mesh.Mesh(cfg["end_plate"])
         ep_shape = Part.Shape()
@@ -282,15 +249,11 @@ def build_variant(name, cfg):
         ep_solid = Part.makeSolid(ep_shape)
         ep_obj = doc.addObject("Part::Feature", "EndPlate_solid")
         ep_obj.Shape = ep_solid
-        # Place using same offset as 3MF transform
         cp_bb = conn_plate.BoundBox
         ep_bb = ep_solid.BoundBox
         ep_obj.Placement = FreeCAD.Placement(
             FreeCAD.Vector(cp_bb.XMin - ep_bb.XMin, cp_bb.YMin - ep_bb.YMin, cp_bb.ZMin - ep_bb.ZMin),
             FreeCAD.Rotation())
-        # Apply the same Z-up flip
-        flip = FreeCAD.Placement(FreeCAD.Vector(), RX(90))
-        ep_obj.Placement = flip.multiply(ep_obj.Placement)
     doc.recompute()
     part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
     Import.export(part_objects, step_path)
