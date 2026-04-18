@@ -108,11 +108,11 @@ def inject_colors_3mf(path, labels, end_plate_3mf=None, ep_offset=None):
                 v.set("x", f"{sx + tx:.2f}")
                 v.set("y", f"{-sz + ty:.2f}")
                 v.set("z", f"{sy + tz:.2f}")
-            # Negative determinant from axis swap → fix winding
-            for tri in ep_obj.findall(f".//{{{ns}}}triangle"):
-                v1, v2 = tri.get("v1"), tri.get("v2")
-                tri.set("v1", v2)
-                tri.set("v2", v1)
+            # Axis swap may flip normals — test both windings
+            # for tri in ep_obj.findall(f".//{{{ns}}}triangle"):
+            #     v1, v2 = tri.get("v1"), tri.get("v2")
+            #     tri.set("v1", v2)
+            #     tri.set("v2", v1)
 
             # Assign new id and add to build section
             max_id = max(int(o.get("id", 0)) for o in resources.findall(f"{{{ns}}}object"))
