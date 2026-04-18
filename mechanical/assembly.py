@@ -159,24 +159,23 @@ def build_variant(name, cfg):
     hdd_length, hdd_width, hdd_height = cfg["hdd_dims"]
 
     pcb_len = 92.0
-    total_z = hdd_length + GAP + pcb_len
-    hdd_z_far = -total_z / 2
-    hdd_z_sata = hdd_z_far + hdd_length
-    pcb_z_sata = hdd_z_sata + GAP
-    pcb_z_conn = pcb_z_sata + pcb_len
 
-    # Place case without lid — skip the U-channel (largest solid) to show internals
-    # Also remove the connector-side flat end plate (replaced by cutout version)
+    # Read case to get end plate position
     case_shape = Part.read(cfg["case_file"])
     lid_vol = max(s.Volume for s in case_shape.Solids)
 
-    # Find the connector-side flat end plate: thin in Z, at max Z position
     flat_plates = [s for s in case_shape.Solids
                    if s.Volume < lid_vol and s.BoundBox.ZLength < 5
                    and s.BoundBox.XLength > 50 and s.BoundBox.YLength > 20]
-    # Find connector-side end plate AND frame: both at max Z position
     conn_zmax = max(s.BoundBox.ZMax for s in flat_plates) if flat_plates else None
     conn_plate = max(flat_plates, key=lambda s: s.BoundBox.ZMax) if flat_plates else None
+
+    # Align PCB connector edge to end plate inside face
+    ep_inside_z = conn_plate.BoundBox.ZMin if conn_plate else 110
+    pcb_z_conn = ep_inside_z
+    pcb_z_sata = pcb_z_conn - pcb_len
+    hdd_z_sata = pcb_z_sata - GAP
+    hdd_z_far = hdd_z_sata - hdd_length
 
     # Remove connector-side end plate + frame (replaced by OpenSCAD cutout version)
     # Keep: belly plate, SATA-side panel, screws, lid channel
@@ -235,6 +234,13 @@ def build_variant(name, cfg):
     place(doc, cfg["hdd_file"], "HDD",
           FreeCAD.Placement(FreeCAD.Vector(hdd_x, hdd_y, hdd_z), hdd_rot))
 
+    doc.recompute()
+
+    # Rotate Y-up → Z-up so case lies flat in all viewers
+    flip = FreeCAD.Placement(FreeCAD.Vector(), RX(90))
+    for obj in doc.Objects:
+        if hasattr(obj, "Placement"):
+            obj.Placement = flip.multiply(obj.Placement)
     doc.recompute()
 
     # Export STEP for web viewer
