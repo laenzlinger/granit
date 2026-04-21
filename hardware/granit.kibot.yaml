@@ -93,10 +93,10 @@ outputs:
       point_of_view:
         - rotate_x: 30
           rotate_z: -20
-          file_id: _top
+          file_id: _1_top
         - rotate_x: 210
           rotate_z: -20
-          file_id: _bottom
+          file_id: _2_bottom
 
   - name: openpnp_position
     comment: Pick and place position file for OpenPnP
