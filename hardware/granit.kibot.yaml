@@ -94,7 +94,7 @@ outputs:
         - rotate_x: 30
           rotate_z: -20
           file_id: _top
-        - rotate_x: -30
+        - rotate_x: 210
           rotate_z: 20
           file_id: _bottom
 
