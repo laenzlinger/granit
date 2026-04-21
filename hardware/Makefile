@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: test step pdf render pos clean
+.PHONY: test step pdf pos clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
 REVISION ?= $(shell git describe --tags --exact-match 2>/dev/null || echo dev)
@@ -54,18 +54,6 @@ pdf: ## Export PDF (schematic and PCB)
 		--define-var REVISION=$(REVISION) \
 		--output out/$(PROJECT_NAME)-schematic.pdf \
 		$(PROJECT_NAME).kicad_sch
-
-render: ## Render 3D board image for README
-	mkdir -p ../site/static/images
-	kicad-cli pcb render \
-		--define-var GIT_HASH=$(GIT_HASH) \
-		--define-var REVISION=$(REVISION) \
-		--output ../site/static/images/$(PROJECT_NAME)-3d.png \
-		--width 1600 --height 900 \
-		--side top --quality high \
-		--rotate -30,0,0 \
-		--background opaque \
-		$(PROJECT_NAME).kicad_pcb
 
 pos: ## Export position file for OpenPnP
 	mkdir -p out
