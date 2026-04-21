@@ -37,4 +37,4 @@ only during backup windows, and everything is managed remotely over SSH.
 
 ## Architecture
 
-![Architecture Diagram](https://raw.githubusercontent.com/laenzlinger/granit/main/images/architecture.drawio.svg)
+![Architecture Diagram](images/architecture.drawio.svg)
