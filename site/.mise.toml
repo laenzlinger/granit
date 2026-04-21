@@ -1,4 +1,4 @@
+# managed by mise
 [tools]
 hugo = "0.160.1"
 go = "1.26"
-# managed by mise
