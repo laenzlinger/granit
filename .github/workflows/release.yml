@@ -13,19 +13,12 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     container:
-      image: kicad/kicad:10.0
+      image: ghcr.io/inti-cmnb/kicad10_auto_full:dev
       options: --user root
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: "0"
-
-      - name: Install KiBot dev
-        run: |
-          apt-get update -qq
-          apt-get install -y -qq python3-pip python3-lxml git rsync zip > /dev/null 2>&1
-          pip install --break-system-packages --no-compile git+https://github.com/INTI-CMNB/KiBot.git@dev
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Generate outputs
         working-directory: hardware

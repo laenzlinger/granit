@@ -27,7 +27,6 @@ jobs:
       pcb: "granit.kicad_pcb"
       kicad_dir: "hardware"
       kibot_config: "granit.kibot.yaml"
-      container_image: "kicad/kicad:10.0"
-      kibot_install: "pip install --break-system-packages --no-compile git+https://github.com/INTI-CMNB/KiBot.git@dev"
+      container_image: "ghcr.io/inti-cmnb/kicad10_auto_full:dev"
       assembly_dir: "mechanical"
       site_base_url: "https://laenzlinger.github.io/granit"
