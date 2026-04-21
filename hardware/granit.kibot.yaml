@@ -66,31 +66,21 @@ outputs:
         - layers: [B.Cu, B.SilkS, Edge.Cuts]
           sheet: Back copper
 
-  - name: blender_render_top
-    comment: 3D render from Blender (top view)
+  - name: basic_blender_export
+    comment: 3D view from top/30 deg/bottom (Blender)
     type: blender_export
     dir: 3D
     options:
-      render_options:
-        transparent_background: true
-        width: 1280
-        height: 720
+      pcb3d: _PCB2Blender_2_1
+      outputs:
+        - type: render
+        - type: blender
       point_of_view:
-        rotate_x: 30
-        rotate_z: -20
-
-  - name: blender_render_bottom
-    comment: 3D render from Blender (bottom view)
-    type: blender_export
-    dir: 3D
-    options:
-      render_options:
-        transparent_background: true
-        width: 1280
-        height: 720
-      point_of_view:
-        rotate_x: -30
-        rotate_z: 20
+        - view: top
+        - rotate_x: 30
+          rotate_z: -20
+          file_id: _30deg
+        - view: bottom
 
   - name: openpnp_position
     comment: Pick and place position file for OpenPnP
