@@ -8,7 +8,7 @@ Custom carrier board for the Raspberry Pi CM4 Compute Module, designed as a mini
 
 ## Overview
 
-![PCB 3D Render](https://laenzlinger.github.io/granit/latest/images/granit-3d.png)
+![PCB 3D Render](https://laenzlinger.github.io/granit/latest/3D/granit-3D_blender_30deg.png)
 
 A compact, headless device that connects to a remote network and receives encrypted backups
 onto an attached hard disk. Designed to be left at a trusted offsite location and managed remotely.
