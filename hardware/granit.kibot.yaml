@@ -71,30 +71,26 @@ outputs:
     type: blender_export
     dir: 3D
     options:
-      type: render
-      output: '%f-blender-top.png'
-      point_of_view:
-        rotate_x: 30
-        rotate_z: -20
       render_options:
         transparent_background: true
         width: 1280
         height: 720
+      point_of_view:
+        rotate_x: 30
+        rotate_z: -20
 
   - name: blender_render_bottom
     comment: 3D render from Blender (bottom view)
     type: blender_export
     dir: 3D
     options:
-      type: render
-      output: '%f-blender-bottom.png'
-      point_of_view:
-        rotate_x: -30
-        rotate_z: 20
       render_options:
         transparent_background: true
         width: 1280
         height: 720
+      point_of_view:
+        rotate_x: -30
+        rotate_z: 20
 
   - name: openpnp_position
     comment: Pick and place position file for OpenPnP
