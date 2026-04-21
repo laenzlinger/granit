@@ -6,6 +6,7 @@ global:
 
 import:
   - file: JLCPCB
+  - file: PCB2Blender_2_1
   - file: PCBWay
 
 preflight:
