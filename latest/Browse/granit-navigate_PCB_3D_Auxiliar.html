@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>/PCB/3D/Auxiliar</title>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="styles.css">
+ <link rel="icon" href="favicon.ico">
+ <script src="markdown-it.min.js"></script>
+</head>
+<body>
+<div id="theSideNav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ <ul>
+  <li><a href="granit-navigate_Schematic.html">Schematic</a></li>
+  <ul>
+   <li><a href="granit-navigate_Schematic_docs.html">docs</a></li>
+   <ul>
+    <li><a href="granit-navigate_Schematic_docs.html#erc">erc</a></li>
+    <li><a href="granit-navigate_Schematic_docs.html#basic_pdf_sch">basic_pdf_sch</a></li>
+    <li><a href="granit-navigate_Schematic_docs.html#diff_sch">diff_sch</a></li>
+   </ul>
+   <li><a href="granit-navigate_Schematic_BoM.html">BoM</a></li>
+   <ul>
+    <li><a href="granit-navigate_Schematic_BoM.html#_JLCPCB_bom">_JLCPCB_bom</a></li>
+    <li><a href="granit-navigate_Schematic_BoM.html#generic_bom_html">generic_bom_html</a></li>
+    <li><a href="granit-navigate_Schematic_BoM.html#basic_ibom">basic_ibom</a></li>
+   </ul>
+  </ul>
+  <li><a href="granit-navigate_PCB.html">PCB</a></li>
+  <ul>
+   <li><a href="granit-navigate_PCB_docs.html">docs</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_docs.html#drc">drc</a></li>
+    <li><a href="granit-navigate_PCB_docs.html#_PCB2Blender_layers_2_1">_PCB2Blender_layers_2_1</a></li>
+    <li><a href="granit-navigate_PCB_docs.html#_PCB2Blender_2_1">_PCB2Blender_2_1</a></li>
+    <li><a href="granit-navigate_PCB_docs.html#basic_pcb_print">basic_pcb_print</a></li>
+    <li><a href="granit-navigate_PCB_docs.html#diff_pcb">diff_pcb</a></li>
+   </ul>
+   <li><a href="granit-navigate_PCB_fabrication.html">fabrication</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_fabrication_gerber.html">gerber</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_JLCPCB_gerbers">_JLCPCB_gerbers</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_JLCPCB_compress">_JLCPCB_compress</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_PCBWay_gerbers">_PCBWay_gerbers</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_gerber.html#_PCBWay_compress">_PCBWay_compress</a></li>
+    </ul>
+    <li><a href="granit-navigate_PCB_fabrication_drill.html">drill</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_JLCPCB_drill">_JLCPCB_drill</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_JLCPCB_compress">_JLCPCB_compress</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_PCBWay_drill">_PCBWay_drill</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_drill.html#_PCBWay_compress">_PCBWay_compress</a></li>
+    </ul>
+    <li><a href="granit-navigate_PCB_fabrication_assembly.html">assembly</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#_JLCPCB_position">_JLCPCB_position</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#basic_boardview">basic_boardview</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#basic_ibom">basic_ibom</a></li>
+     <li><a href="granit-navigate_PCB_fabrication_assembly.html#openpnp_position">openpnp_position</a></li>
+    </ul>
+   </ul>
+   <li><a href="granit-navigate_PCB_3D.html">3D</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_3D_Auxiliar.html">Auxiliar</a></li>
+    <ul>
+     <li><a href="granit-navigate_PCB_3D_Auxiliar.html#_PCB2Blender_tools_2_1">_PCB2Blender_tools_2_1</a></li>
+     <li><a href="granit-navigate_PCB_3D_Auxiliar.html#_PCB2Blender_2_1">_PCB2Blender_2_1</a></li>
+    </ul>
+    <li><a href="granit-navigate_PCB_3D.html#_PCB2Blender_vrml_2_1">_PCB2Blender_vrml_2_1</a></li>
+    <li><a href="granit-navigate_PCB_3D.html#_PCB2Blender_2_1">_PCB2Blender_2_1</a></li>
+    <li><a href="granit-navigate_PCB_3D.html#basic_blender_export">basic_blender_export</a></li>
+   </ul>
+   <li><a href="granit-navigate_PCB_repair.html">repair</a></li>
+   <ul>
+    <li><a href="granit-navigate_PCB_repair.html#basic_boardview">basic_boardview</a></li>
+   </ul>
+  </ul>
+ </ul>
+</div>
+<div id="theTopMenu" class="topmenu">
+ <table style="width:100%">
+  <tr>
+   <td valign="top" align="left">
+    <span id="bmenu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+   </td>
+   <td>
+     <a href="https://github.com/INTI-CMNB/KiBot/">
+     <img src="images/logo.png" alt="Logo" width="370" height="200">
+     </a>
+   </td>
+   <td>
+     <a href="https://github.com/laenzlinger/granit">
+     <span style="font-size:30px;">Granit — Offsite Backup Device</span>
+     </a>
+   </td>
+  </tr>
+ </table>
+</div>
+<div id="main">
+<table id="_PCB2Blender_tools_2_1" class="output-table">
+<thead><tr><th colspan="12"> PCB2Blender tools 2 1: Pads information and board bounds for PCB3D 2.1</th></tr></thead>
+<tbody><tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/layers/bounds"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="bounds" width="64" height="64"></td></tr><tr><td class="td-small">bounds</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C23_0_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C23_0_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C23_0_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C23_0_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C23_0_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C23_0_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R6_1_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R6_1_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R6_1_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R6_1_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R6_1_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R6_1_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/NCP1117_3_3_SOT223_U6_2_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="NCP1117_3_3_SOT223_U6_2_0" width="64" height="64"></td></tr><tr><td class="td-small">NCP1117_3_3_SOT223_U6_2_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/NCP1117_3_3_SOT223_U6_2_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="NCP1117_3_3_SOT223_U6_2_1" width="64" height="64"></td></tr><tr><td class="td-small">NCP1117_3_3_SOT223_U6_2_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/NCP1117_3_3_SOT223_U6_2_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="NCP1117_3_3_SOT223_U6_2_2" width="64" height="64"></td></tr><tr><td class="td-small">NCP1117_3_3_SOT223_U6_2_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/NCP1117_3_3_SOT223_U6_2_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="NCP1117_3_3_SOT223_U6_2_3" width="64" height="64"></td></tr><tr><td class="td-small">NCP1117_3_3_SOT223_U6_2_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_0" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_1" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_2" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_2</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_3" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_4" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_5" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_6" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_7" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H1_3_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H1_3_8" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H1_3_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C41_4_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C41_4_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C41_4_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C41_4_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C41_4_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C41_4_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C35_5_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C35_5_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C35_5_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C35_5_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C35_5_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C35_5_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C8_6_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C8_6_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C8_6_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C8_6_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C8_6_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C8_6_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R10_7_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R10_7_0" width="64" height="64"></td></tr><tr><td class="td-small">330R_R10_7_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R10_7_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R10_7_1" width="64" height="64"></td></tr><tr><td class="td-small">330R_R10_7_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_0" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_1" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_2" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_3" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_4" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_5" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_6" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/DS3231MZ_U5_8_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="DS3231MZ_U5_8_7" width="64" height="64"></td></tr><tr><td class="td-small">DS3231MZ_U5_8_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C4_9_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C4_9_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C4_9_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C4_9_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C4_9_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C4_9_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C29_10_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C29_10_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C29_10_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C29_10_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C29_10_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C29_10_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C19_11_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C19_11_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C19_11_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C19_11_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C19_11_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C19_11_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/1_2n_C27_12_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="1_2n_C27_12_0" width="64" height="64"></td></tr><tr><td class="td-small">1_2n_C27_12_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/1_2n_C27_12_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="1_2n_C27_12_1" width="64" height="64"></td></tr><tr><td class="td-small">1_2n_C27_12_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C40_13_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C40_13_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C40_13_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C40_13_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C40_13_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C40_13_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R20_14_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R20_14_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R20_14_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R20_14_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R20_14_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R20_14_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C44_15_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C44_15_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C44_15_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C44_15_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C44_15_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C44_15_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10R_R13_16_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10R_R13_16_0" width="64" height="64"></td></tr><tr><td class="td-small">10R_R13_16_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10R_R13_16_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10R_R13_16_1" width="64" height="64"></td></tr><tr><td class="td-small">10R_R13_16_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C12_17_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C12_17_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C12_17_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C12_17_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C12_17_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C12_17_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_0" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_1" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_2" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_3" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_4" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_5" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_6" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_7" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_7</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_8" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_9"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_9" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_9</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_10"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_10" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_10</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_11"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_11" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_11</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_12"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_12" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_12</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_13"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_13" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_13</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_14"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_14" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_14</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_15"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_15" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_15</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_16"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_16" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_16</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_17"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_17" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_17</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_18"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_18" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_18</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_19"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_19" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_19</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_20"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_20" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_20</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_21"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_21" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_21</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_22"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_22" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_22</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_23"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_23" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_23</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_24"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_24" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_24</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_22pin_J4_18_25"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_22pin_J4_18_25" width="64" height="64"></td></tr><tr><td class="td-small">SATA_22pin_J4_18_25</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_12V_PWR_JP6_19_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_12V_PWR_JP6_19_0" width="64" height="64"></td></tr><tr><td class="td-small">SATA_12V_PWR_JP6_19_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_12V_PWR_JP6_19_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_12V_PWR_JP6_19_1" width="64" height="64"></td></tr><tr><td class="td-small">SATA_12V_PWR_JP6_19_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_12V_PWR_JP6_19_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_12V_PWR_JP6_19_2" width="64" height="64"></td></tr><tr><td class="td-small">SATA_12V_PWR_JP6_19_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10R_R27_20_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10R_R27_20_0" width="64" height="64"></td></tr><tr><td class="td-small">10R_R27_20_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10R_R27_20_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10R_R27_20_1" width="64" height="64"></td></tr><tr><td class="td-small">10R_R27_20_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R11_21_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R11_21_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R11_21_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R11_21_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R11_21_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R11_21_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_0" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_1" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_2" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_3" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_4" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_5" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_6" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_7" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_8" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_9"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_9" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_9</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_10"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_10" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_10</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_11"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_11" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_11</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_12"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_12" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_12</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_13"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_13" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_13</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_14"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_14" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_14</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_15"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_15" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_15</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_16"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_16" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_16</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_17"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_17" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_17</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_18"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_18" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_18</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_19"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_19" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_19</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_20"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_20" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_20</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_21"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_21" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_21</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/AP64501SP_13_U7_22_22"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="AP64501SP_13_U7_22_22" width="64" height="64"></td></tr><tr><td class="td-small">AP64501SP_13_U7_22_22</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q1_24_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q1_24_0" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q1_24_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q1_24_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q1_24_1" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q1_24_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q1_24_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q1_24_2" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q1_24_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C21_25_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C21_25_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C21_25_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C21_25_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C21_25_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C21_25_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C39_26_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C39_26_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C39_26_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C39_26_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C39_26_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C39_26_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/20K_R25_27_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="20K_R25_27_0" width="64" height="64"></td></tr><tr><td class="td-small">20K_R25_27_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/20K_R25_27_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="20K_R25_27_1" width="64" height="64"></td></tr><tr><td class="td-small">20K_R25_27_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100uF_25V_C26_28_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100uF_25V_C26_28_0" width="64" height="64"></td></tr><tr><td class="td-small">100uF_25V_C26_28_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100uF_25V_C26_28_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100uF_25V_C26_28_1" width="64" height="64"></td></tr><tr><td class="td-small">100uF_25V_C26_28_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C45_29_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C45_29_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C45_29_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C45_29_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C45_29_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C45_29_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R17_30_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R17_30_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R17_30_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R17_30_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R17_30_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R17_30_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C16_31_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C16_31_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C16_31_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C16_31_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C16_31_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C16_31_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C30_32_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C30_32_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C30_32_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C30_32_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C30_32_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C30_32_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C6_33_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C6_33_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C6_33_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C6_33_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C6_33_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C6_33_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/5V_bridge_JP4_34_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="5V_bridge_JP4_34_0" width="64" height="64"></td></tr><tr><td class="td-small">5V_bridge_JP4_34_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/5V_bridge_JP4_34_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="5V_bridge_JP4_34_1" width="64" height="64"></td></tr><tr><td class="td-small">5V_bridge_JP4_34_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12K_R4_35_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12K_R4_35_0" width="64" height="64"></td></tr><tr><td class="td-small">12K_R4_35_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12K_R4_35_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12K_R4_35_1" width="64" height="64"></td></tr><tr><td class="td-small">12K_R4_35_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/18p_C17_36_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="18p_C17_36_0" width="64" height="64"></td></tr><tr><td class="td-small">18p_C17_36_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/18p_C17_36_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="18p_C17_36_1" width="64" height="64"></td></tr><tr><td class="td-small">18p_C17_36_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SRN6045TA_3R3Y_L1_37_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SRN6045TA_3R3Y_L1_37_0" width="64" height="64"></td></tr><tr><td class="td-small">SRN6045TA_3R3Y_L1_37_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SRN6045TA_3R3Y_L1_37_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SRN6045TA_3R3Y_L1_37_1" width="64" height="64"></td></tr><tr><td class="td-small">SRN6045TA_3R3Y_L1_37_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/WS2812B_5mm_D1_38_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="WS2812B_5mm_D1_38_0" width="64" height="64"></td></tr><tr><td class="td-small">WS2812B_5mm_D1_38_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/WS2812B_5mm_D1_38_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="WS2812B_5mm_D1_38_1" width="64" height="64"></td></tr><tr><td class="td-small">WS2812B_5mm_D1_38_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/WS2812B_5mm_D1_38_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="WS2812B_5mm_D1_38_2" width="64" height="64"></td></tr><tr><td class="td-small">WS2812B_5mm_D1_38_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/WS2812B_5mm_D1_38_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="WS2812B_5mm_D1_38_3" width="64" height="64"></td></tr><tr><td class="td-small">WS2812B_5mm_D1_38_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R12_39_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R12_39_0" width="64" height="64"></td></tr><tr><td class="td-small">330R_R12_39_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R12_39_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R12_39_1" width="64" height="64"></td></tr><tr><td class="td-small">330R_R12_39_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C22_40_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C22_40_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C22_40_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C22_40_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C22_40_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C22_40_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C18_41_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C18_41_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C18_41_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C18_41_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C18_41_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C18_41_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_0" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_1" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_2" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_3" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_4" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_5" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_6" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_7" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/PCM12SMTR_J2_42_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="PCM12SMTR_J2_42_8" width="64" height="64"></td></tr><tr><td class="td-small">PCM12SMTR_J2_42_8</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C28_43_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C28_43_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C28_43_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C28_43_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C28_43_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C28_43_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CR2032_BT1_44_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CR2032_BT1_44_0" width="64" height="64"></td></tr><tr><td class="td-small">CR2032_BT1_44_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CR2032_BT1_44_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CR2032_BT1_44_1" width="64" height="64"></td></tr><tr><td class="td-small">CR2032_BT1_44_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/TestPoint_TP3_45_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="TestPoint_TP3_45_0" width="64" height="64"></td></tr><tr><td class="td-small">TestPoint_TP3_45_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q5_46_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q5_46_0" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q5_46_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q5_46_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q5_46_1" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q5_46_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q5_46_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q5_46_2" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q5_46_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/4K7_R14_47_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="4K7_R14_47_0" width="64" height="64"></td></tr><tr><td class="td-small">4K7_R14_47_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/4K7_R14_47_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="4K7_R14_47_1" width="64" height="64"></td></tr><tr><td class="td-small">4K7_R14_47_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_0" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_1" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_2" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_3" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_4" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_5" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SW_Push_SW1_48_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SW_Push_SW1_48_6" width="64" height="64"></td></tr><tr><td class="td-small">SW_Push_SW1_48_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/750R_R9_49_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="750R_R9_49_0" width="64" height="64"></td></tr><tr><td class="td-small">750R_R9_49_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/750R_R9_49_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="750R_R9_49_1" width="64" height="64"></td></tr><tr><td class="td-small">750R_R9_49_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C1_50_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C1_50_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C1_50_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C1_50_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C1_50_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C1_50_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/750R_R5_51_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="750R_R5_51_0" width="64" height="64"></td></tr><tr><td class="td-small">750R_R5_51_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/750R_R5_51_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="750R_R5_51_1" width="64" height="64"></td></tr><tr><td class="td-small">750R_R5_51_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100K_R22_52_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100K_R22_52_0" width="64" height="64"></td></tr><tr><td class="td-small">100K_R22_52_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100K_R22_52_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100K_R22_52_1" width="64" height="64"></td></tr><tr><td class="td-small">100K_R22_52_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C46_53_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C46_53_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C46_53_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C46_53_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C46_53_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C46_53_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/Fiducial_FID3_54_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="Fiducial_FID3_54_0" width="64" height="64"></td></tr><tr><td class="td-small">Fiducial_FID3_54_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/3A_F1_55_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="3A_F1_55_0" width="64" height="64"></td></tr><tr><td class="td-small">3A_F1_55_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/3A_F1_55_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="3A_F1_55_1" width="64" height="64"></td></tr><tr><td class="td-small">3A_F1_55_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R16_56_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R16_56_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R16_56_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R16_56_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R16_56_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R16_56_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/18p_C20_57_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="18p_C20_57_0" width="64" height="64"></td></tr><tr><td class="td-small">18p_C20_57_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/18p_C20_57_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="18p_C20_57_1" width="64" height="64"></td></tr><tr><td class="td-small">18p_C20_57_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/4K7_R15_58_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="4K7_R15_58_0" width="64" height="64"></td></tr><tr><td class="td-small">4K7_R15_58_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/4K7_R15_58_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="4K7_R15_58_1" width="64" height="64"></td></tr><tr><td class="td-small">4K7_R15_58_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/Fiducial_FID4_59_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="Fiducial_FID4_59_0" width="64" height="64"></td></tr><tr><td class="td-small">Fiducial_FID4_59_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q2_60_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q2_60_0" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q2_60_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q2_60_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q2_60_1" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q2_60_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q2_60_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q2_60_2" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q2_60_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C14_61_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C14_61_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C14_61_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C14_61_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C14_61_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C14_61_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q4_62_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q4_62_0" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q4_62_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q4_62_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q4_62_1" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q4_62_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2N7002_Q4_62_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2N7002_Q4_62_2" width="64" height="64"></td></tr><tr><td class="td-small">2N7002_Q4_62_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/BM03B_SRSS_TB_J3_63_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="BM03B_SRSS_TB_J3_63_0" width="64" height="64"></td></tr><tr><td class="td-small">BM03B_SRSS_TB_J3_63_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/BM03B_SRSS_TB_J3_63_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="BM03B_SRSS_TB_J3_63_1" width="64" height="64"></td></tr><tr><td class="td-small">BM03B_SRSS_TB_J3_63_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/BM03B_SRSS_TB_J3_63_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="BM03B_SRSS_TB_J3_63_2" width="64" height="64"></td></tr><tr><td class="td-small">BM03B_SRSS_TB_J3_63_2</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/BM03B_SRSS_TB_J3_63_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="BM03B_SRSS_TB_J3_63_3" width="64" height="64"></td></tr><tr><td class="td-small">BM03B_SRSS_TB_J3_63_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/BM03B_SRSS_TB_J3_63_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="BM03B_SRSS_TB_J3_63_4" width="64" height="64"></td></tr><tr><td class="td-small">BM03B_SRSS_TB_J3_63_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/LED_R_D2_64_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="LED_R_D2_64_0" width="64" height="64"></td></tr><tr><td class="td-small">LED_R_D2_64_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/LED_R_D2_64_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="LED_R_D2_64_1" width="64" height="64"></td></tr><tr><td class="td-small">LED_R_D2_64_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C15_65_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C15_65_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C15_65_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C15_65_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C15_65_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C15_65_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C13_66_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C13_66_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C13_66_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C13_66_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C13_66_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C13_66_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C25_67_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C25_67_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C25_67_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C25_67_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C25_67_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C25_67_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q3_68_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q3_68_0" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q3_68_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q3_68_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q3_68_1" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q3_68_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q3_68_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q3_68_2" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q3_68_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C32_69_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C32_69_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C32_69_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C32_69_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C32_69_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C32_69_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_OTG_JP2_70_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_OTG_JP2_70_0" width="64" height="64"></td></tr><tr><td class="td-small">USB_OTG_JP2_70_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_OTG_JP2_70_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_OTG_JP2_70_1" width="64" height="64"></td></tr><tr><td class="td-small">USB_OTG_JP2_70_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G125_U2_71_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G125_U2_71_0" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G125_U2_71_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G125_U2_71_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G125_U2_71_1" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G125_U2_71_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G125_U2_71_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G125_U2_71_2" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G125_U2_71_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G125_U2_71_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G125_U2_71_3" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G125_U2_71_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G125_U2_71_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G125_U2_71_4" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G125_U2_71_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/TestPoint_TP1_72_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="TestPoint_TP1_72_0" width="64" height="64"></td></tr><tr><td class="td-small">TestPoint_TP1_72_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_0" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_1" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_2" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_3" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_4" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_5" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_6" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_7" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_8" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_9"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_9" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_9</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_10"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_10" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_10</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_11"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_11" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_11</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_12"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_12" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_12</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_13"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_13" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_13</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_14"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_14" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_14</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_15"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_15" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_15</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_16"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_16" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_16</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_17"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_17" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_17</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_18"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_18" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_18</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_19"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_19" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_19</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_20"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_20" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_20</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USB_C_Receptacle_USB2_0_14P_J1_73_21"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USB_C_Receptacle_USB2_0_14P_J1_73_21" width="64" height="64"></td></tr><tr><td class="td-small">USB_C_Receptacle_USB2_0_14P_J1_73_21</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/Fiducial_FID2_74_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="Fiducial_FID2_74_0" width="64" height="64"></td></tr><tr><td class="td-small">Fiducial_FID2_74_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C5_75_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C5_75_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C5_75_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C5_75_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C5_75_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C5_75_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_Barrel_J7_76_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_Barrel_J7_76_0" width="64" height="64"></td></tr><tr><td class="td-small">12V_Barrel_J7_76_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_Barrel_J7_76_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_Barrel_J7_76_1" width="64" height="64"></td></tr><tr><td class="td-small">12V_Barrel_J7_76_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_Barrel_J7_76_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_Barrel_J7_76_2" width="64" height="64"></td></tr><tr><td class="td-small">12V_Barrel_J7_76_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C2_77_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C2_77_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C2_77_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C2_77_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C2_77_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C2_77_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100K_R21_78_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100K_R21_78_0" width="64" height="64"></td></tr><tr><td class="td-small">100K_R21_78_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100K_R21_78_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100K_R21_78_1" width="64" height="64"></td></tr><tr><td class="td-small">100K_R21_78_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C33_79_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C33_79_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C33_79_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C33_79_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C33_79_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C33_79_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/Fiducial_FID1_80_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="Fiducial_FID1_80_0" width="64" height="64"></td></tr><tr><td class="td-small">Fiducial_FID1_80_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100u_C38_81_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100u_C38_81_0" width="64" height="64"></td></tr><tr><td class="td-small">100u_C38_81_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100u_C38_81_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100u_C38_81_1" width="64" height="64"></td></tr><tr><td class="td-small">100u_C38_81_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/5K1_R2_82_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="5K1_R2_82_0" width="64" height="64"></td></tr><tr><td class="td-small">5K1_R2_82_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/5K1_R2_82_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="5K1_R2_82_1" width="64" height="64"></td></tr><tr><td class="td-small">5K1_R2_82_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/TestPoint_TP2_83_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="TestPoint_TP2_83_0" width="64" height="64"></td></tr><tr><td class="td-small">TestPoint_TP2_83_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2K2_R24_84_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2K2_R24_84_0" width="64" height="64"></td></tr><tr><td class="td-small">2K2_R24_84_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/2K2_R24_84_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="2K2_R24_84_1" width="64" height="64"></td></tr><tr><td class="td-small">2K2_R24_84_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USBLC6_2SC6_U1_85_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USBLC6_2SC6_U1_85_0" width="64" height="64"></td></tr><tr><td class="td-small">USBLC6_2SC6_U1_85_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USBLC6_2SC6_U1_85_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USBLC6_2SC6_U1_85_1" width="64" height="64"></td></tr><tr><td class="td-small">USBLC6_2SC6_U1_85_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USBLC6_2SC6_U1_85_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USBLC6_2SC6_U1_85_2" width="64" height="64"></td></tr><tr><td class="td-small">USBLC6_2SC6_U1_85_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USBLC6_2SC6_U1_85_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USBLC6_2SC6_U1_85_3" width="64" height="64"></td></tr><tr><td class="td-small">USBLC6_2SC6_U1_85_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USBLC6_2SC6_U1_85_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USBLC6_2SC6_U1_85_4" width="64" height="64"></td></tr><tr><td class="td-small">USBLC6_2SC6_U1_85_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/USBLC6_2SC6_U1_85_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="USBLC6_2SC6_U1_85_5" width="64" height="64"></td></tr><tr><td class="td-small">USBLC6_2SC6_U1_85_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/5K1_R1_86_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="5K1_R1_86_0" width="64" height="64"></td></tr><tr><td class="td-small">5K1_R1_86_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/5K1_R1_86_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="5K1_R1_86_1" width="64" height="64"></td></tr><tr><td class="td-small">5K1_R1_86_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/LED_G_D3_87_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="LED_G_D3_87_0" width="64" height="64"></td></tr><tr><td class="td-small">LED_G_D3_87_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/LED_G_D3_87_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="LED_G_D3_87_1" width="64" height="64"></td></tr><tr><td class="td-small">LED_G_D3_87_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C36_88_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C36_88_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C36_88_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C36_88_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C36_88_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C36_88_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_0" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_1" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_2" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_3" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_4" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_5" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_6" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_6</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_7" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_8" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_9"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_9" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_9</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_10"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_10" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_10</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_11"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_11" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_11</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_12"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_12" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_12</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_13"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_13" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_13</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_14"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_14" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_14</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_15"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_15" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_15</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_16"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_16" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_16</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_17"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_17" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_17</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_18"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_18" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_18</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_19"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_19" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_19</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_20"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_20" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_20</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_21"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_21" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_21</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_22"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_22" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_22</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_23"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_23" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_23</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_24"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_24" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_24</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_25"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_25" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_25</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_26"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_26" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_26</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_27"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_27" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_27</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_28"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_28" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_28</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_29"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_29" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_29</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_30"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_30" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_30</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_31"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_31" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_31</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_32"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_32" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_32</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_33"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_33" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_33</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_34"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_34" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_34</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_35"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_35" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_35</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_36"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_36" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_36</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_37"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_37" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_37</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_38"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_38" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_38</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_39"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_39" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_39</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_40"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_40" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_40</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_41"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_41" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_41</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_42"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_42" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_42</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_43"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_43" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_43</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_44"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_44" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_44</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_45"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_45" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_45</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_46"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_46" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_46</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_47"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_47" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_47</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/ASM1061_U3_89_48"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="ASM1061_U3_89_48" width="64" height="64"></td></tr><tr><td class="td-small">ASM1061_U3_89_48</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_0" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_1" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_2" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_3" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_4" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_5" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_5</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_6" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_7" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_8" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_9"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_9" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_9</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_10"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_10" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_10</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_11"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_11" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_11</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_12"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_12" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_12</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_13"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_13" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_13</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_14"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_14" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_14</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_15"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_15" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_15</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_16"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_16" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_16</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_17"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_17" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_17</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_18"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_18" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_18</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_19"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_19" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_19</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_20"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_20" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_20</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_21"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_21" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_21</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_22"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_22" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_22</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_23"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_23" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_23</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_24"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_24" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_24</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_25"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_25" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_25</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_26"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_26" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_26</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_27"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_27" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_27</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_28"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_28" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_28</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_29"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_29" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_29</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_30"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_30" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_30</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_31"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_31" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_31</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_32"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_32" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_32</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_33"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_33" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_33</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_34"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_34" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_34</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_35"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_35" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_35</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_36"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_36" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_36</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_37"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_37" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_37</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_38"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_38" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_38</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_39"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_39" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_39</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_40"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_40" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_40</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_41"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_41" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_41</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_42"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_42" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_42</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_43"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_43" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_43</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_44"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_44" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_44</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_45"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_45" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_45</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_46"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_46" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_46</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_47"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_47" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_47</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_48"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_48" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_48</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_49"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_49" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_49</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_50"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_50" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_50</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_51"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_51" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_51</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_52"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_52" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_52</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_53"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_53" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_53</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_54"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_54" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_54</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_55"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_55" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_55</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_56"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_56" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_56</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_57"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_57" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_57</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_58"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_58" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_58</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_59"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_59" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_59</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_60"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_60" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_60</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_61"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_61" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_61</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_62"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_62" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_62</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_63"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_63" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_63</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_64"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_64" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_64</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_65"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_65" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_65</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_66"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_66" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_66</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_67"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_67" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_67</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_68"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_68" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_68</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_69"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_69" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_69</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_70"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_70" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_70</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_71"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_71" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_71</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_72"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_72" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_72</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_73"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_73" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_73</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_74"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_74" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_74</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_75"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_75" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_75</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_76"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_76" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_76</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_77"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_77" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_77</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_78"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_78" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_78</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_79"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_79" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_79</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_80"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_80" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_80</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_81"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_81" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_81</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_82"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_82" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_82</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_83"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_83" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_83</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_84"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_84" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_84</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_85"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_85" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_85</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_86"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_86" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_86</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_87"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_87" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_87</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_88"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_88" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_88</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_89"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_89" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_89</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_90"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_90" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_90</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_91"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_91" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_91</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_92"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_92" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_92</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_93"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_93" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_93</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_94"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_94" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_94</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_95"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_95" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_95</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_96"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_96" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_96</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_97"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_97" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_97</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_98"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_98" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_98</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_99"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_99" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_99</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_100"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_100" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_100</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_101"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_101" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_101</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_102"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_102" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_102</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_103"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_103" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_103</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_104"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_104" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_104</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_105"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_105" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_105</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_106"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_106" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_106</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_107"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_107" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_107</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_108"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_108" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_108</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_109"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_109" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_109</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_110"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_110" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_110</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_111"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_111" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_111</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_112"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_112" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_112</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_113"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_113" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_113</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_114"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_114" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_114</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_115"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_115" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_115</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_116"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_116" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_116</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_117"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_117" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_117</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_118"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_118" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_118</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_119"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_119" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_119</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_120"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_120" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_120</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_121"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_121" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_121</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_122"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_122" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_122</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_123"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_123" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_123</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_124"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_124" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_124</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_125"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_125" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_125</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_126"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_126" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_126</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_127"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_127" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_127</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_128"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_128" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_128</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_129"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_129" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_129</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_130"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_130" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_130</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_131"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_131" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_131</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_132"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_132" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_132</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_133"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_133" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_133</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_134"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_134" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_134</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_135"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_135" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_135</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_136"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_136" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_136</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_137"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_137" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_137</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_138"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_138" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_138</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_139"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_139" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_139</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_140"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_140" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_140</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_141"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_141" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_141</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_142"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_142" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_142</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_143"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_143" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_143</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_144"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_144" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_144</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_145"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_145" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_145</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_146"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_146" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_146</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_147"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_147" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_147</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_148"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_148" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_148</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_149"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_149" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_149</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_150"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_150" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_150</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_151"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_151" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_151</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_152"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_152" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_152</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_153"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_153" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_153</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_154"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_154" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_154</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_155"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_155" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_155</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_156"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_156" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_156</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_157"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_157" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_157</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_158"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_158" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_158</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_159"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_159" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_159</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_160"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_160" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_160</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_161"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_161" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_161</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_162"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_162" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_162</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_163"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_163" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_163</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_164"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_164" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_164</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_165"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_165" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_165</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_166"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_166" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_166</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_167"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_167" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_167</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_168"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_168" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_168</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_169"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_169" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_169</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_170"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_170" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_170</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_171"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_171" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_171</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_172"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_172" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_172</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_173"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_173" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_173</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_174"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_174" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_174</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_175"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_175" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_175</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_176"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_176" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_176</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_177"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_177" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_177</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_178"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_178" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_178</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_179"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_179" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_179</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_180"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_180" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_180</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_181"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_181" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_181</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_182"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_182" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_182</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_183"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_183" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_183</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_184"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_184" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_184</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_185"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_185" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_185</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_186"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_186" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_186</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_187"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_187" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_187</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_188"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_188" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_188</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_189"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_189" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_189</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_190"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_190" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_190</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_191"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_191" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_191</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_192"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_192" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_192</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_193"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_193" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_193</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_194"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_194" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_194</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_195"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_195" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_195</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_196"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_196" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_196</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_197"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_197" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_197</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_198"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_198" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_198</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_199"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_199" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_199</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_200"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_200" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_200</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_201"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_201" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_201</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_202"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_202" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_202</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/CM4_CM1_90_203"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="CM4_CM1_90_203" width="64" height="64"></td></tr><tr><td class="td-small">CM4_CM1_90_203</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R19_91_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R19_91_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R19_91_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R19_91_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R19_91_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R19_91_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R18_92_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R18_92_0" width="64" height="64"></td></tr><tr><td class="td-small">10K_R18_92_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10K_R18_92_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10K_R18_92_1" width="64" height="64"></td></tr><tr><td class="td-small">10K_R18_92_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C10_93_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C10_93_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C10_93_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C10_93_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C10_93_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C10_93_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C9_94_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C9_94_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C9_94_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C9_94_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C9_94_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C9_94_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C11_95_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C11_95_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C11_95_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C11_95_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C11_95_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C11_95_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12K_R26_96_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12K_R26_96_0" width="64" height="64"></td></tr><tr><td class="td-small">12K_R26_96_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12K_R26_96_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12K_R26_96_1" width="64" height="64"></td></tr><tr><td class="td-small">12K_R26_96_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/25MHz_Y1_97_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="25MHz_Y1_97_0" width="64" height="64"></td></tr><tr><td class="td-small">25MHz_Y1_97_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/25MHz_Y1_97_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="25MHz_Y1_97_1" width="64" height="64"></td></tr><tr><td class="td-small">25MHz_Y1_97_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/25MHz_Y1_97_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="25MHz_Y1_97_2" width="64" height="64"></td></tr><tr><td class="td-small">25MHz_Y1_97_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/25MHz_Y1_97_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="25MHz_Y1_97_3" width="64" height="64"></td></tr><tr><td class="td-small">25MHz_Y1_97_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/3V3_bridge_JP1_98_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="3V3_bridge_JP1_98_0" width="64" height="64"></td></tr><tr><td class="td-small">3V3_bridge_JP1_98_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/3V3_bridge_JP1_98_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="3V3_bridge_JP1_98_1" width="64" height="64"></td></tr><tr><td class="td-small">3V3_bridge_JP1_98_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_bridge_JP3_99_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_bridge_JP3_99_0" width="64" height="64"></td></tr><tr><td class="td-small">12V_bridge_JP3_99_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_bridge_JP3_99_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_bridge_JP3_99_1" width="64" height="64"></td></tr><tr><td class="td-small">12V_bridge_JP3_99_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C7_100_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C7_100_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C7_100_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C7_100_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C7_100_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C7_100_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_0" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_1" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_2" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_3" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_4" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_5" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_6" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_7" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_7</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_8" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_9"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_9" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_9</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_10"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_10" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_10</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_11"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_11" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_11</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_12"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_12" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_12</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_13"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_13" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_13</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_14"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_14" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_14</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_15"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_15" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_15</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_16"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_16" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_16</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/HR911130A_J8_101_17"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="HR911130A_J8_101_17" width="64" height="64"></td></tr><tr><td class="td-small">HR911130A_J8_101_17</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R3_102_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R3_102_0" width="64" height="64"></td></tr><tr><td class="td-small">330R_R3_102_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R3_102_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R3_102_1" width="64" height="64"></td></tr><tr><td class="td-small">330R_R3_102_1</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C42_103_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C42_103_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C42_103_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C42_103_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C42_103_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C42_103_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_0" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_1" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_2" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_3" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_4" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_5" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_6" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_7" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H3_104_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H3_104_8" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H3_104_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G32_U4_105_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G32_U4_105_0" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G32_U4_105_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G32_U4_105_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G32_U4_105_1" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G32_U4_105_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G32_U4_105_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G32_U4_105_2" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G32_U4_105_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G32_U4_105_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G32_U4_105_3" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G32_U4_105_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/74AHCT1G32_U4_105_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="74AHCT1G32_U4_105_4" width="64" height="64"></td></tr><tr><td class="td-small">74AHCT1G32_U4_105_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/1n_C31_106_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="1n_C31_106_0" width="64" height="64"></td></tr><tr><td class="td-small">1n_C31_106_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/1n_C31_106_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="1n_C31_106_1" width="64" height="64"></td></tr><tr><td class="td-small">1n_C31_106_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q6_107_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q6_107_0" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q6_107_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q6_107_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q6_107_1" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q6_107_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/FDS4435BZ_Q6_107_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="FDS4435BZ_Q6_107_2" width="64" height="64"></td></tr><tr><td class="td-small">FDS4435BZ_Q6_107_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R8_108_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R8_108_0" width="64" height="64"></td></tr><tr><td class="td-small">330R_R8_108_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R8_108_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R8_108_1" width="64" height="64"></td></tr><tr><td class="td-small">330R_R8_108_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R7_109_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R7_109_0" width="64" height="64"></td></tr><tr><td class="td-small">330R_R7_109_0</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/330R_R7_109_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="330R_R7_109_1" width="64" height="64"></td></tr><tr><td class="td-small">330R_R7_109_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100K_R23_110_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100K_R23_110_0" width="64" height="64"></td></tr><tr><td class="td-small">100K_R23_110_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100K_R23_110_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100K_R23_110_1" width="64" height="64"></td></tr><tr><td class="td-small">100K_R23_110_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_0" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_1" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_2" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_3" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_4" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_5" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_5</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_6" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_7" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H4_111_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H4_111_8" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H4_111_8</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C34_112_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C34_112_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C34_112_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C34_112_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C34_112_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C34_112_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C3_113_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C3_113_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C3_113_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C3_113_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C3_113_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C3_113_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/1n_C37_114_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="1n_C37_114_0" width="64" height="64"></td></tr><tr><td class="td-small">1n_C37_114_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/1n_C37_114_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="1n_C37_114_1" width="64" height="64"></td></tr><tr><td class="td-small">1n_C37_114_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_0" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_1" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_2" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_2</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_3"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_3" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_3</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_4"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_4" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_4</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_5"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_5" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_5</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_6"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_6" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_6</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_7"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_7" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_7</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/MountingHole_H2_115_8"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="MountingHole_H2_115_8" width="64" height="64"></td></tr><tr><td class="td-small">MountingHole_H2_115_8</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C24_116_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C24_116_0" width="64" height="64"></td></tr><tr><td class="td-small">100n_C24_116_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/100n_C24_116_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="100n_C24_116_1" width="64" height="64"></td></tr><tr><td class="td-small">100n_C24_116_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_Screw_Terminal_J6_117_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_Screw_Terminal_J6_117_0" width="64" height="64"></td></tr><tr><td class="td-small">12V_Screw_Terminal_J6_117_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/12V_Screw_Terminal_J6_117_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="12V_Screw_Terminal_J6_117_1" width="64" height="64"></td></tr><tr><td class="td-small">12V_Screw_Terminal_J6_117_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C43_118_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C43_118_0" width="64" height="64"></td></tr><tr><td class="td-small">10u_C43_118_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/10u_C43_118_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="10u_C43_118_1" width="64" height="64"></td></tr><tr><td class="td-small">10u_C43_118_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_5V_PWR_JP5_119_0"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_5V_PWR_JP5_119_0" width="64" height="64"></td></tr><tr><td class="td-small">SATA_5V_PWR_JP5_119_0</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_5V_PWR_JP5_119_1"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_5V_PWR_JP5_119_1" width="64" height="64"></td></tr><tr><td class="td-small">SATA_5V_PWR_JP5_119_1</td></tr></table></a></td>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/pads/SATA_5V_PWR_JP5_119_2"><table class="out-img"><tr><td><img src="images/unknown_64.png" alt="SATA_5V_PWR_JP5_119_2" width="64" height="64"></td></tr><tr><td class="td-small">SATA_5V_PWR_JP5_119_2</td></tr></table></a></td>
+</tr>
+<tr>
+<td class="out-cell" colspan="1"><a href="../granit_pcb3d/boards"><table class="out-img"><tr><td><img src="images/folder_64.png" alt="boards" width="64" height="64"></td></tr><tr><td class="td-small">boards</td></tr></table></a></td>
+<td class="out-cell" colspan="11"></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table id="_PCB2Blender_2_1" class="output-table">
+<thead><tr><th colspan="12"> PCB2Blender 2 1: PCB3D model for pcb2blender plug-in</th></tr></thead>
+<tbody><tr>
+<td class="out-cell" colspan="12"><a href="../granit.pcb3d"><table class="out-img"><tr><td><img src="images/file_pcb3d_64.png" alt="granit.pcb3d" width="64" height="64"></td></tr><tr><td class="td-small">granit.pcb3d</td></tr></table></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="nav-table"> <tr>  <td><a href="granit-navigate_PCB_3D.html"><img src="images/back_64.png" width="64" height="64" alt="go back"></a></td>  <td><a href="granit-navigate.html"><img src="images/home_64.png" width="64" height="64" alt="go home"></a></td> </tr></table><p class="generator">Generated by <a href="https://github.com/INTI-CMNB/KiBot/">KiBot</a> v1.8.6</p>
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("theSideNav").style.width = "360px";
+  document.getElementById("main").style.marginLeft = "360px";
+  document.getElementById("theTopMenu").style.marginLeft = "360px";
+  document.getElementById("bmenu").style.display = "none";
+}
+
+function closeNav() {
+  document.getElementById("theSideNav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("theTopMenu").style.marginLeft = "0";
+  document.getElementById("bmenu").style.display = "block";
+}
+
+function ScrollUp() {
+  /* When we come here from the navbar we must scroll to avoid the top menu */
+  var p = document.getElementById("main");
+  var style = p.currentStyle || window.getComputedStyle(p);
+  var m_top = parseInt(style.marginTop)
+
+  window.scrollBy(0, -(m_top + 5));
+}
+
+window.onload = ScrollUp;
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const md = window.markdownit({
+        html: true,
+        linkify: true,
+        typographer: true
+    });
+
+    // Find all markdown containers and render them
+    document.querySelectorAll('.markdown-content').forEach(container => {
+        const rawMarkdown = container.innerHTML;
+        container.style.display = 'block';
+        container.innerHTML = md.render(rawMarkdown);
+    });
+});
+</script>
+</body>
+</html>
