@@ -3,7 +3,7 @@ title: Overview
 weight: 10
 ---
 
-![PCB 3D Render](images/granit-3d.png)
+![PCB 3D Render](3D/granit-3D_blender_30deg.png)
 
 Custom carrier board for the Raspberry Pi CM4 Compute Module, designed as a
 minimal offsite backup appliance.
