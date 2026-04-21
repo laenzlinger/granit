@@ -30,3 +30,4 @@ jobs:
       container_image: "ghcr.io/inti-cmnb/kicad10_auto_full:dev"
       assembly_dir: "mechanical"
       site_base_url: "https://laenzlinger.github.io/granit"
+
