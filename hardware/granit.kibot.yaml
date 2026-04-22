@@ -3,6 +3,8 @@ kibot:
 
 global:
   kicad_dnp_applies_to_3D: true
+  environment:
+    models_3d: ${KICAD10_3DMODEL_DIR}
 
 import:
   - file: JLCPCB
