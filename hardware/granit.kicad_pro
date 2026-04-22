@@ -1135,7 +1135,7 @@
     ]
   ],
   "text_variables": {
-    "GIT_HASH": "6af6277",
+    "GIT_HASH": "unknown",
     "REVISION": "dev"
   },
   "tuning_profiles": {
