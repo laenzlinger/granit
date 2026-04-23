@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="system-ui,-apple-system,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730 440" font-family="system-ui,-apple-system,sans-serif">
   <style>
     .box { rx: 8; stroke-width: 1.5; }
     .label { font-size: 13px; font-weight: 600; fill: #1e272e; }
