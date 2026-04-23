@@ -10,6 +10,9 @@ weight: 10
 Custom carrier board for the Raspberry Pi CM4 Compute Module, designed as a
 minimal offsite backup appliance.
 
+</div>
+</div>
+
 **The 3-2-1 backup rule** says: keep **3** copies of your data, on **2**
 different media, with **1** copy offsite. The first two are easy — a NAS with
 mirrored disks covers them. The offsite copy is the hard part.
@@ -18,9 +21,6 @@ Granit takes a different approach: a small, silent box you leave at a friend's
 or family member's house. It connects to their network, receives encrypted
 backups over a VPN, and stores them on a local hard disk. You keep full control
 of your data.
-
-</div>
-</div>
 
 ## Key Components
 

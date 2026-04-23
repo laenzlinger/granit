@@ -33,5 +33,6 @@ see [hardware/DESIGN.md](https://github.com/laenzlinger/granit/blob/main/hardwar
   — use a 12V/3A+ PSU.
 
 - **Boot and storage strategy**: Full OS on CM4 eMMC (no SD card slot), SATA HDD
-  dedicated to LUKS-encrypted backup storage only. No SD card — eMMC is more
-  reliable for a deploy-and-forget device.
+  dedicated to backup storage only. No SD card — eMMC is more
+  reliable for a deploy-and-forget device. Backup data is encrypted client-side
+  (e.g. by Restic or rclone crypt). Full-disk encryption via LUKS is optional.
