@@ -1,4 +1,2 @@
 __pycache__/
 *.FCBak
-node_modules/
-package-lock.json

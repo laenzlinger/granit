@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: assembly pcb-step end-plates screenshot clean help
+.PHONY: assembly pcb-step end-plates clean help
 
 PCB_DIR := ../hardware
 
@@ -20,15 +20,8 @@ end-plates: ## Generate end plate outputs (STL + DXF)
 assembly: pcb-step end-plates ## Build FreeCAD assembly STEP files
 	cd .. && freecadcmd mechanical/assembly.py
 
-screenshot: assembly ## Render assembly screenshots (o3dv via headless Chromium)
-	npm install --silent 2>/dev/null
-	for f in assembly-slim.step assembly-wide.step; do \
-		node screenshot.mjs $$f $${f%.step}.png; \
-	done
-
 clean: ## Remove generated files
 	rm -f granit-pcb.step assembly-slim.step assembly-wide.step \
-	      assembly-slim.png assembly-wide.png \
 	      end-plate-slim.stl end-plate-wide.stl \
 	      end-plate-slim.dxf end-plate-wide.dxf
 
