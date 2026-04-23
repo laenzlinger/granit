@@ -1,15 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect rx="6" width="64" height="64" fill="#1e272e"/>
-  <!-- Bottom stone -->
-  <ellipse cx="33" cy="46" rx="15" ry="5.5" fill="#636e72"/>
-  <ellipse cx="33" cy="45" rx="15" ry="5.5" fill="#a4b0be"/>
-  <!-- Middle stone -->
-  <ellipse cx="31" cy="34" rx="11" ry="4.5" fill="#636e72"/>
-  <ellipse cx="31" cy="33" rx="11" ry="4.5" fill="#ced6e0"/>
-  <!-- Top stone -->
-  <ellipse cx="33" cy="23" rx="7" ry="3.5" fill="#636e72"/>
-  <ellipse cx="33" cy="22" rx="7" ry="3.5" fill="#f1f2f6"/>
-  <!-- Pebble -->
-  <ellipse cx="30" cy="15" rx="3" ry="2" fill="#636e72"/>
-  <ellipse cx="30" cy="14.5" rx="3" ry="2" fill="#dcdde1"/>
+  <!-- Left face (lighter) -->
+  <polygon points="22,54 25,14 32,8 32,54" fill="#dfe6e9"/>
+  <!-- Right face (darker) -->
+  <polygon points="32,8 39,14 42,54 32,54" fill="#a4b0be"/>
 </svg>
