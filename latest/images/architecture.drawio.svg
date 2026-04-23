@@ -1,106 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="system-ui,-apple-system,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 440" font-family="system-ui,-apple-system,sans-serif">
   <style>
     .box { rx: 8; stroke-width: 1.5; }
     .label { font-size: 13px; font-weight: 600; fill: #1e272e; }
     .sub { font-size: 10px; fill: #636e72; }
-    .conn { stroke-width: 1.5; fill: none; marker-end: url(#arr); }
-    .conn-bidi { stroke-width: 1.5; fill: none; marker-end: url(#arr); marker-start: url(#arr-s); }
+    .conn { stroke-width: 1.5; fill: none; }
     .conn-label { font-size: 9px; fill: #636e72; }
   </style>
   <defs>
     <marker id="arr" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5" fill="none" stroke="#636e72" stroke-width="1"/></marker>
-    <marker id="arr-s" markerWidth="6" markerHeight="5" refX="0" refY="2.5" orient="auto"><path d="M6,0 L0,2.5 L6,5" fill="none" stroke="#636e72" stroke-width="1"/></marker>
   </defs>
 
-  <!-- 12V Input -->
-  <rect x="20" y="60" width="120" height="50" class="box" fill="#f5f5f5" stroke="#b2bec3"/>
-  <text x="80" y="82" class="label" text-anchor="middle">12V DC In</text>
-  <text x="80" y="96" class="sub" text-anchor="middle">Barrel jack</text>
+  <!--
+    Layout: 3 columns, no crossing lines
+    Left:   Power
+    Center: CM4 (top) → ASM1061 (bottom)
+    Right:  Connectors & peripherals (stacked vertically, grouped by interface)
+  -->
 
-  <!-- PSU -->
-  <rect x="20" y="150" width="120" height="70" class="box" fill="#dfe6e9" stroke="#b2bec3"/>
-  <text x="80" y="175" class="label" text-anchor="middle">PSU</text>
-  <text x="80" y="191" class="sub" text-anchor="middle">5V buck + 3.3V LDO</text>
+  <!-- === LEFT COLUMN: Power === -->
+
+  <rect x="20" y="40" width="130" height="50" class="box" fill="#dfe6e9" stroke="#74b9ff"/>
+  <text x="85" y="62" class="label" text-anchor="middle">12V DC In</text>
+  <text x="85" y="78" class="sub" text-anchor="middle">Barrel jack</text>
+
+  <rect x="20" y="130" width="130" height="70" class="box" fill="#dfe6e9" stroke="#74b9ff"/>
+  <text x="85" y="158" class="label" text-anchor="middle">PSU</text>
+  <text x="85" y="174" class="sub" text-anchor="middle">5V buck · 3.3V LDO</text>
 
   <!-- 12V → PSU -->
-  <line x1="80" y1="110" x2="80" y2="150" class="conn" stroke="#636e72"/>
+  <line x1="85" y1="90" x2="85" y2="130" class="conn" stroke="#74b9ff" marker-end="url(#arr)"/>
 
-  <!-- CM4 (central) -->
-  <rect x="220" y="80" width="200" height="240" class="box" fill="#d5e8d4" stroke="#82b366"/>
-  <text x="320" y="115" class="label" text-anchor="middle">Raspberry Pi CM4</text>
-  <text x="320" y="155" class="sub" text-anchor="middle">PCIe · USB · Ethernet</text>
-  <text x="320" y="171" class="sub" text-anchor="middle">GPIO · I2C · UART</text>
-  <text x="320" y="187" class="sub" text-anchor="middle">eMMC (OS)</text>
+  <!-- === CENTER: CM4 === -->
+
+  <rect x="210" y="40" width="220" height="200" class="box" fill="#c8e6c9" stroke="#66bb6a"/>
+  <text x="320" y="70" class="label" text-anchor="middle">Raspberry Pi CM4</text>
+  <text x="320" y="100" class="sub" text-anchor="middle">PCIe · USB · Ethernet</text>
+  <text x="320" y="116" class="sub" text-anchor="middle">GPIO · I2C · UART</text>
+  <text x="320" y="132" class="sub" text-anchor="middle">eMMC (OS)</text>
+  <text x="320" y="160" class="sub" text-anchor="middle">GLOBAL_EN (wake input)</text>
 
   <!-- PSU → CM4 -->
-  <line x1="140" y1="185" x2="220" y2="185" class="conn" stroke="#636e72"/>
-  <text x="180" y="178" class="conn-label" text-anchor="middle">5V · 3.3V</text>
+  <line x1="150" y1="165" x2="210" y2="165" class="conn" stroke="#74b9ff" marker-end="url(#arr)"/>
+  <text x="180" y="158" class="conn-label" text-anchor="middle">5V · 3.3V</text>
 
-  <!-- ASM1061 -->
-  <rect x="220" y="370" width="200" height="50" class="box" fill="#fff2cc" stroke="#d6b656"/>
-  <text x="320" y="393" class="label" text-anchor="middle">ASM1061</text>
-  <text x="320" y="409" class="sub" text-anchor="middle">PCIe → SATA III</text>
+  <!-- === CENTER BOTTOM: ASM1061 === -->
+
+  <rect x="210" y="290" width="220" height="50" class="box" fill="#ffe0b2" stroke="#ffa726"/>
+  <text x="320" y="312" class="label" text-anchor="middle">ASM1061</text>
+  <text x="320" y="328" class="sub" text-anchor="middle">PCIe → SATA III</text>
 
   <!-- CM4 → ASM1061 -->
-  <line x1="320" y1="320" x2="320" y2="370" class="conn-bidi" stroke="#82b366"/>
-  <text x="335" y="348" class="conn-label" text-anchor="start">PCIe x1</text>
+  <line x1="320" y1="240" x2="320" y2="290" class="conn" stroke="#636e72" marker-end="url(#arr)"/>
+  <text x="335" y="268" class="conn-label" text-anchor="start">PCIe x1</text>
 
-  <!-- SATA / HDD -->
-  <rect x="500" y="355" width="140" height="70" class="box" fill="#f8cecc" stroke="#b85450"/>
-  <text x="570" y="383" class="label" text-anchor="middle">SATA HDD/SSD</text>
-  <text x="570" y="399" class="sub" text-anchor="middle">22-pin connector</text>
-  <text x="570" y="413" class="sub" text-anchor="middle">LUKS encrypted</text>
+  <!-- === CENTER BOTTOM: SATA HDD === -->
+
+  <rect x="210" y="380" width="220" height="50" class="box" fill="#ffcdd2" stroke="#ef5350"/>
+  <text x="320" y="402" class="label" text-anchor="middle">SATA HDD/SSD</text>
+  <text x="320" y="418" class="sub" text-anchor="middle">22-pin · 2.5" or 3.5"</text>
 
   <!-- ASM1061 → HDD -->
-  <line x1="420" y1="395" x2="500" y2="395" class="conn-bidi" stroke="#b85450"/>
-  <text x="460" y="388" class="conn-label" text-anchor="middle">SATA III</text>
+  <line x1="320" y1="340" x2="320" y2="380" class="conn" stroke="#636e72" marker-end="url(#arr)"/>
+  <text x="335" y="363" class="conn-label" text-anchor="start">SATA III</text>
 
-  <!-- PSU → HDD power -->
-  <path d="M80,220 L80,395 L220,395" class="conn" stroke="#b2bec3" stroke-dasharray="4,3"/>
-  <text x="90" y="350" class="conn-label" text-anchor="start">12V · 5V</text>
+  <!-- PSU → HDD power (dashed, routed left side, no crossing) -->
+  <path d="M85,200 L85,405 L210,405" class="conn" stroke="#74b9ff" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <text x="93" y="350" class="conn-label" text-anchor="start">12V · 5V</text>
+
+  <!-- === RIGHT COLUMN: Connectors & peripherals === -->
 
   <!-- RJ45 -->
-  <rect x="500" y="60" width="140" height="50" class="box" fill="#f8cecc" stroke="#b85450"/>
-  <text x="570" y="82" class="label" text-anchor="middle">RJ45</text>
-  <text x="570" y="98" class="sub" text-anchor="middle">Gigabit Ethernet</text>
+  <rect x="510" y="40" width="150" height="50" class="box" fill="#ffcdd2" stroke="#ef5350"/>
+  <text x="585" y="62" class="label" text-anchor="middle">RJ45</text>
+  <text x="585" y="78" class="sub" text-anchor="middle">Gigabit Ethernet</text>
 
   <!-- CM4 → RJ45 -->
-  <line x1="420" y1="100" x2="500" y2="88" class="conn-bidi" stroke="#9673a6"/>
+  <line x1="430" y1="70" x2="510" y2="65" class="conn" stroke="#636e72" marker-end="url(#arr)"/>
 
   <!-- USB-C -->
-  <rect x="500" y="140" width="140" height="50" class="box" fill="#f8cecc" stroke="#b85450"/>
-  <text x="570" y="162" class="label" text-anchor="middle">USB-C</text>
-  <text x="570" y="178" class="sub" text-anchor="middle">OTG + ESD protection</text>
+  <rect x="510" y="110" width="150" height="50" class="box" fill="#ffcdd2" stroke="#ef5350"/>
+  <text x="585" y="132" class="label" text-anchor="middle">USB-C</text>
+  <text x="585" y="148" class="sub" text-anchor="middle">OTG · ESD protection</text>
 
   <!-- CM4 → USB-C -->
-  <line x1="420" y1="165" x2="500" y2="165" class="conn-bidi" stroke="#9673a6"/>
-  <text x="460" y="158" class="conn-label" text-anchor="middle">USB 2.0</text>
+  <line x1="430" y1="120" x2="510" y2="135" class="conn" stroke="#636e72" marker-end="url(#arr)"/>
+  <text x="470" y="118" class="conn-label" text-anchor="middle">USB 2.0</text>
 
   <!-- RTC -->
-  <rect x="500" y="220" width="140" height="50" class="box" fill="#fff2cc" stroke="#d6b656"/>
-  <text x="570" y="242" class="label" text-anchor="middle">DS3231 RTC</text>
-  <text x="570" y="258" class="sub" text-anchor="middle">I2C · alarm wake</text>
+  <rect x="510" y="180" width="150" height="50" class="box" fill="#ffe0b2" stroke="#ffa726"/>
+  <text x="585" y="202" class="label" text-anchor="middle">DS3231 RTC</text>
+  <text x="585" y="218" class="sub" text-anchor="middle">I2C · alarm wake</text>
 
   <!-- CR2032 -->
-  <rect x="660" y="228" width="55" height="34" rx="4" fill="#f5f5f5" stroke="#b2bec3"/>
-  <text x="687" y="250" class="sub" text-anchor="middle">CR2032</text>
+  <rect x="680" y="190" width="55" height="30" rx="4" fill="#f5f5f5" stroke="#b2bec3"/>
+  <text x="707" y="210" class="sub" text-anchor="middle">CR2032</text>
 
   <!-- RTC → CR2032 -->
-  <line x1="640" y1="245" x2="660" y2="245" stroke="#b2bec3" stroke-width="1"/>
+  <line x1="660" y1="205" x2="680" y2="205" stroke="#b2bec3" stroke-width="1"/>
 
   <!-- CM4 → RTC -->
-  <line x1="420" y1="245" x2="500" y2="245" class="conn-bidi" stroke="#d6b656"/>
-  <text x="460" y="238" class="conn-label" text-anchor="middle">I2C</text>
+  <line x1="430" y1="165" x2="510" y2="200" class="conn" stroke="#636e72" marker-end="url(#arr)"/>
+  <text x="470" y="175" class="conn-label" text-anchor="middle">I2C</text>
 
-  <!-- RTC alarm → CM4 GLOBAL_EN -->
-  <path d="M500,260 L470,260 L470,290 L420,290" class="conn" stroke="#d6b656" stroke-dasharray="4,3"/>
-  <text x="475" y="298" class="conn-label" text-anchor="start">wake</text>
+  <!-- RTC alarm → CM4 GLOBAL_EN (routed below RTC, back left, no crossing) -->
+  <path d="M510,220 L490,220 L490,195 L430,195" class="conn" stroke="#ffa726" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+  <text x="492" y="235" class="conn-label" text-anchor="start">wake</text>
 
-  <!-- Peripherals group -->
-  <rect x="500" y="300" width="140" height="35" class="box" fill="#fff2cc" stroke="#d6b656"/>
-  <text x="570" y="322" class="sub" text-anchor="middle">LED · Button · UART</text>
+  <!-- Peripherals -->
+  <rect x="510" y="260" width="150" height="35" class="box" fill="#ffe0b2" stroke="#ffa726"/>
+  <text x="585" y="282" class="sub" text-anchor="middle">LED · Button · UART</text>
 
   <!-- CM4 → Peripherals -->
-  <line x1="420" y1="270" x2="500" y2="317" class="conn" stroke="#d6b656"/>
-  <text x="445" y="285" class="conn-label" text-anchor="start">GPIO</text>
+  <line x1="430" y1="210" x2="510" y2="277" class="conn" stroke="#636e72" marker-end="url(#arr)"/>
+  <text x="455" y="240" class="conn-label" text-anchor="start">GPIO</text>
 </svg>
