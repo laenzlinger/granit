@@ -16,11 +16,15 @@ import Part
 STANDOFF = 5.0
 GAP = 2.0
 
+# SATA connector center position measured from the HDD reference edge (Y=0
+# in the HDD STEP model), per SFF-8201 (2.5") and SFF-8301 (3.5").
+# The connector is NOT centered on the drive width — see issue #27.
 VARIANTS = {
     "slim": {
         "case_file": "hardware/3d-models/1455L2201.stp",
         "hdd_file": "mechanical/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
+        "hdd_sata_center_y": 18.79,
         "case_belly_y": -32.5,
         "output": "mechanical/assembly-slim.step",
         "end_plate": "mechanical/end-plate-slim.stl",
@@ -29,6 +33,7 @@ VARIANTS = {
         "case_file": "hardware/3d-models/1455T2601.stp",
         "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
+        "hdd_sata_center_y": 31.68,
         "case_belly_y": -53.6,
         "output": "mechanical/assembly-wide.step",
         "end_plate": "mechanical/end-plate-wide.stl",
@@ -121,10 +126,12 @@ def build_variant(name, cfg):
             obj.Shape = Part.makeCompound(solids)
             obj.Placement = pcb_pl
 
-    # HDD
+    # HDD — align SATA connector with PCB connector (J4), not drive center.
+    # The connector is offset from the drive center (see issue #27).
+    sata_y = cfg["hdd_sata_center_y"]
     hdd_rot = rot(RZ(90), RX(-90), RY(180))
     place(doc, cfg["hdd_file"], "HDD", FreeCAD.Placement(
-        FreeCAD.Vector(-hdd_width / 2, belly_y + STANDOFF + 4, hdd_z_sata - hdd_length),
+        FreeCAD.Vector(-sata_y, belly_y + STANDOFF + 4, hdd_z_sata - hdd_length),
         hdd_rot))
 
     # End plate (from OpenSCAD STL → Part solid)

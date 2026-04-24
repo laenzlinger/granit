@@ -17,13 +17,20 @@ end-plates: ## Generate end plate outputs (STL + DXF)
 		openscad -o end-plate-$$v.dxf -D "variant=\"$$v\"" -D 'mode="2d"' end-plate.scad; \
 	done
 
-assembly: pcb-step end-plates ## Build FreeCAD assembly STEP files
+hdd-models: ## Generate HDD STEP models from OpenSCAD (via STL→STEP)
+	openscad -o 2.5inch_HDD.stl -D 'drive="2.5"' hdd.scad
+	openscad -o 3.5inch_HDD_NAS.stl -D 'drive="3.5"' hdd.scad
+	cd .. && freecadcmd mechanical/stl2step.py
+
+assembly: pcb-step end-plates hdd-models ## Build FreeCAD assembly STEP files
 	cd .. && freecadcmd mechanical/assembly.py
 
 clean: ## Remove generated files
 	rm -f granit-pcb.step assembly-slim.step assembly-wide.step \
 	      end-plate-slim.stl end-plate-wide.stl \
-	      end-plate-slim.dxf end-plate-wide.dxf
+	      end-plate-slim.dxf end-plate-wide.dxf \
+	      2.5inch_HDD.stl 3.5inch_HDD_NAS.stl \
+	      2.5inch_HDD.step 3.5inch_HDD_NAS.step
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
