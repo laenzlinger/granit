@@ -156,7 +156,8 @@
 			(outputdirectory "")
 		)
 	)
-	(property "GIT_HASH" "6af6277")
+	(property "GIT_HASH" "unknown")
+	(property "REVISION" "dev")
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "039d9f26-8610-4863-8a01-a46ee19c8944")
@@ -28752,6 +28753,17 @@
 		(at 43.65 96.85 0)
 		(layer "F.SilkS" knockout)
 		(uuid "773d7bb6-84e0-4df4-aeaf-c48731cdfaf8")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "CH000031"
+		(at 56.6 30.45 0)
+		(layer "F.SilkS")
+		(uuid "f58405b8-6867-49c9-b5d3-b45185a6ee35")
 		(effects
 			(font
 				(size 0.8 0.8)
