@@ -11,6 +11,7 @@ params:
   description: "Custom CM4 carrier board — minimal offsite backup appliance"
   repoURL: "https://github.com/laenzlinger/granit"
   license: "CERN-OHL-P-2.0"
+  oshwaID: "CH000031"
   version: "main"
   assemblyModels:
     - name: "Slim (2.5\" HDD)"

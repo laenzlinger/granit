@@ -5,6 +5,7 @@ Custom carrier board for the Raspberry Pi CM4 Compute Module, designed as a mini
 📖 **[Documentation](https://laenzlinger.github.io/granit/latest/)**
 
 [![Latest Release](https://img.shields.io/github/v/tag/laenzlinger/granit?label=release)](https://github.com/laenzlinger/granit/releases)
+[![OSHWA CH000031](https://img.shields.io/badge/OSHWA-CH000031-blue)](https://certification.oshwa.org/ch000031.html)
 
 ## Overview
 
