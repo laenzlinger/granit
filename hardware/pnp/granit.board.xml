@@ -1,0 +1,310 @@
+<openpnp-board version="1.1" name="granit">
+   <dimensions units="Millimeters" x="92.0" y="99.5" z="1.6" rotation="0.0"/>
+   <placements>
+      <placement version="1.4" id="C1" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="102.150000" y="-30.700000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C2" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="109.200000" y="-40.600000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="C3" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.450000" y="-42.450000" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C4" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.550000" y="-44.600000" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C5" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="39.100000" y="-54.350000" z="0.0" rotation="45.000000"/>
+      </placement>
+      <placement version="1.4" id="C6" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="34.200000" y="-55.150000" z="0.0" rotation="135.000000"/>
+      </placement>
+      <placement version="1.4" id="C7" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="41.200000" y="-55.350000" z="0.0" rotation="45.000000"/>
+      </placement>
+      <placement version="1.4" id="C8" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="29.230000" y="-55.780000" z="0.0" rotation="135.000000"/>
+      </placement>
+      <placement version="1.4" id="C9" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="33.204000" y="-56.980000" z="0.0" rotation="135.000000"/>
+      </placement>
+      <placement version="1.4" id="C10" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="42.048000" y="-57.300000" z="0.0" rotation="45.000000"/>
+      </placement>
+      <placement version="1.4" id="C11" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="31.800000" y="-58.400000" z="0.0" rotation="135.000000"/>
+      </placement>
+      <placement version="1.4" id="C12" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="44.800000" y="-60.050000" z="0.0" rotation="45.000000"/>
+      </placement>
+      <placement version="1.4" id="C13" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="31.640000" y="-63.180000" z="0.0" rotation="135.000000"/>
+      </placement>
+      <placement version="1.4" id="C14" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="47.048000" y="-63.906142" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="C15" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="30.260000" y="-64.560000" z="0.0" rotation="135.000000"/>
+      </placement>
+      <placement version="1.4" id="C16" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="45.680000" y="-65.310000" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="C17" side="Top" part-id="C_0805-18p" type="Placement" enabled="true">
+         <location units="Millimeters" x="45.093248" y="-67.499999" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="C18" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="32.960000" y="-67.681142" z="0.0" rotation="-135.000000"/>
+      </placement>
+      <placement version="1.4" id="C19" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="37.850000" y="-68.700000" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="C20" side="Top" part-id="C_0805-18p" type="Placement" enabled="true">
+         <location units="Millimeters" x="43.504035" y="-68.989213" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="C21" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="34.352998" y="-69.060000" z="0.0" rotation="-135.000000"/>
+      </placement>
+      <placement version="1.4" id="C22" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="97.049000" y="-80.549000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="C23" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="56.562501" y="-97.849999" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C24" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="63.550001" y="-99.737498" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C25" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="60.300000" y="-103.750000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C26" side="Top" part-id="ECAP-6.3x7.7-100uF/25V" type="Placement" enabled="true">
+         <location units="Millimeters" x="88.920000" y="-104.870000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C27" side="Top" part-id="C_0805-1.2n" type="Placement" enabled="true">
+         <location units="Millimeters" x="71.150000" y="-107.249999" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C28" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="78.350000" y="-107.799999" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C29" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="60.300000" y="-108.650000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C30" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="96.000000" y="-109.050000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C31" side="Top" part-id="C_0805-1n" type="Placement" enabled="true">
+         <location units="Millimeters" x="70.200000" y="-109.949999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C32" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="81.500000" y="-110.150000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C33" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="83.500000" y="-110.150000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C34" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="85.500000" y="-110.150000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C35" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="62.300000" y="-110.349999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C36" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="64.300000" y="-110.349999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C37" side="Top" part-id="C_0805-1n" type="Placement" enabled="true">
+         <location units="Millimeters" x="66.300000" y="-110.349999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="C38" side="Top" part-id="TANT-D-100u" type="Placement" enabled="true">
+         <location units="Millimeters" x="56.900000" y="-112.799999" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="C39" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="62.290000" y="-113.799999" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C40" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="64.290000" y="-113.799999" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C41" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="81.500000" y="-114.500000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C42" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="83.470000" y="-114.500000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C43" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="85.450000" y="-114.500000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C44" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="87.450000" y="-114.500000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="C45" side="Top" part-id="C_0805-100n" type="Placement" enabled="true">
+         <location units="Millimeters" x="78.180000" y="-115.199999" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="C46" side="Top" part-id="C_0805-10u" type="Placement" enabled="true">
+         <location units="Millimeters" x="96.050000" y="-118.100000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="CM1" side="Top" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="true">
+         <location units="Millimeters" x="85.500000" y="-37.500000" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="D1" side="Top" part-id="WS2812B-5050-WS2812B-5mm" type="Placement" enabled="true">
+         <location units="Millimeters" x="109.000000" y="-47.000000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="D2" side="Top" part-id="LED_0805-LED R" type="Placement" enabled="true">
+         <location units="Millimeters" x="98.200000" y="-56.200000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="D3" side="Top" part-id="LED_0805-LED G" type="Placement" enabled="true">
+         <location units="Millimeters" x="98.200000" y="-58.400000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="F1" side="Top" part-id="FUSE-2512-3A" type="Placement" enabled="true">
+         <location units="Millimeters" x="99.200000" y="-111.850000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="FID1" side="Top" part-id="FIDUCIAL-1X2-Fiducial" type="Placement" enabled="true">
+         <location units="Millimeters" x="29.000000" y="-22.000000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="FID2" side="Top" part-id="FIDUCIAL-1X2-Fiducial" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.000000" y="-22.500000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="FID3" side="Top" part-id="FIDUCIAL-1X2-Fiducial" type="Placement" enabled="true">
+         <location units="Millimeters" x="29.377679" y="-117.216007" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="FID4" side="Top" part-id="FIDUCIAL-1X2-Fiducial" type="Placement" enabled="true">
+         <location units="Millimeters" x="102.318312" y="-118.008975" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="J1" side="Top" part-id="USB-C-GCT4105-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="true">
+         <location units="Millimeters" x="109.810000" y="-34.000000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="J2" side="Top" part-id="SW-PCM12-PCM12SMTR" type="Placement" enabled="true">
+         <location units="Millimeters" x="94.590000" y="-44.950000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="J3" side="Top" part-id="JST-SH-3-BM03B-SRSS-TB" type="Placement" enabled="true">
+         <location units="Millimeters" x="94.220000" y="-52.730000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="J4" side="Top" part-id="SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin" type="Placement" enabled="true">
+         <location units="Millimeters" x="23.000000" y="-70.000000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="L1" side="Top" part-id="IND-6045-SRN6045TA-3R3Y" type="Placement" enabled="true">
+         <location units="Millimeters" x="69.603943" y="-115.327147" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="Q1" side="Top" part-id="SOT-23-2N7002" type="Placement" enabled="true">
+         <location units="Millimeters" x="63.462501" y="-95.199999" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="Q2" side="Top" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
+         <location units="Millimeters" x="30.920000" y="-101.807500" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="Q3" side="Top" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
+         <location units="Millimeters" x="43.700000" y="-101.800000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="Q4" side="Top" part-id="SOT-23-2N7002" type="Placement" enabled="true">
+         <location units="Millimeters" x="35.670000" y="-103.947500" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="Q5" side="Top" part-id="SOT-23-2N7002" type="Placement" enabled="true">
+         <location units="Millimeters" x="48.460001" y="-103.950000" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="Q6" side="Top" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
+         <location units="Millimeters" x="93.455255" y="-113.569107" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="R1" side="Top" part-id="R_0805-5K1" type="Placement" enabled="true">
+         <location units="Millimeters" x="103.000000" y="-28.000000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R2" side="Top" part-id="R_0805-5K1" type="Placement" enabled="true">
+         <location units="Millimeters" x="104.000000" y="-37.400000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="R3" side="Top" part-id="R_0805-330R" type="Placement" enabled="true">
+         <location units="Millimeters" x="103.500000" y="-50.300000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R4" side="Top" part-id="R_0805-12K" type="Placement" enabled="true">
+         <location units="Millimeters" x="35.750000" y="-53.950000" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="R5" side="Top" part-id="R_0805-750R" type="Placement" enabled="true">
+         <location units="Millimeters" x="30.800000" y="-54.600000" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="R6" side="Top" part-id="R_0805-10K" type="Placement" enabled="true">
+         <location units="Millimeters" x="106.450000" y="-56.050000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R7" side="Top" part-id="R_0805-330R" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.600000" y="-56.200000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R8" side="Top" part-id="R_0805-330R" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.600000" y="-58.400000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R9" side="Top" part-id="R_0805-750R" type="Placement" enabled="true">
+         <location units="Millimeters" x="43.400000" y="-58.700000" z="0.0" rotation="45.000000"/>
+      </placement>
+      <placement version="1.4" id="R10" side="Top" part-id="R_0805-330R" type="Placement" enabled="true">
+         <location units="Millimeters" x="105.610000" y="-80.620000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R12" side="Top" part-id="R_0805-330R" type="Placement" enabled="true">
+         <location units="Millimeters" x="106.470000" y="-58.720000" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="R13" side="Top" part-id="R_0805-10R" type="Placement" enabled="true">
+         <location units="Millimeters" x="93.493000" y="-80.549000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R14" side="Top" part-id="R_0805-4K7" type="Placement" enabled="true">
+         <location units="Millimeters" x="71.400001" y="-92.087498" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="R15" side="Top" part-id="R_0805-4K7" type="Placement" enabled="true">
+         <location units="Millimeters" x="73.300001" y="-93.287498" z="0.0" rotation="-90.000000"/>
+      </placement>
+      <placement version="1.4" id="R16" side="Top" part-id="R_0805-10K" type="Placement" enabled="true">
+         <location units="Millimeters" x="56.612501" y="-95.149999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="R17" side="Top" part-id="R_0805-10K" type="Placement" enabled="true">
+         <location units="Millimeters" x="72.350001" y="-97.087498" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="R18" side="Top" part-id="R_0805-10K" type="Placement" enabled="true">
+         <location units="Millimeters" x="59.962501" y="-97.799999" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R19" side="Top" part-id="R_0805-10K" type="Placement" enabled="true">
+         <location units="Millimeters" x="72.400001" y="-99.187498" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R20" side="Top" part-id="R_0805-10K" type="Placement" enabled="true">
+         <location units="Millimeters" x="49.350000" y="-99.800000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="R21" side="Top" part-id="R_0805-100K" type="Placement" enabled="true">
+         <location units="Millimeters" x="34.150000" y="-106.607500" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R22" side="Top" part-id="R_0805-100K" type="Placement" enabled="true">
+         <location units="Millimeters" x="46.989999" y="-106.600000" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="R23" side="Top" part-id="R_0805-100K" type="Placement" enabled="true">
+         <location units="Millimeters" x="49.975000" y="-107.345000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="R24" side="Top" part-id="R_0805-2K2" type="Placement" enabled="true">
+         <location units="Millimeters" x="65.303943" y="-107.677147" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="R25" side="Top" part-id="R_0805-20K" type="Placement" enabled="true">
+         <location units="Millimeters" x="72.150000" y="-109.949999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="R26" side="Top" part-id="R_0805-12K" type="Placement" enabled="true">
+         <location units="Millimeters" x="68.250000" y="-110.349999" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="R27" side="Top" part-id="R_0805-10R" type="Placement" enabled="true">
+         <location units="Millimeters" x="74.800000" y="-115.199999" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="SW1" side="Top" part-id="SW-SKRTLAE010-SW_Push" type="Placement" enabled="true">
+         <location units="Millimeters" x="110.504000" y="-56.000000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="U1" side="Top" part-id="SOT-23-6-USBLC6-2SC6" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.879400" y="-34.141500" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="U2" side="Top" part-id="SOT-23-5-74AHCT1G125" type="Placement" enabled="true">
+         <location units="Millimeters" x="101.350000" y="-47.537500" z="0.0" rotation="0.000000"/>
+      </placement>
+      <placement version="1.4" id="U3" side="Top" part-id="QFN-48-7x7-ASM1061" type="Placement" enabled="true">
+         <location units="Millimeters" x="37.500000" y="-61.000000" z="0.0" rotation="-45.000000"/>
+      </placement>
+      <placement version="1.4" id="U4" side="Top" part-id="SOT-23-5-74AHCT1G32" type="Placement" enabled="true">
+         <location units="Millimeters" x="59.612501" y="-95.149999" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="U5" side="Top" part-id="SOIC-8-DS3231MZ" type="Placement" enabled="true">
+         <location units="Millimeters" x="67.950001" y="-96.987498" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="U6" side="Top" part-id="SOT-223-NCP1117-3.3_SOT223" type="Placement" enabled="true">
+         <location units="Millimeters" x="55.710000" y="-105.960000" z="0.0" rotation="90.000000"/>
+      </placement>
+      <placement version="1.4" id="U7" side="Top" part-id="SOIC-8-EP-AP64501SP-13" type="Placement" enabled="true">
+         <location units="Millimeters" x="76.800000" y="-111.519106" z="0.0" rotation="180.000000"/>
+      </placement>
+      <placement version="1.4" id="Y1" side="Top" part-id="XTAL-2016-25MHz" type="Placement" enabled="true">
+         <location units="Millimeters" x="41.718187" y="-66.523982" z="0.0" rotation="45.000000"/>
+      </placement>
+   </placements>
+   <fiducials/>
+   <solder-paste-pads/>
+</openpnp-board>

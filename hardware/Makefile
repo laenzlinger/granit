@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: test step pdf pos clean
+.PHONY: test step pdf pnp clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
 REVISION ?= $(shell git describe --tags --exact-match 2>/dev/null || echo dev)
@@ -55,7 +55,7 @@ pdf: ## Export PDF (schematic and PCB)
 		--output out/$(PROJECT_NAME)-schematic.pdf \
 		$(PROJECT_NAME).kicad_sch
 
-pos: ## Export position file for OpenPnP
+pnp: ## Generate OpenPnP position file and board XML
 	mkdir -p out
 	kicad-cli pcb export pos \
 		--output /dev/stdout \
@@ -65,7 +65,7 @@ pos: ## Export position file for OpenPnP
 		--smd-only \
 		--exclude-dnp \
 		$(PROJECT_NAME).kicad_pcb \
-	| python3 ~/.openpnp2/remap-pnp.py > out/$(PROJECT_NAME).pos.csv
+	| python3 ~/.openpnp2/remap-pnp.py pnp
 
 clean:
 	rm -rf out
