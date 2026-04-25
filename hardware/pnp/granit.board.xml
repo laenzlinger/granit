@@ -76,7 +76,7 @@
       <placement version="1.4" id="C25" side="Top" part-id="C_0805_2012Metric-10u" type="Placement" enabled="true">
          <location units="Millimeters" x="60.300000" y="-103.750000" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" id="C26" side="Top" part-id="CP_Elec_6.3x7.7-100uF/25V" type="Placement" enabled="true">
+      <placement version="1.4" id="C26" side="Top" part-id="CP_Elec_6.3x7.7-100uF/25V" type="Placement" enabled="false">
          <location units="Millimeters" x="88.920000" y="-104.870000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" id="C27" side="Top" part-id="C_0805_2012Metric-1.2n" type="Placement" enabled="true">
@@ -139,7 +139,7 @@
       <placement version="1.4" id="C46" side="Top" part-id="C_0805_2012Metric-10u" type="Placement" enabled="true">
          <location units="Millimeters" x="96.050000" y="-118.100000" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" id="CM1" side="Top" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="true">
+      <placement version="1.4" id="CM1" side="Top" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="false">
          <location units="Millimeters" x="85.500000" y="-37.500000" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" id="D1" side="Top" part-id="LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm-WS2812B-5mm" type="Placement" enabled="true">
@@ -154,28 +154,28 @@
       <placement version="1.4" id="F1" side="Top" part-id="Fuse_2512_6332Metric-3A" type="Placement" enabled="true">
          <location units="Millimeters" x="99.200000" y="-111.850000" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" id="FID1" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Placement" enabled="true">
+      <placement version="1.4" id="FID1" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Fiducial" enabled="true">
          <location units="Millimeters" x="29.000000" y="-22.000000" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" id="FID2" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Placement" enabled="true">
+      <placement version="1.4" id="FID2" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Fiducial" enabled="true">
          <location units="Millimeters" x="101.000000" y="-22.500000" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" id="FID3" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Placement" enabled="true">
+      <placement version="1.4" id="FID3" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Fiducial" enabled="true">
          <location units="Millimeters" x="29.377679" y="-117.216007" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" id="FID4" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Placement" enabled="true">
+      <placement version="1.4" id="FID4" side="Top" part-id="Fiducial_1mm_Mask2mm-Fiducial" type="Fiducial" enabled="true">
          <location units="Millimeters" x="102.318312" y="-118.008975" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" id="J1" side="Top" part-id="USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="true">
+      <placement version="1.4" id="J1" side="Top" part-id="USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="false">
          <location units="Millimeters" x="109.810000" y="-34.000000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" id="J2" side="Top" part-id="SW_SPDT_PCM12-PCM12SMTR" type="Placement" enabled="true">
+      <placement version="1.4" id="J2" side="Top" part-id="SW_SPDT_PCM12-PCM12SMTR" type="Placement" enabled="false">
          <location units="Millimeters" x="94.590000" y="-44.950000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" id="J3" side="Top" part-id="JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical-BM03B-SRSS-TB" type="Placement" enabled="true">
+      <placement version="1.4" id="J3" side="Top" part-id="JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical-BM03B-SRSS-TB" type="Placement" enabled="false">
          <location units="Millimeters" x="94.220000" y="-52.730000" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" id="J4" side="Top" part-id="SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin" type="Placement" enabled="true">
+      <placement version="1.4" id="J4" side="Top" part-id="SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin" type="Placement" enabled="false">
          <location units="Millimeters" x="23.000000" y="-70.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" id="L1" side="Top" part-id="L_Bourns_SRN6045TA-SRN6045TA-3R3Y" type="Placement" enabled="true">
@@ -277,7 +277,7 @@
       <placement version="1.4" id="R27" side="Top" part-id="R_0805_2012Metric-10R" type="Placement" enabled="true">
          <location units="Millimeters" x="74.800000" y="-115.199999" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" id="SW1" side="Top" part-id="SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010-SW_Push" type="Placement" enabled="true">
+      <placement version="1.4" id="SW1" side="Top" part-id="SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010-SW_Push" type="Placement" enabled="false">
          <location units="Millimeters" x="110.504000" y="-56.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" id="U1" side="Top" part-id="SOT-23-6-USBLC6-2SC6" type="Placement" enabled="true">
