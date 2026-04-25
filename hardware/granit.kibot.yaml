@@ -113,6 +113,13 @@ outputs:
       only_smd: true
       dnf_filter: _kibom_dnf
 
+  - name: stencil_3d
+    comment: 3D printable stencil jig
+    type: stencil_3d
+    dir: Assembly
+    options:
+      thickness: 0.12
+
   - name: basic_navigate
     comment: Web page to navigate the outputs
     type: navigate_results
