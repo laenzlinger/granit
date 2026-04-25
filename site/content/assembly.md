@@ -8,6 +8,8 @@ The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants. PCB and HDD
 sit side-by-side with the SATA connector direct-mating between them. The lid
 (U-channel) is shown offset to reveal the internals.
 
+> ⚠️ **v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the wide case (1455T2601) as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
+
 ## End Plate
 
 The connector-side end plate has cutouts for:
