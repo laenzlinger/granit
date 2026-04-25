@@ -36,6 +36,7 @@ openscad -o end-plate-slim.stl -D 'variant="slim"' -D '$fn=64' end-plate.scad
 | [assembly-slim.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-slim.step) | STEP | Full slim assembly |
 | [assembly-wide.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-wide.step) | STEP | Full wide assembly |
 | [end-plate.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate.scad) | OpenSCAD | Parametric end plate source |
+| [stencil jig (top)](Assembly/granit-stencil_3d_top.stl) | STL | 3D-printable solder paste stencil jig |
 
 ## Enclosure Variants
 
