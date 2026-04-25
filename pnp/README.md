@@ -106,6 +106,19 @@ All KiCad footprints are mapped to OpenPnP packages in
 `~/.openpnp2/openpnp-package-map.csv`. The part-id convention is
 `{openpnp_package}-{value}` (e.g. `C_0805-100n`, `R_0805-10K`).
 
+## Feeder Map
+
+After setting up feeders in OpenPnP, generate a visual SVG map:
+
+1. Open OpenPnP scripting menu → `project/generate_map`
+2. Enter project name: `Granit v0.3`
+3. Save as: `pnp/feed_map.svg`
+
+This uses the [psypnp](https://inductive-kickback.com/2020/10/psypnp-for-openpnp/)
+`generate_map.py` script (`~/.openpnp2/scripts/project/generate_map.py`) which reads
+live feeder positions and generates an SVG showing part names, locations, and feed
+directions.
+
 ## Notes
 
 - The QFN-48 ASM1061 (U3) is 0.5mm pitch — same as USB2514B successfully
