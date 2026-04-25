@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1190" height="505">
+<rect width="100%" height="100%" fill="white"/>
+<text x="10" y="20" font-size="14" font-family="monospace">Feeder Map (37 feeders)</text>
+<line x1="743.5" y1="121.1" x2="743.5" y2="133.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="743.5" cy="121.1" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="748.5" y="116.1" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-1: 10n_film</text>
+<line x1="777.7" y1="118.1" x2="777.8" y2="129.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="777.7" cy="118.1" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="782.7" y="113.1" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-2: 100n</text>
+<line x1="810.8" y1="121.3" x2="810.7" y2="133.3" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="810.8" cy="121.3" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="815.8" y="116.3" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-3: 1u</text>
+<line x1="843.3" y1="122.0" x2="843.5" y2="229.4" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="843.3" cy="122.0" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="848.3" y="117.0" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-4: 10u</text>
+<line x1="878.5" y1="117.8" x2="878.6" y2="129.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="878.5" cy="117.8" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="883.5" y="112.8" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-5: 1.2n</text>
+<line x1="911.1" y1="114.4" x2="910.7" y2="126.1" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="911.1" cy="114.4" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="916.1" y="109.4" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-6: 15p</text>
+<line x1="944.2" y1="122.0" x2="944.4" y2="134.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="944.2" cy="122.0" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="949.2" y="117.0" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-7: 2n2</text>
+<line x1="976.8" y1="116.6" x2="976.7" y2="128.7" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="976.8" cy="116.6" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="981.8" y="111.6" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV8-8: 18p</text>
+<line x1="203.7" y1="119.7" x2="203.5" y2="140.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="203.7" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="208.7" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-08: LED_R</text>
+<line x1="238.8" y1="119.7" x2="238.8" y2="142.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="238.8" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="243.8" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-07: LED_Y</text>
+<line x1="272.1" y1="119.7" x2="272.1" y2="127.2" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="272.1" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="277.1" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-06: 10R</text>
+<line x1="305.2" y1="119.7" x2="305.3" y2="129.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="305.2" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="310.2" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-05: 2K2</text>
+<line x1="338.7" y1="119.7" x2="338.7" y2="128.3" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="338.7" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="343.7" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-04: 100K</text>
+<line x1="372.2" y1="119.7" x2="372.2" y2="130.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="372.2" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="377.2" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-03: 10k</text>
+<line x1="405.3" y1="119.7" x2="405.0" y2="130.7" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="405.3" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="410.3" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-02: 470R</text>
+<line x1="437.2" y1="119.7" x2="437.4" y2="129.5" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="437.2" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="442.2" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-01: 100R</text>
+<line x1="283.4" y1="88.7" x2="283.2" y2="77.5" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="283.4" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="288.4" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-01: 27R</text>
+<line x1="250.0" y1="88.7" x2="250.4" y2="65.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="250.0" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="255.0" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-02: 33R</text>
+<line x1="216.8" y1="88.7" x2="216.8" y2="74.6" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="216.8" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="221.8" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-03: 120_100MHz</text>
+<line x1="183.6" y1="88.7" x2="183.7" y2="72.8" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="183.6" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="188.6" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-04: 7</text>
+<line x1="868.5" y1="83.6" x2="868.5" y2="50.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="868.5" cy="83.6" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="873.5" y="78.6" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RH12-1: PCM5242RHBR</text>
+<line x1="1011.0" y1="83.6" x2="1010.9" y2="62.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1011.0" cy="83.6" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1016.0" y="78.6" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RH12-2: W25Q128JVS</text>
+<line x1="1054.3" y1="83.6" x2="1054.4" y2="62.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1054.3" cy="83.6" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1059.3" y="78.6" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RH12-3: 13</text>
+<line x1="1096.1" y1="83.6" x2="1096.2" y2="62.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1096.1" cy="83.6" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1101.1" y="78.6" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RH12-4: Polyfuse_1.8A</text>
+<line x1="1139.8" y1="83.6" x2="1139.7" y2="62.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1139.8" cy="83.6" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1144.8" y="78.6" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RH12-5: 3.3_SOT223</text>
+<line x1="1023.6" y1="290.0" x2="1062.3" y2="290.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1023.6" cy="290.0" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1028.6" y="285.0" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV16-4: 3R3Y</text>
+<line x1="1023.6" y1="345.7" x2="1058.0" y2="345.7" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1023.6" cy="345.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1028.6" y="340.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV16-3: TLP2761</text>
+<line x1="1023.6" y1="401.2" x2="1060.8" y2="401.2" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1023.6" cy="401.2" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1028.6" y="396.2" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV16-2: RP2040</text>
+<line x1="150.4" y1="88.7" x2="150.5" y2="75.9" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="150.4" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="155.4" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-05: 24.576M</text>
+<line x1="169.8" y1="119.7" x2="169.8" y2="130.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="169.8" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="174.8" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-09: 3K9</text>
+<line x1="137.0" y1="119.7" x2="137.0" y2="128.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="137.0" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="142.0" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-10: 36K</text>
+<line x1="117.0" y1="88.7" x2="116.9" y2="75.7" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="117.0" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="122.0" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-06: 22.5792M</text>
+<line x1="83.8" y1="88.7" x2="84.0" y2="79.3" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="83.8" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="88.8" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-07: STUM</text>
+<line x1="50.0" y1="88.7" x2="50.1" y2="76.1" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="50.0" cy="88.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="55.0" y="83.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LH8-08: NCP163</text>
+<line x1="1023.6" y1="455.3" x2="1058.4" y2="455.3" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1023.6" cy="455.3" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1028.6" y="450.3" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV16-1: PCM1863DBT</text>
+<line x1="104.0" y1="119.7" x2="103.7" y2="133.0" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="104.0" cy="119.7" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="109.0" y="114.7" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">LV8-11: T3</text>
+<line x1="1023.6" y1="235.1" x2="1058.4" y2="235.1" stroke="#2a9d8f" stroke-width="2" opacity="1.0"/>
+<circle cx="1023.6" cy="235.1" r="3" fill="#2a9d8f" opacity="1.0"/>
+<text x="1028.6" y="230.1" font-size="10" font-family="monospace" fill="#2a9d8f" opacity="1.0">RV16-5: USB_OTG</text>
+</svg>

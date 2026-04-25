@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: test step pdf pnp clean
+.PHONY: test step pdf pnp feeder-map clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
 REVISION ?= $(shell git describe --tags --exact-match 2>/dev/null || echo dev)
@@ -66,6 +66,9 @@ pnp: ## Generate OpenPnP position file and board XML
 		--exclude-dnp \
 		$(PROJECT_NAME).kicad_pcb \
 	| python3 ~/.openpnp2/remap-pnp.py pnp
+
+feeder-map: ## Generate SVG feeder layout map
+	python3 ~/.openpnp2/feeder-map.py ~/.openpnp2/machine.xml pnp/feed_map.svg
 
 clean:
 	rm -rf out
