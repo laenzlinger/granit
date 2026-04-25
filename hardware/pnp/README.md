@@ -106,6 +106,16 @@ All KiCad footprints are mapped to OpenPnP packages in
 `~/.openpnp2/openpnp-package-map.csv`. The part-id convention is
 `{openpnp_package}-{value}` (e.g. `C_0805-100n`, `R_0805-10K`).
 
+## Drag Feeders
+
+High-volume 0805 parts to set up as passive/drag feeders instead of strip feeders:
+
+| Part | Qty | Feeder |
+|------|-----|--------|
+| C_0805-100n | 24 | Drag feeder |
+| C_0805-10u | 15 | Drag feeder |
+| R_0805-10K | 10 | Drag feeder |
+
 ## Feeder Map
 
 After setting up feeders in OpenPnP, generate a visual SVG map:
