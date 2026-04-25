@@ -113,12 +113,14 @@ outputs:
       only_smd: true
       dnf_filter: _kibom_dnf
 
-  - name: stencil_3d
-    comment: 3D printable stencil jig
-    type: stencil_3d
+  - name: stencil_jig
+    comment: PCB holder for steel stencil alignment
+    type: stencil_for_jig
     dir: Assembly
     options:
-      thickness: 0.12
+      jigwidth: 120
+      jigheight: 120
+      jigthickness: 3
 
   - name: basic_navigate
     comment: Web page to navigate the outputs
