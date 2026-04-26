@@ -66,8 +66,8 @@ pnp: ## Generate OpenPnP position file and board XML
 		$(PROJECT_NAME).kicad_pcb \
 	| openpnp-tools generate -o pnp -n $(PROJECT_NAME)
 
-feeder-map: ## Generate SVG feeder layout map
-	python3 ~/.openpnp2/feeder-map.py ~/.openpnp2/machine.xml pnp/feed_map.svg
+feeder-map: ## Generate HTML feeder layout map
+	openpnp-tools map -o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
 
 feeders: ## Assign parts to feeders from pnp/feeders.csv
 	openpnp-tools assign pnp/feeders.csv
