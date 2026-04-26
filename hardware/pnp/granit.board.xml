@@ -1,5 +1,5 @@
 <openpnp-board version="1.1" name="granit">
-   <dimensions units="Millimeters" x="0.0" y="0.0" z="1.6" rotation="0.0"/>
+   <dimensions units="Millimeters" x="92.0" y="99.5" z="1.6" rotation="0.0"/>
    <placements>
       <placement version="1.4" side="Top" id="C1" part-id="C_0805-100n" type="Placement" enabled="true">
          <location units="Millimeters" x="102.150000" y="-30.700000" z="0.0" rotation="90.000000"/>
@@ -76,7 +76,7 @@
       <placement version="1.4" side="Top" id="C25" part-id="C_0805-10u" type="Placement" enabled="true">
          <location units="Millimeters" x="60.300000" y="-103.750000" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="C26" part-id="CP_Elec_6.3x7.7-100uF/25V" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="C26" part-id="ECAP-6.3x7.7-100uF/25V" type="Placement" enabled="true">
          <location units="Millimeters" x="88.920000" y="-104.870000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="C27" part-id="C_0805-1.2n" type="Placement" enabled="true">
@@ -112,7 +112,7 @@
       <placement version="1.4" side="Top" id="C37" part-id="C_0805-1n" type="Placement" enabled="true">
          <location units="Millimeters" x="66.300000" y="-110.349999" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="C38" part-id="CP_EIA-7343-31_Kemet-D-100u" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="C38" part-id="TANT-D-100u" type="Placement" enabled="true">
          <location units="Millimeters" x="56.900000" y="-112.799999" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="C39" part-id="C_0805-10u" type="Placement" enabled="true">
@@ -142,7 +142,7 @@
       <placement version="1.4" side="Top" id="CM1" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="true">
          <location units="Millimeters" x="85.500000" y="-37.500000" z="0.0" rotation="180.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="D1" part-id="LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm-WS2812B-5mm" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="D1" part-id="WS2812B-5050-WS2812B-5mm" type="Placement" enabled="true">
          <location units="Millimeters" x="109.000000" y="-47.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="D2" part-id="LED_0805-LED R" type="Placement" enabled="true">
@@ -151,7 +151,7 @@
       <placement version="1.4" side="Top" id="D3" part-id="LED_0805-LED G" type="Placement" enabled="true">
          <location units="Millimeters" x="98.200000" y="-58.400000" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="F1" part-id="Fuse_2512_6332Metric-3A" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="F1" part-id="FUSE-2512-3A" type="Placement" enabled="true">
          <location units="Millimeters" x="99.200000" y="-111.850000" z="0.0" rotation="-90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="FID1" part-id="FIDUCIAL-1X2-Fiducial" type="Fiducial" enabled="true">
@@ -166,28 +166,28 @@
       <placement version="1.4" side="Top" id="FID4" part-id="FIDUCIAL-1X2-Fiducial" type="Fiducial" enabled="true">
          <location units="Millimeters" x="102.318312" y="-118.008975" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="J1" part-id="USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="J1" part-id="USB-C-GCT4105-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="true">
          <location units="Millimeters" x="109.810000" y="-34.000000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="J2" part-id="SW_SPDT_PCM12-PCM12SMTR" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="J2" part-id="SW-PCM12-PCM12SMTR" type="Placement" enabled="true">
          <location units="Millimeters" x="94.590000" y="-44.950000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="J3" part-id="JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical-BM03B-SRSS-TB" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="J3" part-id="JST-SH-3-BM03B-SRSS-TB" type="Placement" enabled="true">
          <location units="Millimeters" x="94.220000" y="-52.730000" z="0.0" rotation="0.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="J4" part-id="SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin" type="Placement" enabled="true">
          <location units="Millimeters" x="23.000000" y="-70.000000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="L1" part-id="L_Bourns_SRN6045TA-SRN6045TA-3R3Y" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="L1" part-id="IND-6045-SRN6045TA-3R3Y" type="Placement" enabled="true">
          <location units="Millimeters" x="69.603943" y="-115.327147" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q1" part-id="SOT-23-2N7002" type="Placement" enabled="true">
          <location units="Millimeters" x="63.462501" y="-95.199999" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="Q2" part-id="SO08-E3-FDS4435BZ" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="Q2" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
          <location units="Millimeters" x="30.920000" y="-101.807500" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="Q3" part-id="SO08-E3-FDS4435BZ" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="Q3" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
          <location units="Millimeters" x="43.700000" y="-101.800000" z="0.0" rotation="0.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q4" part-id="SOT-23-2N7002" type="Placement" enabled="true">
@@ -196,7 +196,7 @@
       <placement version="1.4" side="Top" id="Q5" part-id="SOT-23-2N7002" type="Placement" enabled="true">
          <location units="Millimeters" x="48.460001" y="-103.950000" z="0.0" rotation="180.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="Q6" part-id="SO08-E3-FDS4435BZ" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="Q6" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
          <location units="Millimeters" x="93.455255" y="-113.569107" z="0.0" rotation="-90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="R1" part-id="R_0805-5K1" type="Placement" enabled="true">
@@ -277,7 +277,7 @@
       <placement version="1.4" side="Top" id="R27" part-id="R_0805-10R" type="Placement" enabled="true">
          <location units="Millimeters" x="74.800000" y="-115.199999" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="SW1" part-id="SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010-SW_Push" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="SW1" part-id="SW-SKRTLAE010-SW_Push" type="Placement" enabled="true">
          <location units="Millimeters" x="110.504000" y="-56.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="U1" part-id="SOT-23-6-USBLC6-2SC6" type="Placement" enabled="true">
@@ -286,22 +286,22 @@
       <placement version="1.4" side="Top" id="U2" part-id="SOT-23-5-74AHCT1G125" type="Placement" enabled="true">
          <location units="Millimeters" x="101.350000" y="-47.537500" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="U3" part-id="QFN50P700X700X90-49N-D-ASM1061" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="U3" part-id="QFN-48-7x7-ASM1061" type="Placement" enabled="true">
          <location units="Millimeters" x="37.500000" y="-61.000000" z="0.0" rotation="-45.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="U4" part-id="SOT-23-5-74AHCT1G32" type="Placement" enabled="true">
          <location units="Millimeters" x="59.612501" y="-95.149999" z="0.0" rotation="180.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="U5" part-id="SOIC-8_3.9x4.9mm_P1.27mm-DS3231MZ" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="U5" part-id="SOIC-8-DS3231MZ" type="Placement" enabled="true">
          <location units="Millimeters" x="67.950001" y="-96.987498" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="U6" part-id="SOT-223-NCP1117-3.3_SOT223" type="Placement" enabled="true">
          <location units="Millimeters" x="55.710000" y="-105.960000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="U7" part-id="SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.95x4.9mm_Mask2.71x3.4mm_ThermalVias-AP64501SP-13" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="U7" part-id="SOIC-8-EP-AP64501SP-13" type="Placement" enabled="true">
          <location units="Millimeters" x="76.800000" y="-111.519106" z="0.0" rotation="180.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="Y1" part-id="Crystal_SMD_2016-4Pin_2.0x1.6mm-25MHz" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="Y1" part-id="XTAL-2016-25MHz" type="Placement" enabled="true">
          <location units="Millimeters" x="41.718187" y="-66.523982" z="0.0" rotation="45.000000"/>
       </placement>
    </placements>

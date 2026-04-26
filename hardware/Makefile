@@ -64,7 +64,7 @@ pnp: ## Generate OpenPnP position file and board XML
 		--smd-only \
 		--exclude-dnp \
 		$(PROJECT_NAME).kicad_pcb \
-	| openpnp-tools generate -o pnp -n $(PROJECT_NAME)
+	| openpnp-tools generate -o pnp -n $(PROJECT_NAME) --board-width 92 --board-height 99.5
 	openpnp-tools ensure-parts pnp/$(PROJECT_NAME).board.xml
 
 feeder-map: ## Generate HTML feeder layout map
