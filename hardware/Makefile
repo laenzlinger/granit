@@ -71,7 +71,7 @@ feeder-map: ## Generate SVG feeder layout map
 	python3 ~/.openpnp2/feeder-map.py ~/.openpnp2/machine.xml pnp/feed_map.svg
 
 feeders: ## Assign parts to feeders from pnp/feeders.csv
-	openpnp-feeder-map assign pnp/feeders.csv
+	openpnp-tools assign pnp/feeders.csv
 
 clean:
 	rm -rf out
