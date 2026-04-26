@@ -21,7 +21,7 @@ make feeder-map  # generates pnp/feed_map.svg
 ### LV8 — Passives (front-left, 16×8mm)
 
 | Slot | Part | Qty | IPN |
-|------|------|-----|-----|
+| ---- | ---- | --- | --- |
 | LV8-01 | C_0805-1n | 2 | C-004 |
 | LV8-02 | C_0805-1.2n | 1 | C-005 |
 | LV8-03 | C_0805-18p | 2 | C-015 |
@@ -42,7 +42,7 @@ make feeder-map  # generates pnp/feed_map.svg
 ### RV8 — Small ICs (front-right, 8×8mm)
 
 | Slot | Part | Qty | IPN |
-|------|------|-----|-----|
+| ---- | ---- | --- | --- |
 | RV8-1 | LED_0805-LED G | 1 | D-001 |
 | RV8-2 | SOT-23-2N7002 | 3 | Q-003 |
 | RV8-3 | SOT-23-5-74AHCT1G125 | 1 | U-008 |
@@ -53,7 +53,7 @@ make feeder-map  # generates pnp/feed_map.svg
 ### RH12 — Larger ICs + passives (back-right, 6×12mm)
 
 | Slot | Part | Qty | IPN |
-|------|------|-----|-----|
+| ---- | ---- | --- | --- |
 | RH12-1 | SOT-223-NCP1117-3.3 | 1 | U-002 |
 | RH12-2 | SOIC-8-FDS4435BZ | 3 | Q-001 |
 | RH12-3 | SOIC-8-EP-AP64501SP-13 | 1 | U-001 |
@@ -64,14 +64,14 @@ make feeder-map  # generates pnp/feed_map.svg
 ### RV16 — Large packages (front-right, 6×16mm)
 
 | Slot | Part | Qty | IPN |
-|------|------|-----|-----|
+| ---- | ---- | --- | --- |
 | RV16-1 | QFN-48-7x7-ASM1061 | 1 | U-009 |
 | RV16-2 | WS2812B-5050-WS2812B-5mm | 1 | D-007 |
 
 ### Drag Feeders (far left, 8 slots)
 
 | Slot | Part | Qty | IPN |
-|------|------|-----|-----|
+| ---- | ---- | --- | --- |
 | DRAG-1 | C_0805-100n | 24 | C-001 |
 | DRAG-2 | C_0805-10u | 15 | C-003 |
 | DRAG-3 | R_0805-10K | 5 | R-002 |
@@ -80,15 +80,15 @@ make feeder-map  # generates pnp/feed_map.svg
 
 Placed after reflow or require manual alignment:
 
-| Ref  | Part              | Package              | Reason                    |
-|------|-------------------|----------------------|---------------------------|
-| CM1  | Raspberry Pi CM4  | DF40 200-pin B2B     | Board-to-board connector  |
-| J1   | USB-C receptacle  | GCT USB4105          | Mid-mount, alignment      |
-| J2   | Slide switch      | PCM12SMTR            | Odd form factor           |
-| J3   | UART connector    | JST-SH BM03B 3-pin  | Vertical                  |
-| J4   | SATA 22-pin       | Amphenol horizontal  | Through-hole pins         |
-| SW1  | Tactile button    | SKRTLAE010           | Side-mount                |
-| C26  | 100µF/25V elec    | 6.3×7.7mm            | Tall electrolytic         |
+| Ref | Part | Package | Reason |
+| ---- | ----------------- | -------------------- | ------------------------- |
+| CM1 | Raspberry Pi CM4 | DF40 200-pin B2B | Board-to-board connector |
+| J1 | USB-C receptacle | GCT USB4105 | Mid-mount, alignment |
+| J2 | Slide switch | PCM12SMTR | Odd form factor |
+| J3 | UART connector | JST-SH BM03B 3-pin | Vertical |
+| J4 | SATA 22-pin | Amphenol horizontal | Through-hole pins |
+| SW1 | Tactile button | SKRTLAE010 | Side-mount |
+| C26 | 100µF/25V elec | 6.3×7.7mm | Tall electrolytic |
 
 ## Assembly Sequence
 
