@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: test step pdf pnp feeder-map clean
+.PHONY: test step pdf pnp feeder-map feeders clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
 REVISION ?= $(shell git describe --tags --exact-match 2>/dev/null || echo dev)
@@ -69,6 +69,9 @@ pnp: ## Generate OpenPnP position file and board XML
 
 feeder-map: ## Generate SVG feeder layout map
 	python3 ~/.openpnp2/feeder-map.py ~/.openpnp2/machine.xml pnp/feed_map.svg
+
+feeders: ## Assign parts to feeders from pnp/feeders.csv
+	openpnp-feeder-map assign pnp/feeders.csv
 
 clean:
 	rm -rf out
