@@ -1,101 +1,41 @@
 # Pick and Place Assembly Plan
 
-OpenPnP job files and documentation for Granit v0.3 prototype assembly.
+OpenPnP job files for Granit v0.3 prototype assembly.
 
-## Overview
-
-- **Total SMD placements:** 90 (machine) + 7 (hand) + 4 (fiducials)
-- **Stencil:** Yes (from JLCPCB, frameless)
-- **Reflow:** Hot plate (peak ~245°C for lead-free)
-
-## Generate PnP Files
+## Usage
 
 ```bash
 cd hardware
-make pnp        # generates pnp/granit.pos + pnp/granit.board.xml
-make feeder-map  # generates pnp/feed_map.svg
+make pnp        # generate board.xml + ensure parts exist
+make feeders    # assign parts to feeder slots
+make feeder-map # generate interactive HTML feeder map
 ```
 
 ## Feeder Allocation
 
-### LV08 — Passives (front-left, 16×8mm, DV08 for drag)
+Defined in [`feeders.csv`](feeders.csv) — the single source of truth for
+which part goes in which feeder slot. Apply with `make feeders`.
 
-| Slot | Part | Qty | IPN |
-| ---- | ---- | --- | --- |
-| LV08-01 | C_0805-1n | 2 | C-004 |
-| LV08-02 | C_0805-1.2n | 1 | C-005 |
-| LV08-03 | C_0805-18p | 2 | C-015 |
-| LV08-04 | C_0805-100n | 24 | C-001 |
-| LV08-05 | C_0805-10u | 15 | C-003 |
-| LV08-06 | R_0805-10R | 2 | R-001 |
-| LV08-07 | R_0805-330R | 5 | R-018 |
-| LV08-08 | R_0805-750R | 2 | R-020 |
-| LV08-09 | R_0805-2K2 | 1 | R-005 |
-| LV08-10 | R_0805-4K7 | 2 | R-003 |
-| LV08-11 | R_0805-5K1 | 2 | R-019 |
-| LV08-12 | R_0805-10K | 5 | R-002 |
-| LV08-13 | R_0805-12K | 2 | R-007 |
-| LV08-14 | R_0805-20K | 1 | R-006 |
-| LV08-15 | R_0805-100K | 3 | R-004 |
-| LV08-16 | LED_0805-LED R | 1 | D-002 |
-
-### RV08 — Small ICs (front-right, 8×8mm)
-
-| Slot | Part | Qty | IPN |
-| ---- | ---- | --- | --- |
-| RV08-01 | LED_0805-LED G | 1 | D-001 |
-| RV08-02 | SOT-23-2N7002 | 3 | Q-003 |
-| RV08-03 | SOT-23-5-74AHCT1G125 | 1 | U-008 |
-| RV08-04 | SOT-23-5-74AHCT1G32 | 1 | U-003 |
-| RV08-05 | SOT-23-6-USBLC6-2SC6 | 1 | U-011 |
-| RV08-06 | XTAL-2016-25MHz | 1 | Y-003 |
-
-### RH12 — Larger ICs + passives (back-right, 6×12mm)
-
-| Slot | Part | Qty | IPN |
-| ---- | ---- | --- | --- |
-| RH12-01 | SOT-223-NCP1117-3.3 | 1 | U-002 |
-| RH12-02 | SOIC-8-FDS4435BZ | 3 | Q-001 |
-| RH12-03 | SOIC-8-EP-AP64501SP-13 | 1 | U-001 |
-| RH12-04 | SOIC-8-DS3231MZ | 1 | U-010 |
-| RH12-05 | FUSE-2512-3A | 1 | F-002 |
-| RH12-06 | TANT-D-100u | 1 | C-006 |
-
-### RV16 — Large packages (front-right, 6×16mm)
-
-| Slot | Part | Qty | IPN |
-| ---- | ---- | --- | --- |
-| RV16-01 | QFN-48-7x7-ASM1061 | 1 | U-009 |
-| RV16-02 | WS2812B-5050-WS2812B-5mm | 1 | D-007 |
+View the interactive feeder map with `make feeder-map`.
 
 ## Hand-Place Components
 
-Placed after reflow or require manual alignment:
-
-| Ref | Part | Package | Reason |
-| ---- | ----------------- | -------------------- | ------------------------- |
-| CM1 | Raspberry Pi CM4 | DF40 200-pin B2B | Board-to-board connector |
-| J1 | USB-C receptacle | GCT USB4105 | Mid-mount, alignment |
-| J2 | Slide switch | PCM12SMTR | Odd form factor |
-| J3 | UART connector | JST-SH BM03B 3-pin | Vertical |
-| J4 | SATA 22-pin | Amphenol horizontal | Through-hole pins |
-| SW1 | Tactile button | SKRTLAE010 | Side-mount |
-| C26 | 100µF/25V elec | 6.3×7.7mm | Tall electrolytic |
+| Ref | Part | Reason |
+| --- | ---- | ------ |
+| CM1 | Raspberry Pi CM4 | Board-to-board connector |
+| J1 | USB-C receptacle | Mid-mount, alignment |
+| J2 | Slide switch | Odd form factor |
+| J3 | UART connector | Vertical |
+| J4 | SATA 22-pin | Through-hole pins |
+| SW1 | Tactile button | Side-mount |
+| C26 | 100µF/25V electrolytic | Tall |
 
 ## Assembly Sequence
 
-1. **Stencil** — Apply solder paste (tape-hinge method, align under microscope)
-2. **Machine place** — Run OpenPnP job (90 placements)
-3. **Inspect** — Check QFN-48 (U3) alignment under microscope
-4. **Reflow** — Hot plate reflow profile (peak ~245°C for lead-free)
-5. **Inspect** — Check for bridges on QFN-48, SOIC-8-EP, fine-pitch
-6. **Hand-solder** — Place CM1, connectors (J1–J4), SW1, C26
-7. **Clean** — IPA wash if using flux
-
-## Notes
-
-- The QFN-48 ASM1061 (U3) is 0.5mm pitch — bottom vision handles orientation.
-- D1 (WS2812B), L1 (inductor), C38 (tantalum) are machine-placed.
-- Fiducials (FID1–FID4) are used for board alignment.
-- Feeder layout and naming conventions documented in `~/.openpnp2/docs/feeder-layout.md`.
-- When drag feeders are used for 100nF, 10µF, and 10K, remove those from the LV8 strip allocation.
+1. **Stencil** — apply solder paste (tape-hinge, align under microscope)
+2. **Machine place** — run OpenPnP job (90 placements)
+3. **Inspect** — check QFN-48 (U3) alignment
+4. **Reflow** — hot plate (peak ~245°C)
+5. **Inspect** — check for bridges
+6. **Hand-solder** — CM1, J1–J4, SW1, C26
+7. **Clean** — IPA wash
