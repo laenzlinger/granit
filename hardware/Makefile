@@ -65,6 +65,7 @@ pnp: ## Generate OpenPnP position file and board XML
 		--exclude-dnp \
 		$(PROJECT_NAME).kicad_pcb \
 	| openpnp-tools generate -o pnp -n $(PROJECT_NAME)
+	openpnp-tools ensure-parts pnp/$(PROJECT_NAME).board.xml
 
 feeder-map: ## Generate HTML feeder layout map
 	openpnp-tools map -o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
