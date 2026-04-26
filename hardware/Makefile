@@ -56,7 +56,6 @@ pdf: ## Export PDF (schematic and PCB)
 		$(PROJECT_NAME).kicad_sch
 
 pnp: ## Generate OpenPnP position file and board XML
-	mkdir -p out
 	kicad-cli pcb export pos \
 		--output /dev/stdout \
 		--format csv \
@@ -65,7 +64,7 @@ pnp: ## Generate OpenPnP position file and board XML
 		--smd-only \
 		--exclude-dnp \
 		$(PROJECT_NAME).kicad_pcb \
-	| python3 ~/.openpnp2/remap-pnp.py pnp
+	| openpnp-tools generate -o pnp -n $(PROJECT_NAME)
 
 feeder-map: ## Generate SVG feeder layout map
 	python3 ~/.openpnp2/feeder-map.py ~/.openpnp2/machine.xml pnp/feed_map.svg
