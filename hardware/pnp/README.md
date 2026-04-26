@@ -18,55 +18,55 @@ make feeder-map  # generates pnp/feed_map.svg
 
 ## Feeder Allocation
 
-### LV8 — Passives (front-left, 16×8mm)
+### LV08 — Passives (front-left, 16×8mm, DV08 for drag)
 
 | Slot | Part | Qty | IPN |
 | ---- | ---- | --- | --- |
-| LV8-01 | C_0805-1n | 2 | C-004 |
-| LV8-02 | C_0805-1.2n | 1 | C-005 |
-| LV8-03 | C_0805-18p | 2 | C-015 |
-| LV8-04 | C_0805-100n | 24 | C-001 |
-| LV8-05 | C_0805-10u | 15 | C-003 |
-| LV8-06 | R_0805-10R | 2 | R-001 |
-| LV8-07 | R_0805-330R | 5 | R-018 |
-| LV8-08 | R_0805-750R | 2 | R-020 |
-| LV8-09 | R_0805-2K2 | 1 | R-005 |
-| LV8-10 | R_0805-4K7 | 2 | R-003 |
-| LV8-11 | R_0805-5K1 | 2 | R-019 |
-| LV8-12 | R_0805-10K | 5 | R-002 |
-| LV8-13 | R_0805-12K | 2 | R-007 |
-| LV8-14 | R_0805-20K | 1 | R-006 |
-| LV8-15 | R_0805-100K | 3 | R-004 |
-| LV8-16 | LED_0805-LED R | 1 | D-002 |
+| LV08-01 | C_0805-1n | 2 | C-004 |
+| LV08-02 | C_0805-1.2n | 1 | C-005 |
+| LV08-03 | C_0805-18p | 2 | C-015 |
+| LV08-04 | C_0805-100n | 24 | C-001 |
+| LV08-05 | C_0805-10u | 15 | C-003 |
+| LV08-06 | R_0805-10R | 2 | R-001 |
+| LV08-07 | R_0805-330R | 5 | R-018 |
+| LV08-08 | R_0805-750R | 2 | R-020 |
+| LV08-09 | R_0805-2K2 | 1 | R-005 |
+| LV08-10 | R_0805-4K7 | 2 | R-003 |
+| LV08-11 | R_0805-5K1 | 2 | R-019 |
+| LV08-12 | R_0805-10K | 5 | R-002 |
+| LV08-13 | R_0805-12K | 2 | R-007 |
+| LV08-14 | R_0805-20K | 1 | R-006 |
+| LV08-15 | R_0805-100K | 3 | R-004 |
+| LV08-16 | LED_0805-LED R | 1 | D-002 |
 
-### RV8 — Small ICs (front-right, 8×8mm)
+### RV08 — Small ICs (front-right, 8×8mm)
 
 | Slot | Part | Qty | IPN |
 | ---- | ---- | --- | --- |
-| RV8-1 | LED_0805-LED G | 1 | D-001 |
-| RV8-2 | SOT-23-2N7002 | 3 | Q-003 |
-| RV8-3 | SOT-23-5-74AHCT1G125 | 1 | U-008 |
-| RV8-4 | SOT-23-5-74AHCT1G32 | 1 | U-003 |
-| RV8-5 | SOT-23-6-USBLC6-2SC6 | 1 | U-011 |
-| RV8-6 | XTAL-2016-25MHz | 1 | Y-003 |
+| RV08-01 | LED_0805-LED G | 1 | D-001 |
+| RV08-02 | SOT-23-2N7002 | 3 | Q-003 |
+| RV08-03 | SOT-23-5-74AHCT1G125 | 1 | U-008 |
+| RV08-04 | SOT-23-5-74AHCT1G32 | 1 | U-003 |
+| RV08-05 | SOT-23-6-USBLC6-2SC6 | 1 | U-011 |
+| RV08-06 | XTAL-2016-25MHz | 1 | Y-003 |
 
 ### RH12 — Larger ICs + passives (back-right, 6×12mm)
 
 | Slot | Part | Qty | IPN |
 | ---- | ---- | --- | --- |
-| RH12-1 | SOT-223-NCP1117-3.3 | 1 | U-002 |
-| RH12-2 | SOIC-8-FDS4435BZ | 3 | Q-001 |
-| RH12-3 | SOIC-8-EP-AP64501SP-13 | 1 | U-001 |
-| RH12-4 | SOIC-8-DS3231MZ | 1 | U-010 |
-| RH12-5 | FUSE-2512-3A | 1 | F-002 |
-| RH12-6 | TANT-D-100u | 1 | C-006 |
+| RH12-01 | SOT-223-NCP1117-3.3 | 1 | U-002 |
+| RH12-02 | SOIC-8-FDS4435BZ | 3 | Q-001 |
+| RH12-03 | SOIC-8-EP-AP64501SP-13 | 1 | U-001 |
+| RH12-04 | SOIC-8-DS3231MZ | 1 | U-010 |
+| RH12-05 | FUSE-2512-3A | 1 | F-002 |
+| RH12-06 | TANT-D-100u | 1 | C-006 |
 
 ### RV16 — Large packages (front-right, 6×16mm)
 
 | Slot | Part | Qty | IPN |
 | ---- | ---- | --- | --- |
-| RV16-1 | QFN-48-7x7-ASM1061 | 1 | U-009 |
-| RV16-2 | WS2812B-5050-WS2812B-5mm | 1 | D-007 |
+| RV16-01 | QFN-48-7x7-ASM1061 | 1 | U-009 |
+| RV16-02 | WS2812B-5050-WS2812B-5mm | 1 | D-007 |
 
 ## Hand-Place Components
 
