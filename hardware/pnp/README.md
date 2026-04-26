@@ -68,14 +68,6 @@ make feeder-map  # generates pnp/feed_map.svg
 | RV16-1 | QFN-48-7x7-ASM1061 | 1 | U-009 |
 | RV16-2 | WS2812B-5050-WS2812B-5mm | 1 | D-007 |
 
-### Drag Feeders (far left, 8 slots)
-
-| Slot | Part | Qty | IPN |
-| ---- | ---- | --- | --- |
-| DRAG-1 | C_0805-100n | 24 | C-001 |
-| DRAG-2 | C_0805-10u | 15 | C-003 |
-| DRAG-3 | R_0805-10K | 5 | R-002 |
-
 ## Hand-Place Components
 
 Placed after reflow or require manual alignment:
