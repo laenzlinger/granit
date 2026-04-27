@@ -24,11 +24,8 @@ View the interactive feeder map with `make feeder-map`.
 | --- | ---- | ------ |
 | CM1 | Raspberry Pi CM4 | Board-to-board connector |
 | J1 | USB-C receptacle | Mid-mount, alignment |
-| J2 | Slide switch | Odd form factor |
 | J3 | UART connector | Vertical |
 | J4 | SATA 22-pin | Through-hole pins |
-| SW1 | Tactile button | Side-mount |
-| C26 | 100µF/25V electrolytic | Tall |
 
 ## Assembly Sequence
 
@@ -37,5 +34,5 @@ View the interactive feeder map with `make feeder-map`.
 3. **Inspect** — check QFN-48 (U3) alignment
 4. **Reflow** — hot plate (peak ~245°C)
 5. **Inspect** — check for bridges
-6. **Hand-solder** — CM1, J1–J4, SW1, C26
+6. **Hand-solder** — CM1, J1, J3, J4
 7. **Clean** — IPA wash
