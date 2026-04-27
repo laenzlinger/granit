@@ -10,6 +10,10 @@ sit side-by-side with the SATA connector direct-mating between them. The lid
 
 > ⚠️ **v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the wide case (1455T2601) as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
 
+## Pick and Place
+
+Interactive [feeder map](/granit/latest/feeder-map.html) showing the OpenPnP feeder allocation for machine placement.
+
 ## End Plate
 
 The connector-side end plate has cutouts for:
