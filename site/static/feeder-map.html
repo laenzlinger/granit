@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feeder Map — granit.job.xml</title>
+<style>
+:root { --theme: rgb(255,255,255); --entry: rgb(255,255,255); --primary: rgb(30,30,30); --secondary: rgb(108,108,108); --tertiary: rgb(214,214,214); --content: rgb(31,31,31); --code-bg: rgb(245,245,245); --border: rgb(238,238,238); --ok: #2a9d8f; --warn: #e9c46a; --err: #e76f51; --feeder-fill: rgba(42,157,143,0.08); --feeder-need: rgba(42,157,143,0.25); --dim: rgb(108,108,108); --bed: rgb(214,214,214); }
+@media(prefers-color-scheme:dark) {
+  :root { --theme: rgb(29,30,32); --entry: rgb(46,46,51); --primary: rgb(218,218,219); --secondary: rgb(155,156,157); --tertiary: rgb(65,66,68); --content: rgb(196,196,197); --code-bg: rgb(55,56,62); --border: rgb(51,51,51); --ok: #2a9d8f; --warn: #e9c46a; --err: #e76f51; --feeder-fill: rgba(42,157,143,0.12); --feeder-need: rgba(42,157,143,0.3); --dim: rgb(155,156,157); --bed: rgb(65,66,68); }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; font-size: 16px; background: var(--theme); color: var(--primary); }
+h1 { padding: 1rem; font-size: 1.2rem; background: var(--entry); border-bottom: 1px solid var(--border); }
+h1 small { font-weight: normal; color: var(--secondary); margin-left: 0.5rem; }
+.layout { display: flex; height: calc(100vh - 3.5rem); }
+.map-wrap { flex: 1; position: relative; overflow: hidden; background: var(--theme); }
+svg { width: 100%; height: 100%; }
+.sidebar { width: 480px; min-width: 200px; max-width: 80vw; overflow-y: auto; background: var(--entry); border-left: 1px solid var(--border); padding: 1rem; flex-shrink: 0; }
+.resize-handle { width: 5px; cursor: col-resize; background: var(--border); flex-shrink: 0; }
+.resize-handle:hover { background: var(--ok); }
+.sidebar h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--secondary); margin: 1rem 0 0.5rem; }
+.sidebar h2:first-child { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+th { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); color: var(--secondary); font-weight: 600; }
+td { padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); }
+tr.highlight td { background: rgba(42,157,143,0.12); }
+tr:hover td { background: var(--code-bg); cursor: pointer; }
+.badge { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; }
+.badge-strip { background: rgba(42,157,143,0.15); color: var(--ok); }
+.badge-pushpull { background: rgba(230,126,34,0.15); color: #e67e22; }
+.badge-pushpull { background: rgba(233,196,106,0.15); color: var(--warn); }
+.badge-tray { background: rgba(231,111,81,0.15); color: var(--err); }
+.badge-count { background: var(--code-bg); color: var(--primary); }
+.missing { color: var(--err); }
+.unused { color: var(--secondary); }
+.tape-hint { font-size: 0.7rem; color: var(--secondary); }
+.legend { display: flex; gap: 1rem; padding: 0.5rem 1rem; background: var(--entry); border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--secondary); }
+.legend span { display: flex; align-items: center; gap: 0.3rem; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.feeder-group { cursor: pointer; }
+.feeder-group:hover .feeder-line { stroke-width: 4; }
+.feeder-group:hover .tape-outline { stroke-width: 2; stroke-opacity: 0.8 !important; }
+.feeder-group:hover .feeder-dot { r: 5; }
+.feeder-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; fill: var(--primary); pointer-events: none; }
+.tooltip { position: absolute; background: var(--entry); border: 1px solid var(--border); padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.8rem; pointer-events: none; display: none; z-index: 10; max-width: 300px; }
+.tooltip .tt-name { font-weight: 600; color: var(--primary); }
+.tooltip .tt-part { color: var(--ok); }
+.tooltip .tt-detail { color: var(--secondary); font-size: 0.75rem; }
+</style>
+</head>
+<body>
+<h1>Feeder Map<small>granit.job.xml</small>
+  <label style="float:right;font-size:0.8rem;font-weight:normal;cursor:pointer;user-select:none">
+    <input type="checkbox" id="jobOnly" checked onchange="toggleJobOnly()"> Job feeders only
+  </label>
+</h1>
+<div class="layout">
+<div class="map-wrap" id="mapWrap">
+  <svg id="mapSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="tooltip" id="tooltip"></div>
+</div>
+<div class="resize-handle" id="resizeHandle"></div>
+<div class="sidebar" id="sidebar">
+  <h2>Job Feeders (34)</h2>
+  <table>
+    <tr><th>Feeder</th><th>Part</th><th>Qty</th><th>Type</th></tr>
+    
+    <tr data-feeder="FDR45b315c7c30d476e" onclick="highlight('FDR45b315c7c30d476e')">
+      <td style="white-space:nowrap">LV08-01</td>
+      <td>C_0805-1n</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRc77decbd6e34494b" onclick="highlight('FDRc77decbd6e34494b')">
+      <td style="white-space:nowrap">LV08-02</td>
+      <td>C_0805-1.2n</td>
+      <td><span class="badge badge-count">1/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR7f2669c00e8145c3" onclick="highlight('FDR7f2669c00e8145c3')">
+      <td style="white-space:nowrap">LV08-03</td>
+      <td>C_0805-18p</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR5ad69f9724f143db" onclick="highlight('FDR5ad69f9724f143db')">
+      <td style="white-space:nowrap">LV08-04</td>
+      <td>C_0805-100n</td>
+      <td><span class="badge badge-count">24/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR381a0771fd9e4c7e" onclick="highlight('FDR381a0771fd9e4c7e')">
+      <td style="white-space:nowrap">LV08-05</td>
+      <td>C_0805-10u</td>
+      <td><span class="badge badge-count">15/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR0f22ae9638fd4958" onclick="highlight('FDR0f22ae9638fd4958')">
+      <td style="white-space:nowrap">LV08-06</td>
+      <td>R_0805-10R</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR57f5a30c43db48a5" onclick="highlight('FDR57f5a30c43db48a5')">
+      <td style="white-space:nowrap">LV08-07</td>
+      <td>R_0805-330R</td>
+      <td><span class="badge badge-count">5/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRae511d6995204966" onclick="highlight('FDRae511d6995204966')">
+      <td style="white-space:nowrap">LV08-08</td>
+      <td>R_0805-750R</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR571bbd3d5bf34e1c" onclick="highlight('FDR571bbd3d5bf34e1c')">
+      <td style="white-space:nowrap">LV08-09</td>
+      <td>R_0805-2K2</td>
+      <td><span class="badge badge-count">1/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR7a9d7573c9984f8c" onclick="highlight('FDR7a9d7573c9984f8c')">
+      <td style="white-space:nowrap">LV08-10</td>
+      <td>R_0805-4K7</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR765cfcd033d94788" onclick="highlight('FDR765cfcd033d94788')">
+      <td style="white-space:nowrap">LV08-11</td>
+      <td>R_0805-5K1</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR2558304889764de0" onclick="highlight('FDR2558304889764de0')">
+      <td style="white-space:nowrap">LV08-12</td>
+      <td>R_0805-10K</td>
+      <td><span class="badge badge-count">6/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR61c1c11ecf1e44b7" onclick="highlight('FDR61c1c11ecf1e44b7')">
+      <td style="white-space:nowrap">LV08-13</td>
+      <td>R_0805-12K</td>
+      <td><span class="badge badge-count">2/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR99ae657a5f1943a7" onclick="highlight('FDR99ae657a5f1943a7')">
+      <td style="white-space:nowrap">LV08-14</td>
+      <td>R_0805-20K</td>
+      <td><span class="badge badge-count">1/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR3df7e4e69f744671" onclick="highlight('FDR3df7e4e69f744671')">
+      <td style="white-space:nowrap">LV08-15</td>
+      <td>R_0805-100K</td>
+      <td><span class="badge badge-count">3/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRc5e17164e9824425" onclick="highlight('FDRc5e17164e9824425')">
+      <td style="white-space:nowrap">RH12-01</td>
+      <td>SOT-223-NCP1117-3.3_SOT223</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR63a737235c864d7e" onclick="highlight('FDR63a737235c864d7e')">
+      <td style="white-space:nowrap">RH12-02</td>
+      <td>SOIC-8-FDS4435BZ</td>
+      <td><span class="badge badge-count">3/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRa11521fb56254e77" onclick="highlight('FDRa11521fb56254e77')">
+      <td style="white-space:nowrap">RH12-03</td>
+      <td>SOIC-8-EP-AP64501SP-13</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRe96e917c46f54392" onclick="highlight('FDRe96e917c46f54392')">
+      <td style="white-space:nowrap">RH12-04</td>
+      <td>SOIC-8-DS3231MZ</td>
+      <td><span class="badge badge-count">1/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR2e639bfd3c174ecc" onclick="highlight('FDR2e639bfd3c174ecc')">
+      <td style="white-space:nowrap">RH12-05</td>
+      <td>FUSE-2512-3A</td>
+      <td><span class="badge badge-count">1/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRf9b84a76a3ee444b" onclick="highlight('FDRf9b84a76a3ee444b')">
+      <td style="white-space:nowrap">RH12-06</td>
+      <td>WS2812B-5050-WS2812B-5mm</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRe6b494905c9f49b9" onclick="highlight('FDRe6b494905c9f49b9')">
+      <td style="white-space:nowrap">RH12-07</td>
+      <td>SW-SKRTLAE010-SW_Push</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRc2bb7a4e94f74cb0" onclick="highlight('FDRc2bb7a4e94f74cb0')">
+      <td style="white-space:nowrap">RV08-01</td>
+      <td>LED_0805-LED R</td>
+      <td><span class="badge badge-count">1/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRbb2ea9b9ae444393" onclick="highlight('FDRbb2ea9b9ae444393')">
+      <td style="white-space:nowrap">RV08-02</td>
+      <td>LED_0805-LED G</td>
+      <td><span class="badge badge-count">1/28</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRf161f5c4a1ca4770" onclick="highlight('FDRf161f5c4a1ca4770')">
+      <td style="white-space:nowrap">RV08-03</td>
+      <td>SOT-23-2N7002</td>
+      <td><span class="badge badge-count">3/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRc93c347cdc23412c" onclick="highlight('FDRc93c347cdc23412c')">
+      <td style="white-space:nowrap">RV08-04</td>
+      <td>SOT-23-5-74AHCT1G125</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRfde00662edd747a4" onclick="highlight('FDRfde00662edd747a4')">
+      <td style="white-space:nowrap">RV08-05</td>
+      <td>SOT-23-5-74AHCT1G32</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR9dabc1ded0f84f5c" onclick="highlight('FDR9dabc1ded0f84f5c')">
+      <td style="white-space:nowrap">RV08-06</td>
+      <td>SOT-23-6-USBLC6-2SC6</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR29c90118c3264120" onclick="highlight('FDR29c90118c3264120')">
+      <td style="white-space:nowrap">RV08-07</td>
+      <td>XTAL-2016-25MHz</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 8mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRb5e34e2206354b5b" onclick="highlight('FDRb5e34e2206354b5b')">
+      <td style="white-space:nowrap">RV16-01</td>
+      <td>QFN-48-7x7-ASM1061</td>
+      <td><span class="badge badge-count">1/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 16mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR3ba0c76144744db7" onclick="highlight('FDR3ba0c76144744db7')">
+      <td style="white-space:nowrap">RV16-02</td>
+      <td>TANT-D-100u</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 16mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDRa2b0e6b0b9b842a0" onclick="highlight('FDRa2b0e6b0b9b842a0')">
+      <td style="white-space:nowrap">RV16-03</td>
+      <td>IND-6045-SRN6045TA-3R3Y</td>
+      <td><span class="badge badge-count">1/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 16mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR99e95cf23573496d" onclick="highlight('FDR99e95cf23573496d')">
+      <td style="white-space:nowrap">RV16-04</td>
+      <td>SW-PCM12-PCM12SMTR</td>
+      <td><span class="badge badge-count">1/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 16mm</span></td>
+    </tr>
+    
+    <tr data-feeder="FDR9ebd33afd48541ff" onclick="highlight('FDR9ebd33afd48541ff')">
+      <td style="white-space:nowrap">RV16-05</td>
+      <td>ECAP-6.3x7.7-100uF/25V</td>
+      <td><span class="badge badge-count">1/8</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">WhitePaper 16mm</span></td>
+    </tr>
+    
+  </table>
+
+  
+  <h2 class="missing">⚠ Missing Feeders (4)</h2>
+  <table>
+    <tr><th>Part</th><th>Qty</th></tr>
+    
+    <tr><td class="missing">CM4-CM4</td><td><span class="badge badge-count">1</span></td></tr>
+    
+    <tr><td class="missing">JST-SH-3-BM03B-SRSS-TB</td><td><span class="badge badge-count">1</span></td></tr>
+    
+    <tr><td class="missing">SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin</td><td><span class="badge badge-count">1</span></td></tr>
+    
+    <tr><td class="missing">USB-C-GCT4105-USB_C_Receptacle_USB2.0_14P</td><td><span class="badge badge-count">1</span></td></tr>
+    
+  </table>
+  
+
+  
+  <div id="unusedSection">
+  <h2 class="unused">Unused Feeders (20)</h2>
+  <table>
+    <tr><th>Feeder</th><th>Part</th></tr>
+    
+    <tr class="unused" data-feeder="FDRb7e9313c75e44b75" onclick="highlight('FDRb7e9313c75e44b75')">
+      <td>DV08-01</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR4385325eb6864c1f" onclick="highlight('FDR4385325eb6864c1f')">
+      <td>DV08-02</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR033a2285bd654dc5" onclick="highlight('FDR033a2285bd654dc5')">
+      <td>DV08-03</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR38e7f7901d054fe2" onclick="highlight('FDR38e7f7901d054fe2')">
+      <td>DV08-04</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDRcc1a9a70f5e74939" onclick="highlight('FDRcc1a9a70f5e74939')">
+      <td>DV08-05</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR177bceb25c6045c4" onclick="highlight('FDR177bceb25c6045c4')">
+      <td>DV08-06</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR84c357bd84bd4fe2" onclick="highlight('FDR84c357bd84bd4fe2')">
+      <td>DV08-07</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR58927d624bcc4d0e" onclick="highlight('FDR58927d624bcc4d0e')">
+      <td>DV08-08</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR0ecb5da5466849bf" onclick="highlight('FDR0ecb5da5466849bf')">
+      <td>LH08-01</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDRf6dbf60fd13f4073" onclick="highlight('FDRf6dbf60fd13f4073')">
+      <td>LH08-02</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDRe3dde07a473f41a1" onclick="highlight('FDRe3dde07a473f41a1')">
+      <td>LH08-03</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR348a19bd6bef4f0e" onclick="highlight('FDR348a19bd6bef4f0e')">
+      <td>LH08-04</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR0e78a99c45ee4359" onclick="highlight('FDR0e78a99c45ee4359')">
+      <td>LH08-05</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR540ff9469161433d" onclick="highlight('FDR540ff9469161433d')">
+      <td>LH08-06</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR0442058f00174211" onclick="highlight('FDR0442058f00174211')">
+      <td>LH08-07</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDRe801605bc0154c53" onclick="highlight('FDRe801605bc0154c53')">
+      <td>LH08-08</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDRc194882699d74b42" onclick="highlight('FDRc194882699d74b42')">
+      <td>RH12-08</td><td>null</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR21bab890e4434972" onclick="highlight('FDR21bab890e4434972')">
+      <td>RH12-09</td><td>null</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDRa7ee194fe83e4b2c" onclick="highlight('FDRa7ee194fe83e4b2c')">
+      <td>RV08-08</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR1f2b50427a7e4fb2" onclick="highlight('FDR1f2b50427a7e4fb2')">
+      <td>RV16-06</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+  </table>
+  </div>
+  
+</div>
+</div>
+<div class="legend">
+  <span><span class="legend-dot" style="background:var(--ok)"></span> Job feeder</span>
+  <span><span class="legend-dot" style="background:var(--dim)"></span> Unused feeder</span>
+  <span><span class="legend-dot" style="background:var(--err)"></span> Missing part</span>
+  <span><span class="legend-dot" style="background:var(--warn)"></span> Board outline</span>
+  <span>○ Reference hole &nbsp; → Feed direction</span>
+</div>
+
+<script>
+const boards = [
+  {name:"granit",x: 188.13616852406824 ,y: 333.9666337448442 ,w: 92 ,h: 99.5 ,rot: 0.5386655269467314 },
+];
+
+const feeders = [
+  {id:"FDR45b315c7c30d476e",name:"LV08-01",part:"C_0805-1n",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 4.402 ,y1: 196.0309375 ,x2: 4.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDRc77decbd6e34494b",name:"LV08-02",part:"C_0805-1.2n",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 15.402000000000001 ,y1: 196.0309375 ,x2: 15.402000000000001 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR7f2669c00e8145c3",name:"LV08-03",part:"C_0805-18p",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 26.402 ,y1: 196.0309375 ,x2: 26.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR5ad69f9724f143db",name:"LV08-04",part:"C_0805-100n",type:"Strip",tape:"WhitePaper",count: 24 ,x1: 37.402 ,y1: 196.0309375 ,x2: 37.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR381a0771fd9e4c7e",name:"LV08-05",part:"C_0805-10u",type:"Strip",tape:"WhitePaper",count: 15 ,x1: 48.402 ,y1: 196.0309375 ,x2: 48.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR0f22ae9638fd4958",name:"LV08-06",part:"R_0805-10R",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 59.402 ,y1: 196.0309375 ,x2: 59.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR57f5a30c43db48a5",name:"LV08-07",part:"R_0805-330R",type:"Strip",tape:"WhitePaper",count: 5 ,x1: 70.402 ,y1: 196.0309375 ,x2: 70.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDRae511d6995204966",name:"LV08-08",part:"R_0805-750R",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 81.402 ,y1: 196.0309375 ,x2: 81.402 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR571bbd3d5bf34e1c",name:"LV08-09",part:"R_0805-2K2",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 92.939 ,y1: 196.0309375 ,x2: 92.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR7a9d7573c9984f8c",name:"LV08-10",part:"R_0805-4K7",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 103.939 ,y1: 196.0309375 ,x2: 103.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR765cfcd033d94788",name:"LV08-11",part:"R_0805-5K1",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 114.939 ,y1: 196.0309375 ,x2: 114.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR2558304889764de0",name:"LV08-12",part:"R_0805-10K",type:"Strip",tape:"WhitePaper",count: 6 ,x1: 125.939 ,y1: 196.0309375 ,x2: 125.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR61c1c11ecf1e44b7",name:"LV08-13",part:"R_0805-12K",type:"Strip",tape:"WhitePaper",count: 2 ,x1: 136.939 ,y1: 196.0309375 ,x2: 136.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR99ae657a5f1943a7",name:"LV08-14",part:"R_0805-20K",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 147.939 ,y1: 196.0309375 ,x2: 147.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDR3df7e4e69f744671",name:"LV08-15",part:"R_0805-100K",type:"Strip",tape:"WhitePaper",count: 3 ,x1: 158.939 ,y1: 196.0309375 ,x2: 158.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDRc5e17164e9824425",name:"RH12-01",part:"SOT-223-NCP1117-3.3_SOT223",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 314.653 ,y1: 210.869 ,x2: 314.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 8 ,used:true},
+  {id:"FDR63a737235c864d7e",name:"RH12-02",part:"SOIC-8-FDS4435BZ",type:"Strip",tape:"ClearPlastic",count: 3 ,x1: 329.653 ,y1: 210.869 ,x2: 329.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 12 ,used:true},
+  {id:"FDRa11521fb56254e77",name:"RH12-03",part:"SOIC-8-EP-AP64501SP-13",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 344.653 ,y1: 210.869 ,x2: 344.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 8 ,used:true},
+  {id:"FDRe96e917c46f54392",name:"RH12-04",part:"SOIC-8-DS3231MZ",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 359.653 ,y1: 210.869 ,x2: 359.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 12 ,used:true},
+  {id:"FDR2e639bfd3c174ecc",name:"RH12-05",part:"FUSE-2512-3A",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 374.653 ,y1: 210.869 ,x2: 374.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 12 ,used:true},
+  {id:"FDRf9b84a76a3ee444b",name:"RH12-06",part:"WS2812B-5050-WS2812B-5mm",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 389.653 ,y1: 210.869 ,x2: 389.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 8 ,used:true},
+  {id:"FDRe6b494905c9f49b9",name:"RH12-07",part:"SW-SKRTLAE010-SW_Push",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 404.653 ,y1: 210.869 ,x2: 404.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 8 ,used:true},
+  {id:"FDRc2bb7a4e94f74cb0",name:"RV08-01",part:"LED_0805-LED R",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 272.935 ,y1: 198.242875 ,x2: 272.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDRbb2ea9b9ae444393",name:"RV08-02",part:"LED_0805-LED G",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 283.935 ,y1: 198.242875 ,x2: 283.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
+  {id:"FDRf161f5c4a1ca4770",name:"RV08-03",part:"SOT-23-2N7002",type:"Strip",tape:"ClearPlastic",count: 3 ,x1: 294.935 ,y1: 198.242875 ,x2: 294.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
+  {id:"FDRc93c347cdc23412c",name:"RV08-04",part:"SOT-23-5-74AHCT1G125",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 305.935 ,y1: 198.242875 ,x2: 305.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
+  {id:"FDRfde00662edd747a4",name:"RV08-05",part:"SOT-23-5-74AHCT1G32",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 316.935 ,y1: 198.242875 ,x2: 316.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
+  {id:"FDR9dabc1ded0f84f5c",name:"RV08-06",part:"SOT-23-6-USBLC6-2SC6",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 327.935 ,y1: 198.242875 ,x2: 327.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
+  {id:"FDR29c90118c3264120",name:"RV08-07",part:"XTAL-2016-25MHz",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 338.935 ,y1: 198.242875 ,x2: 338.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
+  {id:"FDRb5e34e2206354b5b",name:"RV16-01",part:"QFN-48-7x7-ASM1061",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 366.39522222222223 ,y1: 86.788 ,x2: 370.45244444444444 ,y2: 86.788 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
+  {id:"FDR3ba0c76144744db7",name:"RV16-02",part:"TANT-D-100u",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 366.39522222222223 ,y1: 105.18799999999999 ,x2: 370.45244444444444 ,y2: 105.18799999999999 ,hasEnd: true ,tapeW: 16 ,pitch: 8 ,used:true},
+  {id:"FDRa2b0e6b0b9b842a0",name:"RV16-03",part:"IND-6045-SRN6045TA-3R3Y",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 366.39522222222223 ,y1: 123.588 ,x2: 370.45244444444444 ,y2: 123.588 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
+  {id:"FDR99e95cf23573496d",name:"RV16-04",part:"SW-PCM12-PCM12SMTR",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 366.39522222222223 ,y1: 141.988 ,x2: 370.45244444444444 ,y2: 141.988 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
+  {id:"FDR9ebd33afd48541ff",name:"RV16-05",part:"ECAP-6.3x7.7-100uF\/25V",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 366.39522222222223 ,y1: 160.483 ,x2: 370.45244444444444 ,y2: 160.483 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
+
+  {id:"FDRb7e9313c75e44b75",name:"DV08-01",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 175.95295806000001 ,y1: 25.78075269 ,x2: 175.95295806000001 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR4385325eb6864c1f",name:"DV08-02",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 190.95295806000001 ,y1: 25.78075269 ,x2: 190.95295806000001 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR033a2285bd654dc5",name:"DV08-03",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 205.95295806000001 ,y1: 25.78075269 ,x2: 205.95295806000001 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR38e7f7901d054fe2",name:"DV08-04",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 220.95295806000001 ,y1: 25.78075269 ,x2: 220.95295806000001 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDRcc1a9a70f5e74939",name:"DV08-05",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 235.95295806000001 ,y1: 25.78075269 ,x2: 235.95295806000001 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR177bceb25c6045c4",name:"DV08-06",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 250.95295806000001 ,y1: 25.78075269 ,x2: 250.95295806000001 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR84c357bd84bd4fe2",name:"DV08-07",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 265.95295806 ,y1: 25.78075269 ,x2: 265.95295806 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR58927d624bcc4d0e",name:"DV08-08",part:"CALIBRATION-DUMMY",type:"PushPull",tape:"",count:0,x1: 280.95295806 ,y1: 25.78075269 ,x2: 280.95295806 ,y2: -94.21924731 ,hasEnd: true ,tapeW:0,used:false},
+  {id:"FDR0ecb5da5466849bf",name:"LH08-01",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 41.57 ,y1: 210.21025 ,x2: 41.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDRf6dbf60fd13f4073",name:"LH08-02",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 52.57 ,y1: 210.21025 ,x2: 52.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDRe3dde07a473f41a1",name:"LH08-03",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 63.57 ,y1: 210.21025 ,x2: 63.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDR348a19bd6bef4f0e",name:"LH08-04",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 74.57 ,y1: 210.21025 ,x2: 74.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDR0e78a99c45ee4359",name:"LH08-05",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 85.57 ,y1: 210.21025 ,x2: 85.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDR540ff9469161433d",name:"LH08-06",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 96.57 ,y1: 210.21025 ,x2: 96.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDR0442058f00174211",name:"LH08-07",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 107.57 ,y1: 210.21025 ,x2: 107.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDRe801605bc0154c53",name:"LH08-08",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 118.57 ,y1: 210.21025 ,x2: 118.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDRc194882699d74b42",name:"RH12-08",part:"null",type:"Strip",tape:"ClearPlastic",count:0,x1: 419.653 ,y1: 210.869 ,x2: 419.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,used:false},
+  {id:"FDR21bab890e4434972",name:"RH12-09",part:"null",type:"Strip",tape:"ClearPlastic",count:0,x1: 434.653 ,y1: 210.869 ,x2: 434.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,used:false},
+  {id:"FDRa7ee194fe83e4b2c",name:"RV08-08",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 349.935 ,y1: 198.242875 ,x2: 349.935 ,y2: 194.31937500000004 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDR1f2b50427a7e4fb2",name:"RV16-06",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 366.39522222222223 ,y1: 186.465 ,x2: 370.45244444444444 ,y2: 186.465 ,hasEnd: true ,tapeW: 16 ,used:false},
+];
+
+const stripLength =  120 ;
+
+
+if (stripLength > 0) {
+  feeders.forEach(f => {
+    if (!f.hasEnd || f.type === 'PushPull') return;
+    let dx = f.x2 - f.x1, dy = f.y2 - f.y1;
+    let len = Math.sqrt(dx*dx + dy*dy);
+    if (len > 0 && len < stripLength) {
+      let ux = dx/len, uy = dy/len;
+      f.x2 = f.x1 + ux * stripLength;
+      f.y2 = f.y1 + uy * stripLength;
+    }
+  });
+}
+
+const svg = document.getElementById('mapSvg');
+const tooltip = document.getElementById('tooltip');
+const MARGIN = 30;
+
+
+function computeBounds(list) {
+  let xs = list.flatMap(f => f.hasEnd ? [f.x1, f.x2] : [f.x1]);
+  let ys = list.flatMap(f => f.hasEnd ? [f.y1, f.y2] : [f.y1]);
+  if (!xs.length) return {x: 0, y: 0, w: 1, h: 1};
+  let xMin = Math.min(...xs), xMax = Math.max(...xs);
+  let yMin = Math.min(...ys), yMax = Math.max(...ys);
+  return {x: xMin - MARGIN, y: -(yMax + MARGIN), w: (xMax-xMin||1) + 2*MARGIN, h: (yMax-yMin||1) + 2*MARGIN};
+}
+
+let boundsAll = computeBounds(feeders);
+let boundsJob = computeBounds(feeders.filter(f => f.used));
+
+
+
+let bed = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+bed.setAttribute('x',  0 ); bed.setAttribute('y', - 487 );
+bed.setAttribute('width',  440  -  0 );
+bed.setAttribute('height',  487  -  0 );
+bed.setAttribute('fill', 'none'); bed.setAttribute('stroke', getComputedStyle(document.documentElement).getPropertyValue('--tertiary').trim());
+bed.setAttribute('stroke-width', '1'); bed.setAttribute('stroke-dasharray', '8 4');
+svg.appendChild(bed);
+
+boundsAll = computeBounds([...feeders, {x1: 0 ,y1: 0 ,x2: 440 ,y2: 487 ,hasEnd:true,used:true}]);
+
+
+
+boards.forEach(b => {
+  if (b.w === 0 && b.h === 0) return;
+  let g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  let cx = b.x, cy = -b.y;
+  if (b.rot !== 0) g.setAttribute('transform', `rotate(${-b.rot}, ${cx}, ${cy})`);
+  let rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  rect.setAttribute('x', b.x); rect.setAttribute('y', -(b.y + b.h));
+  rect.setAttribute('width', b.w); rect.setAttribute('height', b.h);
+  rect.setAttribute('fill', 'none');
+  rect.setAttribute('stroke', getComputedStyle(document.documentElement).getPropertyValue('--warn').trim());
+  rect.setAttribute('stroke-width', '1'); rect.setAttribute('stroke-dasharray', '4 2');
+  g.appendChild(rect);
+  let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  text.setAttribute('x', b.x + b.w / 2); text.setAttribute('y', -(b.y + b.h) - 2);
+  text.setAttribute('text-anchor', 'middle');
+  text.classList.add('feeder-label');
+  text.style.fill = getComputedStyle(document.documentElement).getPropertyValue('--warn').trim();
+  text.textContent = b.name;
+  g.appendChild(text);
+  svg.appendChild(g);
+});
+
+
+if (boards.length) {
+  let boardPts = boards.filter(b => b.w > 0 || b.h > 0).flatMap(b => [{x1:b.x,y1:b.y,x2:b.x+b.w,y2:b.y+b.h,hasEnd:true,used:true}]);
+  boundsAll = computeBounds([...feeders, ...boardPts]);
+  boundsJob = computeBounds([...feeders.filter(f => f.used), ...boardPts]);
+}
+
+function fitTo(b) { viewBox = {x:b.x, y:b.y, w:b.w, h:b.h}; applyViewBox(); }
+
+function feedAngle(f) {
+  if (!f.hasEnd) return 0;
+  let dx = f.x2 - f.x1, dy = f.y2 - f.y1;
+  let len = Math.sqrt(dx*dx + dy*dy);
+  let angle = Math.atan2(dy, dx) * 180 / Math.PI;
+  
+  if (len < 6) angle = Math.round(angle / 90) * 90;
+  return angle;
+}
+
+
+feeders.forEach(f => {
+  let g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.classList.add('feeder-group');
+  if (!f.used) g.classList.add('unused-group');
+  g.dataset.feederId = f.id;
+
+  let color = f.used ? '#2a9d8f' : getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim();
+  let dimColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim();
+  let opacity = f.used ? '1' : '0.5';
+
+  
+  if (f.hasEnd && f.tapeW > 0) {
+    let dx = f.x2 - f.x1, dy = f.y2 - f.y1;
+    let len = Math.sqrt(dx*dx + dy*dy);
+    if (len > 0) {
+      let nx = -dy/len, ny = dx/len;
+      let hw = f.tapeW / 2;
+      let poly = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      let p1 = [f.x1 + nx*hw, -(f.y1 + ny*hw)];
+      let p2 = [f.x2 + nx*hw, -(f.y2 + ny*hw)];
+      let p3 = [f.x2 - nx*hw, -(f.y2 - ny*hw)];
+      let p4 = [f.x1 - nx*hw, -(f.y1 - ny*hw)];
+      
+      if (f.type === 'PushPull') {
+        poly.setAttribute('d', `M${p1[0]},${p1[1]} L${p2[0]},${p2[1]} L${p3[0]},${p3[1]} L${p4[0]},${p4[1]} Z`);
+      } else {
+        poly.setAttribute('d', `M${p2[0]},${p2[1]} L${p1[0]},${p1[1]} L${p4[0]},${p4[1]} L${p3[0]},${p3[1]}`);
+      }
+      poly.setAttribute('fill', color); poly.setAttribute('fill-opacity', '0.05');
+      poly.setAttribute('stroke', color); poly.setAttribute('stroke-width', '0.5');
+      poly.setAttribute('stroke-opacity', opacity == '1' ? '0.4' : '0.2');
+      poly.classList.add('tape-outline');
+      g.appendChild(poly);
+
+      
+      if (f.used && f.count > 0 && f.pitch > 0) {
+        let needLen = f.count * f.pitch;
+        let ux = dx/len, uy = dy/len; 
+        let ex = f.x1 + ux * needLen, ey = f.y1 + uy * needLen;
+        let need = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        let npts = [
+          [f.x1 + nx*hw, -(f.y1 + ny*hw)],
+          [ex + nx*hw, -(ey + ny*hw)],
+          [ex - nx*hw, -(ey - ny*hw)],
+          [f.x1 - nx*hw, -(f.y1 - ny*hw)],
+        ];
+        need.setAttribute('points', npts.map(p => p.join(',')).join(' '));
+        need.setAttribute('fill', color); need.setAttribute('fill-opacity', '0.25');
+        need.setAttribute('stroke', 'none');
+        g.appendChild(need);
+      }
+    }
+  }
+
+  if (f.hasEnd) {
+    
+  }
+
+  
+  if (f.type === 'PushPull' && f.hasEnd) {
+    let dx = f.x2 - f.x1, dy = f.y2 - f.y1;
+    let len = Math.sqrt(dx*dx + dy*dy) || 1;
+    let ux = dx/len, uy = dy/len;
+    let s = 4; 
+    let arrow = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    
+    let tip = [f.x1 - ux*s, -(f.y1 - uy*s)];
+    let left = [f.x1 + uy*s*0.5, -(f.y1 - ux*s*0.5)];
+    let right = [f.x1 - uy*s*0.5, -(f.y1 + ux*s*0.5)];
+    arrow.setAttribute('points', [tip, left, right].map(p => p.join(',')).join(' '));
+    arrow.setAttribute('fill', color); arrow.setAttribute('opacity', opacity);
+    arrow.classList.add('feeder-dot');
+    g.appendChild(arrow);
+  } else {
+    let dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', f.x1); dot.setAttribute('cy', -f.y1);
+    dot.setAttribute('r', '3'); dot.setAttribute('fill', color);
+    dot.setAttribute('opacity', opacity); dot.classList.add('feeder-dot');
+    g.appendChild(dot);
+  }
+
+  let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  let labelOffset = f.tapeW > 0 ? f.tapeW / 2 + 2 : 5;
+  if (f.hasEnd) {
+    let dx = f.x2 - f.x1, dy = f.y2 - f.y1;
+    let len = Math.sqrt(dx*dx + dy*dy) || 1;
+    let mx = f.x2, my = f.y2;
+    text.setAttribute('x', mx);
+    text.setAttribute('y', -my);
+    text.setAttribute('dominant-baseline', 'central');
+    
+    let feedsUp = f.y2 > f.y1;
+    let feedsRight = f.x2 > f.x1;
+    let isVertical = Math.abs(dy) > Math.abs(dx);
+    let anchor = 'start';
+    if (isVertical && feedsUp) anchor = 'end';
+    if (!isVertical && feedsRight) anchor = 'start';
+    if (!isVertical && !feedsRight) anchor = 'end';
+    text.setAttribute('text-anchor', anchor);
+    let angle = Math.atan2(-(f.y2 - f.y1), f.x2 - f.x1) * 180 / Math.PI;
+    if (Math.abs(angle - 90) < 10 || Math.abs(angle + 90) < 10) angle = 90;
+    if (Math.abs(angle) < 10 || Math.abs(angle - 180) < 10) angle = 0;
+    if (angle > 91 || angle < -91) angle += 180;
+    text.setAttribute('transform', `rotate(${angle}, ${mx}, ${-my})`);
+  } else {
+    text.setAttribute('x', f.x1 + labelOffset); text.setAttribute('y', -f.y1);
+  }
+  text.classList.add('feeder-label'); text.setAttribute('opacity', opacity);
+  text.textContent = f.part || f.name;
+  g.appendChild(text);
+
+  g.addEventListener('mouseenter', e => showTooltip(e, f));
+  g.addEventListener('mouseleave', () => tooltip.style.display = 'none');
+  g.addEventListener('click', () => highlight(f.id));
+  svg.appendChild(g);
+});
+
+function toggleJobOnly() {
+  let on = document.getElementById('jobOnly').checked;
+  document.querySelectorAll('.unused-group').forEach(g => g.style.display = on ? 'none' : '');
+  let us = document.getElementById('unusedSection');
+  if (us) us.style.display = on ? 'none' : '';
+  fitTo(on ? boundsJob : boundsAll);
+}
+
+function showTooltip(e, f) {
+  let tapeInfo = f.tape ? ` · ${f.tape}` : '';
+  let countInfo = f.count > 0 ? `<br><span class="tt-detail">${f.count} placements</span>` : '';
+  tooltip.innerHTML = `<div class="tt-name">${f.name}</div><div class="tt-part">${f.part}</div><span class="tt-detail">${f.type}${tapeInfo}</span>${countInfo}`;
+  tooltip.style.display = 'block';
+  let rect = document.getElementById('mapWrap').getBoundingClientRect();
+  tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
+  tooltip.style.top = (e.clientY - rect.top + 10) + 'px';
+}
+
+let highlightedId = null;
+function highlight(id) {
+  if (highlightedId === id) { highlightedId = null; } else { highlightedId = id; }
+  document.querySelectorAll('.feeder-group').forEach(g => {
+    if (!highlightedId) { g.style.opacity = ''; return; }
+    g.style.opacity = g.dataset.feederId === highlightedId ? '1' : '0.15';
+  });
+  document.querySelectorAll('tr[data-feeder]').forEach(tr => {
+    tr.classList.toggle('highlight', tr.dataset.feeder === highlightedId);
+  });
+}
+
+
+let viewBox = {x: 0, y: 0, w: 1, h: 1};
+function applyViewBox() { svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`); }
+svg.addEventListener('wheel', e => {
+  e.preventDefault();
+  let scale = e.deltaY > 0 ? 1.1 : 0.9;
+  let pt = svg.createSVGPoint();
+  pt.x = e.clientX; pt.y = e.clientY;
+  let svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+  viewBox.x = svgPt.x - (svgPt.x - viewBox.x) * scale;
+  viewBox.y = svgPt.y - (svgPt.y - viewBox.y) * scale;
+  viewBox.w *= scale; viewBox.h *= scale;
+  applyViewBox();
+});
+let dragging = false, dragStart = {};
+svg.addEventListener('mousedown', e => { dragging = true; dragStart = {x: e.clientX, y: e.clientY, vx: viewBox.x, vy: viewBox.y}; });
+svg.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  let ctm = svg.getScreenCTM();
+  let dx = (e.clientX - dragStart.x) / ctm.a;
+  let dy = (e.clientY - dragStart.y) / ctm.d;
+  viewBox.x = dragStart.vx - dx;
+  viewBox.y = dragStart.vy - dy;
+  applyViewBox();
+});
+window.addEventListener('mouseup', () => dragging = false);
+
+
+toggleJobOnly();
+
+
+(function() {
+  let handle = document.getElementById('resizeHandle');
+  let sidebar = document.getElementById('sidebar');
+  let resizing = false;
+  handle.addEventListener('mousedown', e => { resizing = true; e.preventDefault(); });
+  window.addEventListener('mousemove', e => {
+    if (!resizing) return;
+    let w = document.documentElement.clientWidth - e.clientX;
+    sidebar.style.width = Math.max(200, Math.min(w, window.innerWidth * 0.8)) + 'px';
+  });
+  window.addEventListener('mouseup', () => resizing = false);
+})();
+</script>
+</body>
+</html>
