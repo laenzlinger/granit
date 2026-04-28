@@ -11,11 +11,14 @@ translation hacks. Full SATA III throughput on both CM4 and CM5.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;12V DC input&lt;/strong&gt;: Required for 3.5&amp;quot; HDD support (spindle motor needs 12V).
 AP64501SP-13 accepts 3.8–28V. Both barrel jack and screw terminal footprints
-provided — populate one at assembly time.&lt;/p&gt;</description></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/latest/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/assembly/</guid><description>&lt;p&gt;The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants. PCB and HDD
-sit side-by-side with the SATA connector direct-mating between them. The lid
-(U-channel) is shown offset to reveal the internals.&lt;/p&gt;
+provided — populate one at assembly time.&lt;/p&gt;</description></item><item><title>Assembly</title><link>https://laenzlinger.github.io/granit/latest/assembly/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/assembly/</guid><description>&lt;p&gt;The PCB (92 × 99.5mm) supports two enclosure layouts using standard Hammond 1455 cases.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Slim variant (2.5&amp;quot; SSD):&lt;/strong&gt; PCB and drive sit side-by-side with the SATA connector
+direct-mating between them.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Compact variant (3.5&amp;quot; HDD):&lt;/strong&gt; PCB stacks on top of the HDD (sandwich layout),
+connected with a short 22-pin SATA extension cable (right-angle end on HDD side).
+See &lt;a href="https://github.com/laenzlinger/granit/issues/30"&gt;issue #30&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;⚠️ &lt;strong&gt;v0.3.0 slim variant:&lt;/strong&gt; The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the wide case (1455T2601) as a workaround. See &lt;a href="https://github.com/laenzlinger/granit/issues/1"&gt;issue #1&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;Custom Raspberry Pi OS Lite image with Ansible-based provisioning.
+&lt;p&gt;⚠️ &lt;strong&gt;v0.3.0 slim variant:&lt;/strong&gt; The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the 1455T2201BK as a workaround. See &lt;a href="https://github.com/laenzlinger/granit/issues/1"&gt;issue #1&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Software</title><link>https://laenzlinger.github.io/granit/latest/software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://laenzlinger.github.io/granit/latest/software/</guid><description>&lt;p&gt;Custom Raspberry Pi OS Lite image with Ansible-based provisioning.
 Source: &lt;a href="https://github.com/laenzlinger/granit/tree/main/software"&gt;&lt;code&gt;software/&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
 &lt;ul&gt;
