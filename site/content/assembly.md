@@ -4,11 +4,16 @@ type: assembly
 weight: 45
 ---
 
-The PCB (92 × 99.5mm) fits both Hammond 1455 enclosure variants. PCB and HDD
-sit side-by-side with the SATA connector direct-mating between them. The lid
-(U-channel) is shown offset to reveal the internals.
+The PCB (92 × 99.5mm) supports two enclosure layouts using standard Hammond 1455 cases.
 
-> ⚠️ **v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the wide case (1455T2601) as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
+**Slim variant (2.5" SSD):** PCB and drive sit side-by-side with the SATA connector
+direct-mating between them.
+
+**Compact variant (3.5" HDD):** PCB stacks on top of the HDD (sandwich layout),
+connected with a short 22-pin SATA extension cable (right-angle end on HDD side).
+See [issue #30](https://github.com/laenzlinger/granit/issues/30).
+
+> ⚠️ **v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the 1455T2201BK as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
 
 ## Pick and Place
 
@@ -44,7 +49,7 @@ openscad -o end-plate-slim.stl -D 'variant="slim"' -D '$fn=64' end-plate.scad
 
 ## Enclosure Variants
 
-| Variant | Case | HDD | Internal dimensions |
-|---------|------|-----|---------------------|
-| Slim | Hammond 1455L2201 | 2.5" | 103 × 220 × 30.5mm |
-| Wide | Hammond 1455T2601 | 3.5" | 165 × 252 × 51.5mm |
+| Variant | Layout | Case | HDD | Internal dimensions |
+|---------|--------|------|-----|---------------------|
+| Slim | side-by-side | Hammond 1455T2201BK | 2.5" | 165 × 220 × 51.5mm |
+| Compact | sandwich | Hammond 1455N1601BK | 3.5" | 103 × 160 × 53mm |
