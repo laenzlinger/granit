@@ -71,7 +71,7 @@ feeder-map: ## Generate HTML feeder layout map
 	openpnp-tools map -o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
 
 feeders: ## Assign parts to feeders from pnp/feeders.csv
-	openpnp-tools assign pnp/feeders.csv
+	openpnp-tools assign --reset-unused pnp/feeders.csv
 
 clean:
 	rm -rf out
