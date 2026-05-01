@@ -242,6 +242,14 @@ tr:hover td { background: var(--code-bg); cursor: pointer; }
       <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
     </tr>
     
+    <tr data-feeder="FDRc194882699d74b42" onclick="highlight('FDRc194882699d74b42')">
+      <td style="white-space:nowrap">RH12-08</td>
+      <td>TANT-D-100u</td>
+      <td style="white-space:nowrap">C-006</td>
+      <td><span class="badge badge-count">1/13</span></td>
+      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 12mm</span></td>
+    </tr>
+    
     <tr data-feeder="FDRc2bb7a4e94f74cb0" onclick="highlight('FDRc2bb7a4e94f74cb0')">
       <td style="white-space:nowrap">RV08-01</td>
       <td>LED_0805-LED G</td>
@@ -304,14 +312,6 @@ tr:hover td { background: var(--code-bg); cursor: pointer; }
       <td style="white-space:nowrap">U-009</td>
       <td><span class="badge badge-count">1/8</span></td>
       <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">BlackPlastic 16mm</span></td>
-    </tr>
-    
-    <tr data-feeder="FDR3ba0c76144744db7" onclick="highlight('FDR3ba0c76144744db7')">
-      <td style="white-space:nowrap">RV16-02</td>
-      <td>TANT-D-100u</td>
-      <td style="white-space:nowrap">C-006</td>
-      <td><span class="badge badge-count">1/13</span></td>
-      <td><span class="badge badge-strip">Strip</span> <span class="tape-hint">ClearPlastic 16mm</span></td>
     </tr>
     
     <tr data-feeder="FDRa2b0e6b0b9b842a0" onclick="highlight('FDRa2b0e6b0b9b842a0')">
@@ -430,16 +430,16 @@ tr:hover td { background: var(--code-bg); cursor: pointer; }
       <td>LV08-16</td><td>CALIBRATION-DUMMY</td>
     </tr>
     
-    <tr class="unused" data-feeder="FDRc194882699d74b42" onclick="highlight('FDRc194882699d74b42')">
-      <td>RH12-08</td><td>CALIBRATION-DUMMY</td>
-    </tr>
-    
     <tr class="unused" data-feeder="FDR21bab890e4434972" onclick="highlight('FDR21bab890e4434972')">
       <td>RH12-09</td><td>CALIBRATION-DUMMY</td>
     </tr>
     
     <tr class="unused" data-feeder="FDRa7ee194fe83e4b2c" onclick="highlight('FDRa7ee194fe83e4b2c')">
       <td>RV08-08</td><td>CALIBRATION-DUMMY</td>
+    </tr>
+    
+    <tr class="unused" data-feeder="FDR3ba0c76144744db7" onclick="highlight('FDR3ba0c76144744db7')">
+      <td>RV16-02</td><td>CALIBRATION-DUMMY</td>
     </tr>
     
     <tr class="unused" data-feeder="FDR1f2b50427a7e4fb2" onclick="highlight('FDR1f2b50427a7e4fb2')">
@@ -487,6 +487,7 @@ const feeders = [
   {id:"FDR2e639bfd3c174ecc",name:"RH12-05",part:"FUSE-2512-3A",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 374.653 ,y1: 210.869 ,x2: 374.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 12 ,used:true},
   {id:"FDRf9b84a76a3ee444b",name:"RH12-06",part:"WS2812B-5050-WS2812B-5mm",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 389.653 ,y1: 210.869 ,x2: 389.653 ,y2: 214.928 ,hasEnd: true ,tapeW: 12 ,pitch: 12 ,used:true},
   {id:"FDRe6b494905c9f49b9",name:"RH12-07",part:"SW-SKRTLAE010-SW_Push",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 405.11467787482076 ,y1: 209.83722430327836 ,x2: 405.1929188113544 ,y2: 217.84839101049204 ,hasEnd: true ,tapeW: 12 ,pitch: 8 ,used:true},
+  {id:"FDRc194882699d74b42",name:"RH12-08",part:"TANT-D-100u",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 420.112944 ,y1: 209.313617 ,x2: 420.219672 ,y2: 217.330898 ,hasEnd: true ,tapeW: 12 ,pitch: 8 ,used:true},
   {id:"FDRc2bb7a4e94f74cb0",name:"RV08-01",part:"LED_0805-LED G",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 273.19903040551804 ,y1: 198.87716302219127 ,x2: 273.14495339453345 ,y2: 194.8650601214399 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
   {id:"FDRbb2ea9b9ae444393",name:"RV08-02",part:"LED_0805-LED R",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 284.310992 ,y1: 198.754992 ,x2: 284.260653 ,y2: 194.743558 ,hasEnd: true ,tapeW: 8 ,pitch: 4 ,used:true},
   {id:"FDRf161f5c4a1ca4770",name:"RV08-03",part:"SOT-23-2N7002",type:"Strip",tape:"BlackPlastic",count: 3 ,x1: 295.422954 ,y1: 198.632821 ,x2: 295.376353 ,y2: 194.622055 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
@@ -495,7 +496,6 @@ const feeders = [
   {id:"FDR9dabc1ded0f84f5c",name:"RV08-06",part:"SOT-23-6-USBLC6-2SC6",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 328.758839 ,y1: 198.266308 ,x2: 328.723453 ,y2: 194.257548 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
   {id:"FDR29c90118c3264120",name:"RV08-07",part:"XTAL-2016-25MHz",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 339.870801 ,y1: 198.144136 ,x2: 339.839153 ,y2: 194.136045 ,hasEnd: true ,tapeW: 8 ,pitch: 8 ,used:true},
   {id:"FDRb5e34e2206354b5b",name:"RV16-01",part:"QFN-48-7x7-ASM1061",type:"Strip",tape:"BlackPlastic",count: 1 ,x1: 366.39522222222223 ,y1: 86.788 ,x2: 370.45244444444444 ,y2: 86.788 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
-  {id:"FDR3ba0c76144744db7",name:"RV16-02",part:"TANT-D-100u",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 366.39522222222223 ,y1: 105.18799999999999 ,x2: 370.45244444444444 ,y2: 105.18799999999999 ,hasEnd: true ,tapeW: 16 ,pitch: 8 ,used:true},
   {id:"FDRa2b0e6b0b9b842a0",name:"RV16-03",part:"IND-6045-SRN6045TA-3R3Y",type:"Strip",tape:"ClearPlastic",count: 1 ,x1: 366.39522222222223 ,y1: 123.588 ,x2: 370.45244444444444 ,y2: 123.588 ,hasEnd: true ,tapeW: 16 ,pitch: 16 ,used:true},
   {id:"FDR99e95cf23573496d",name:"RV16-04",part:"SW-PCM12-PCM12SMTR",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 366.39522222222223 ,y1: 141.988 ,x2: 370.45244444444444 ,y2: 141.988 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
   {id:"FDR9ebd33afd48541ff",name:"RV16-05",part:"ECAP-6.3x7.7-100uF\/25V",type:"Strip",tape:"WhitePaper",count: 1 ,x1: 366.39522222222223 ,y1: 160.483 ,x2: 370.45244444444444 ,y2: 160.483 ,hasEnd: true ,tapeW: 16 ,pitch: 12 ,used:true},
@@ -517,9 +517,9 @@ const feeders = [
   {id:"FDR0442058f00174211",name:"LH08-07",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 107.57 ,y1: 210.21025 ,x2: 107.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
   {id:"FDRe801605bc0154c53",name:"LH08-08",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 118.57 ,y1: 210.21025 ,x2: 118.57 ,y2: 214.26425 ,hasEnd: true ,tapeW: 8 ,used:false},
   {id:"FDRb18096022ec64bc3",name:"LV08-16",part:"CALIBRATION-DUMMY",type:"Strip",tape:"ClearPlastic",count:0,x1: 169.939 ,y1: 196.0309375 ,x2: 169.939 ,y2: 192.0929582842922 ,hasEnd: true ,tapeW: 8 ,used:false},
-  {id:"FDRc194882699d74b42",name:"RH12-08",part:"CALIBRATION-DUMMY",type:"Strip",tape:"ClearPlastic",count:0,x1: 420.112944 ,y1: 209.313617 ,x2: 420.219672 ,y2: 217.330898 ,hasEnd: true ,tapeW: 12 ,used:false},
   {id:"FDR21bab890e4434972",name:"RH12-09",part:"CALIBRATION-DUMMY",type:"Strip",tape:"ClearPlastic",count:0,x1: 435.11121107693947 ,y1: 208.7900089120586 ,x2: 435.2464253913458 ,y2: 216.81340498826322 ,hasEnd: true ,tapeW: 12 ,used:false},
   {id:"FDRa7ee194fe83e4b2c",name:"RV08-08",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 350.98276219492675 ,y1: 198.0219653646564 ,x2: 350.9548529870534 ,y2: 194.01454305865332 ,hasEnd: true ,tapeW: 8 ,used:false},
+  {id:"FDR3ba0c76144744db7",name:"RV16-02",part:"CALIBRATION-DUMMY",type:"Strip",tape:"ClearPlastic",count:0,x1: 366.39522222222223 ,y1: 105.18799999999999 ,x2: 370.45244444444444 ,y2: 105.18799999999999 ,hasEnd: true ,tapeW: 16 ,used:false},
   {id:"FDR1f2b50427a7e4fb2",name:"RV16-06",part:"CALIBRATION-DUMMY",type:"Strip",tape:"WhitePaper",count:0,x1: 366.39522222222223 ,y1: 186.465 ,x2: 370.45244444444444 ,y2: 186.465 ,hasEnd: true ,tapeW: 16 ,used:false},
 ];
 
