@@ -139,7 +139,7 @@
       <placement version="1.4" side="Top" id="C46" part-id="C_0805-10u" type="Placement" enabled="true">
          <location units="Millimeters" x="96.050000" y="-118.100000" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="CM1" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="CM1" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="false">
          <location units="Millimeters" x="85.500000" y="-37.500000" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="D1" part-id="WS2812B-5050-WS2812B-5mm" type="Placement" enabled="true">
@@ -166,16 +166,16 @@
       <placement version="1.4" side="Top" id="FID4" part-id="FIDUCIAL-1X2-Fiducial" type="Fiducial" enabled="true">
          <location units="Millimeters" x="102.318312" y="-118.008975" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="J1" part-id="USB-C-GCT4105-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="J1" part-id="USB-C-GCT4105-USB_C_Receptacle_USB2.0_14P" type="Placement" enabled="false">
          <location units="Millimeters" x="109.810000" y="-34.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="J2" part-id="SW-PCM12-PCM12SMTR" type="Placement" enabled="true">
          <location units="Millimeters" x="94.590000" y="-44.950000" z="0.0" rotation="90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="J3" part-id="JST-SH-3-BM03B-SRSS-TB" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="J3" part-id="JST-SH-3-BM03B-SRSS-TB" type="Placement" enabled="false">
          <location units="Millimeters" x="94.220000" y="-52.730000" z="0.0" rotation="0.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="J4" part-id="SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="J4" part-id="SATA_Amphenol_10029364-001LF_Horizontal-SATA_22pin" type="Placement" enabled="false">
          <location units="Millimeters" x="23.000000" y="-70.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="L1" part-id="IND-6045-SRN6045TA-3R3Y" type="Placement" enabled="true">
