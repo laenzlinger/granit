@@ -4,7 +4,7 @@
       <placements/>
       <children>
          <object class="org.openpnp.model.BoardLocation" side="Top" id="Brd1" file-name="/home/laenzi/dev/gh/laenzlinger/granit/hardware/pnp/granit.board.xml" check-fiducials="true" locally-enabled="true">
-            <location units="Millimeters" x="188.04296519068083" y="333.98521016145594" z="8.7" rotation="0.5115918110367387"/>
+            <location units="Millimeters" x="188.04296519068083" y="333.98521016145594" z="8.6" rotation="0.5115918110367387"/>
          </object>
       </children>
       <pseudo-placement-ids/>
