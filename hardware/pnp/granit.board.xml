@@ -139,7 +139,7 @@
       <placement version="1.4" side="Top" id="C46" part-id="C_0805-10u" type="Placement" enabled="true">
          <location units="Millimeters" x="96.050000" y="-118.100000" z="0.0" rotation="-90.000000"/>
       </placement>
-      <placement version="1.4" side="Top" id="CM1" part-id="CM4-CM4" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="CM1" part-id="Raspberry-Pi-4-Compute-Module-CM4" type="Placement" enabled="true">
          <location units="Millimeters" x="85.500000" y="-37.500000" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="D1" part-id="WS2812B-5050-WS2812B-5mm" type="Placement" enabled="true">
