@@ -68,7 +68,15 @@ pnp: ## Generate OpenPnP position file and board XML
 	openpnp-tools ensure-parts pnp/$(PROJECT_NAME).board.xml
 
 feeder-map: ## Generate HTML feeder layout map
-	openpnp-tools map -o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
+	kicad-cli sch export bom \
+		--fields "Value,Footprint,IPN" \
+		--labels "Value,Footprint,IPN" \
+		--group-by "Value,Footprint,IPN" \
+		--exclude-dnp \
+		-o pnp/bom.csv \
+		$(PROJECT_NAME).kicad_sch
+	openpnp-tools map --bom pnp/bom.csv \
+		-o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
 
 feeders: ## Assign parts to feeders from pnp/feeders.csv
 	openpnp-tools assign --reset-unused pnp/feeders.csv
