@@ -101,7 +101,7 @@
          <location units="Millimeters" x="60.3" y="-103.75" z="0.0" rotation="-90.0"/>
          <error-handling>Alert</error-handling>
       </placement>
-      <placement version="1.4" side="Top" id="C26" part-id="ECAP-6.3x7.7-100uF/25V" type="Placement" enabled="true">
+      <placement version="1.4" side="Top" id="C26" part-id="ECAP-6.3x7.7-100uF/25V" type="Placement" enabled="false">
          <location units="Millimeters" x="88.92" y="-104.87" z="0.0" rotation="90.0"/>
          <error-handling>Alert</error-handling>
       </placement>
