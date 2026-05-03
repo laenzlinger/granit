@@ -113,7 +113,7 @@
          <location units="Millimeters" x="66.300000" y="-110.349999" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="C38" part-id="TANT-D-100u" type="Placement" enabled="true">
-         <location units="Millimeters" x="56.900000" y="-112.799999" z="0.0" rotation="0"/>
+         <location units="Millimeters" x="56.900000" y="-112.799999" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="C39" part-id="C_0805-10u" type="Placement" enabled="true">
          <location units="Millimeters" x="62.290000" y="-113.799999" z="0.0" rotation="-90.000000"/>
@@ -143,13 +143,13 @@
          <location units="Millimeters" x="85.500000" y="-37.500000" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="D1" part-id="WS2812B-5050-WS2812B-5mm" type="Placement" enabled="true">
-         <location units="Millimeters" x="109.000000" y="-47.000000" z="0.0" rotation="270"/>
+         <location units="Millimeters" x="109.000000" y="-47.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="D2" part-id="LED_0805-LED R" type="Placement" enabled="true">
-         <location units="Millimeters" x="98.200000" y="-56.200000" z="0.0" rotation="180"/>
+         <location units="Millimeters" x="98.200000" y="-56.200000" z="0.0" rotation="0.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="D3" part-id="LED_0805-LED G" type="Placement" enabled="true">
-         <location units="Millimeters" x="98.200000" y="-58.400000" z="0.0" rotation="180"/>
+         <location units="Millimeters" x="98.200000" y="-58.400000" z="0.0" rotation="0.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="F1" part-id="FUSE-2512-3A" type="Placement" enabled="true">
          <location units="Millimeters" x="99.200000" y="-111.850000" z="0.0" rotation="-90.000000"/>
@@ -179,16 +179,16 @@
          <location units="Millimeters" x="23.000000" y="-70.000000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="L1" part-id="IND-6045-SRN6045TA-3R3Y" type="Placement" enabled="true">
-         <location units="Millimeters" x="69.603943" y="-115.327147" z="0.0" rotation="270"/>
+         <location units="Millimeters" x="69.603943" y="-115.327147" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q1" part-id="SOT-23-2N7002" type="Placement" enabled="true">
          <location units="Millimeters" x="63.462501" y="-95.199999" z="0.0" rotation="-90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q2" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
-         <location units="Millimeters" x="30.920000" y="-101.807500" z="0.0" rotation="180"/>
+         <location units="Millimeters" x="30.920000" y="-101.807500" z="0.0" rotation="0.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q3" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
-         <location units="Millimeters" x="43.700000" y="-101.800000" z="0.0" rotation="180"/>
+         <location units="Millimeters" x="43.700000" y="-101.800000" z="0.0" rotation="0.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q4" part-id="SOT-23-2N7002" type="Placement" enabled="true">
          <location units="Millimeters" x="35.670000" y="-103.947500" z="0.0" rotation="180.000000"/>
@@ -197,7 +197,7 @@
          <location units="Millimeters" x="48.460001" y="-103.950000" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Q6" part-id="SOIC-8-FDS4435BZ" type="Placement" enabled="true">
-         <location units="Millimeters" x="93.455255" y="-113.569107" z="0.0" rotation="90"/>
+         <location units="Millimeters" x="93.455255" y="-113.569107" z="0.0" rotation="-90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="R1" part-id="R_0805-5K1" type="Placement" enabled="true">
          <location units="Millimeters" x="103.000000" y="-28.000000" z="0.0" rotation="0.000000"/>
@@ -293,13 +293,13 @@
          <location units="Millimeters" x="59.612501" y="-95.149999" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="U5" part-id="SOIC-8-DS3231MZ" type="Placement" enabled="true">
-         <location units="Millimeters" x="67.950001" y="-96.987498" z="0.0" rotation="270"/>
+         <location units="Millimeters" x="67.950001" y="-96.987498" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="U6" part-id="SOT-223-NCP1117-3.3_SOT223" type="Placement" enabled="true">
          <location units="Millimeters" x="55.710000" y="-105.960000" z="0.0" rotation="90.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="U7" part-id="SOIC-8-EP-AP64501SP-13" type="Placement" enabled="true">
-         <location units="Millimeters" x="76.800000" y="-111.519106" z="0.0" rotation="0"/>
+         <location units="Millimeters" x="76.800000" y="-111.519106" z="0.0" rotation="180.000000"/>
       </placement>
       <placement version="1.4" side="Top" id="Y1" part-id="XTAL-2016-25MHz" type="Placement" enabled="true">
          <location units="Millimeters" x="41.718187" y="-66.523982" z="0.0" rotation="45.000000"/>
