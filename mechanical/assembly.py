@@ -24,7 +24,7 @@ VARIANTS = {
         "case_file": "hardware/3d-models/1455L2201.stp",
         "hdd_file": "mechanical/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
-        "hdd_sata_center_y": 34.925,
+        "hdd_sata_center_y": 24.41,  # SFF-8201: 7.11 + 34.6/2
         "case_belly_y": -32.5,
         "output": "mechanical/assembly-slim.step",
         "end_plate": "mechanical/end-plate-slim.stl",
@@ -33,7 +33,7 @@ VARIANTS = {
         "case_file": "hardware/3d-models/1455T2601.stp",
         "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
-        "hdd_sata_center_y": 50.8,
+        "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
         "case_belly_y": -53.6,
         "output": "mechanical/assembly-wide.step",
         "end_plate": "mechanical/end-plate-wide.stl",
