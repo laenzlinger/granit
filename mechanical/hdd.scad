@@ -14,17 +14,17 @@ drive = "2.5"; // [2.5, 3.5]
 len_25    = 100.2;
 width_25  = 69.85;
 height_25 = 9.5;
-// S1 at 3.00mm, P15 at 34.57mm from ref edge; ~1.5mm housing margin
-slot_y_min_25 = 1.5;
-slot_y_max_25 = 36.1;
+// SATA connector centered on drive width; slot spans ~34.6mm
+slot_y_min_25 = (69.85 - 34.6) / 2;
+slot_y_max_25 = (69.85 + 34.6) / 2;
 
 /* [3.5" Drive — SFF-8301] */
 len_35    = 147.0;
 width_35  = 101.6;
 height_35 = 26.1;
-// S1 at 15.90mm, P15 at 47.47mm from ref edge; ~1.5mm housing margin
-slot_y_min_35 = 14.4;
-slot_y_max_35 = 49.0;
+// SATA connector centered on drive width; slot spans ~34.6mm
+slot_y_min_35 = (101.6 - 34.6) / 2;
+slot_y_max_35 = (101.6 + 34.6) / 2;
 
 /* [SATA Receptacle — SFF-8223] */
 slot_depth  = 5.0;  // depth into drive face
