@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: test step pdf pnp feeder-map feeders clean
+.PHONY: test step pdf pnp feeder-map setup save clean
 
 GIT_HASH = $(shell git rev-parse --short HEAD)
 REVISION ?= $(shell git describe --tags --exact-match 2>/dev/null || echo dev)
@@ -78,8 +78,12 @@ feeder-map: ## Generate HTML feeder layout map
 	openpnp-tools map --bom pnp/bom.csv \
 		-o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
 
-feeders: ## Assign parts to feeders from pnp/feeders.csv
+setup: ## Apply base config and assign feeders (OpenPnP must be closed)
+	openpnp-tools config apply
 	openpnp-tools assign --reset-unused pnp/feeders.csv
+
+save: ## Pull tuning changes and commit to config repo (OpenPnP must be closed)
+	openpnp-tools config save -m "tuning: update from $(PROJECT_NAME)"
 
 clean:
 	rm -rf out
