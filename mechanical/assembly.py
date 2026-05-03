@@ -16,9 +16,9 @@ import Part
 STANDOFF = 5.0
 GAP = 2.0
 
-# SATA connector center position measured from the HDD reference edge (Y=0
-# in the HDD STEP model), per SFF-8201 (2.5") and SFF-8301 (3.5").
-# The connector is NOT centered on the drive width — see issue #27.
+# SATA connector center position on the HDD, measured from the drive edge.
+# The connector is approximately centered on the drive width.
+# Verified by physical measurement (2.5" HDD: ~35mm from edge = centered).
 VARIANTS = {
     "slim": {
         "case_file": "hardware/3d-models/1455L2201.stp",
