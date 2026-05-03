@@ -76,7 +76,7 @@ feeder-map: ## Generate HTML feeder layout map
 		-o pnp/bom.csv \
 		$(PROJECT_NAME).kicad_sch
 	openpnp-tools map --bom pnp/bom.csv \
-		-o pnp/feeder-map.html pnp/$(PROJECT_NAME).job.xml
+		-o ../site/static/feeder-map.html pnp/$(PROJECT_NAME).job.xml
 
 setup: ## Apply base config and assign feeders (OpenPnP must be closed)
 	openpnp-tools config apply
