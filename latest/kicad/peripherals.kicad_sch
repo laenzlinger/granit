@@ -11069,7 +11069,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "f86c9f11-e82e-4503-9ab0-1ddf1212c7b6")
 		(property "Reference" "R19"
