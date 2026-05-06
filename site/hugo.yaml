@@ -15,9 +15,9 @@ params:
   version: "main"
   assemblyModels:
     - name: "Slim (2.5\" HDD)"
-      file: "assembly-slim.step"
+      file: "assembly-slim.glb"
     - name: "Wide (3.5\" HDD)"
-      file: "assembly-wide.step"
+      file: "assembly-wide.glb"
   renders: []
   downloads: []
   kicadFiles: []
