@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: assembly pcb-step end-plates clean help
+.PHONY: assembly pcb-step end-plates glb clean help
 
 PCB_DIR := ../hardware
 
@@ -25,8 +25,12 @@ hdd-models: ## Generate HDD STEP models from OpenSCAD (via STL→STEP)
 assembly: pcb-step end-plates hdd-models ## Build FreeCAD assembly STEP files
 	cd .. && freecadcmd mechanical/assembly.py
 
+glb: ## Convert assembly STEP files to GLB
+	python3 step2glb.py
+
 clean: ## Remove generated files
 	rm -f granit-pcb.step assembly-slim.step assembly-wide.step \
+	      assembly-slim.glb assembly-wide.glb \
 	      end-plate-slim.stl end-plate-wide.stl \
 	      end-plate-slim.dxf end-plate-wide.dxf \
 	      2.5inch_HDD.stl 3.5inch_HDD_NAS.stl \
