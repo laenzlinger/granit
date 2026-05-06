@@ -160,3 +160,118 @@ def build_variant(name, cfg):
 
 for name, cfg in VARIANTS.items():
     build_variant(name, cfg)
+
+
+# ── Compact (sandwich) variant ──────────────────────────────────────────────
+# PCB stacked on top of 3.5" HDD inside a 1455N1601 (103×53×160mm)
+
+COMPACT_CFG = {
+    "case_file": "mechanical/1455N1601.step",
+    "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
+    "output": "mechanical/assembly-compact.step",
+}
+
+# Dimensions from issue #30 stack-up
+CASE_INNER_W = 103.0 - 2 * 1.5   # 100mm
+CASE_INNER_D = 53.0 - 2 * 1.5    # 50mm
+CASE_LENGTH = 160.0
+HDD_DIMS = (147.0, 101.6, 26.1)  # L x W x H
+PCB_DIMS = (92.0, 99.5, 1.6)     # L x W x H
+
+# Stack-up from bottom of case interior
+HDD_RAIL_H = 1.0       # feet/rails
+HDD_H = 26.1
+GAP_H = 3.0            # clearance between HDD top and PCB bottom
+PCB_H = 1.6
+CM4_H = 8.0            # tallest component on top
+
+
+def build_compact():
+    doc = FreeCAD.newDocument("Granit_compact")
+
+    # Case coordinate system (from OpenSCAD, centered at origin):
+    #   X = width (103mm), Y = depth/height (53mm), Z = length (160mm)
+    # Wall = 1.5mm, internal depth ~50mm
+
+    # Case — cut top half for visibility
+    case_shape = Part.read(COMPACT_CFG["case_file"])
+    case_bb = case_shape.BoundBox
+    cut_box = Part.makeBox(
+        case_bb.XLength + 10, 53.0 / 2, case_bb.ZLength + 10,
+        FreeCAD.Vector(case_bb.XMin - 5, 0, case_bb.ZMin - 5))
+    case_cut = case_shape.cut(cut_box)
+    case_obj = doc.addObject("Part::Feature", "Case")
+    case_obj.Shape = case_cut
+
+    # Bottom of internal cavity (wall=1.5mm from outer bottom at -53/2)
+    case_bottom = -53.0 / 2 + 1.5  # = -25.0
+
+    # ── HDD ──
+    # Model: X=147(L), Y=101.6(W), Z=26.1(H), origin at corner (0,0,0)
+    # Target: X=101.6(case width), Y=26.1(case up), Z=147(case length)
+    # Verified rotation: RZ(90).multiply(RY(90))
+    hdd_rot = RZ(90).multiply(RY(90))
+    hdd_shape = Part.read(COMPACT_CFG["hdd_file"])
+    hdd_placed = hdd_shape.transformed(
+        FreeCAD.Placement(FreeCAD.Vector(0, 0, 0), hdd_rot).toMatrix())
+    hbb = hdd_placed.BoundBox
+    hdd_y_bottom = case_bottom + HDD_RAIL_H
+    hdd_offset = FreeCAD.Vector(
+        -(hbb.XMin + hbb.XMax) / 2,
+        hdd_y_bottom - hbb.YMin,
+        -(hbb.ZMin + hbb.ZMax) / 2)
+    hdd_obj = doc.addObject("Part::Feature", "HDD")
+    hdd_obj.Shape = hdd_shape
+    hdd_obj.Placement = FreeCAD.Placement(hdd_offset, hdd_rot)
+
+    # ── PCB ──
+    # Model: X=101(W), Y=99.5(L, negative -120..-20.5), Z=18.2(H, -3..15.1)
+    # Target: X=101(case width), Y=18.2(case up), Z=99.5(case length)
+    # Verified rotation: RX(90)
+    pcb_rot = RX(90)
+    pcb_shape = Part.read(PCB_FILE)
+    pcb_placed = pcb_shape.transformed(
+        FreeCAD.Placement(FreeCAD.Vector(0, 0, 0), pcb_rot).toMatrix())
+    pbb = pcb_placed.BoundBox
+    pcb_y_bottom = hdd_y_bottom + 26.1 + GAP_H
+    pcb_offset = FreeCAD.Vector(
+        -(pbb.XMin + pbb.XMax) / 2,
+        pcb_y_bottom - pbb.YMin,
+        -(pbb.ZMin + pbb.ZMax) / 2)
+
+    board, ics, parts, conns = [], [], [], []
+    for s in pcb_shape.Solids:
+        bb = s.BoundBox
+        vol = bb.XLength * bb.YLength * bb.ZLength
+        if vol > 10000:
+            board.append(s)
+        elif bb.ZLength > 8 or bb.XLength > 15 or bb.YLength > 15:
+            conns.append(s)
+        elif vol > 50:
+            ics.append(s)
+        else:
+            parts.append(s)
+
+    pcb_pl = FreeCAD.Placement(pcb_offset, pcb_rot)
+    for label, solids in [("PCB_Board", board), ("PCB_ICs", ics),
+                          ("PCB_Parts", parts), ("PCB_Conn", conns)]:
+        if solids:
+            obj = doc.addObject("Part::Feature", label)
+            obj.Shape = Part.makeCompound(solids)
+            obj.Placement = pcb_pl
+
+    # Stack-up verification
+    total = HDD_RAIL_H + HDD_H + GAP_H + PCB_H + CM4_H
+    internal = 53.0 - 2 * 1.5
+    margin = internal - total
+    sys.stdout.write(f"compact: stack={total:.1f}mm, internal={internal:.1f}mm, "
+                     f"margin={margin:.1f}mm\n")
+    sys.stdout.flush()
+
+    doc.recompute()
+    part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
+    Import.export(part_objects, COMPACT_CFG["output"])
+    FreeCAD.closeDocument(doc.Name)
+
+
+build_compact()
