@@ -15,6 +15,17 @@ See [issue #30](https://github.com/laenzlinger/granit/issues/30).
 
 > ⚠️ **v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the 1455T2201BK as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
 
+## DF40C Connector Alignment Jig
+
+The DF40C 100-pin connectors (0.4mm pitch) are the most challenging components to place.
+A PCB-based alignment jig solves this — see [issue #39](https://github.com/laenzlinger/granit/issues/39).
+
+![DF40C jig concept](/granit/latest/df40c-jig-sketch.svg)
+
+**Concept:** A thin PCB with routed slots constrains the connector body on its long edges.
+Alignment pins (soldered into the jig) pass through unplated tooling holes on the carrier board,
+providing repeatable ±0.05mm registration.
+
 ## Pick and Place
 
 Interactive [feeder map](/granit/latest/feeder-map.html) showing the OpenPnP feeder allocation for machine placement.
