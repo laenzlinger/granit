@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" font-family="monospace" font-size="10">
+  <!-- Title -->
+  <text x="200" y="20" text-anchor="middle" font-size="14" font-weight="bold">DF40C Alignment Jig — Top View</text>
+
+  <!-- Jig PCB outline -->
+  <rect x="50" y="40" width="300" height="220" fill="#c8e6c9" stroke="#388e3c" stroke-width="2" rx="3"/>
+  <text x="60" y="55" font-size="9" fill="#388e3c">Jig PCB (1.0mm thick)</text>
+
+  <!-- Connector pocket 1 (left) -->
+  <rect x="80" y="100" width="120" height="14" fill="none" stroke="#d32f2f" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- Border tabs - top -->
+  <rect x="80" y="98" width="120" height="2" fill="#795548"/>
+  <!-- Border tabs - bottom -->
+  <rect x="80" y="114" width="120" height="2" fill="#795548"/>
+  <!-- Connector body -->
+  <rect x="82" y="101" width="116" height="12" fill="#424242" stroke="#212121" stroke-width="1" rx="1"/>
+  <text x="140" y="110" text-anchor="middle" font-size="8" fill="white">DF40C-100DS (connector 1)</text>
+
+  <!-- Connector pocket 2 (right) -->
+  <rect x="80" y="170" width="120" height="14" fill="none" stroke="#d32f2f" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- Border tabs - top -->
+  <rect x="80" y="168" width="120" height="2" fill="#795548"/>
+  <!-- Border tabs - bottom -->
+  <rect x="80" y="184" width="120" height="2" fill="#795548"/>
+  <!-- Connector body -->
+  <rect x="82" y="171" width="116" height="12" fill="#424242" stroke="#212121" stroke-width="1" rx="1"/>
+  <text x="140" y="180" text-anchor="middle" font-size="8" fill="white">DF40C-100DS (connector 2)</text>
+
+  <!-- Alignment pins -->
+  <circle cx="70" cy="80" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="70" y="72" text-anchor="middle" font-size="8" fill="#f57f17">pin</text>
+
+  <circle cx="330" cy="80" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="330" y="72" text-anchor="middle" font-size="8" fill="#f57f17">pin</text>
+
+  <circle cx="70" cy="220" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="70" y="235" text-anchor="middle" font-size="8" fill="#f57f17">pin</text>
+
+  <circle cx="330" cy="220" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="330" y="235" text-anchor="middle" font-size="8" fill="#f57f17">pin</text>
+
+  <!-- Annotations -->
+  <!-- Arrow showing border width -->
+  <line x1="210" y1="95" x2="210" y2="100" stroke="#d32f2f" stroke-width="1" marker-end="url(#arrow)"/>
+  <text x="220" y="93" font-size="8" fill="#d32f2f">~0.5mm border</text>
+
+  <!-- Open ends annotation -->
+  <text x="205" y="110" font-size="8" fill="#d32f2f">← open ends →</text>
+
+  <!-- Legend -->
+  <rect x="250" y="130" width="90" height="80" fill="white" stroke="#999" stroke-width="0.5" rx="3"/>
+  <text x="255" y="143" font-size="8" font-weight="bold">Legend:</text>
+  <rect x="255" y="148" width="12" height="8" fill="#795548"/>
+  <text x="272" y="155" font-size="8">Pocket border</text>
+  <rect x="255" y="162" width="12" height="8" fill="#424242"/>
+  <text x="272" y="169" font-size="8">Connector</text>
+  <circle cx="261" cy="181" r="4" fill="#ffc107" stroke="#f57f17" stroke-width="1"/>
+  <text x="272" y="184" font-size="8">Alignment pin</text>
+  <rect x="255" y="192" width="12" height="8" fill="#c8e6c9" stroke="#388e3c" stroke-width="0.5"/>
+  <text x="272" y="199" font-size="8">Jig PCB</text>
+
+  <!-- Cross-section label -->
+  <text x="200" y="275" text-anchor="middle" font-size="11" font-weight="bold">Cross Section (A-A):</text>
+  <text x="200" y="290" text-anchor="middle" font-size="9">[carrier PCB] — [paste] — [connector pins] — [jig border constrains body]</text>
+</svg>
