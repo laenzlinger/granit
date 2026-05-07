@@ -19,12 +19,16 @@
   <rect x="72" y="152" width="126" height="10" fill="#424242" rx="1"/>
   <text x="135" y="160" text-anchor="middle" font-size="7" fill="white">DF40C connector 2</text>
 
-  <!-- Press-fit dowel pins (only 2) -->
-  <circle cx="55" cy="125" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
-  <text x="55" y="140" text-anchor="middle" font-size="7" fill="#f57f17">dowel</text>
+  <!-- Press-fit dowel pins — DIAGONAL placement -->
+  <circle cx="55" cy="80" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="55" y="73" text-anchor="middle" font-size="7" fill="#f57f17">pin 1</text>
 
-  <circle cx="245" cy="125" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
-  <text x="245" y="140" text-anchor="middle" font-size="7" fill="#f57f17">dowel</text>
+  <circle cx="245" cy="175" r="5" fill="#ffc107" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="245" y="190" text-anchor="middle" font-size="7" fill="#f57f17">pin 2</text>
+
+  <!-- Diagonal line showing constraint -->
+  <line x1="55" y1="80" x2="245" y2="175" stroke="#f57f17" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="170" y="118" text-anchor="middle" font-size="7" fill="#f57f17" transform="rotate(-25,170,118)">diagonal = constrains rotation</text>
 
   <!-- Relief cutouts -->
   <rect x="210" y="80" width="30" height="25" fill="white" stroke="#999" stroke-width="1" stroke-dasharray="2,2"/>
@@ -32,12 +36,6 @@
 
   <rect x="210" y="145" width="30" height="25" fill="white" stroke="#999" stroke-width="1" stroke-dasharray="2,2"/>
   <text x="225" y="160" text-anchor="middle" font-size="6" fill="#999">relief</text>
-
-  <!-- Slot annotation -->
-  <line x1="205" y1="87" x2="205" y2="90" stroke="#d32f2f" stroke-width="0.8"/>
-  <line x1="205" y1="104" x2="205" y2="107" stroke="#d32f2f" stroke-width="0.8"/>
-  <text x="215" y="82" font-size="7" fill="#d32f2f">slot width =</text>
-  <text x="215" y="89" font-size="7" fill="#d32f2f">connector width</text>
 
   <!-- === CROSS SECTION === -->
   <text x="390" y="45" text-anchor="middle" font-size="12" font-weight="bold">Cross Section</text>
@@ -80,20 +78,14 @@
   <text x="315" y="215" text-anchor="middle" font-size="7" fill="#f57f17">pin</text>
 
   <!-- Press-fit annotation -->
-  <line x1="310" y1="225" x2="305" y2="225" stroke="#f57f17" stroke-width="0.5"/>
-  <line x1="310" y1="247" x2="305" y2="247" stroke="#f57f17" stroke-width="0.5"/>
-  <text x="295" y="233" text-anchor="middle" font-size="6" fill="#f57f17">press</text>
-  <text x="295" y="240" text-anchor="middle" font-size="6" fill="#f57f17">fit</text>
+  <text x="295" y="233" text-anchor="middle" font-size="6" fill="#f57f17">press-fit</text>
+  <text x="295" y="240" text-anchor="middle" font-size="6" fill="#f57f17">Ø0.95mm</text>
 
   <!-- Clearance hole annotation -->
-  <line x1="310" y1="250" x2="305" y2="250" stroke="#4527a0" stroke-width="0.5"/>
-  <line x1="310" y1="262" x2="305" y2="262" stroke="#4527a0" stroke-width="0.5"/>
-  <text x="293" y="255" text-anchor="middle" font-size="6" fill="#4527a0">clearance</text>
-  <text x="293" y="262" text-anchor="middle" font-size="6" fill="#4527a0">1.05mm</text>
+  <text x="295" y="257" text-anchor="middle" font-size="6" fill="#4527a0">clearance</text>
+  <text x="295" y="264" text-anchor="middle" font-size="6" fill="#4527a0">Ø1.05mm</text>
 
-  <!-- Gap arrows -->
-  <line x1="345" y1="232" x2="348" y2="232" stroke="#d32f2f" stroke-width="0.8"/>
-  <line x1="418" y1="232" x2="421" y2="232" stroke="#d32f2f" stroke-width="0.8"/>
+  <!-- Gap annotation -->
   <text x="383" y="230" text-anchor="middle" font-size="7" fill="#d32f2f">connector constrained by slot</text>
 
   <!-- === WORKFLOW === -->
@@ -105,7 +97,9 @@
   <text x="310" y="357" font-size="8">5. Reflow (jig stays on)</text>
   <text x="310" y="370" font-size="8">6. Remove jig after cooldown</text>
 
-  <!-- Accuracy note -->
-  <text x="150" y="235" text-anchor="middle" font-size="9" font-weight="bold">Accuracy: ±0.075mm</text>
-  <text x="150" y="248" text-anchor="middle" font-size="8">(vs ±0.15mm hand placement)</text>
+  <!-- Specs -->
+  <text x="150" y="235" text-anchor="middle" font-size="9" font-weight="bold">Specs:</text>
+  <text x="150" y="248" text-anchor="middle" font-size="8">Dowel: Ø1.0mm stainless steel</text>
+  <text x="150" y="261" text-anchor="middle" font-size="8">2 pins, diagonal placement</text>
+  <text x="150" y="274" text-anchor="middle" font-size="8">Accuracy: ±0.075mm</text>
 </svg>
