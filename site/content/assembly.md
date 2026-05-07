@@ -18,13 +18,7 @@ See [issue #30](https://github.com/laenzlinger/granit/issues/30).
 ## DF40C Connector Alignment Jig
 
 The DF40C 100-pin connectors (0.4mm pitch) are the most challenging components to place.
-A PCB-based alignment jig solves this — see [issue #39](https://github.com/laenzlinger/granit/issues/39).
-
-![DF40C jig concept](/granit/latest/df40c-jig-sketch.svg)
-
-**Concept:** A thin PCB with routed slots constrains the connector body on its long edges.
-Alignment pins (soldered into the jig) pass through unplated tooling holes on the carrier board,
-providing repeatable ±0.05mm registration.
+A PCB-based alignment jig solves this — see [df40c-jig](https://github.com/laenzlinger/df40c-jig) project.
 
 ## Pick and Place
 
