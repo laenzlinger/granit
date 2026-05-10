@@ -44,8 +44,9 @@ Managed by `granit-hdd-power` and `granit-hdd-shutdown` services.
 dtparam=watchdog=on
 ```
 
-systemd pings the watchdog every 15 seconds. If the system hangs, the watchdog
-triggers a hardware reset. Critical for an unattended remote device.
+{{% callout type="info" %}}
+systemd pings the watchdog every 15 seconds. If the system hangs, the watchdog triggers a hardware reset. Critical for an unattended remote device.
+{{% /callout %}}
 
 ### UART Debug Console
 
@@ -53,34 +54,56 @@ Serial console on GPIO14/15 at 115200 baud via JST-SH 3-pin header (J3).
 
 ## Backup Cycle
 
-1. **Boot** — RTC alarm wakes the CM4
-2. **Wait** — 2 minutes for network
-3. **Sync** — rclone pulls from configured remote
-4. **Schedule** — sets RTC wake alarm for next day
-5. **Poweroff** — safe HDD shutdown, then power off
+{{% steps %}}
 
-Maintenance mode: `touch /var/lib/granit-maintenance` to skip poweroff.
+### Boot
+
+RTC alarm wakes the CM4.
+
+### Wait
+
+2 minutes for network connectivity.
+
+### Sync
+
+rclone pulls from configured remote.
+
+### Schedule
+
+Sets RTC wake alarm for next day.
+
+### Poweroff
+
+Safe HDD shutdown, then power off.
+
+{{% /steps %}}
+
+{{% callout %}}
+**Maintenance mode:** `touch /var/lib/granit-maintenance` to skip poweroff.
+{{% /callout %}}
 
 ## Monitoring
 
-**Push (default)**: after each sync, metrics are pushed to a configurable
-Prometheus remote-write endpoint (`METRICS_URL`). Works with VictoriaMetrics,
-Prometheus Pushgateway, or any compatible receiver.
+{{< tabs items="Push (default),Pull (optional)" >}}
+{{< tab >}}
+After each sync, metrics are pushed to a configurable Prometheus remote-write endpoint (`METRICS_URL`). Works with VictoriaMetrics, Prometheus Pushgateway, or any compatible receiver.
 
-Metrics: `granit_sync_duration_seconds`, `granit_sync_success`,
-`granit_disk_used_bytes`, `granit_disk_total_bytes`.
-
-**Pull (optional)**: `prometheus-node-exporter` on port 9100 with RPi
-throttle/undervoltage metrics. Disabled by default — enable if you have a
-scraper that can reach the device.
+Metrics: `granit_sync_duration_seconds`, `granit_sync_success`, `granit_disk_used_bytes`, `granit_disk_total_bytes`.
+{{< /tab >}}
+{{< tab >}}
+`prometheus-node-exporter` on port 9100 with RPi throttle/undervoltage metrics. Disabled by default — enable if you have a scraper that can reach the device.
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Security
 
+{{% details title="Security hardening details" %}}
 - SSH key-only, root login disabled
 - UFW firewall (SSH only)
 - fail2ban (5 attempts → 1h ban)
 - Automatic security updates
 - Kernel hardening (sysctl)
+{{% /details %}}
 
 ## Configuration
 
@@ -94,27 +117,33 @@ METRICS_URL="http://192.168.1.x:8428/api/v1/import/prometheus"
 
 ## Provisioning
 
-```bash
-# Flash image, boot, then:
-cd software
-make provision  # runs Ansible playbook
-```
+{{% steps %}}
 
-Ansible variables can be set in the inventory or passed on the command line:
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `granit_timezone` | `UTC` | System timezone |
-| `granit_wake_hour` | `04` | RTC wake hour |
-| `granit_sync_remote` | `""` | rclone remote path |
-| `granit_metrics_url` | `""` | Prometheus push URL |
-
-## Building the Image
+### Build the image
 
 ```bash
 cd software
 make build   # pi-gen via Docker
 ```
 
-The image includes packages and boot config. Run `make provision` after
-flashing to configure services.
+### Flash and boot
+
+Flash the image to CM4 eMMC via `rpiboot`, then power on.
+
+### Provision
+
+```bash
+cd software
+make provision  # runs Ansible playbook
+```
+
+{{% /steps %}}
+
+{{% details title="Ansible variables" %}}
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `granit_timezone` | `UTC` | System timezone |
+| `granit_wake_hour` | `04` | RTC wake hour |
+| `granit_sync_remote` | `""` | rclone remote path |
+| `granit_metrics_url` | `""` | Prometheus push URL |
+{{% /details %}}
