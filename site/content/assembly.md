@@ -1,6 +1,5 @@
 ---
 title: Assembly
-type: assembly
 weight: 45
 ---
 
@@ -14,6 +13,10 @@ connected with a short 22-pin SATA extension cable (right-angle end on HDD side)
 See [issue #30](https://github.com/laenzlinger/granit/issues/30).
 
 > ⚠️ **v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the 1455T2201BK as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
+
+## 3D Models
+
+{{< call-partial "assembly.html" >}}
 
 ## DF40C Connector Alignment Jig
 
