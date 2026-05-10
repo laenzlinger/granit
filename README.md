@@ -24,6 +24,7 @@ onto an attached hard disk. Designed to be left at a trusted offsite location an
 ## Roadmap
 
 - **v0.3** — First production run (CM4, 4-layer PCB, JLCPCB)
+- **v0.4** — Fix wake/shutdown latch (#31), barrel jack swap (#40), DF40C alignment bosses (#37)
 - **v1.0** — Validated design with custom OS image and documentation
 - **Future** — Investigating RISC-V SoM support for a fully blob-free variant
 
