@@ -1,5 +1,6 @@
 ---
 title: Assembly
+type: default
 weight: 45
 ---
 
