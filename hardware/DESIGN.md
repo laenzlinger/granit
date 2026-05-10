@@ -158,3 +158,124 @@ This is a TIA-568 design choice for backwards compatibility with 2-pair telephon
 - All 4 Ethernet pairs require 100Ω differential impedance and length matching.
 - The MagJack provides galvanic isolation (2kV) — no external AC coupling or ESD protection
   needed on the Ethernet lines.
+
+## GLOBAL_EN Wake/Shutdown Latch
+
+Controls CM4 power state via the GLOBAL_EN pin (pin 99). Supports cold boot, software
+shutdown with latch, RTC alarm wake, and button wake.
+
+### Background
+
+GLOBAL_EN has a CM4-internal pull-up — the module boots when GLOBAL_EN is HIGH or floating,
+and powers off completely when GLOBAL_EN is held LOW. After shutdown, CM4 GPIOs go Hi-Z,
+so a hardware latch is required to hold GLOBAL_EN LOW and prevent immediate reboot.
+
+### Failed Approach (v0.3)
+
+The v0.3 design used an OR gate (U4, 74AHCT1G32) driving GLOBAL_EN HIGH on wake events,
+with Q1 (2N7002) gated by RTC ~INT. R19 (10K pull-up on Q1 gate) held Q1 ON at power-on,
+pulling U4 input LOW and preventing boot. The logic was fundamentally inverted.
+
+Workaround: R19 removed. RTC wake non-functional.
+
+### Redesigned Circuit (proposed for v0.4)
+
+Uses a 74LVC1G74 D flip-flop as an SR latch via asynchronous ~PRE (set) and ~CLR (reset).
+
+```
+                          ┌───────────────────┐
+        RTC ~INT ─────────┤ ~PRE           Q  ├──────── GLOBAL_EN (CM4 pin 99)
+                          │                   │
+        BUTTON ───────────┤        74LVC1G74  │
+                          │                   │
+        GPIO6 ────────────┤ ~CLR              │
+                          │                   │
+                     GND ─┤ CLK            D  ├── GND
+                          │                   │
+                    +3V3 ─┤ VCC          GND  ├── GND
+                          └───────────────────┘
+
+        ~PRE pin external components:
+            R1 (100K) ── ~PRE to GND        power-on: forces Q=HIGH via RC delay
+            C1 (100nF) ─ ~PRE to GND        holds ~PRE LOW during 3V3 ramp (~10ms)
+
+        ~CLR pin external components:
+            R2 (100K) ── ~CLR to +3V3       prevents accidental shutdown at boot
+
+        Existing pull-ups (kept):
+            R19 (10K) ── RTC ~INT to +3V3   releases ~PRE HIGH when no alarm
+            R6  (10K) ── BUTTON to +3V3     releases ~PRE HIGH when not pressed
+```
+
+CLK and D are tied to GND — no clocked operation, only async ~PRE/~CLR control Q.
+
+### Operation
+
+| State | ~PRE | ~CLR | Q (GLOBAL_EN) | Result |
+|-------|------|------|----------------|--------|
+| Cold power-on | LOW (C1 holds during ramp) | HIGH (R2) | HIGH | Boots |
+| Running | HIGH (R19+R6 overpower R1) | HIGH | HIGH (latched) | Stays on |
+| Shutdown | HIGH | LOW (GPIO6) | LOW | Off |
+| Sleeping | HIGH | HIGH (GPIO6 Hi-Z, R2) | LOW (latched) | Stays off |
+| RTC wake | LOW (~INT asserts) | HIGH | HIGH | Boots |
+| Button wake | LOW (pressed) | HIGH | HIGH | Boots |
+
+### Conflict: ~PRE=LOW and ~CLR=LOW Simultaneously
+
+Per TI SN74LVC1G74 datasheet: both asserted → Q=HIGH (nonstable state). Wake wins over
+shutdown. When one releases, output follows whichever remains asserted. This is safe — the
+device cannot be held off while a wake event is active.
+
+### Power-On Timing
+
+R1 (100K) + C1 (100nF) gives τ = 10ms. During 3V3 ramp-up, C1 holds ~PRE below VIL,
+forcing Q=HIGH. Once 3V3 stabilizes, R19 (10K) and R6 (10K) overpower R1 (100K) and
+bring ~PRE HIGH. The latch then holds Q=HIGH until ~CLR is asserted.
+
+### RTC ~INT Lock-Out
+
+DS3231 ~INT is level-triggered — stays LOW until the alarm flag is cleared via I2C. While
+~INT is LOW, ~PRE is asserted and the latch cannot be reset (shutdown is blocked). This is
+acceptable because GLOBAL_EN must be HIGH during boot anyway. The boot script must clear
+the alarm early:
+
+```bash
+i2cset -y 1 0x68 0x0F 0x00  # Clear DS3231 status register (alarm flags)
+```
+
+### GPIO6 Float Protection
+
+GPIO6 defaults to Hi-Z (input) at boot. R2 (100K to +3V3) keeps ~CLR HIGH, preventing
+accidental shutdown. GPIO6 has no boot-time alternate function that would drive it LOW.
+
+### Debouncing
+
+Not required. ~PRE is level-sensitive — button bounce repeatedly forces Q=HIGH, which is
+idempotent. CM4 PMIC power-up (~100ms) is far slower than bounce (~1–10ms).
+
+### Parts Change from v0.3
+
+| Remove | Add |
+|--------|-----|
+| U4 (74AHCT1G32) | 74LVC1G74DP,125 (Nexperia, TSSOP-8, IPN: U-012) |
+| Q1 (2N7002) | R1: 100K to GND on ~PRE |
+| R16 (GLOBAL_EN pull-up) | R2: 100K to +3V3 on ~CLR |
+| R18 (Q1 drain pull-up) | C1: 100nF on ~PRE to GND |
+
+R19 (RTC_INT pull-up) and R6 (BUTTON pull-up) are kept.
+
+### Software Configuration
+
+```ini
+# CM4 EEPROM (rpi-eeprom-config)
+POWER_OFF_ON_HALT=1       # PMIC fully powers off on shutdown
+WAKE_ON_GPIO=0            # Only wake via GLOBAL_EN toggle
+
+# config.txt
+dtoverlay=gpio-poweroff,gpiopin=6,active_low=1
+```
+
+### Open Validation
+
+- [ ] Verify GPIO6 does not glitch LOW during boot (scope on prototype)
+- [ ] Measure actual power-on RC timing with chosen component values
