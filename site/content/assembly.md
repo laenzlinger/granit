@@ -68,13 +68,25 @@ openscad -o end-plate-slim.stl -D 'variant="slim"' -D '$fn=64' end-plate.scad
 
 ## Downloads
 
+{{< tabs items="Slim,Wide,Shared" >}}
+{{< tab >}}
 | File | Format | Description |
 |------|--------|-------------|
-| [end-plate-slim.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-slim.dxf) | DXF | Slim end plate — CNC cutting |
-| [end-plate-wide.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-wide.dxf) | DXF | Wide end plate — CNC cutting |
-| [end-plate-slim.stl](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-slim.stl) | STL | Slim end plate — 3D printing |
-| [end-plate-wide.stl](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-wide.stl) | STL | Wide end plate — 3D printing |
-| [assembly-slim.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-slim.step) | STEP | Full slim assembly |
-| [assembly-wide.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-wide.step) | STEP | Full wide assembly |
+| [end-plate-slim.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-slim.dxf) | DXF | End plate — CNC cutting |
+| [end-plate-slim.stl](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-slim.stl) | STL | End plate — 3D printing |
+| [assembly-slim.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-slim.step) | STEP | Full assembly |
+{{< /tab >}}
+{{< tab >}}
+| File | Format | Description |
+|------|--------|-------------|
+| [end-plate-wide.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-wide.dxf) | DXF | End plate — CNC cutting |
+| [end-plate-wide.stl](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-wide.stl) | STL | End plate — 3D printing |
+| [assembly-wide.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-wide.step) | STEP | Full assembly |
+{{< /tab >}}
+{{< tab >}}
+| File | Format | Description |
+|------|--------|-------------|
 | [end-plate.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate.scad) | OpenSCAD | Parametric end plate source |
 | [stencil holder (top)](../Assembly/granit-stencil_for_jig_top.stl) | STL | PCB holder for steel stencil alignment |
+{{< /tab >}}
+{{< /tabs >}}
