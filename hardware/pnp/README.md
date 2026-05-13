@@ -32,7 +32,7 @@ View the interactive feeder map with `make feeder-map`.
 1. **Stencil** — apply solder paste (tape-hinge, align under microscope)
 2. **Machine place** — run OpenPnP job (90 placements)
 3. **Inspect** — check QFN-48 (U3) alignment
-4. **Reflow** — hot plate (peak ~245°C)
+4. **Reflow** — reflow oven (peak ~210°C leaded / ~245°C lead-free)
 5. **Inspect** — check for bridges
 6. **Hand-solder** — CM1, J1, J3, J4
 7. **Clean** — IPA wash
