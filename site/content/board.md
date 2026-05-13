@@ -5,7 +5,7 @@ weight: 20
 ---
 
 For detailed circuit design notes, PCB routing guidelines, and netclass definitions,
-see [hardware/DESIGN.md](https://github.com/laenzlinger/granit/blob/main/hardware/DESIGN.md).
+see [hardware/docs/DESIGN.md](https://github.com/laenzlinger/granit/blob/main/hardware/docs/DESIGN.md).
 
 {{% callout type="warning" %}}
 **Power budget:** 12V @ 2A (3.5" HDD spin-up) + 5V @ 2.3A peak (CM4 + electronics) — use a 12V/3A+ PSU.
