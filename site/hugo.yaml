@@ -23,6 +23,8 @@ params:
   kicadFiles: []
   navbar:
     displayTitle: true
+    logo:
+      dark: images/logo-dark.svg
     width: wide
   page:
     width: wide

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect rx="6" width="64" height="64" fill="#dfe6e9"/>
+  <!-- Left face (lighter) -->
+  <polygon points="22,54 25,14 32,8 32,54" fill="#2d3436"/>
+  <!-- Right face (darker) -->
+  <polygon points="32,8 39,14 42,54 32,54" fill="#636e72"/>
+</svg>
