@@ -21,6 +21,7 @@ direct-mating between them.
 connected with a short 22-pin SATA extension cable (right-angle end on HDD side).
 
 **Wide variant (3.5" HDD):** PCB and drive sit side-by-side in a wider case.
+The 1455T profile (165mm wide) may have longer lead times than the common 103mm-wide cases.
 
 ## Compact Variant — SATA Cabling
 
