@@ -22,7 +22,7 @@ GAP = 2.0
 VARIANTS = {
     "slim": {
         "case_file": "hardware/3d-models/1455L2201.stp",
-        "hdd_file": "mechanical/2.5inch_HDD.step",
+        "hdd_file": "mechanical/out/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
         "hdd_sata_center_y": 24.41,  # SFF-8201: 7.11 + 34.6/2
         "case_belly_y": -32.5,
@@ -31,7 +31,7 @@ VARIANTS = {
     },
     "wide": {
         "case_file": "hardware/3d-models/1455T2601.stp",
-        "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
+        "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
         "case_belly_y": -53.6,
@@ -167,7 +167,7 @@ for name, cfg in VARIANTS.items():
 
 COMPACT_CFG = {
     "case_file": "mechanical/1455T1601.stl",
-    "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
+    "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
     "output": "mechanical/out/assembly-compact.step",
 }
 
