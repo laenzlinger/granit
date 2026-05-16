@@ -189,6 +189,7 @@ COMPACT_CFG = {
     "case_file": "mechanical/out/1455T1601-body.stl",
     "lid_file": "mechanical/out/1455T1601-lid.stl",
     "endplate_file": "mechanical/out/1455T1601-end_plate.stl",
+    "endplate_cutout_file": "mechanical/out/end-plate-compact.stl",
     "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
     "output": "mechanical/out/assembly-compact.step",
 }
@@ -236,17 +237,29 @@ def build_compact():
     belly_obj = doc.addObject("Part::Feature", "BellyPlate")
     belly_obj.Shape = belly_solid
 
-    # End plates — at both ends
+    # End plates — cutout at front, blank at back
+    # Back plate (blank)
     ep_mesh = Mesh.Mesh(COMPACT_CFG["endplate_file"])
     ep_shape = Part.Shape()
     ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
     ep_solid = Part.makeSolid(ep_shape)
-    for z_sign, label in [(1, "EndPlate_Front"), (-1, "EndPlate_Back")]:
-        ep_obj = doc.addObject("Part::Feature", label)
-        ep_obj.Shape = ep_solid
-        ep_obj.Placement = FreeCAD.Placement(
-            FreeCAD.Vector(0, 0, z_sign * (CASE_LENGTH/2 + 0.75)),
-            FreeCAD.Rotation())
+    ep_obj = doc.addObject("Part::Feature", "EndPlate_Back")
+    ep_obj.Shape = ep_solid
+    ep_obj.Placement = FreeCAD.Placement(
+        FreeCAD.Vector(0, 0, -(CASE_LENGTH/2 + 0.75)),
+        FreeCAD.Rotation())
+
+    # Front plate (with connector cutouts)
+    fp_mesh = Mesh.Mesh(COMPACT_CFG["endplate_cutout_file"])
+    fp_shape = Part.Shape()
+    fp_shape.makeShapeFromMesh(fp_mesh.Topology, 0.01)
+    fp_solid = Part.makeSolid(fp_shape)
+    fp_bb = fp_solid.BoundBox
+    fp_obj = doc.addObject("Part::Feature", "EndPlate_Front")
+    fp_obj.Shape = fp_solid
+    fp_obj.Placement = FreeCAD.Placement(
+        FreeCAD.Vector(-fp_bb.XLength/2, -fp_bb.YLength/2, CASE_LENGTH/2 + 0.75),
+        FreeCAD.Rotation())
 
     # Bottom of internal cavity (wall=1.5mm from outer bottom at -H/2)
     case_bottom = -CASE_H / 2 + 1.5

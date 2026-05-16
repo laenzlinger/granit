@@ -9,11 +9,11 @@
 mode = "3d"; // [3d, 2d]
 
 /* [Case Variant] */
-variant = "slim"; // [slim, wide]
+variant = "slim"; // [slim, wide, compact]
 
 /* [Plate Dimensions (from Hammond STEP)] */
 plate_w = (variant == "slim") ? 103 : 165;
-plate_h = (variant == "slim") ? 30.5 : 53.6;
+plate_h = (variant == "slim") ? 30.5 : 51.5;
 plate_t = 1.5;
 
 // Screw holes (Hammond 1455: #4-40 UNC ≈ M3, 4mm inset)
@@ -28,7 +28,10 @@ corner_r = 3.94;
 /* [PCB Position Inside Case] */
 board_len = 99.5;
 pcb_offset_x = 0;
-pcb_bottom_y = 5.0;
+// PCB bottom height from plate bottom:
+//   slim/wide: 5.0mm (standoffs from belly plate)
+//   compact: 31.6mm (wall + rail + HDD + gap)
+pcb_bottom_y = (variant == "compact") ? 31.6 : 5.0;
 pcb_t = 1.6;
 pcb_surface_y = pcb_bottom_y + pcb_t;
 
