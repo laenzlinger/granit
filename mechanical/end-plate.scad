@@ -30,8 +30,9 @@ board_len = 99.5;
 pcb_offset_x = 0;
 // PCB bottom height from plate bottom:
 //   slim/wide: 5.0mm (standoffs from belly plate)
-//   compact: 31.6mm (wall + rail + HDD + gap)
-pcb_bottom_y = (variant == "compact") ? 31.6 : 5.0;
+//   compact: 31.6mm from plate bottom (wall + rail + HDD + gap)
+//            plate is rotated 180° so cutouts flip to match upside-down PCB
+pcb_bottom_y = (variant == "compact") ? 7.5 : 5.0;
 pcb_t = 1.6;
 pcb_surface_y = pcb_bottom_y + pcb_t;
 
@@ -107,5 +108,13 @@ module plate_2d() {
 if (mode == "2d") {
     plate_2d();
 } else {
-    linear_extrude(plate_t) plate_2d();
+    if (variant == "compact") {
+        // Mirror both X and Y for upside-down PCB orientation
+        linear_extrude(plate_t)
+            translate([plate_w, plate_h])
+                rotate(180)
+                    plate_2d();
+    } else {
+        linear_extrude(plate_t) plate_2d();
+    }
 }

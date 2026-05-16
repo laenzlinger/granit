@@ -178,7 +178,7 @@ module body_profile_2d() {
             translate([bx, by])
                 rotate(sx > 0 ? 180+45 : -45)
                     translate([boss_size/2.5, 0])
-                        square([boss_size*0.8, boss_hole_d], center=true);
+                        square([boss_size*0.8, belly_t + 0.2], center=true);
         }
 
         // PCB slot cuts — narrow gaps through the rail zone

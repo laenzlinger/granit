@@ -102,7 +102,7 @@ def build_variant(name, cfg):
     # PCB (split into categories for visual distinction)
     pcb_rot = rot(RZ(90), RX(-90), RY(180))
     pcb_pl = FreeCAD.Placement(
-        FreeCAD.Vector(70.3, belly_y + STANDOFF + 0.5, pcb_z_sata - 21.5), pcb_rot)
+        FreeCAD.Vector(70.3, belly_y + STANDOFF - 4.5, pcb_z_sata - 21.5), pcb_rot)
 
     pcb_shape = Part.read(PCB_FILE)
     board, ics, parts, conns = [], [], [], []
@@ -130,7 +130,7 @@ def build_variant(name, cfg):
     sata_y = cfg["hdd_sata_center_y"]
     hdd_rot = rot(RZ(90), RX(-90), RY(180))
     place(doc, cfg["hdd_file"], "HDD", FreeCAD.Placement(
-        FreeCAD.Vector(-sata_y, belly_y + STANDOFF + 4, hdd_z_sata - hdd_length),
+        FreeCAD.Vector(-sata_y, belly_y + STANDOFF - 4, hdd_z_sata - hdd_length),
         hdd_rot))
 
     # End plates — cutout plate at front (connector side), blank at back
@@ -291,7 +291,7 @@ def build_compact():
     pcb_placed = pcb_shape.transformed(
         FreeCAD.Placement(FreeCAD.Vector(0, 0, 0), pcb_rot).toMatrix())
     pbb = pcb_placed.BoundBox
-    pcb_y_bottom = hdd_y_bottom + 26.1 + GAP_H
+    pcb_y_bottom = hdd_y_bottom + 26.1 + GAP_H - 2.5
     pcb_offset = FreeCAD.Vector(
         -(pbb.XMin + pbb.XMax) / 2,
         pcb_y_bottom - pbb.YMin,
