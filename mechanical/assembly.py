@@ -195,18 +195,16 @@ def build_compact():
     #   X = width (165mm), Y = depth/height (51.5mm), Z = length (160mm)
     # Wall = 1.5mm, internal: 162 x 48.5 x 160mm
 
-    # Case — load from STL, cut top half for visibility
+    # Case — offset to the side for visibility (same style as slim/wide)
     case_mesh = Mesh.Mesh(COMPACT_CFG["case_file"])
     case_shape = Part.Shape()
     case_shape.makeShapeFromMesh(case_mesh.Topology, 0.01)
     case_solid = Part.makeSolid(case_shape)
     case_bb = case_solid.BoundBox
-    cut_box = Part.makeBox(
-        case_bb.XLength + 10, CASE_H / 2, case_bb.ZLength + 10,
-        FreeCAD.Vector(case_bb.XMin - 5, 0, case_bb.ZMin - 5))
-    case_cut = case_solid.cut(cut_box)
     case_obj = doc.addObject("Part::Feature", "Case")
-    case_obj.Shape = case_cut
+    case_obj.Shape = case_solid
+    case_obj.Placement = FreeCAD.Placement(
+        FreeCAD.Vector(case_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
 
     # Bottom of internal cavity (wall=1.5mm from outer bottom at -H/2)
     case_bottom = -CASE_H / 2 + 1.5
