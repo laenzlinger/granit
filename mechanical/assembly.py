@@ -22,6 +22,8 @@ GAP = 2.0
 VARIANTS = {
     "slim": {
         "case_file": "mechanical/out/1455L2201-body.stl",
+        "lid_file": "mechanical/out/1455L2201-lid.stl",
+        "endplate_file": "mechanical/out/1455L2201-end_plate.stl",
         "hdd_file": "mechanical/out/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
         "hdd_sata_center_y": 24.41,  # SFF-8201: 7.11 + 34.6/2
@@ -29,10 +31,11 @@ VARIANTS = {
         "case_h": 30.5,
         "case_length": 220.0,
         "output": "mechanical/out/assembly-slim.step",
-        "end_plate": "mechanical/end-plate-slim.stl",
     },
     "wide": {
         "case_file": "mechanical/out/1455T2201-body.stl",
+        "lid_file": "mechanical/out/1455T2201-lid.stl",
+        "endplate_file": "mechanical/out/1455T2201-end_plate.stl",
         "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
@@ -40,7 +43,6 @@ VARIANTS = {
         "case_h": 51.5,
         "case_length": 220.0,
         "output": "mechanical/out/assembly-wide.step",
-        "end_plate": "mechanical/end-plate-wide.stl",
     },
 }
 
@@ -126,19 +128,26 @@ def build_variant(name, cfg):
         hdd_rot))
 
     # End plate (from OpenSCAD STL)
-    if cfg.get("end_plate"):
-        ep_mesh = Mesh.Mesh(cfg["end_plate"])
+    if cfg.get("endplate_file"):
+        ep_mesh = Mesh.Mesh(cfg["endplate_file"])
         ep_shape = Part.Shape()
         ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
         ep_solid = Part.makeSolid(ep_shape)
-        ep_obj = doc.addObject("Part::Feature", "EndPlate")
-        ep_obj.Shape = ep_solid
-        ep_bb = ep_solid.BoundBox
-        ep_obj.Placement = FreeCAD.Placement(
-            FreeCAD.Vector(-ep_bb.XMin - ep_bb.XLength/2,
-                           -ep_bb.YMin - ep_bb.YLength/2 + belly_y + cfg["case_h"]/2,
-                           pcb_z_conn - ep_bb.ZLength/2),
-            FreeCAD.Rotation())
+        for z_sign, label in [(1, "EndPlate_Front"), (-1, "EndPlate_Back")]:
+            ep_obj = doc.addObject("Part::Feature", label)
+            ep_obj.Shape = ep_solid
+            ep_obj.Placement = FreeCAD.Placement(
+                FreeCAD.Vector(0, 0, z_sign * (case_length/2 + 0.75)),
+                FreeCAD.Rotation())
+
+    # Belly plate (from OpenSCAD STL) — in assembly position
+    if cfg.get("lid_file"):
+        lid_mesh = Mesh.Mesh(cfg["lid_file"])
+        lid_shape = Part.Shape()
+        lid_shape.makeShapeFromMesh(lid_mesh.Topology, 0.01)
+        lid_solid = Part.makeSolid(lid_shape)
+        lid_obj = doc.addObject("Part::Feature", "BellyPlate")
+        lid_obj.Shape = lid_solid
 
     doc.recompute()
     part_objects = [o for o in doc.Objects if hasattr(o, "Shape") and o.Shape.Faces]
@@ -158,7 +167,9 @@ for name, cfg in VARIANTS.items():
 # PCB stacked on top of 3.5" HDD inside a 1455T1601 (165×51.5×160mm)
 
 COMPACT_CFG = {
-    "case_file": "mechanical/1455T1601.stl",
+    "case_file": "mechanical/out/1455T1601-body.stl",
+    "lid_file": "mechanical/out/1455T1601-lid.stl",
+    "endplate_file": "mechanical/out/1455T1601-end_plate.stl",
     "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
     "output": "mechanical/out/assembly-compact.step",
 }
@@ -188,7 +199,7 @@ def build_compact():
     # Wall = 1.5mm, internal: 162 x 48.5 x 160mm
 
     # Case body only — offset to the side for visibility
-    case_mesh = Mesh.Mesh("mechanical/out/1455T1601-body.stl")
+    case_mesh = Mesh.Mesh(COMPACT_CFG["case_file"])
     case_shape = Part.Shape()
     case_shape.makeShapeFromMesh(case_mesh.Topology, 0.01)
     case_solid = Part.makeSolid(case_shape)
@@ -199,7 +210,7 @@ def build_compact():
         FreeCAD.Vector(case_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
 
     # Belly plate — in assembly position (bottom)
-    belly_mesh = Mesh.Mesh("mechanical/out/1455T1601-lid.stl")
+    belly_mesh = Mesh.Mesh(COMPACT_CFG["lid_file"])
     belly_shape = Part.Shape()
     belly_shape.makeShapeFromMesh(belly_mesh.Topology, 0.01)
     belly_solid = Part.makeSolid(belly_shape)
@@ -207,7 +218,7 @@ def build_compact():
     belly_obj.Shape = belly_solid
 
     # End plates — at both ends
-    ep_mesh = Mesh.Mesh("mechanical/out/1455T1601-endplate.stl")
+    ep_mesh = Mesh.Mesh(COMPACT_CFG["endplate_file"])
     ep_shape = Part.Shape()
     ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
     ep_solid = Part.makeSolid(ep_shape)

@@ -18,11 +18,13 @@ end-plates: ## Generate end plate outputs (STL + DXF)
 	done
 
 case-models: ## Generate Hammond 1455 case models (STL)
-	openscad -o out/1455N1601.stl -D 'profile="N"' -D 'length=160' -D '$$fn=64' 1455-case.scad
-	openscad -o out/1455T1601.stl -D 'profile="T"' -D 'length=160' -D '$$fn=64' 1455-case.scad
-	openscad -o out/1455T1601-body.stl -D 'profile="T"' -D 'length=160' -D 'render_part="body"' -D '$$fn=64' 1455-case.scad
-	openscad -o out/1455T1601-lid.stl -D 'profile="T"' -D 'length=160' -D 'render_part="lid"' -D '$$fn=64' 1455-case.scad
-	openscad -o out/1455T1601-endplate.stl -D 'profile="T"' -D 'length=160' -D 'render_part="end_plate"' -D '$$fn=64' 1455-case.scad
+	@mkdir -p out
+	@for spec in "L 220 1455L2201" "T 220 1455T2201" "T 160 1455T1601" "N 160 1455N1601"; do \
+		set -- $$spec; \
+		for part in body lid end_plate; do \
+			openscad -o out/$$3-$$part.stl -D "profile=\"$$1\"" -D "length=$$2" -D "render_part=\"$$part\"" -D '$$fn=64' 1455-case.scad; \
+		done; \
+	done
 
 hdd-models: ## Generate HDD STEP models from OpenSCAD (via STL→STEP)
 	openscad -o out/2.5inch_HDD.stl -D 'drive="2.5"' hdd.scad
