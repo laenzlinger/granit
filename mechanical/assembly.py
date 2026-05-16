@@ -24,6 +24,7 @@ VARIANTS = {
         "case_file": "mechanical/out/1455L2201-body.stl",
         "lid_file": "mechanical/out/1455L2201-lid.stl",
         "endplate_file": "mechanical/out/1455L2201-end_plate.stl",
+        "endplate_cutout_file": "mechanical/out/end-plate-slim.stl",
         "hdd_file": "mechanical/out/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
         "hdd_sata_center_y": 24.41,  # SFF-8201: 7.11 + 34.6/2
@@ -36,6 +37,7 @@ VARIANTS = {
         "case_file": "mechanical/out/1455T2201-body.stl",
         "lid_file": "mechanical/out/1455T2201-lid.stl",
         "endplate_file": "mechanical/out/1455T2201-end_plate.stl",
+        "endplate_cutout_file": "mechanical/out/end-plate-wide.stl",
         "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
@@ -71,10 +73,14 @@ RZ = lambda a: FreeCAD.Rotation(FreeCAD.Vector(0, 0, 1), a)
 
 def build_variant(name, cfg):
     doc = FreeCAD.newDocument(f"Granit_{name}")
-    belly_y = cfg["case_belly_y"]
     hdd_length, hdd_width, hdd_height = cfg["hdd_dims"]
     pcb_len = 92.0
     case_length = cfg["case_length"]
+    case_h = cfg["case_h"]
+
+    # Case coordinate system (from OpenSCAD, centered):
+    # Bottom of internal cavity
+    belly_y = -case_h / 2 + 4.22  # top of belly groove = bottom of cavity
 
     # Case body from our parametric STL — offset to the side
     case_mesh = Mesh.Mesh(cfg["case_file"])
@@ -127,18 +133,30 @@ def build_variant(name, cfg):
         FreeCAD.Vector(-sata_y, belly_y + STANDOFF + 4, hdd_z_sata - hdd_length),
         hdd_rot))
 
-    # End plate (from OpenSCAD STL)
+    # End plates — cutout plate at front (connector side), blank at back
     if cfg.get("endplate_file"):
+        # Back plate (blank)
         ep_mesh = Mesh.Mesh(cfg["endplate_file"])
         ep_shape = Part.Shape()
         ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
         ep_solid = Part.makeSolid(ep_shape)
-        for z_sign, label in [(1, "EndPlate_Front"), (-1, "EndPlate_Back")]:
-            ep_obj = doc.addObject("Part::Feature", label)
-            ep_obj.Shape = ep_solid
-            ep_obj.Placement = FreeCAD.Placement(
-                FreeCAD.Vector(0, 0, z_sign * (case_length/2 + 0.75)),
-                FreeCAD.Rotation())
+        ep_obj = doc.addObject("Part::Feature", "EndPlate_Back")
+        ep_obj.Shape = ep_solid
+        ep_obj.Placement = FreeCAD.Placement(
+            FreeCAD.Vector(0, 0, -(case_length/2 + 0.75)),
+            FreeCAD.Rotation())
+
+        # Front plate (with connector cutouts)
+        front_file = cfg.get("endplate_cutout_file", cfg["endplate_file"])
+        fp_mesh = Mesh.Mesh(front_file)
+        fp_shape = Part.Shape()
+        fp_shape.makeShapeFromMesh(fp_mesh.Topology, 0.01)
+        fp_solid = Part.makeSolid(fp_shape)
+        fp_obj = doc.addObject("Part::Feature", "EndPlate_Front")
+        fp_obj.Shape = fp_solid
+        fp_obj.Placement = FreeCAD.Placement(
+            FreeCAD.Vector(0, 0, case_length/2 + 0.75),
+            FreeCAD.Rotation())
 
     # Belly plate (from OpenSCAD STL) — in assembly position
     if cfg.get("lid_file"):

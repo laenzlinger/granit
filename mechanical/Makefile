@@ -12,9 +12,10 @@ pcb-step: ## Export PCB STEP from KiCad (connectors only, no CM4)
 		granit.kicad_pcb
 
 end-plates: ## Generate end plate outputs (STL + DXF)
+	@mkdir -p out
 	for v in slim wide; do \
-		openscad -o end-plate-$$v.stl -D "variant=\"$$v\"" -D '$$fn=64' end-plate.scad; \
-		openscad -o end-plate-$$v.dxf -D "variant=\"$$v\"" -D 'mode="2d"' end-plate.scad; \
+		openscad -o out/end-plate-$$v.stl -D "variant=\"$$v\"" -D '$$fn=64' end-plate.scad; \
+		openscad -o out/end-plate-$$v.dxf -D "variant=\"$$v\"" -D 'mode="2d"' end-plate.scad; \
 	done
 
 case-models: ## Generate Hammond 1455 case models (STL)
