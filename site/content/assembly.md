@@ -41,7 +41,6 @@ openscad -o end-plate-compact.stl -D 'variant="compact"' -D '$fn=64' end-plate.s
 |------|--------|-------------|
 | [end-plate.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate.scad) | OpenSCAD | Parametric end plate source |
 | [1455-case.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/1455-case.scad) | OpenSCAD | Parametric Hammond 1455 case |
-| [stencil holder (top)](../Assembly/granit-stencil_for_jig_top.stl) | STL | PCB holder for steel stencil alignment |
 
 ## Enclosure Variants
 
