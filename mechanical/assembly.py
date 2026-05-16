@@ -34,16 +34,16 @@ VARIANTS = {
         "output": "mechanical/out/assembly-slim.step",
     },
     "wide": {
-        "case_file": "mechanical/out/1455T2201-body.stl",
-        "lid_file": "mechanical/out/1455T2201-lid.stl",
-        "endplate_file": "mechanical/out/1455T2201-end_plate.stl",
+        "case_file": "mechanical/out/1455T2601-body.stl",
+        "lid_file": "mechanical/out/1455T2601-lid.stl",
+        "endplate_file": "mechanical/out/1455T2601-end_plate.stl",
         "endplate_cutout_file": "mechanical/out/end-plate-wide.stl",
         "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
         "case_belly_y": -53.6,
         "case_h": 51.5,
-        "case_length": 220.0,
+        "case_length": 260.0,
         "output": "mechanical/out/assembly-wide.step",
     },
 }
@@ -146,16 +146,17 @@ def build_variant(name, cfg):
             FreeCAD.Vector(0, 0, -(case_length/2 + 0.75)),
             FreeCAD.Rotation())
 
-        # Front plate (with connector cutouts)
+        # Front plate (with connector cutouts — origin at corner, needs centering)
         front_file = cfg.get("endplate_cutout_file", cfg["endplate_file"])
         fp_mesh = Mesh.Mesh(front_file)
         fp_shape = Part.Shape()
         fp_shape.makeShapeFromMesh(fp_mesh.Topology, 0.01)
         fp_solid = Part.makeSolid(fp_shape)
+        fp_bb = fp_solid.BoundBox
         fp_obj = doc.addObject("Part::Feature", "EndPlate_Front")
         fp_obj.Shape = fp_solid
         fp_obj.Placement = FreeCAD.Placement(
-            FreeCAD.Vector(0, 0, case_length/2 + 0.75),
+            FreeCAD.Vector(-fp_bb.XLength/2, -fp_bb.YLength/2, case_length/2 + 0.75),
             FreeCAD.Rotation())
 
     # Belly plate (from OpenSCAD STL) — in assembly position
