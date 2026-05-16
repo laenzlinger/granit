@@ -207,11 +207,27 @@ module body() {
         body_profile_2d();
 }
 
-// Belly plate: flat panel that slides into the channel from the end
+// Belly plate: U-profiled extrusion with edge flanges that slide into body groove
 module belly_plate() {
+    belly_wall = 1.3;
+    belly_plate_w = 86.0;       // U-profile outer width
+    flange_w = belly_w;          // full width including flanges (fits groove)
+    flange_t = belly_wall;       // flange thickness
     translate([0, -H/2 + belly_groove_d/2, 0])
-        linear_extrude(length, center=true)
-            square([belly_w - 0.3, belly_t], center=true);
+        linear_extrude(length, center=true) {
+            // Main U-profile
+            difference() {
+                square([belly_plate_w, belly_groove_d], center=true);
+                // U cutout: leaves belly_wall at bottom, open at top
+                translate([0, belly_wall])
+                    square([belly_plate_w - 2*belly_wall, belly_groove_d], center=true);
+            }
+            // Flanges (from inner face of side wall outward into body groove)
+            flange_ext = (flange_w - belly_plate_w)/2 + belly_wall*2;
+            for (sx = [-1, 1])
+                translate([sx * (belly_plate_w/2 - belly_wall + flange_ext/2), 1.9])
+                    square([flange_ext, flange_t], center=true);
+        }
 }
 
 // End plate with screw holes (blank — use end-plate.scad for cutouts)
@@ -261,6 +277,9 @@ module render_exploded() {
 if (render_part == "body") {
     body();
 } else if (render_part == "lid") {
+    belly_plate();
+} else if (render_part == "body_lid") {
+    body();
     belly_plate();
 } else if (render_part == "end_plate") {
     end_plate();
