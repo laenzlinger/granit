@@ -19,6 +19,7 @@ end-plates: ## Generate end plate outputs (STL + DXF)
 
 case-models: ## Generate Hammond 1455 case models (STL)
 	openscad -o 1455N1601.stl -D 'profile="N"' -D 'length=160' -D '$$fn=64' 1455-case.scad
+	openscad -o 1455T1601.stl -D 'profile="T"' -D 'length=160' -D '$$fn=64' 1455-case.scad
 
 hdd-models: ## Generate HDD STEP models from OpenSCAD (via STL→STEP)
 	openscad -o 2.5inch_HDD.stl -D 'drive="2.5"' hdd.scad

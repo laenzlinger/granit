@@ -163,17 +163,19 @@ for name, cfg in VARIANTS.items():
 
 
 # ── Compact (sandwich) variant ──────────────────────────────────────────────
-# PCB stacked on top of 3.5" HDD inside a 1455N1601 (103×53×160mm)
+# PCB stacked on top of 3.5" HDD inside a 1455T1601 (165×51.5×160mm)
 
 COMPACT_CFG = {
-    "case_file": "mechanical/1455N1601.step",
+    "case_file": "mechanical/1455T1601.stl",
     "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
     "output": "mechanical/assembly-compact.step",
 }
 
-# Dimensions from issue #30 stack-up
-CASE_INNER_W = 103.0 - 2 * 1.5   # 100mm
-CASE_INNER_D = 53.0 - 2 * 1.5    # 50mm
+# Dimensions from 1455T profile
+CASE_W = 165.0
+CASE_H = 51.5
+CASE_INNER_W = CASE_W - 2 * 1.5   # 162mm
+CASE_INNER_D = CASE_H - 2 * 1.5   # 48.5mm
 CASE_LENGTH = 160.0
 HDD_DIMS = (147.0, 101.6, 26.1)  # L x W x H
 PCB_DIMS = (92.0, 99.5, 1.6)     # L x W x H
@@ -190,21 +192,24 @@ def build_compact():
     doc = FreeCAD.newDocument("Granit_compact")
 
     # Case coordinate system (from OpenSCAD, centered at origin):
-    #   X = width (103mm), Y = depth/height (53mm), Z = length (160mm)
-    # Wall = 1.5mm, internal depth ~50mm
+    #   X = width (165mm), Y = depth/height (51.5mm), Z = length (160mm)
+    # Wall = 1.5mm, internal: 162 x 48.5 x 160mm
 
-    # Case — cut top half for visibility
-    case_shape = Part.read(COMPACT_CFG["case_file"])
-    case_bb = case_shape.BoundBox
+    # Case — load from STL, cut top half for visibility
+    case_mesh = Mesh.Mesh(COMPACT_CFG["case_file"])
+    case_shape = Part.Shape()
+    case_shape.makeShapeFromMesh(case_mesh.Topology, 0.01)
+    case_solid = Part.makeSolid(case_shape)
+    case_bb = case_solid.BoundBox
     cut_box = Part.makeBox(
-        case_bb.XLength + 10, 53.0 / 2, case_bb.ZLength + 10,
+        case_bb.XLength + 10, CASE_H / 2, case_bb.ZLength + 10,
         FreeCAD.Vector(case_bb.XMin - 5, 0, case_bb.ZMin - 5))
-    case_cut = case_shape.cut(cut_box)
+    case_cut = case_solid.cut(cut_box)
     case_obj = doc.addObject("Part::Feature", "Case")
     case_obj.Shape = case_cut
 
-    # Bottom of internal cavity (wall=1.5mm from outer bottom at -53/2)
-    case_bottom = -53.0 / 2 + 1.5  # = -25.0
+    # Bottom of internal cavity (wall=1.5mm from outer bottom at -H/2)
+    case_bottom = -CASE_H / 2 + 1.5
 
     # ── HDD ──
     # Model: X=147(L), Y=101.6(W), Z=26.1(H), origin at corner (0,0,0)
@@ -262,9 +267,8 @@ def build_compact():
 
     # Stack-up verification
     total = HDD_RAIL_H + HDD_H + GAP_H + PCB_H + CM4_H
-    internal = 53.0 - 2 * 1.5
-    margin = internal - total
-    sys.stdout.write(f"compact: stack={total:.1f}mm, internal={internal:.1f}mm, "
+    margin = CASE_INNER_D - total
+    sys.stdout.write(f"compact: stack={total:.1f}mm, internal={CASE_INNER_D:.1f}mm, "
                      f"margin={margin:.1f}mm\n")
     sys.stdout.flush()
 
