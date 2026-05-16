@@ -26,7 +26,7 @@ VARIANTS = {
         "hdd_dims": (100.2, 69.85, 9.5),
         "hdd_sata_center_y": 24.41,  # SFF-8201: 7.11 + 34.6/2
         "case_belly_y": -32.5,
-        "output": "mechanical/assembly-slim.step",
+        "output": "mechanical/out/assembly-slim.step",
         "end_plate": "mechanical/end-plate-slim.stl",
     },
     "wide": {
@@ -35,7 +35,7 @@ VARIANTS = {
         "hdd_dims": (147.0, 101.6, 26.1),
         "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
         "case_belly_y": -53.6,
-        "output": "mechanical/assembly-wide.step",
+        "output": "mechanical/out/assembly-wide.step",
         "end_plate": "mechanical/end-plate-wide.stl",
     },
 }
@@ -168,7 +168,7 @@ for name, cfg in VARIANTS.items():
 COMPACT_CFG = {
     "case_file": "mechanical/1455T1601.stl",
     "hdd_file": "mechanical/3.5inch_HDD_NAS.step",
-    "output": "mechanical/assembly-compact.step",
+    "output": "mechanical/out/assembly-compact.step",
 }
 
 # Dimensions from 1455T profile
@@ -196,7 +196,7 @@ def build_compact():
     # Wall = 1.5mm, internal: 162 x 48.5 x 160mm
 
     # Case body only — offset to the side for visibility
-    case_mesh = Mesh.Mesh("mechanical/1455T1601-body.stl")
+    case_mesh = Mesh.Mesh("mechanical/out/1455T1601-body.stl")
     case_shape = Part.Shape()
     case_shape.makeShapeFromMesh(case_mesh.Topology, 0.01)
     case_solid = Part.makeSolid(case_shape)
@@ -207,7 +207,7 @@ def build_compact():
         FreeCAD.Vector(case_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
 
     # Belly plate — in assembly position (bottom)
-    belly_mesh = Mesh.Mesh("mechanical/1455T1601-lid.stl")
+    belly_mesh = Mesh.Mesh("mechanical/out/1455T1601-lid.stl")
     belly_shape = Part.Shape()
     belly_shape.makeShapeFromMesh(belly_mesh.Topology, 0.01)
     belly_solid = Part.makeSolid(belly_shape)
@@ -215,7 +215,7 @@ def build_compact():
     belly_obj.Shape = belly_solid
 
     # End plates — at both ends
-    ep_mesh = Mesh.Mesh("mechanical/1455T1601-endplate.stl")
+    ep_mesh = Mesh.Mesh("mechanical/out/1455T1601-endplate.stl")
     ep_shape = Part.Shape()
     ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
     ep_solid = Part.makeSolid(ep_shape)
