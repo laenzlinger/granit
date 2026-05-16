@@ -33,7 +33,7 @@ assembly: pcb-step end-plates case-models hdd-models ## Build FreeCAD assembly S
 	cd .. && freecadcmd mechanical/assembly.py
 
 glb: ## Convert assembly STEP files to GLB
-	cd out && python3 ../step2glb.py
+	python3 step2glb.py out/assembly-*.step
 
 clean: ## Remove generated files
 	rm -rf out

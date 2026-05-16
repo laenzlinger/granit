@@ -21,20 +21,24 @@ GAP = 2.0
 # Verified by physical measurement (2.5" HDD: ~35mm from edge = centered).
 VARIANTS = {
     "slim": {
-        "case_file": "hardware/3d-models/1455L2201.stp",
+        "case_file": "mechanical/out/1455L2201-body.stl",
         "hdd_file": "mechanical/out/2.5inch_HDD.step",
         "hdd_dims": (100.2, 69.85, 9.5),
         "hdd_sata_center_y": 24.41,  # SFF-8201: 7.11 + 34.6/2
         "case_belly_y": -32.5,
+        "case_h": 30.5,
+        "case_length": 220.0,
         "output": "mechanical/out/assembly-slim.step",
         "end_plate": "mechanical/end-plate-slim.stl",
     },
     "wide": {
-        "case_file": "hardware/3d-models/1455T2601.stp",
+        "case_file": "mechanical/out/1455T2201-body.stl",
         "hdd_file": "mechanical/out/3.5inch_HDD_NAS.step",
         "hdd_dims": (147.0, 101.6, 26.1),
         "hdd_sata_center_y": 28.4,  # SFF-8301: 11.1 + 34.6/2
         "case_belly_y": -53.6,
+        "case_h": 51.5,
+        "case_length": 220.0,
         "output": "mechanical/out/assembly-wide.step",
         "end_plate": "mechanical/end-plate-wide.stl",
     },
@@ -68,37 +72,24 @@ def build_variant(name, cfg):
     belly_y = cfg["case_belly_y"]
     hdd_length, hdd_width, hdd_height = cfg["hdd_dims"]
     pcb_len = 92.0
+    case_length = cfg["case_length"]
 
-    # Read case and find connector-side end plate
-    case_shape = Part.read(cfg["case_file"])
-    lid_vol = max(s.Volume for s in case_shape.Solids)
-    flat_plates = [s for s in case_shape.Solids
-                   if s.Volume < lid_vol and s.BoundBox.ZLength < 5
-                   and s.BoundBox.XLength > 50 and s.BoundBox.YLength > 20]
-    conn_plate = max(flat_plates, key=lambda s: s.BoundBox.ZMax) if flat_plates else None
-    conn_zmax = conn_plate.BoundBox.ZMax if conn_plate else 110
+    # Case body from our parametric STL — offset to the side
+    case_mesh = Mesh.Mesh(cfg["case_file"])
+    case_shape = Part.Shape()
+    case_shape.makeShapeFromMesh(case_mesh.Topology, 0.01)
+    case_solid = Part.makeSolid(case_shape)
+    case_bb = case_solid.BoundBox
+    case_obj = doc.addObject("Part::Feature", "Case")
+    case_obj.Shape = case_solid
+    case_obj.Placement = FreeCAD.Placement(
+        FreeCAD.Vector(case_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
 
-    # Align PCB connector edge to end plate inside face
-    pcb_z_conn = conn_plate.BoundBox.ZMin if conn_plate else 110
+    # PCB connector edge flush with case end (+Z)
+    pcb_z_conn = case_length / 2
     pcb_z_sata = pcb_z_conn - pcb_len
     hdd_z_sata = pcb_z_sata - GAP
     hdd_z_far = hdd_z_sata - hdd_length
-
-    # Case without connector-side plate+frame (replaced by cutout end plate)
-    open_solids = [s for s in case_shape.Solids
-                   if s.Volume < lid_vol
-                   and not (s.BoundBox.ZMin > conn_zmax - 15
-                           and s.BoundBox.XLength > 50
-                           and s.BoundBox.YLength > 20)]
-    case_obj = doc.addObject("Part::Feature", "Case")
-    case_obj.Shape = Part.makeCompound(open_solids)
-
-    # Lid offset to the side
-    lid_solids = [s for s in case_shape.Solids if s.Volume >= lid_vol]
-    lid_obj = doc.addObject("Part::Feature", "Lid")
-    lid_obj.Shape = Part.makeCompound(lid_solids)
-    lid_obj.Placement = FreeCAD.Placement(
-        FreeCAD.Vector(case_shape.BoundBox.XLength + 20, 0, 0), FreeCAD.Rotation())
 
     # PCB (split into categories for visual distinction)
     pcb_rot = rot(RZ(90), RX(-90), RY(180))
@@ -134,18 +125,19 @@ def build_variant(name, cfg):
         FreeCAD.Vector(-sata_y, belly_y + STANDOFF + 4, hdd_z_sata - hdd_length),
         hdd_rot))
 
-    # End plate (from OpenSCAD STL → Part solid)
-    if conn_plate and cfg.get("end_plate"):
+    # End plate (from OpenSCAD STL)
+    if cfg.get("end_plate"):
         ep_mesh = Mesh.Mesh(cfg["end_plate"])
         ep_shape = Part.Shape()
         ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
         ep_solid = Part.makeSolid(ep_shape)
         ep_obj = doc.addObject("Part::Feature", "EndPlate")
         ep_obj.Shape = ep_solid
-        cp = conn_plate.BoundBox
-        ep = ep_solid.BoundBox
+        ep_bb = ep_solid.BoundBox
         ep_obj.Placement = FreeCAD.Placement(
-            FreeCAD.Vector(cp.XMin - ep.XMin, cp.YMin - ep.YMin, cp.ZMin - ep.ZMin),
+            FreeCAD.Vector(-ep_bb.XMin - ep_bb.XLength/2,
+                           -ep_bb.YMin - ep_bb.YLength/2 + belly_y + cfg["case_h"]/2,
+                           pcb_z_conn - ep_bb.ZLength/2),
             FreeCAD.Rotation())
 
     doc.recompute()
