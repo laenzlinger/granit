@@ -39,9 +39,6 @@ openscad -o end-plate-compact.stl -D 'variant="compact"' -D '$fn=64' end-plate.s
 
 | File | Format | Description |
 |------|--------|-------------|
-| [end-plate-slim.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/out/end-plate-slim.dxf) | DXF | Slim end plate — CNC cutting |
-| [end-plate-compact.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/out/end-plate-compact.dxf) | DXF | Compact end plate — CNC cutting |
-| [end-plate-wide.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/out/end-plate-wide.dxf) | DXF | Wide end plate — CNC cutting |
 | [end-plate.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate.scad) | OpenSCAD | Parametric end plate source |
 | [1455-case.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/1455-case.scad) | OpenSCAD | Parametric Hammond 1455 case |
 | [stencil holder (top)](../Assembly/granit-stencil_for_jig_top.stl) | STL | PCB holder for steel stencil alignment |
