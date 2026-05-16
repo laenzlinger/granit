@@ -16,6 +16,26 @@ Case: Hammond 1455T1601 (165 × 51.5 × 160mm).
 **Wide variant (3.5" HDD):** PCB and drive sit side-by-side in a wider case.
 Case: Hammond 1455T2601 (165 × 51.5 × 260mm).
 
+## Compact Variant — SATA Cabling
+
+The sandwich layout requires a short SATA cable between the PCB (on top) and the HDD (below).
+
+**Parts needed:**
+1. SATA 22-pin right-angle adapter (male-to-female, 90° bend) — mounts on the HDD
+2. SATA 22-pin extension cable (~10cm, straight connectors)
+
+**Assembly:**
+- Push the HDD to the front of the case (SATA connector facing the end plate)
+- Attach the right-angle adapter to the HDD's SATA port (bends the connector flat against the drive top, ~12mm height)
+- Route the extension cable from the adapter up to the PCB's J4 connector
+- The 13mm space behind the HDD (case is 160mm, drive is 147mm) provides room for the cable to fold
+
+**Clearance budget:**
+- HDD top to PCB bottom: ~21mm available
+- Right-angle adapter height: ~12mm
+- Cable bend: ~5mm
+- Margin: ~4mm
+
 ## Pick and Place
 
 Interactive [feeder map](/granit/latest/feeder-map.html) showing the OpenPnP feeder allocation for machine placement.
