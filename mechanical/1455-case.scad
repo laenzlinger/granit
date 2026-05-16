@@ -210,7 +210,7 @@ module body() {
 // Belly plate: U-profiled extrusion with edge flanges that slide into body groove
 module belly_plate() {
     belly_wall = 1.3;
-    belly_plate_w = 86.0;       // U-profile outer width
+    belly_plate_w = belly_w - 2*belly_wall;  // U-profile outer width (inside groove)
     flange_w = belly_w;          // full width including flanges (fits groove)
     flange_t = belly_wall;       // flange thickness
     translate([0, -H/2 + belly_groove_d/2, 0])

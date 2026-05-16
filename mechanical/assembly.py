@@ -195,8 +195,8 @@ def build_compact():
     #   X = width (165mm), Y = depth/height (51.5mm), Z = length (160mm)
     # Wall = 1.5mm, internal: 162 x 48.5 x 160mm
 
-    # Case — offset to the side for visibility (same style as slim/wide)
-    case_mesh = Mesh.Mesh(COMPACT_CFG["case_file"])
+    # Case body only — offset to the side for visibility
+    case_mesh = Mesh.Mesh("mechanical/1455T1601-body.stl")
     case_shape = Part.Shape()
     case_shape.makeShapeFromMesh(case_mesh.Topology, 0.01)
     case_solid = Part.makeSolid(case_shape)
@@ -205,6 +205,26 @@ def build_compact():
     case_obj.Shape = case_solid
     case_obj.Placement = FreeCAD.Placement(
         FreeCAD.Vector(case_bb.XLength + 20, 0, 0), FreeCAD.Rotation())
+
+    # Belly plate — in assembly position (bottom)
+    belly_mesh = Mesh.Mesh("mechanical/1455T1601-lid.stl")
+    belly_shape = Part.Shape()
+    belly_shape.makeShapeFromMesh(belly_mesh.Topology, 0.01)
+    belly_solid = Part.makeSolid(belly_shape)
+    belly_obj = doc.addObject("Part::Feature", "BellyPlate")
+    belly_obj.Shape = belly_solid
+
+    # End plates — at both ends
+    ep_mesh = Mesh.Mesh("mechanical/1455T1601-endplate.stl")
+    ep_shape = Part.Shape()
+    ep_shape.makeShapeFromMesh(ep_mesh.Topology, 0.01)
+    ep_solid = Part.makeSolid(ep_shape)
+    for z_sign, label in [(1, "EndPlate_Front"), (-1, "EndPlate_Back")]:
+        ep_obj = doc.addObject("Part::Feature", label)
+        ep_obj.Shape = ep_solid
+        ep_obj.Placement = FreeCAD.Placement(
+            FreeCAD.Vector(0, 0, z_sign * (CASE_LENGTH/2 + 0.75)),
+            FreeCAD.Rotation())
 
     # Bottom of internal cavity (wall=1.5mm from outer bottom at -H/2)
     case_bottom = -CASE_H / 2 + 1.5
@@ -222,7 +242,7 @@ def build_compact():
     hdd_offset = FreeCAD.Vector(
         -(hbb.XMin + hbb.XMax) / 2,
         hdd_y_bottom - hbb.YMin,
-        -(hbb.ZMin + hbb.ZMax) / 2)
+        CASE_LENGTH/2 - hbb.ZMax)  # flush with front end plate
     hdd_obj = doc.addObject("Part::Feature", "HDD")
     hdd_obj.Shape = hdd_shape
     hdd_obj.Placement = FreeCAD.Placement(hdd_offset, hdd_rot)
@@ -230,8 +250,8 @@ def build_compact():
     # ── PCB ──
     # Model: X=101(W), Y=99.5(L, negative -120..-20.5), Z=18.2(H, -3..15.1)
     # Target: X=101(case width), Y=18.2(case up), Z=99.5(case length)
-    # Verified rotation: RX(90)
-    pcb_rot = RX(90)
+    # RY(-90) rotates so USB/network connectors face end plate, RX(90) lays flat
+    pcb_rot = RY(-90).multiply(RX(90))
     pcb_shape = Part.read(PCB_FILE)
     pcb_placed = pcb_shape.transformed(
         FreeCAD.Placement(FreeCAD.Vector(0, 0, 0), pcb_rot).toMatrix())
@@ -240,7 +260,7 @@ def build_compact():
     pcb_offset = FreeCAD.Vector(
         -(pbb.XMin + pbb.XMax) / 2,
         pcb_y_bottom - pbb.YMin,
-        -(pbb.ZMin + pbb.ZMax) / 2)
+        CASE_LENGTH/2 - pbb.ZMax)  # connector edge flush with front end plate
 
     board, ics, parts, conns = [], [], [], []
     for s in pcb_shape.Solids:
