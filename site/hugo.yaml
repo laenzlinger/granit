@@ -16,7 +16,9 @@ params:
   assemblyModels:
     - name: "Slim (2.5\" HDD)"
       file: "assembly-slim.glb"
-    - name: "Wide (3.5\" HDD)"
+    - name: "Compact (3.5\" HDD sandwich)"
+      file: "assembly-compact.glb"
+    - name: "Wide (3.5\" HDD side-by-side)"
       file: "assembly-wide.glb"
   renders: []
   downloads: []

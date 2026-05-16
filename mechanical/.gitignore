@@ -1,4 +1,3 @@
 __pycache__/
 *.FCBak
-2.5inch_HDD.stl
-3.5inch_HDD_NAS.stl
+out/

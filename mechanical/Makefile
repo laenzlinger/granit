@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: assembly pcb-step end-plates glb clean help
+.PHONY: assembly pcb-step end-plates case-models glb clean help
 
 PCB_DIR := ../hardware
 
@@ -12,29 +12,34 @@ pcb-step: ## Export PCB STEP from KiCad (connectors only, no CM4)
 		granit.kicad_pcb
 
 end-plates: ## Generate end plate outputs (STL + DXF)
-	for v in slim wide; do \
-		openscad -o end-plate-$$v.stl -D "variant=\"$$v\"" -D '$$fn=64' end-plate.scad; \
-		openscad -o end-plate-$$v.dxf -D "variant=\"$$v\"" -D 'mode="2d"' end-plate.scad; \
+	@mkdir -p out
+	for v in slim wide compact; do \
+		openscad -o out/end-plate-$$v.stl -D "variant=\"$$v\"" -D '$$fn=64' end-plate.scad; \
+		openscad -o out/end-plate-$$v.dxf -D "variant=\"$$v\"" -D 'mode="2d"' end-plate.scad; \
+	done
+
+case-models: ## Generate Hammond 1455 case models (STL)
+	@mkdir -p out
+	@for spec in "L 220 1455L2201" "T 260 1455T2601" "T 160 1455T1601" "N 160 1455N1601"; do \
+		set -- $$spec; \
+		for part in body lid end_plate; do \
+			openscad -o out/$$3-$$part.stl -D "profile=\"$$1\"" -D "length=$$2" -D "render_part=\"$$part\"" -D '$$fn=64' 1455-case.scad; \
+		done; \
 	done
 
 hdd-models: ## Generate HDD STEP models from OpenSCAD (via STL→STEP)
-	openscad -o 2.5inch_HDD.stl -D 'drive="2.5"' hdd.scad
-	openscad -o 3.5inch_HDD_NAS.stl -D 'drive="3.5"' hdd.scad
+	openscad -o out/2.5inch_HDD.stl -D 'drive="2.5"' hdd.scad
+	openscad -o out/3.5inch_HDD_NAS.stl -D 'drive="3.5"' hdd.scad
 	cd .. && freecadcmd mechanical/stl2step.py
 
-assembly: pcb-step end-plates hdd-models ## Build FreeCAD assembly STEP files
+assembly: pcb-step end-plates case-models hdd-models ## Build FreeCAD assembly STEP files
 	cd .. && freecadcmd mechanical/assembly.py
 
 glb: ## Convert assembly STEP files to GLB
-	python3 step2glb.py
+	python3 step2glb.py out/assembly-*.step
 
 clean: ## Remove generated files
-	rm -f granit-pcb.step assembly-slim.step assembly-wide.step \
-	      assembly-slim.glb assembly-wide.glb \
-	      end-plate-slim.stl end-plate-wide.stl \
-	      end-plate-slim.dxf end-plate-wide.dxf \
-	      2.5inch_HDD.stl 3.5inch_HDD_NAS.stl \
-	      2.5inch_HDD.step 3.5inch_HDD_NAS.step
+	rm -rf out
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

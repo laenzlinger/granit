@@ -1,48 +1,20 @@
 ---
 title: Assembly
-type: default
+type: assembly
 weight: 45
 ---
 
-The PCB (92 × 99.5mm) supports two enclosure layouts using standard Hammond 1455 cases.
+The PCB (92 × 99.5mm) supports three enclosure layouts using standard Hammond 1455 cases.
 
-{{% callout type="warning" %}}
-**v0.3.0 slim variant:** The PCB does not fit the Hammond 1455L2201 slim case — some components are too close to the board edge and interfere with the internal walls. Use the 1455T2201BK as a workaround. See [issue #1](https://github.com/laenzlinger/granit/issues/1).
-{{% /callout %}}
+**Slim variant (2.5" SSD):** PCB and drive sit side-by-side with the SATA connector
+direct-mating between them. Case: Hammond 1455L2201 (103 × 30.5 × 220mm).
 
-## Enclosure Variants
+**Compact variant (3.5" HDD):** PCB stacks on top of the HDD (sandwich layout),
+connected with a short 22-pin SATA extension cable (right-angle end on HDD side).
+Case: Hammond 1455T1601 (165 × 51.5 × 160mm).
 
-{{< tabs items="Slim (2.5\" SSD),Compact (3.5\" HDD)" >}}
-{{< tab >}}
-PCB and drive sit side-by-side with the SATA connector direct-mating between them.
-
-| Property | Value |
-|----------|-------|
-| Case | Hammond 1455T2201BK |
-| Internal | 165 × 220 × 51.5mm |
-| Drive | 2.5" SSD/HDD |
-| Connection | Direct SATA mate |
-{{< /tab >}}
-{{< tab >}}
-PCB stacks on top of the HDD (sandwich layout), connected with a short 22-pin SATA extension cable (right-angle end on HDD side). See [issue #30](https://github.com/laenzlinger/granit/issues/30).
-
-| Property | Value |
-|----------|-------|
-| Case | Hammond 1455N1601BK |
-| Internal | 103 × 160 × 53mm |
-| Drive | 3.5" HDD |
-| Connection | 22-pin SATA extension cable |
-{{< /tab >}}
-{{< /tabs >}}
-
-## 3D Models
-
-{{< call-partial "assembly.html" >}}
-
-## DF40C Connector Alignment Jig
-
-The DF40C 100-pin connectors (0.4mm pitch) are the most challenging components to place.
-A PCB-based alignment jig solves this — see [df40c-jig](https://github.com/laenzlinger/df40c-jig) project.
+**Wide variant (3.5" HDD):** PCB and drive sit side-by-side in a wider case.
+Case: Hammond 1455T2601 (165 × 51.5 × 260mm).
 
 ## Pick and Place
 
@@ -53,40 +25,27 @@ Interactive [feeder map](/granit/latest/feeder-map.html) showing the OpenPnP fee
 The connector-side end plate has cutouts for:
 barrel jack (12V DC), RJ45 (Ethernet), USB-C (OTG), tactile button, and RGB LED (light pipe).
 
-{{< tabs items="CNC (DXF),3D Print (STL)" >}}
-{{< tab >}}
+Parametric design in OpenSCAD — generate for CNC machining or 3D printing:
+
 ```bash
-openscad -o end-plate-slim.dxf -D 'variant="slim"' -D 'mode="2d"' end-plate.scad
+# DXF for CNC laser/mill (variants: slim, compact, wide)
+openscad -o end-plate-compact.dxf -D 'variant="compact"' -D 'mode="2d"' end-plate.scad
+
+# STL for 3D printing
+openscad -o end-plate-compact.stl -D 'variant="compact"' -D '$fn=64' end-plate.scad
 ```
-{{< /tab >}}
-{{< tab >}}
-```bash
-openscad -o end-plate-slim.stl -D 'variant="slim"' -D '$fn=64' end-plate.scad
-```
-{{< /tab >}}
-{{< /tabs >}}
 
 ## Downloads
 
-{{< tabs items="Slim,Wide,Shared" >}}
-{{< tab >}}
-| File | Format | Description |
-|------|--------|-------------|
-| [end-plate-slim.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-slim.dxf) | DXF | End plate — CNC cutting |
-| [end-plate-slim.stl](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-slim.stl) | STL | End plate — 3D printing |
-| [assembly-slim.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-slim.step) | STEP | Full assembly |
-{{< /tab >}}
-{{< tab >}}
-| File | Format | Description |
-|------|--------|-------------|
-| [end-plate-wide.dxf](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-wide.dxf) | DXF | End plate — CNC cutting |
-| [end-plate-wide.stl](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate-wide.stl) | STL | End plate — 3D printing |
-| [assembly-wide.step](https://github.com/laenzlinger/granit/raw/main/mechanical/assembly-wide.step) | STEP | Full assembly |
-{{< /tab >}}
-{{< tab >}}
 | File | Format | Description |
 |------|--------|-------------|
 | [end-plate.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/end-plate.scad) | OpenSCAD | Parametric end plate source |
-| [stencil holder (top)](../Assembly/granit-stencil_for_jig_top.stl) | STL | PCB holder for steel stencil alignment |
-{{< /tab >}}
-{{< /tabs >}}
+| [1455-case.scad](https://github.com/laenzlinger/granit/raw/main/mechanical/1455-case.scad) | OpenSCAD | Parametric Hammond 1455 case |
+
+## Enclosure Variants
+
+| Variant | Layout | Case | HDD | Dimensions (W×H×L) |
+|---------|--------|------|-----|---------------------|
+| Slim | side-by-side | Hammond 1455L2201 | 2.5" | 103 × 30.5 × 220mm |
+| Compact | sandwich | Hammond 1455T1601 | 3.5" | 165 × 51.5 × 160mm |
+| Wide | side-by-side | Hammond 1455T2601 | 3.5" | 165 × 51.5 × 260mm |
