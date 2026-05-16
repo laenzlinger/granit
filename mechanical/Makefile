@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: assembly pcb-step end-plates glb clean help
+.PHONY: assembly pcb-step end-plates case-models glb clean help
 
 PCB_DIR := ../hardware
 
@@ -17,12 +17,15 @@ end-plates: ## Generate end plate outputs (STL + DXF)
 		openscad -o end-plate-$$v.dxf -D "variant=\"$$v\"" -D 'mode="2d"' end-plate.scad; \
 	done
 
+case-models: ## Generate Hammond 1455 case models (STL)
+	openscad -o 1455N1601.stl -D 'profile="N"' -D 'length=160' -D '$$fn=64' 1455-case.scad
+
 hdd-models: ## Generate HDD STEP models from OpenSCAD (via STL→STEP)
 	openscad -o 2.5inch_HDD.stl -D 'drive="2.5"' hdd.scad
 	openscad -o 3.5inch_HDD_NAS.stl -D 'drive="3.5"' hdd.scad
 	cd .. && freecadcmd mechanical/stl2step.py
 
-assembly: pcb-step end-plates hdd-models ## Build FreeCAD assembly STEP files
+assembly: pcb-step end-plates case-models hdd-models ## Build FreeCAD assembly STEP files
 	cd .. && freecadcmd mechanical/assembly.py
 
 glb: ## Convert assembly STEP files to GLB
@@ -30,9 +33,11 @@ glb: ## Convert assembly STEP files to GLB
 
 clean: ## Remove generated files
 	rm -f granit-pcb.step assembly-slim.step assembly-wide.step \
-	      assembly-slim.glb assembly-wide.glb \
+	      assembly-compact.step \
+	      assembly-slim.glb assembly-wide.glb assembly-compact.glb \
 	      end-plate-slim.stl end-plate-wide.stl \
 	      end-plate-slim.dxf end-plate-wide.dxf \
+	      1455N1601.stl 1455N1601.step \
 	      2.5inch_HDD.stl 3.5inch_HDD_NAS.stl \
 	      2.5inch_HDD.step 3.5inch_HDD_NAS.step
 
